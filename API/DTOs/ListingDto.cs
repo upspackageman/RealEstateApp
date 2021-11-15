@@ -66,12 +66,14 @@ namespace API.DTOs
 
         public string Community {get;set;}
 
+        public string State {get;set;}
+
         public int PriceSearch {get;set;}
 
-        public double longitude {get; set;}
-
-        public double latitude {get; set;}
-
         public int PriceSort {get;set;}
+
+        public double Lat {get;set;}
+
+        public double Lon {get;set;}
     }
 }

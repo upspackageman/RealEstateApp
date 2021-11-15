@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace API.Migrations
+namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210922222640_AddProp1")]
-    partial class AddProp1
+    [Migration("20211111201413_LatLong")]
+    partial class LatLong
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,7 +19,7 @@ namespace API.Migrations
             modelBuilder
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.0");
+                .HasAnnotation("ProductVersion", "5.0.12");
 
             modelBuilder.Entity("API.Entities.CustomerUser", b =>
                 {
@@ -98,6 +98,9 @@ namespace API.Migrations
                     b.Property<string>("KitchenDimensions")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("Lat")
+                        .HasColumnType("float");
+
                     b.Property<string>("ListingDate")
                         .HasColumnType("nvarchar(max)");
 
@@ -106,6 +109,9 @@ namespace API.Migrations
 
                     b.Property<string>("LivingRoomDimensions")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Lon")
+                        .HasColumnType("float");
 
                     b.Property<string>("LotSize")
                         .HasColumnType("nvarchar(max)");

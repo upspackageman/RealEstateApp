@@ -17,7 +17,7 @@ namespace API.Data.Migrations
             modelBuilder
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.0");
+                .HasAnnotation("ProductVersion", "5.0.12");
 
             modelBuilder.Entity("API.Entities.CustomerUser", b =>
                 {
@@ -96,6 +96,9 @@ namespace API.Data.Migrations
                     b.Property<string>("KitchenDimensions")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("Lat")
+                        .HasColumnType("float");
+
                     b.Property<string>("ListingDate")
                         .HasColumnType("nvarchar(max)");
 
@@ -104,6 +107,9 @@ namespace API.Data.Migrations
 
                     b.Property<string>("LivingRoomDimensions")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Lon")
+                        .HasColumnType("float");
 
                     b.Property<string>("LotSize")
                         .HasColumnType("nvarchar(max)");

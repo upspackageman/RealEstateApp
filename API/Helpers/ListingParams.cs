@@ -71,7 +71,7 @@ namespace API.Helpers
 
         public string LotSize {get;set;}= "";
 
-        public int PriceSort {get;set;} = -1;
+        //public int PriceSort {get;set;} = -1;
 
 
 

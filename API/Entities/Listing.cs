@@ -13,7 +13,7 @@ namespace API.Entities
 
         public string Price {get;set;}
 
-        public int BathTotals {get;set;}
+        public int BathTotals {get;set;} 
 
         public int BathFull {get;set;}
 
@@ -43,7 +43,7 @@ namespace API.Entities
 
         public string WaterDistrictURL {get;set;}
 
-        public int zip {get;set;}
+        public int zip {get;set;} 
 
         public string WalkScore {get;set;}
 

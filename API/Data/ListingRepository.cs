@@ -74,10 +74,10 @@ namespace API.Data
             }
 
 
-            query = listingParams.PriceSort switch{
-                1 => query.OrderByDescending(x=> x.PriceSearch),
-                _ =>  query.OrderBy(x=> x.PriceSearch)
-            };
+            // query = listingParams.PriceSort switch{
+            //     1 => query.OrderByDescending(x=> x.PriceSearch),
+            //     _ =>  query.OrderBy(x=> x.PriceSearch)
+            // };
 
            
 
