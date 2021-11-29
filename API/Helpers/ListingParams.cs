@@ -14,7 +14,7 @@ namespace API.Helpers
             set=> _pageSize = (value > MaxPageSize) ? MaxPageSize : value;
         }
 
-        public string FullAddress {get;set;} = "92056";
+        public string FullAddress {get;set;} = "92008";
 
         public int Price {get;set;} = -1; 
         

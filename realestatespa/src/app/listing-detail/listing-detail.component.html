@@ -1,0 +1,304 @@
+<main>
+
+
+
+
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+  
+    <div class="container marketing" >
+  
+      <div class="listingImages">
+        <div class="imageBackground shade" style="background-image: url({{listing.listingPictures}}); background-size: cover; "></div>
+                  <!--img class="img" src="{{listing.listingPictures}}"-->
+      </div>
+  
+  
+      <!-- START THE FEATURETTES -->
+  
+      <hr class="featurette-divider line">
+  
+      <div class="row featurette mainText main-font">
+        <div class="col-md-7 alignCenter">
+          <h2 class="featurette-heading priceText">{{listing.price}}</h2>
+          <div class="property-details mb-1 detailsText">
+            <span class="property-details-item pr-1">{{listing.bedrooms}} Beds</span>
+            <span class="property-details-item pr-1 pl-1">{{listing.bathTotals}} Baths</span>
+            <span class="pl-1" >{{listing.estimatedSquareFeet | number:'.0-2'}} Sqft</span>
+          </div>
+          <div class="detailsText">
+            <p>{{listing.fullAddress}}</p>
+          </div>
+          <span class="interest detailsText">Interested in this home? </span> <br/><button type="button" class="button " style="margin-top: 3%; margin-bottom:3%;"  (click)="openModalWithClass(requestInfo)"> Request Info</button>
+        </div>
+        <div class="col-md-5 alignCenter propMargin">
+  
+            <h2 class="headerText">Property Details</h2>
+            <ul class="homeDetails ">
+              <li class="lead">Type: {{listing.type}}</li>
+              <li class="lead">Days on Market: {{listing.daysOnMarket}}</li>
+              <li class="lead">Status: {{listing.status}}</li>
+              <li class="lead">Baths: {{listing.bathTotals}}</li>
+              <li class="lead">Full Baths: {{listing.bathFull}}</li>
+              <li class="lead">Half Baths: {{listing.bathsHalf}}</li>
+              <li class="lead">Beds: {{listing.bedrooms}}</li>
+              <li class="lead">Lot Size: {{listing.lotSize}}</li>
+              <li class="lead">Square Ft: {{listing.estimatedSquareFeet | number:'.0-2'}} Sqft</li>
+            </ul>
+        </div>
+      </div>
+  
+  
+      <hr class="featurette-divider line">
+      <h2 class="featurette-heading estTitleText main-font">Estimated Monthly Payment</h2>
+      <h1 class="card-title pricing-card-title title main-font">{{overallPayment | currency:'USD':'symbol':'2.0-2'}} <small class="text-muted">/mo</small></h1>
+      <div class="row featurette mainText main-font">
+        <div class="col-md-7 msize">
+          <span class="infoProgress"> Principal & Interest  </span>
+          <progressbar class="principalProgress bar1"  [max]="overallPayment" [value]="monthlyPayment" >
+  
+          <span>{{(monthlyPayment/overallPayment)| percent}}</span>
+          </progressbar>
+          <span class="infoProgress">Property Taxes</span>
+          <progressbar class="propTaxProgress bar1" [max]="overallPayment" [value]="propTax">
+            <span >{{(propTax/overallPayment)| percent}}</span>
+          </progressbar>
+          <span class="infoProgress">Mortgage Insurance</span>
+          <progressbar class="mortInsProgress bar1" [max]="overallPayment" [value]="pmi">
+            <span >{{(pmi/overallPayment)| percent}}</span>
+          </progressbar>
+          <span class="infoProgress">Property Insurance</span>
+          <progressbar class="homeInsProgress bar1" [max]="overallPayment" [value]="propInsurance">
+            <span >{{(propInsurance/overallPayment)| percent}}</span>
+          </progressbar>
+          <span class="infoProgress">HOA Fees</span>
+          <progressbar class="hoaProgress bar1" [max]="overallPayment" [value]="hoaFee">
+            <span >{{(hoaFee/overallPayment)| percent}}</span>
+          </progressbar>
+        </div>
+  
+        <div class="col-md-7 msize2">
+  
+          <div class="panel1"></div>
+          <accordion [isAnimated]="true" [closeOthers]="true"  >
+            <accordion-group>
+              <span accordion-heading class="heading bar">
+                Principal & Interest
+              </span>
+              <span accordion-heading class="heading" style="width:100%;">
+                <i class="far fa-arrow-alt-circle-down icon"></i>
+              </span>
+  
+              <span accordion-heading class="heading bar float-right">
+                {{monthlyPayment | currency:'USD':'symbol':'2.0-2'}} /mo
+              </span>
+            <form>
+              <div class="row g-3">
+                <div class="row">
+                  <div class="col-md-6 mt-3 mb-3">
+                    <label for="country">Amt Down Payment</label>
+                    <div class="input-group mb-3">
+                      <input type="text" #amountD class="form-control stack2" aria-label="Amount (to the nearest dollar)" (focusout)="amountDownPayment(amountD.value)" value="{{amtDownPayment | number:'1.0-2'}}">
+                      <div class="input-group-append">
+                        <span class="input-group-text stack">$</span>
+                      </div>
+                    </div>
+  
+                  </div>
+                  <div class="col-md-6 mb-3 mt-3">
+                    <label for="state">% Down Payment</label>
+                    <div class="input-group mb-3">
+                      <input type="number" #interestD class="form-control stack2" aria-label="Amount (to the nearest dollar)" (focusout)="percentageDownPayment(interestD.value)" value="{{percentDownPayment | number:'1.0-2'}}">
+                      <div class="input-group-append">
+                        <span class="input-group-text stack">%</span>
+                      </div>
+                    </div>
+  
+                  </div>
+  
+                </div>
+                <div class="col-sm-6">
+                  <label for="firstName" class="form-label">Loan Program</label>
+                  <select #loan class="custom-select stack d-block w-100" id="loan-program" (change)="loanProgram(loan.value)">
+                    <option class="stack stack3" value=30>30-year fixed</option>
+                    <option class="stack stack3" value=15>15-year fixed</option>
+                    <option class="stack stack3" value="ARM5">5/1 ARM</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Valid first name is required.
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <label for="lastName" class="form-label ">Interest Rate</label>
+                  <div class="input-group   mb-3">
+                    <input  #interestR type="number" value="0" class="form-control stack2"  (focusout)="interestRate(interestR.value)">
+                    <div class="input-group-append">
+                      <span class="input-group-text stack">%</span>
+                    </div>
+                  </div>
+                  <div class="invalid-feedback">
+                    Valid last name is required.
+                  </div>
+                </div>
+  
+              </div>
+              <hr class="my-4">
+            </form>
+            </accordion-group>
+            <accordion-group>
+              <span accordion-heading class="heading bar">
+                Property Taxes
+              </span>
+              <span accordion-heading class="heading">
+                <i class="far fa-arrow-alt-circle-down icon"></i>
+              </span>
+              <span accordion-heading class="heading  bar float-right">
+                {{propTax | currency:'USD':'symbol':'2.0-2'}} /mo
+              </span>
+              <form class="needs-validation" novalidate="">
+                <div class="input-group">
+  
+                  <input type="text" #tax value="0"class="form-control stack2" placeholder="0" required="" (focusout)="propertyTax(tax.value)">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text stack">%</span>
+                  </div>
+                  <div class="invalid-feedback" style="width: 100%;">
+                    Your username is required.
+                  </div>
+                </div>
+                <hr class="my-4">
+                <!-- <button class="w-100 btn btn-primary btn-lg" type="submit">Calculate</button> -->
+              </form>
+            </accordion-group>
+            <accordion-group>
+              <span accordion-heading class="heading bar">
+                Mortgage Insurance
+              </span>
+              <span accordion-heading class="heading" style="width:100%;">
+                <i class="far fa-arrow-alt-circle-down icon"></i>
+              </span>
+              <span accordion-heading class="heading bar float-right">
+                {{pmi | currency:'USD':'symbol':'2.0-2'}} /mo
+              </span>
+              <div class="col-12 mortageIns">
+                <button type="button" class="pmiButton" (click)="pmiSwitch()">{{pmiButton}}</button><span style="margin-left:2%;" ></span><label>Include mortgage insurance</label>
+              </div>
+            </accordion-group>
+  
+            <accordion-group>
+              <span accordion-heading class="heading bar">
+                Home Insurance
+              </span>
+              <span accordion-heading class="heading" style="width:100%;">
+                <i class="far fa-arrow-alt-circle-down icon"></i>
+              </span>
+              <span accordion-heading class="heading bar float-right">
+                {{propInsurance | currency:'USD':'symbol':'2.0-2'}} /mo
+              </span>
+              <form class="needs-validation" novalidate="">
+                <div class="input-group">
+                  <input type="text" #pInsurance class="form-control stack2" placeholder="0" required="" (focusout)="propertyInsurance(pInsurance.value)">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text stack">/mo</span>
+                  </div>
+                  <div class="invalid-feedback" style="width: 100%;">
+                    Your username is required.
+                  </div>
+                </div>
+                <hr class="my-4">
+                <!-- <button class="w-100 btn btn-primary btn-lg" type="submit">Calculate</button> -->
+              </form>
+            </accordion-group>
+  
+            <accordion-group>
+              <span accordion-heading class="heading bar">
+                HOA fees
+              </span>
+              <span accordion-heading class="heading" style="width:100%;">
+                <i class="far fa-arrow-alt-circle-down icon"></i>
+              </span>
+              <span accordion-heading class="heading bar float-right">
+                {{hoaFee | currency:'USD':'symbol':'2.0-2'}} /mo
+              </span>
+              <form class="needs-validation" novalidate="">
+                <div class="input-group">
+                  <input type="number" #hoaF class="form-control stack2"  placeholder="0" required="" (focusout)="hoaFees(hoaF.value)" >
+                  <div class="input-group-prepend">
+                    <span class="input-group-text stack">/mo</span>
+                  </div>
+                  <div class="invalid-feedback" style="width: 100%;">
+                    Your username is required.
+                  </div>
+                </div>
+                <hr class="my-4">
+              </form>
+            </accordion-group>
+          </accordion>
+  
+        </div>
+      </div>
+  
+      <hr class="featurette-divider line">
+  
+  
+  
+    </div>
+  </main>
+  
+    <ng-template #requestInfo>
+      <div class="modal-header main-font">
+        <h4 class="modal-title">Request Information</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true" class="modalClose">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body main-font">
+        <div class="row m-5">
+          <h4 class="mb-3"></h4>
+          <form class="needs-validation " novalidate="">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">First name</label>
+                <input type="text" class="form-control stack4" id="firstName" placeholder="" value="" required="">
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="lastName">Last name</label>
+                <input type="text" class="form-control stack4" id="lastName" placeholder="" value="" required="">
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+            </div>
+  
+  
+  
+            <div class="mb-3">
+              <label for="email">Email <span class="text-muted">(Optional)</span></label>
+              <input type="email" class="form-control stack4" id="email" placeholder="you@example.com">
+              <div class="invalid-feedback">
+                Please enter a valid email address.
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <label for="address">Phone</label>
+              <input type="text" class="form-control stack4" id="address" placeholder="" required="">
+              <div class="invalid-feedback">
+                Please enter your shipping address.
+              </div>
+            </div>
+  
+  
+            <hr class="mb-4">
+            <button class="contactButton" type="submit">Continue</button>
+          </form>
+        </div>
+      </div>
+    </ng-template>
+  

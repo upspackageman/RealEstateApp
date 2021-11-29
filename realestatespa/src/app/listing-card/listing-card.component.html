@@ -1,0 +1,54 @@
+<!-- <div class="card"  style="width:640px;">
+  <div class="row g-0">
+    <div class="col-md-4" style="background-image:url('{{listing.listingPictures}}'); background-size:cover;">
+
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{listing.price}}</h5>
+        <p class="card-text">{{listing.bedrooms}} Beds | {{listing.bathFull + listing.bathsHalf}} Baths | {{listing.estimatedSquareFeet}} SQFT</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="listing main-font">
+    <div class="card  mt-3 shdw">
+      <div class="row g-0">
+        <div class="col-md-4 imageHolder">
+          <a async routerLink='/listing/{{listing.id}}' routerLinkActive="router-link-active"><img src="{{listing.listingPictures}}" class="card-img-top p-0 images" alt="...">
+            <span class="member-link animate text-center">
+              View More
+            </span>
+          </a>
+        </div>
+        <div class="col-md-8 pos">
+          <div class="card-body ">
+            <h5 class="card-title cardTitle ">{{listing.price}}</h5>
+            <p class="card-text cardText ">{{listing.bedrooms}} Beds | {{listing.bathFull + listing.bathsHalf}} Baths | {{listing.estimatedSquareFeet}} SQFT</p>
+            <p class="card-text cardText">{{listing.fullAddress}} </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <!--
+    <div class="card mt-5 shdw" style="width: 400px;  ">
+      <a async routerLink='/listing/{{listing.id}}' routerLinkActive="router-link-active"><img src="{{listing.listingPictures}}" class="card-img-top p-0 images" alt="..."></a>
+      <div class="card-body">
+        <h5 class="card-title cardTitle">{{listing.price}}</h5>
+        <p class="card-text cardText">{{listing.bedrooms}} Beds | {{listing.bathFull + listing.bathsHalf}} Baths | {{listing.estimatedSquareFeet}} SQFT</p>
+        <p class="card-text cardText">{{listing.fullAddress}} </p>
+      </div>
+    </div>
+  
+   -->
+  
+  
+  
+  
+  
+  

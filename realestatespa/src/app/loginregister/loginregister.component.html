@@ -1,0 +1,145 @@
+<main>
+  <div class="main">
+    <div class="login-div">
+      <form [formGroup]="registerForm" (ngSubmit)="register()" class="needs-validation" novalidate="">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName">First name</label>
+            <input type="text" formControlName="firstName"   class="form-control stack4" placeholder="" value="" required="">
+            <div *ngIf="f.firstName.touched && f.firstName.errors" class="alert  alert-font alert-warning register-alert">
+              <div *ngIf="f.firstName.errors">First Name is required</div>
+          </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="lastName">Last name</label>
+            <input type="text" formControlName="lastName" class="form-control stack4"  placeholder="" value="" required="">
+            <div *ngIf="f.lastName.touched && f.lastName.errors" class="alert alert-font alert-warning register-alert">
+              <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+            </div>
+          </div>
+        </div>
+  
+  
+  
+        <div class="mb-3">
+          <label for="email">Email <span class="text-muted">(Optional)</span></label>
+          <input type="email" formControlName="email" class="form-control stack4"  placeholder="you@example.com">
+          <div *ngIf="f.email.touched && f.email.errors" class="alert alert-font alert-warning register-alert">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="address">Password</label>
+          <input type="text" formControlName="password" class="form-control stack4"  placeholder="" required="">
+          <div *ngIf="f.password.touched && !f.password.valid" class="alert alert-font alert-warning register-alert">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="address">Confirm Password</label>
+          <input type="text" formControlName="confirmPassword" class="form-control stack4"  placeholder="" required="">
+          <div *ngIf="f.confirmPassword.touched && f.confirmPassword.errors" class="alert alert-font alert-warning register-alert">
+            <div  *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+            <div  *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+          </div>
+        </div>
+  
+        <hr class="mb-4">
+        <button class="contactButton"  [disabled]="!registerForm.valid" type="submit">Register</button>
+      </form>
+    </div>
+    
+  </div>
+</main> 
+  
+  
+  <!-- <div class="login-wrap">
+      <div class="login-html" style="margin-top:10%;">
+          <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label> -->
+          <!-- <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label> -->
+          <!-- <div class="login-form" > -->
+              <!-- <form [formGroup]="loginForm"  class="sign-in-htm" (ngSubmit)="login()" autocomplete="off">
+                  <div class="group">
+                      <label for="user" class="label">Email</label>
+                      <input  formControlName="email" type="text" class="input">
+                  </div>
+                  <div class="group">
+            <label for="pass" class="label">Password</label>
+                      <input  formControlName="password" type="password" class="input" >
+                  </div>
+                  <div class="group">
+                      <!-- <input id="check" type="checkbox" class="check" checked>
+                      <label for="check"><span class="icon"></span> Keep me Signed in</label> -->
+              <!--	</div>
+                  <div class="group">
+                      <button type="submit" class="button" >Sign In</button>
+                  </div>
+                  <div class="hr"></div>
+                  <div class="foot-lnk">
+                      <a href="#forgot" style="color:white">Forgot Password?</a>
+                  </div>
+        </form> -->
+  
+  
+              <!-- <form [formGroup]="registerForm"  (ngSubmit)="register()" class="sign-up-htm">
+                  <div class="group">
+                      <label for="user"  class="label">First Name</label>
+            <input class="form-control" formControlName="firstName" type="text" class="input">
+            <div *ngIf="f.firstName.touched && f.firstName.errors" class="alert alert-warning register-alert">
+              <div *ngIf="f.firstName.errors">First Name is required</div>
+           </div>
+          </div>
+  
+          <div class="group">
+                      <label for="user"  class="label">Last Name</label>
+            <input  class="form-control" formControlName="lastName"  type="text" class="input">
+            <div *ngIf="f.lastName.touched && f.lastName.errors" class="alert alert-warning register-alert">
+              <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+            </div>
+          </div>
+  
+          <div class="group">
+                      <label for="pass" class="label">Email Address</label>
+            <input  formControlName="email"  type="text" class="input">
+            <div *ngIf="f.email.touched && f.email.errors" class="alert alert-warning register-alert">
+              <div *ngIf="f.email.errors.required">Email is required</div>
+              <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+            </div>
+          </div>
+  
+          <div class="group">
+                      <label for="pass" class="label">Password</label>
+            <input  formControlName="password"  type="password" class="input" data-type="password">
+            <div *ngIf="f.password.touched && !f.password.valid" class="alert alert-warning register-alert">
+              <div *ngIf="f.password.errors.required">Password is required</div>
+              <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+            </div>
+          </div>
+  
+                  <div class="group">
+                      <label for="pass" class="label">Repeat Password</label>
+            <input  formControlName="confirmPassword"  type="password" class="input" data-type="password">
+            <div *ngIf="f.confirmPassword.touched && f.confirmPassword.errors" class="alert alert-warning register-alert">
+              <div  *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+              <div  *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+            </div>
+                  </div>
+                  <div class="group" style=" padding-bottom:5%;">
+            <button [disabled]="!registerForm.valid" type="submit" class="button">Sign Up</button>
+            <div class="foot-lnk pt-3">
+              <label for="tab-1"><a style="color:white;">Already Member?</a></label>
+            </div>
+                  </div>
+                  <div class="hr"></div>
+  
+              </form>
+          </div>
+      </div>
+  </div> -->
+  
+  
+  

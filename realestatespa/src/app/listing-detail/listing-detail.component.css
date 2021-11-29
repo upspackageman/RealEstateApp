@@ -1,0 +1,821 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Heebo&family=Noto+Serif&display=swap');
+
+main{
+  width: 100%;
+  height: 100%;
+  padding-left: 1rem;
+
+}
+.main-font{
+  font-family: 'Heebo', sans-serif;
+}
+
+.container{
+  margin-top:5% !important;
+}
+.mainText{
+  font-size: 18px;
+  letter-spacing: 2px !important;
+}
+
+.msize{
+  left:21rem;
+}
+
+.msize2{
+  left:15rem;
+}
+
+
+
+.listingImages{
+  margin-top:5%;
+  width: 1300px !important;
+  right:400px;
+}
+
+.imageBackground{
+  height: 750px !important;
+
+}
+
+.estTitleText{
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.shade{
+  box-shadow:  0px 6px 20px 0 rgba(0,0,0,.775);
+}
+
+.homeDetails li{
+  list-style:disc;
+  color:  #000000;
+}
+
+.property-details{
+ width:200rem;
+}
+.property-details-item{
+  border-right: 1px solid #4a4a4a;
+}
+
+.percentage{
+  position: absolute;
+  right: 0px;
+  width:10%;
+}
+
+.bar{
+  font-weight:500 !important;
+}
+
+.progress{
+  height: 35px;
+}
+
+.title{
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.principalProgress{
+  border-radius:0;
+  background-color:rgba(77, 65, 97, 0.05) !important;
+  margin-bottom: 2.5%;
+  box-shadow: 0 .3rem .4rem rgba(0,0,0,.395)!important;
+  width:70% !important;
+}
+
+.propTaxProgress{
+  border-radius:0;
+  background-color:rgba(77, 65, 97, 0.05) !important;
+  margin-bottom: 2.5%;
+  box-shadow: 0 .3rem .4rem rgba(0,0,0,.395)!important;
+  width:70% !important;
+}
+
+.mortInsProgress{
+  border-radius:0;
+  background-color:rgba(77, 65, 97, 0.05) !important;
+  margin-bottom: 2.5%;
+  box-shadow: 0 .3rem .4rem rgba(0,0,0,.395)!important;
+  width:70% !important;
+}
+
+.homeInsProgress{
+  border-radius:0;
+  background-color:rgba(77, 65, 97, 0.05) !important;
+  margin-bottom: 2.5%;
+  box-shadow: 0 .3rem .4rem rgba(0,0,0,.395)!important;
+  width:70% !important;
+}
+
+.hoaProgress{
+  border-radius:0;
+  background-color:rgba(77, 65, 97, 0.05) !important;
+  margin-bottom: 2.5%;
+  width:70% !important;
+  box-shadow: 0 .3rem .4rem rgba(0,0,0,.395)!important;
+}
+
+::ng-deep .progress-bar{
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,22,121,1) 48%, rgba(0,121,255,1) 92%)!important;
+  box-shadow: 0 .3rem 3rem rgba(0,0,0,.695)!important;
+}
+
+.propertyPrice{
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.propoertyTax{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.wrap{
+  position: relative !important;
+}
+
+.downPayment{
+  width:90%
+}
+
+.interest{
+  font-size:20px;
+  text-align: center;
+}
+
+.imageBackground{
+  height: 700px;
+  width: 1100px;
+
+}
+
+.stack{
+  background-color: rgb(0,0,0,0);
+  border-radius:0px !important;
+  border-style:outset;
+  border-width:2px;
+  border-color:3px 3px 8px #b1b1b1 !important;
+}
+
+.stack2{
+  border-radius:0px !important;
+  box-shadow: inset 8px 8px 8px #cbced1,
+              inset -8px -8px 8px #ffffff !important;
+  border-style:none;
+  border-right-style:groove !important;
+}
+
+.stack3{
+  border-radius:0 !important;
+  background-color:red;
+}
+
+.stack4{
+  border-radius:0px !important;
+  box-shadow: inset 8px 8px 8px #cbced1,
+              inset -8px -8px 8px #ffffff !important;
+  border-style:none;
+
+}
+
+.button{
+  outline: none;
+  border:none;
+  cursor: pointer;
+  width:150px;
+  height: 45px;
+  border-radius: 2px;
+  font-size: 18px;
+  border-style:outset !important;
+  color:black;
+  text-align: center;
+  background:linear-gradient(130deg, rgba(199, 255, 255,1) 10%, rgba(162, 255, 227,1) 50%, rgba(36, 207, 170,1) 100%);
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.24),0 1px 3px 0 rgba(0,0,0,0.19);
+}
+
+.button:hover{
+  border-style:groove !important;
+  color:rgb(65, 53, 53);
+  background:linear-gradient(130deg, rgb(199, 255, 255) 10%, rgb(162, 255, 227) 30%, rgb(36, 207, 170) 100%);
+  animation-duration: 1s;
+}
+
+::ng-deep .panel{
+  border-radius:0 !important;
+  border-style:none !important;
+
+
+}
+.icon{
+  float:right;
+  margin-left:30px;
+  font-size: 25px !important;
+}
+
+::ng-deep .modal-lg{
+  width:600px !important;
+}
+
+::ng-deep .modal-header{
+  border:none;
+}
+
+::ng-deep .modal-content{
+  border-radius: 0px !important;
+  background:linear-gradient(90deg, rgba(255,255,255,1) 52%, rgb(195, 225, 255) 100%)!important;
+}
+
+.contactButton{
+  background:linear-gradient(90deg, rgba(255,255,255,1) 35%, rgb(235, 164, 145) 100%)!important;
+  outline: none;
+  border:none;
+  cursor: pointer;
+  width:180px;
+  height: 65px;
+  border-radius: 2px;
+  margin-left:30%;
+  font-size: 18px;
+  border-style:outset !important;
+  color:black;
+  text-align: center;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.24),0 1px 3px 0 rgba(0,0,0,0.19);
+}
+
+.contactButton:hover{
+  border-style:groove !important;
+  color:rgb(65, 53, 53);
+  background:linear-gradient(90deg, rgba(255,255,255,1) 2%, rgb(235, 164, 145) 100%)!important;
+  animation-duration: 1s;
+}
+
+.pmiButton{
+  background:linear-gradient(90deg, rgb(255, 245, 245) 15%, rgb(207, 134, 114) 100%)!important;
+  box-shadow:  0px 2px 2px 0px rgba(26, 17, 14, 0.3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204,198,197,.5);
+  margin-bottom:3% !important;
+	height: 50px;
+  font-weight: 500;
+	position: relative;
+	width: 150px;
+	-webkit-transition: all .1s linear;
+  transition: all .1s linear;
+  border:none;
+}
+
+
+.rot:hover{
+  transform: rotate(180deg) ;
+}
+
+::ng-deep .btn-link{
+  color: rgb(236, 248, 245);
+}
+
+::ng-deep .card-header.panel-enabled {
+  border-radius:0 !important;
+  background: linear-gradient(90deg, rgb(188, 202, 247) 0%, rgb(248, 243, 189) 100%) !important;
+  box-shadow: 0 .2rem .35rem rgba(0,0,0,.295)!important;
+
+}
+
+::ng-deep .panel .panel-body{
+  background: linear-gradient(90deg, rgba(255,255,255,1) 52%, rgba(237,246,255,1) 100%);
+  box-shadow: 0 .2rem .35rem rgba(0,0,0,.295)!important;
+}
+
+.panel1{
+  height:6%;
+}
+
+::ng-deep .panel{
+  margin-bottom:5%;
+}
+
+.heading {
+  color:rgb(0, 0, 0);
+}
+
+
+@media (max-width:1100px){
+
+  main{
+    padding-left: 3rem;
+  }
+
+  .container{
+    width:150%;
+  }
+
+  ::ng-deep .modal-lg{
+    width:1060px !important;
+    height: 14200px !important;
+    margin-top: 60px;
+  }
+
+  ::ng-deep .fade{
+    width:100%;
+    height:100%;
+  }
+
+  .modalClose{
+    font-size: 6rem;
+  }
+
+  ::ng-deep .modal-title{
+    font-size: 7rem;
+    text-align: center;
+  }
+
+  ::ng-deep .modal-body{
+    font-size: 5.5rem;
+  }
+
+  .stack4{
+    font-size:4.5rem;
+  }
+
+  .contactButton{
+    font-size: 5.5rem;
+    width:500px;
+    height: 170px;
+    margin-left:200px;
+  }
+
+  .interest{
+    display: none;
+
+  }
+
+  .listingImages{
+    margin-top:200px;
+    width: 960px !important;
+  }
+
+  .infoProgress{
+    font-size:3.45rem;
+  }
+
+  .headerText{
+    font-size:9rem;
+    padding-top:9%;
+    margin-left:80px !important;
+    padding-bottom:5%;
+  }
+
+  .priceText{
+    margin-left: 30px;
+    font-size: 9.65rem;
+    width: 800px;
+  }
+
+ .alignCenter{
+   margin-left: 100px;
+ }
+
+ .panel1{
+   height: 30px;
+ }
+
+ .estTitleText{
+    font-size:3.5rem;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left:60px;
+  }
+
+  .detailsText{
+    font-size:4.8rem;
+    width:900px;
+    margin-left: -30px;
+  }
+
+  .mainText{
+    font-size: 2.rem;
+    letter-spacing: 2px !important;
+    align-items: center ;
+    padding-bottom: 20rem;
+  }
+
+  .estTitleText{
+    width: 800px;
+    font-size:9rem;
+  }
+
+  .lead{
+    font-size:3.2rem;
+  }
+
+  .bar{
+    font-size:3.2rem;
+    height: 100px;
+
+  }
+
+  .bar1{
+    font-size:2.5rem;
+    height:100px;
+  }
+
+  ::ng-deep .panel{
+    width:950px;
+  }
+
+  ::ng-deep .card{
+    min-width: 500px !important;
+
+  }
+
+  ::ng-deep .principalProgress{
+    min-width: 950px;
+  }
+
+  ::ng-deep .propTaxProgress{
+    min-width: 950px;
+  }
+
+  ::ng-deep .mortInsProgress{
+    min-width: 950px;
+  }
+
+  ::ng-deep .homeInsProgress{
+    min-width: 950px;
+  }
+
+  ::ng-deep .hoaProgress{
+    min-width: 950px;
+  }
+
+  .pricing-card-title{
+    margin-left:0px;
+    font-size: 6rem;
+    padding-bottom:50px;
+  }
+
+  .button{
+    z-index: 0;
+    position: absolute;
+    width:750px;
+    height: 200px;
+    font-size: 7.5rem;
+    margin-left:370px;
+    border-style:outset !important;
+    transform: translateX(-50%);
+
+  }
+
+  .propMargin{
+    margin-top:210px;
+  }
+
+  .marketing{
+    width: 960px !important;
+  }
+
+  .g-3{
+    font-size:3.5rem;
+  }
+
+  .stack{
+    font-size:4rem;
+  }
+
+  .stack2{
+    font-size:3rem;
+  }
+
+  .stack3{
+    font-size:2rem;
+  }
+
+  .custom-select{
+    height:100px;
+    font-size:3rem;
+  }
+
+  .pmiButton{
+    width:400px;
+    height: 150px;
+  }
+
+  .mortageIns{
+    font-size:3rem;
+  }
+}
+
+@media (max-width:1024px) and (max-height:1366px){
+  .msize{
+    left:-1rem;
+  }
+
+  ::ng-deep .modal-lg{
+    width:1260px !important;
+    height: 14200px !important;
+    margin-top: 60px;
+  }
+
+  ::ng-deep .modal-dialog{
+    max-width:1000px;
+  }
+
+  .contactButton{
+    margin-left: 10.5rem;
+  }
+
+
+  .imageBackground{
+    height: 700px;
+    width: 58.5rem;
+
+  }
+
+  .pricing-card-title{
+    font-size:5rem;
+  }
+
+  .msize2{
+    left:-1rem;
+  }
+
+  .homeDetails{
+    margin-left: 8rem;
+    width:100%;
+  }
+  .lead{
+    font-size:2.8rem;
+  }
+}
+
+@media (max-width:768px) and (max-height:1024px){
+
+  .imageBackground{
+    height: 700px;
+    width: 58.5rem;
+
+  }
+
+  .line{
+    width:940px;
+  }
+
+  ::ng-deep .modal-dialog{
+    max-width:980px;
+  }
+
+  ::ng-deep .modal-lg{
+    width:100% !important;
+    height: 100% !important;
+    margin-top: 60px;
+  }
+}
+
+
+@media (max-width:541px){
+
+  .container{
+    width:150%;
+  }
+
+  ::ng-deep .modal-lg{
+    width:1060px !important;
+    height: 14200px !important;
+    margin-left: 30px;
+    margin-top: 60px;
+  }
+
+  ::ng-deep .modal-dialog{
+    max-width: none;
+  }
+
+  main{
+    margin-left: .75rem;
+  }
+
+  .msize{
+    left:0rem;
+  }
+
+  .msize2{
+    left:0rem;
+  }
+
+  .homeDetails{
+    margin-left: .5rem;
+  }
+
+
+  ::ng-deep .fade{
+    width:100%;
+    height:100%;
+  }
+
+   .modalClose{
+    font-size: 6rem;
+  }
+
+  ::ng-deep .modal-title{
+    font-size: 7rem;
+    text-align: center;
+  }
+
+
+  ::ng-deep .modal-body{
+    font-size: 5.5rem;
+  }
+
+  .stack4{
+    font-size:4.5rem;
+  }
+
+  .contactButton{
+    font-size: 5.5rem;
+    width:500px;
+    height: 170px;
+    margin-left:200px;
+  }
+
+
+
+  .interest{
+    display: none;
+
+  }
+
+  .line{
+    width:980px !important;
+  }
+
+  .listingImages{
+    margin-top:200px;
+    width: 960px !important;
+
+  }
+
+  .infoProgress{
+    font-size:3.45rem;
+  }
+  .headerText{
+    font-size:9rem;
+    padding-top:9%;
+    margin-left:80px !important;
+    padding-bottom:5%;
+
+  }
+
+  .priceText{
+    margin-left: 30px;
+    font-size: 9.65rem;
+    width: 800px;
+  }
+
+
+ .alignCenter{
+   margin-left: 100px;
+ }
+
+
+ .panel1{
+   height: 30px;
+ }
+
+
+  .estTitleText{
+    font-size:3.5rem;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left:60px;
+
+  }
+
+
+  .detailsText{
+    font-size:4.8rem;
+    width:900px;
+    margin-left: -30px;
+  }
+
+  .mainText{
+
+    font-size: 2.rem;
+    letter-spacing: 2px !important;
+    align-items: center ;
+    padding-bottom: 20rem;
+  }
+
+  .estTitleText{
+      width: 800px;
+      font-size:9rem;
+  }
+
+  .lead{
+    font-size:4.8rem;
+  }
+
+  .bar{
+    font-size:3.2rem;
+    height: 100px;
+
+  }
+
+  .bar1{
+    font-size:2.5rem;
+    height:100px;
+  }
+
+  ::ng-deep .panel{
+    width:950px;
+  }
+
+  ::ng-deep .card{
+    min-width: 500px !important;
+  }
+
+  ::ng-deep .principalProgress{
+    min-width: 950px;
+
+  }
+
+  ::ng-deep .propTaxProgress{
+    min-width: 950px;
+
+  }
+
+  ::ng-deep .mortInsProgress{
+    min-width: 950px;
+  }
+
+  ::ng-deep .homeInsProgress{
+    min-width: 950px;
+  }
+
+  ::ng-deep .hoaProgress{
+    min-width: 950px;
+
+  }
+
+  .pricing-card-title{
+    margin-left:0px;
+    font-size: 6rem;
+    padding-bottom:50px;
+  }
+
+  .button{
+    z-index: 0;
+    position: absolute;
+    width:750px;
+    height: 200px;
+    font-size: 7.5rem;
+    margin-left:370px;
+    border-style:outset !important;
+    transform: translateX(-50%);
+
+  }
+
+  .propMargin{
+    margin-top:210px;
+  }
+
+  .marketing{
+    width: 960px !important;
+  }
+
+  .g-3{
+    font-size:3.5rem;
+  }
+
+  .stack{
+    font-size:4rem;
+  }
+
+  .stack2{
+    font-size:3rem;
+  }
+
+  .stack3{
+    font-size:2rem;
+  }
+
+  .custom-select{
+    height:100px;
+    font-size:3rem;
+  }
+
+  .pmiButton{
+    width:400px;
+    height: 150px;
+  }
+
+  .mortageIns{
+    font-size:3rem;
+  }
+
+}

@@ -5,9 +5,7 @@ using API.Entities;
 using API.Extensions;
 using API.Helpers;
 using API.Interfaces;
-
 using Microsoft.AspNetCore.Mvc;
-
 using AutoMapper;
 using RestSharp;
 
@@ -35,7 +33,7 @@ namespace API.Controllers
         {
              var listings = await _listingRepository.GetListingsAsync(listingParams);
              //var url = "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=1212%20Mitchell%20ST%20Oceanside%20CA%2092054&benchmark=2020&format=json";
-             var _price ="";
+             //var _price ="";
              Response.AddPaginationHeader(listings.CurrentPage, listings.PageSize, listings.TotalCount, listings.TotalPages); 
              
              foreach(var listing in listings){
@@ -47,25 +45,8 @@ namespace API.Controllers
                  var coord = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(response.Content);
                  listing.Lat = coord.result.addressMatches[0].coordinates.x;
                  listing.Lon = coord.result.addressMatches[0].coordinates.y;
-
-                 if(listing.Price.Contains("-")){
-                    _price = listing.Price.Split("-")[0];
-                    _price =  _price.Replace("$","");
-                    _price =  _price.Replace(",","");
-                    listing.PriceSearch = int.Parse(_price); 
-                }
-
-                else if(listing.Price.Contains("$")){
-                    _price = listing.Price.Replace("$","");
-                    _price = _price.Replace(",","");
-                    listing.PriceSearch = int.Parse(_price); 
-                }
-                 
-             }
-
-             
-
-           
+            }
+    
             return Ok(listings);
         }
         [HttpGet("{id}")]
