@@ -16,7 +16,7 @@
     <div class="card  mt-3 shdw">
       <div class="row g-0">
         <div class="col-md-4 imageHolder">
-          <a async routerLink='/listing/{{listing.id}}' routerLinkActive="router-link-active"><img src="{{listing.listingPictures}}" class="card-img-top p-0 images" alt="...">
+          <a async routerLink='/listing/{{listing.id}}' routerLinkActive="router-link-active"><img src="{{listing.listingPictures}}" class="card-img-top p-0 images" onerror="this.onerror=null; this.src='../assets/NoPhotoAvailable.jpg';" alt="...">
             <span class="member-link animate text-center">
               View More
             </span>

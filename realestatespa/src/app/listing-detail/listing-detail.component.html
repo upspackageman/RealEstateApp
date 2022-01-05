@@ -12,7 +12,9 @@
     <div class="container marketing" >
   
       <div class="listingImages">
-        <div class="imageBackground shade" style="background-image: url({{listing.listingPictures}}); background-size: cover; "></div>
+        <div class="imageBackground shade" >
+          <img src="{{listing.listingPictures}}" class="card-img-top p-0 image" onerror="this.onerror=null; this.src='../assets/NoPhotoAvailable.jpg';" alt="...">
+        </div>
                   <!--img class="img" src="{{listing.listingPictures}}"-->
       </div>
   
@@ -275,9 +277,6 @@
                 </div>
               </div>
             </div>
-  
-  
-  
             <div class="mb-3">
               <label for="email">Email <span class="text-muted">(Optional)</span></label>
               <input type="email" class="form-control stack4" id="email" placeholder="you@example.com">
@@ -289,6 +288,13 @@
             <div class="mb-3">
               <label for="address">Phone</label>
               <input type="text" class="form-control stack4" id="address" placeholder="" required="">
+              <div class="invalid-feedback">
+                Please enter your shipping address.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="address">Message</label>
+              <textarea type="textarea" class="form-control stack4" style="height: 200px;" id="address" placeholder="" required=""></textarea> 
               <div class="invalid-feedback">
                 Please enter your shipping address.
               </div>

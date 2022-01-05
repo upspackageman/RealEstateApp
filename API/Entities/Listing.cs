@@ -1,7 +1,10 @@
-using System.ComponentModel.DataAnnotations; 
+using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace API.Entities
 {
+    [Index(nameof(Id), IsUnique=true)]
     public class Listing
     {
         [Key]
@@ -71,6 +74,7 @@ namespace API.Entities
 
         public string Community {get;set;}
 
+        
         public int PriceSearch {get;set;}
 
         public double Lat {get;set;}

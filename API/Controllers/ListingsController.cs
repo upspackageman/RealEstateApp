@@ -8,6 +8,7 @@ using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using RestSharp;
+using System.Linq;
 
 namespace API.Controllers
 {
@@ -36,17 +37,22 @@ namespace API.Controllers
              //var _price ="";
              Response.AddPaginationHeader(listings.CurrentPage, listings.PageSize, listings.TotalCount, listings.TotalPages); 
              
-             foreach(var listing in listings){
+            
 
-                 var url = "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address="+listing.FullAddress+"&benchmark=2020&format=json";
-                 var client = new RestClient(url);
-                 var request = new RestRequest(url, DataFormat.Json);
-                 var response = client.Get(request);
-                 var coord = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(response.Content);
-                 listing.Lat = coord.result.addressMatches[0].coordinates.x;
-                 listing.Lon = coord.result.addressMatches[0].coordinates.y;
-            }
-    
+            //  foreach(var listing in listings){
+
+            //      var url = "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address="+listing.FullAddress+"&benchmark=2020&format=json";
+            //      var client = new RestClient(url);
+            //      var request = new RestRequest(url, DataFormat.Json);
+            //      var response = client.Get(request);
+            //      var coord = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(response.Content);
+            //      listing.Lat = coord.result.addressMatches[0].coordinates.x;
+            //      listing.Lon = coord.result.addressMatches[0].coordinates.y;
+            // }
+
+              
+            
+
             return Ok(listings);
         }
         [HttpGet("{id}")]

@@ -32,8 +32,8 @@ export class ForsaleComponent implements OnInit {
   numberOfBathrooms: number = -1
   currentPrice:number = -1;
   currentZip:number = -1;
-  pageNumber = 5;
-  maxSize = 5;
+  pageNumber = 2;
+  maxSize = 4;
 
   activeColor:string;
   contingentColor:string;
@@ -152,7 +152,7 @@ export class ForsaleComponent implements OnInit {
         this.location.iconUrl = '/assets/icons/circle_2.png';
     }
 
-  public async loadListings() {
+  public async loadListings(sort=1) {
     this.listingService.getListings(this.ListingParams).subscribe(response=>{
       
       this.listings = response.result;

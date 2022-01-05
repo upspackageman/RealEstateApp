@@ -45,9 +45,16 @@ namespace API.Data
             _context.Entry(listing).State = EntityState.Modified;
         }
 
+       
         public async Task<PagedList<ListingDto>> GetListingsAsync(ListingParams listingParams)
         {
+             
             var query =   _context.Listings.AsQueryable();
+
+            query = listingParams.PriceSort switch{
+               1 => query.OrderByDescending(x=> x.PriceSearch),
+               _ =>  query.OrderBy(x=> x.PriceSearch)
+            };           
 
             if(listingParams.Price != -1 ){
                 query = query.Where(x=> x.PriceSearch <= listingParams.Price );
@@ -73,52 +80,12 @@ namespace API.Data
                  query = query.Where(x=> x.EstimatedSquareFeet >= listingParams.EstimatedSquareFeet);
             }
 
-
-            // query = listingParams.PriceSort switch{
-            //     1 => query.OrderByDescending(x=> x.PriceSearch),
-            //     _ =>  query.OrderBy(x=> x.PriceSearch)
-            // };
-
+          query = query.Where(x=> x.FullAddress.Replace(",","").ToLower().Contains(listingParams.FullAddress.ToLower()) || x.FullAddress.ToLower().Contains(listingParams.FullAddress.ToLower()));
            
-
-           query = query.Where(x=> x.FullAddress.Replace(",","").ToLower().Contains(listingParams.FullAddress.ToLower()) || x.FullAddress.ToLower().Contains(listingParams.FullAddress.ToLower()) );
+           query = query.Where(x=> x.Status == listingParams.ActiveStatus || x.Status == listingParams.PendingStatus || x.Status == listingParams.ContingentStatus || x.Status == listingParams.SoldStatus || x.Status == listingParams.BOMStatus || x.Status == listingParams.WithdrawnStatus || x.Status == listingParams.CancelledStatus || x.Status == listingParams.ExpiredStatus || x.Status == listingParams.ComingSoon || x.Status == listingParams.ComingSoon || x.Status == "" || x.Status == null);
             
+             
 
-           /*  if(listingParams.FullAddress !="" ||listingParams.FullAddress!=null)
-            {            
-             query = query.Where(x=> x.FullAddress.Replace(",","").ToLower().Contains(listingParams.FullAddress.ToLower()) || x.FullAddress.ToLower().Contains(listingParams.FullAddress.ToLower()) );
-            }
-
-            if(listingParams.Price != -1 ){
-                query = query.Where(x=> x.PriceSearch <= listingParams.Price );
-            }
-
-            if(listingParams.BathTotals != -1 ){
-                query = query.Where(x=> x.BathTotals >= listingParams.BathTotals );
-            }
-
-            if(listingParams.Type != "not avaiable" ){
-                query = query.Where(x=> x.Type == listingParams.Type);
-            }
-
-            if(listingParams.Bedrooms != -1){
-                query = query.Where(x=> x.Bedrooms >= listingParams.Bedrooms );
-            }
-
-            if(listingParams.Zipcode!=-1){
-                query = query.Where(x=> x.zip == listingParams.Zipcode);
-            } */
-
-            // if(listingParams.EstimatedSquareFeet!="-1"){
-            //     query = query.Where(x=> x.EstimatedSquareFeet <= listingParams.EstimatedSquareFeet);
-            // }
-
-            // if(listingParams.LotSize!="-1"){
-            //     query = query.Where(x=> int.Parse(x.LotSize) <= int.Parse(listingParams.LotSize));
-            // }
-
-            query = query.Where(x=> x.Status ==listingParams.ActiveStatus|| x.Status ==listingParams.PendingStatus || x.Status ==listingParams.ContingentStatus || x.Status ==listingParams.SoldStatus || x.Status ==listingParams.BOMStatus || x.Status ==listingParams.WithdrawnStatus || x.Status ==listingParams.CancelledStatus || x.Status ==listingParams.ExpiredStatus || x.Status ==listingParams.ComingSoon || x.Status ==listingParams.ComingSoon|| x.Status =="" || x.Status ==null);
-            
             return await PagedList<ListingDto>.CreateAsync(query.ProjectTo<ListingDto>(_mapper
                 .ConfigurationProvider).AsNoTracking(), listingParams.PageNumber, listingParams.PageSize);
         }

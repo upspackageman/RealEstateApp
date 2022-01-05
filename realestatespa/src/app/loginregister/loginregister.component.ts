@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AccountService } from '../_services/account.service';
 import { Observable } from 'rxjs';
-import { User } from '../_models/user';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { MustMatch } from './password-validator';
 

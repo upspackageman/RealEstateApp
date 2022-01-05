@@ -3,6 +3,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-navbar',
@@ -16,7 +17,7 @@ export class NavbarComponent implements OnInit {
   modelLogin: any = {};
   loginForm:FormGroup;
 
-  constructor(public accountService: AccountService, private fb: FormBuilder, private router: Router) {
+  constructor(public accountService: AccountService, private fb: FormBuilder, private router: Router, private toastr: ToastrService) {
 
     this.loginForm = fb.group({
       email:[null,[Validators.required]],
@@ -43,7 +44,8 @@ export class NavbarComponent implements OnInit {
     }, error => {
       console.log(error);
     })
-    this.router.navigate(['forsale']);
+    
+    
   }
 
   logout(){

@@ -1,25 +1,25 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Listing } from '../_models/listing';
-import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ListingsService } from '../_services/listings.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { AccountService } from '../_services/account.service';
-
 
 @Component({
   selector: 'app-listing-detail',
   templateUrl: './listing-detail.component.html',
   styleUrls: ['./listing-detail.component.css']
 })
+
 export class ListingDetailComponent implements OnInit {
   listing: Listing;
-
 
   constructor(private accountService: AccountService, private listingsService: ListingsService, private route: ActivatedRoute,private modalService: BsModalService, private  router:Router) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => {
       return false;
     };
    }
+
   direct:string;
   monthlyPayment:number;
   annualInterestRate:number = .00000001;   //r
@@ -39,20 +39,9 @@ export class ListingDetailComponent implements OnInit {
   modalRef: BsModalRef;
   customClass = 'customClass';
 
-
-  ngAfterViewInit() {
-    // ...
-    this.mortgageCalulator();
-
-  }
-
   ngOnInit() {
-
     this.redirect();
-
     this.loadListing();
-
-
   }
 
   mortgageCalulator(){
@@ -71,14 +60,17 @@ export class ListingDetailComponent implements OnInit {
    let t:number = this.tenureOfLoansPerYear;
 
    this.monthlyPayment =p*(((r/n)*((1+(r/n))**(n*t))) / (((1+(r/n))**(n*t))-1));
-   this.overallPayment = this.monthlyPayment + this.propTax + this.propInsurance+ this.propInsurance + this.hoaFee + this.pmi;
+   this.overallPayment = this.monthlyPayment + this.propTax + this.propInsurance + this.hoaFee + this.pmi;
 
   }
 
  loadListing(){
+  
     this.listingsService.getListingsById(this.route.snapshot.paramMap.get('id')).subscribe(listing => {
       this.listing = listing;
+      this.mortgageCalulator();      
     })
+    
   }
 
   amountDownPayment(e:number){
@@ -86,14 +78,16 @@ export class ListingDetailComponent implements OnInit {
     this.amtDownPayment= e*1;
     console.log(this.percentDownPayment);
     console.log(this.amtDownPayment);
-    this.mortgageCalulator();
     this.pmiEstimate();
+    this.mortgageCalulator();
+   
   }
 
   percentageDownPayment(e:number){
     this.amtDownPayment = e*.01* this.listing.priceSearch; /* * perecnt entered*/
-    this.mortgageCalulator();
     this.pmiEstimate();
+    this.mortgageCalulator();
+   
    }
 
   loanProgram(e:number){
@@ -105,15 +99,14 @@ export class ListingDetailComponent implements OnInit {
 
     if(e==0){
       this.annualInterestRate =.0000001;
-      this.mortgageCalulator();
-      this.pmiEstimate();
+      this.pmiEstimate();     
     }
     else{
     this.annualInterestRate =e * .01;
     console.log(e);
-    this.pmiEstimate();
-    this.mortgageCalulator(); /* = Enter number*/
+    this.pmiEstimate();    
     }
+    this.mortgageCalulator(); /* = Enter number*/
   }
 
   propertyTax(e:number){
@@ -131,7 +124,6 @@ export class ListingDetailComponent implements OnInit {
     this.hoaFee =e*1; /* = Enter number*/
     this.mortgageCalulator();
   }
-
  pmiSwitch(){
   this.pmiEnambled=!this.pmiEnambled;
   if(this.pmiEnambled==true){
@@ -142,10 +134,8 @@ export class ListingDetailComponent implements OnInit {
   }
   this.pmiEstimate();
  }
-
-
-
-  pmiEstimate(){
+ 
+ pmiEstimate(){
     if(this.pmiEnambled==false){
       this.pmi=0;
     }
@@ -158,17 +148,13 @@ export class ListingDetailComponent implements OnInit {
     this.mortgageCalulator();
   }
 
-
   async redirect(){
     window.scroll(-1000000,-1000000);
     if(!localStorage.getItem('direct')){
       localStorage.setItem('direct', 'no reload')
       location.reload();
-
     } else {
-
       localStorage.removeItem('direct');
-
     }
   }
 

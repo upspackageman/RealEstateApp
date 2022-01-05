@@ -26,7 +26,12 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { BsDropdownModule, BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import { FooterComponent } from './footer/footer.component';
 import { BuilderListingsComponent } from './builder-listings/builder-listings.component';
-
+import { AboutComponent } from './about/about.component';
+import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
+import {ToastrModule} from 'ngx-toastr';
+import { ErrorInterceptor } from './_interceptors/error.interceptor';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { ServerErrorComponent } from './server-error/server-error.component';
 
 
 
@@ -42,7 +47,11 @@ import { BuilderListingsComponent } from './builder-listings/builder-listings.co
     ListingCardComponent,
     ListingDetailComponent,
       FooterComponent,
-      BuilderListingsComponent
+      BuilderListingsComponent,
+      AboutComponent,
+      TestErrorsComponent,
+      NotFoundComponent,
+      ServerErrorComponent
       
    ],
   imports: [
@@ -63,6 +72,9 @@ import { BuilderListingsComponent } from './builder-listings/builder-listings.co
     HttpClientModule,
     HttpClientJsonpModule,
     NgxSpinnerModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right'
+    }),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBM4RMj9NjeZABU92eGAZIA-kmgl4avboo'
     }),
@@ -75,7 +87,8 @@ import { BuilderListingsComponent } from './builder-listings/builder-listings.co
   providers: [TabsetConfig,
               BsDropdownConfig,
               GoogleMapsAPIWrapper,
-              {provide:HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}],
+              {provide:HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true},
+              {provide:HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
