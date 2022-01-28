@@ -2,6 +2,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Heebo&family=Noto+Serif&display=swap');
 
+
+@-webkit-keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
+}
+@keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+.text-focus-in {
+	-webkit-animation: text-focus-in .5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	        animation: text-focus-in .5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+
 .main-font{
   font-family: 'Heebo', sans-serif;
 }
@@ -184,7 +216,10 @@ agm-map {
   color:black;
   text-align: center;
   background:linear-gradient(130deg, rgba(199, 255, 255,0) 10%, rgba(162, 255, 227,.5) 50%, rgba(36, 207, 170,1) 100%);
-  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.24),0 1px 3px 0 rgba(0,0,0,0.19);
+
+  
+  box-shadow:  3px 3px 8px #7b7b7b,
+               -3px -3px 8px #ffffff;
 }
 
 .contactButton:hover{
@@ -516,6 +551,179 @@ agm-map {
   }
 
 
+}
+
+
+@media (max-width:913px) and (max-height:1369px) {
+  
+  .option{
+    max-width:1024px;
+    min-width:1024px;
+  }
+
+  .bedroomWidthRow{
+    width:50rem !important;
+    margin-left:-17rem;
+
+  }
+
+  .radioButton{
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .contactButton svg{
+    width:6rem;
+    height: 5rem;
+  }
+
+  .selectFont{
+    margin-left:10px;
+    font-size:3.5rem !important;
+  }
+  .moreOptionsBodyFontButton{
+    font-size:2.5rem
+  }
+
+  .moreOptionsHeaderFont{
+    font-size:3.55rem ;
+  }
+
+  .moreOptionsHeaderSelectFont{
+    font-size:2rem;
+  }
+
+  .moreOptionsBodyFont{
+    font-size:3rem
+  }
+
+
+  ::ng-deep .modal-dialog{
+      max-width:none;
+      margin-left:2%;
+      margin-right:2%;
+  }
+
+
+  .pagination::ng-deep .page-item .page-link {
+    font-size:2.5rem;
+  }
+
+  .left{
+    max-width:1024px;
+    min-width:1024px;
+    height:100%;
+    padding-bottom: 45rem;
+  }
+
+  .pagination_listing_results{
+    background-color: rgba(255,255,255,.6)!important;
+    max-width:1625px;
+    min-width:1625px;
+    padding-left:20rem;
+
+    padding-bottom: 9%;
+    padding-top:6%;
+    z-index:2 !important;
+    position: fixed;
+    bottom:90px;
+    display:flex;
+  }
+  .map_list_button{
+    z-index:2 !important;
+    position: fixed;
+    display: flex;
+    bottom:10rem;
+    left: 50rem;
+    font-size:4.5rem;
+    border-radius: .6rem;
+    background:rgba(255,255,255, 1);
+    border-width: .25rem;
+    border-style: inset !important;
+    border-color:   #24cfaa !important;
+    border-radius:1.3rem !important;
+    border-style:none;
+    box-shadow: 0 .3rem 3rem rgba(0,0,0,.495)!important;
+  }
+
+  .contactButton{
+    width:150px;
+    height: 100px;;
+  }
+
+
+  .searchButton{
+    font-size:2rem !important;
+  }
+
+  .searchBar{
+    font-size:1.85rem;
+    width:40rem;
+  }
+
+  .selectOptions{
+    margin-left:-5rem;
+  }
+
+  .spacing{
+    height: 230px;
+  }
+
+  .pagination_listing_results1{
+    display: none;
+  }
+
+  .map_text_margin{
+    padding-left: .3rem;
+    padding-right: .3rem;
+    padding-top: .2rem;
+    padding-bottom: .2rem;
+  }
+
+
+
+  .map_text_margin svg {
+    fill:#061e6b;
+    width:8rem;
+    height: 7rem;
+
+  }
+
+  .map_text_margin path {
+    stroke-width:1.35;
+    stroke: white;
+
+  }
+
+  .marker{
+    border-radius: 0px !important;
+    width: 450px; height:480px; font-size:26px; border-style: none; border-radius:0px;
+  }
+
+
+  .cardTitle{
+    font-size: 2.7rem;
+    letter-spacing: 3px;
+    color:black;
+    font-weight: 600 !important;
+    margin-top:1px !important;
+  }
+
+  .cardText{
+    font-size: 2rem !important;
+    letter-spacing: .5px !important;
+    margin-bottom:2% !important;
+    font-weight: 480 !important;
+    color:black;
+  }
+
+  
+
+  
+  
+  
+  
+  
 }
 
 @media (max-width: 769px) and (max-height:1025px){
@@ -1120,7 +1328,7 @@ agm-map {
 }
 
 
-@media (max-width:375px) and (max-height:667px){
+@media (max-width:376px) and (max-height:668px){
 
 
   agm-map{
@@ -1151,6 +1359,8 @@ agm-map {
     margin-top: -1.25rem;
   }
 }
+
+
 
 
 

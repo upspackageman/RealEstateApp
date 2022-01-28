@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top shadow-lg option font-family" id="header">
     <div class="container">
   
-      <div  class="selectOptions font-family">
+      <div  class="selectOptions text-focus-in  font-family">
         <ul class="navbar  ml-5">
             <button class="contactButton font-family">
               <a type="button" (click)="openModalWithClass(bedrooms)">
@@ -55,7 +55,7 @@
         <div class="listing_results" >
           <div class="spacing"></div>
             <div class="list" *ngFor="let listing of listings" >
-              <app-listing-card  [listing]= "listing"></app-listing-card>
+              <app-listing-card    [listing]= "listing"></app-listing-card>
             </div>
             <div class="cardPadding"></div>
             <div class="pagination_listing_results1" #pagination>

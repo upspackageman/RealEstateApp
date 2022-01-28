@@ -13,7 +13,8 @@ import { AccountService } from '../_services/account.service';
       state('out', style({backgroundImage: "url(https://images.unsplash.com/photo-1459780768092-213396a176b9?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1267&q=80)"})),
       transition('*=>*', [
         animate("70s", keyframes([
-          style({ backgroundImage: "url(https://images.unsplash.com/photo-1512916958891-fcf61b2160df?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1171&q=80)", offset: 0 }),
+          style({ backgroundImage: "url(https://images.unsplash.com/photo-1512916958891-fcf61b2160df?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1171&q=80)",
+           offset: 0, },),
           style({ backgroundImage: "url(https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80)", offset: 0.05 }),
           style({ backgroundImage: "url(https://images.unsplash.com/photo-1512916958891-fcf61b2160df?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1171&q=80)", offset: 0.1 }),
           style({ backgroundImage: "url(https://cdnparap00.paragonrels.com/ParagonImages/Property/p0/SDMLS/210022011/11/1200/900/d86338c1e315388778c8acdc8e120621/3/d259c93fc35f08dea61f42d78b5663f5/210022011.JPG)", offset: 0.15 }),

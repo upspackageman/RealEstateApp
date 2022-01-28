@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ListingsService } from '../_services/listings.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { AccountService } from '../_services/account.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EmailService } from '../_services/email.service';
 
 @Component({
   selector: 'app-listing-detail',
@@ -13,12 +15,26 @@ import { AccountService } from '../_services/account.service';
 
 export class ListingDetailComponent implements OnInit {
   listing: Listing;
+  contact: any = {};
+  form: FormGroup = new FormGroup({}); 
+  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  phonePattern = "^(\\+\\d{1,3}( )?)?((\\(\\d{1,3}\\))|\\d{1,3})[- .]?\\d{3,4}[- .]?\\d{4}$";
+  contactForm:FormGroup; 
 
-  constructor(private accountService: AccountService, private listingsService: ListingsService, private route: ActivatedRoute,private modalService: BsModalService, private  router:Router) {
+  constructor(private accountService: AccountService, private listingsService: ListingsService,       private route: ActivatedRoute,private modalService: BsModalService,
+  private  router:Router, private fb: FormBuilder, private emailService: EmailService) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => {
       return false;
     };
-   }
+
+    this.contactForm = fb.group({      
+      firstName:[null,[Validators.required, Validators.minLength(1)]],
+      lastName:[null,[Validators.required, Validators.minLength(1)]],
+      email:[null,[Validators.required, Validators.pattern(this.emailPattern)]],
+      phone:[null,[Validators.required, Validators.pattern(this.phonePattern)]],
+      message: ['']
+    });
+  }
 
   direct:string;
   monthlyPayment:number;
@@ -38,9 +54,10 @@ export class ListingDetailComponent implements OnInit {
   is_loaded:boolean = true;
   modalRef: BsModalRef;
   customClass = 'customClass';
+     
 
   ngOnInit() {
-    this.redirect();
+   // this.redirect();
     this.loadListing();
   }
 
@@ -124,7 +141,7 @@ export class ListingDetailComponent implements OnInit {
     this.hoaFee =e*1; /* = Enter number*/
     this.mortgageCalulator();
   }
- pmiSwitch(){
+  pmiSwitch(){
   this.pmiEnambled=!this.pmiEnambled;
   if(this.pmiEnambled==true){
     this.pmiButton = 'Disable PMI';
@@ -165,4 +182,26 @@ export class ListingDetailComponent implements OnInit {
     );
   }
 
+
+  
+  sendMail(){
+      this.contact.email = this.contactForm.value.email;
+      this.contact.firstName = this.contactForm.value.firstName;
+      this.contact.lastName = this.contactForm.value.lastName;
+      this.contact.phone = this.contactForm.value.phone;
+
+      console.log(this.contact);
+
+       this.emailService.sendEmail(this.contact);
+      
+       
+   
+  }
+   
+
+  get f() {
+    return this.contactForm.controls;
+  }
+  
+  
 }

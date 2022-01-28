@@ -7,26 +7,24 @@
             <label for="firstName">First name</label>
             <input type="text" formControlName="firstName"   class="form-control stack4" placeholder="" value="" required="">
             <div *ngIf="f.firstName.touched && f.firstName.errors" class="alert  alert-font alert-warning register-alert">
-              <div *ngIf="f.firstName.errors">First Name is required</div>
-          </div>
+              <div class="pb-3"  *ngIf="f.firstName.errors">First Name is required</div>
+            </div>
           </div>
           <div class="col-md-6 mb-3">
             <label for="lastName">Last name</label>
             <input type="text" formControlName="lastName" class="form-control stack4"  placeholder="" value="" required="">
             <div *ngIf="f.lastName.touched && f.lastName.errors" class="alert alert-font alert-warning register-alert">
-              <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+              <div class="pb-3" *ngIf="f.lastName.errors.required">Last Name is required</div>
             </div>
           </div>
-        </div>
-  
-  
+        </div> 
   
         <div class="mb-3">
-          <label for="email">Email <span class="text-muted">(Optional)</span></label>
+          <label for="email">Email </label>
           <input type="email" formControlName="email" class="form-control stack4"  placeholder="you@example.com">
           <div *ngIf="f.email.touched && f.email.errors" class="alert alert-font alert-warning register-alert">
-            <div *ngIf="f.email.errors.required">Email is required</div>
-            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+            <div class="pb-3"  *ngIf="f.email.errors">Email must be a valid email address</div>
+            <div class="pb-3"  *ngIf="f.email.errors.required">Email is required</div>            
           </div>
         </div>
   
@@ -34,8 +32,8 @@
           <label for="address">Password</label>
           <input type="text" formControlName="password" class="form-control stack4"  placeholder="" required="">
           <div *ngIf="f.password.touched && !f.password.valid" class="alert alert-font alert-warning register-alert">
-            <div *ngIf="f.password.errors.required">Password is required</div>
-            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+            <div class="pb-3"  *ngIf="f.password.errors.required">Password is required</div>
+            <div class="pb-3"  *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
           </div>
         </div>
   
@@ -43,13 +41,12 @@
           <label for="address">Confirm Password</label>
           <input type="text" formControlName="confirmPassword" class="form-control stack4"  placeholder="" required="">
           <div *ngIf="f.confirmPassword.touched && f.confirmPassword.errors" class="alert alert-font alert-warning register-alert">
-            <div  *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
-            <div  *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+            <div class="pb-3" *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+            <div class="pb-3"  *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
           </div>
-        </div>
-  
+        </div>  
         <hr class="mb-4">
-        <button class="contactButton"  [disabled]="!registerForm.valid" type="submit">Register</button>
+        <button class="contactButton pb-3"  [disabled]="!registerForm.valid" type="submit">Register</button>
       </form>
     </div>
     

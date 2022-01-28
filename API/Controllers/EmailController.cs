@@ -8,7 +8,8 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class EmailController: BaseApiController
     {
-        [HttpPost]
+        
+         [HttpPost]
         public async Task<IActionResult> SendMail([FromBody]Email email)
         {
             var client = new System.Net.Mail.SmtpClient("smtp.example.com", 111);

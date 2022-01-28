@@ -9,6 +9,64 @@
   box-sizing: inherit;
 }
 
+@-webkit-keyframes focus-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
+}
+@keyframes focus-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes kenburns-top {
+  0% {
+    -webkit-transform: scale(1) translateY(0);
+            transform: scale(1) translateY(0);
+    -webkit-transform-origin: 50% 16%;
+            transform-origin: 50% 16%;
+  }
+  100% {
+    -webkit-transform: scale(1) translateY(-15px);
+            transform: scale(1) translateY(-15px);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+  }
+}
+@keyframes kenburns-top {
+  0% {
+    -webkit-transform: scale(1) translateY(0);
+            transform: scale(1) translateY(0);
+    -webkit-transform-origin: 50% 16%;
+            transform-origin: 50% 16%;
+  }
+  100% {
+    -webkit-transform: scale(1) translateY(-15px);
+            transform: scale(1) translateY(-15px);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+  }
+}
+
+
+
 ::-webkit-input-placeholder {
   color: #56585b;
 }
@@ -25,6 +83,20 @@ html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+.focus-in-expand {
+	-webkit-animation: focus-in-expand 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: focus-in-expand 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.kenburns-top {
+	-webkit-animation: kenburns-top 1s ease-out both;
+	        animation: kenburns-top 1s ease-out both;
+}
+
+.fixed-pos{
+  z-index: 2;
 }
 
 
@@ -184,7 +256,7 @@ background: linear-gradient(to bottom right, #C1E4FC, #d8a5ff) !important;
 
 @media all and (max-width: 1024px) {
   h1{
-    font-size: 5.7rem;
+    font-size: 7.8rem;
   }
 
   .button{
@@ -197,7 +269,7 @@ background: linear-gradient(to bottom right, #C1E4FC, #d8a5ff) !important;
 
 @media all and (max-width: 768px) {
   h1{
-    font-size: 4.5rem;
+    font-size: 8.0rem;
   }
 
   .button{
@@ -227,7 +299,7 @@ background: linear-gradient(to bottom right, #C1E4FC, #d8a5ff) !important;
 
   h1{
 
-    font-size: 7rem;
+    font-size: 11rem;
   }
 
   .button{
@@ -243,7 +315,7 @@ background: linear-gradient(to bottom right, #C1E4FC, #d8a5ff) !important;
   }
 
   h1{
-    font-size: 6rem;
+    font-size: 11.5rem;
   }
 
   .button{
