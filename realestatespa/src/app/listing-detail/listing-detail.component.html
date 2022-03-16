@@ -1,4 +1,4 @@
-<main class="delta" style="padding-top: 3%; width:100vw; margin:0px; background-image:linear-gradient(rgba(245, 246, 252, 0.95), rgba(255, 255, 255, 0.95)), url({{listing.listingPictures}}); background-size: cover; ">
+<main class="delta" style="padding-top: 3%; width:100vw;height:100%; margin:0px; background-image:linear-gradient(rgba(245, 246, 252, 0.95), rgba(255, 255, 255, 0.95)), url({{listing.listingPictures}}); background-size: cover; ">
 
 
 
@@ -23,7 +23,7 @@
   
       <hr class="featurette-divider line">
   
-      <div class="row featurette mainText main-font puff-in-center">
+      <div class=" row featurette mainText main-font puff-in-center">
         <div class="col-md-7 alignCenter">
           <h2 class="featurette-heading priceText">{{listing.price}}</h2>
           <div class="property-details mb-1 detailsText">
@@ -34,9 +34,9 @@
           <div class="detailsText">
             <p>{{listing.fullAddress}}</p>
           </div>
-          <span class="interest detailsText">Interested in this home? </span> <br/><button type="button" class="button " style="margin-top: 3%; margin-bottom:3%;"  (click)="openModalWithClass(requestInfo)"> Request Info</button>
+          <span class="interest detailsText">Interested in this home? </span> <br/><button type="button" class="button"  (click)="openModalWithClass(requestInfo)"> Request Info</button>
         </div>
-        <div class="col-md-5 alignCenter propMargin">
+        <div class="col-md-5 alignCenter1 propMargin">
   
             <h2 class="headerText">Property Details</h2>
             <ul class="homeDetails ">
@@ -244,15 +244,22 @@
       </div>
   
       <hr class="featurette-divider line">
-  
-  
+      
+      <div class="redirect">
+        <a class="requestInfoHome" type="button" (click)="openModalWithClass(requestInfo)"> Request Info</a>
+        <br/>
+        <a type="button" class="redirectButtonListing" style="margin-bottom: 20%;" routerLink ='/forsale' > Return To Listings</a>
+      </div>
+      
+      
+      
   
     </div>
   </main>
   
     <ng-template #requestInfo>
       <div class="modal-header main-font">
-        <h4 class="modal-title">Request Information</h4>
+        <h4 class="modal-title modalTitle">Request Information</h4>
         <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
           <span aria-hidden="true" class="modalClose">&times;</span>
         </button>
@@ -265,14 +272,14 @@
               <div class="col-md-6 mb-3">
                 <label for="firstName">First name</label>
                 <input type="text"  formControlName="firstName" class="form-control stack4" id="firstName" placeholder="" value="" required="">
-                <div *ngIf="f.firstName.touched && f.firstName.errors" class="alert  alert-font alert-warning register-alert">
+                <div *ngIf="f.firstName.touched && f.firstName.errors" class="alert">
                   <div *ngIf="f.firstName.errors">First Name is required</div>
                 </div>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="lastName">Last name</label>
                 <input type="text" formControlName="lastName" class="form-control stack4" id="lastName" placeholder="" value="" required="">
-                <div *ngIf="f.lastName.touched && f.lastName.errors" class="alert alert-font alert-warning register-alert">
+                <div *ngIf="f.lastName.touched && f.lastName.errors" class="alert">
                   <div *ngIf="f.lastName.errors.required">Last Name is required</div>
                 </div>
               </div>
@@ -280,7 +287,7 @@
             <div class="mb-3">
               <label for="email">Email <span class="text-muted">(Optional)</span></label>
               <input type="email" formControlName="email" class="form-control stack4" id="email" placeholder="you@example.com">
-              <div *ngIf="f.email.touched && f.email.errors" class="alert alert-font alert-warning register-alert">
+              <div *ngIf="f.email.touched && f.email.errors" class="alert">
                 <div *ngIf="f.email.errors.required">Email is required</div>
                 <div *ngIf="f.email.errors">Invalid email address</div>
               </div>
@@ -288,7 +295,7 @@
             <div class="mb-3">
               <label for="address">Phone</label>
               <input type="text" formControlName="phone" class="form-control stack4" id="address" placeholder="" required="">
-              <div *ngIf="f.phone.touched && f.phone.errors" class="alert alert-font alert-warning register-alert">
+              <div *ngIf="f.phone.touched && f.phone.errors" class="alert">
                 <div *ngIf="f.phone.errors.required">Phone number is required</div>
                 <div *ngIf="f.phone.errors">Invalid phone number</div>
               </div>

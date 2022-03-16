@@ -71,13 +71,26 @@
 main{
   width: 100%;
   height: 100%;
-  padding-left: 1rem;
+
 
 }
 
-.needs-validation{
-  margin-left: 9.5%;
+::ng-deep .close{
+
+  font-size: 50px !important;
 }
+
+::ng-deep .close:focus{
+  outline:none;
+  color:red;
+}
+
+::ng-deep .modal-title{
+  font-size: 2rem;
+  margin-left: 117px;
+  margin-top: 10px;
+}
+
 
 .roll-in-blurred-left {
 	-webkit-animation: roll-in-blurred-left 0.65s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
@@ -88,6 +101,72 @@ main{
 	-webkit-animation: puff-in-center 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
 	        animation: puff-in-center 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
 }
+
+.redirect{
+  margin-left: 35%;
+  width: 60%;
+  margin-bottom:10%;
+}
+
+.requestInfoHome{
+  outline: none;
+  border:none;
+  cursor: pointer;
+  width:50%;
+  height: 80px;
+  border-radius: 2px;
+  font-size: 2rem;
+  line-height: 2;
+  border-style:outset !important;
+  color:black;
+  text-align: center;
+  background:linear-gradient(130deg, rgba(199, 255, 255,1) 10%, rgba(162, 255, 227,1) 50%, rgba(36, 207, 170,1) 100%);
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.24),0 1px 3px 0 rgba(0,0,0,0.19);
+}
+
+.requestInfoHome:hover{
+  text-decoration: none;
+  border-style:groove !important;
+  color:rgb(65, 53, 53);
+  background:linear-gradient(130deg, rgb(199, 255, 255) 10%, rgb(162, 255, 227) 30%, rgb(36, 207, 170) 100%);
+  animation-duration: 1s;
+ }
+ 
+ .alert{
+  color: crimson;
+  font-weight: 500;
+  animation-duration: 1s;
+ }
+
+
+ .redirectButtonListing{
+  outline: none;
+  border:none;
+  cursor: pointer;
+  width:50%;
+  height: 80px;
+  margin-top:4%;
+  border-radius: 2px;
+  font-size: 2rem;
+  line-height: 2;
+  border-style:outset !important;
+  border-color:whitesmoke;
+  color:black;
+  text-align: center;
+  background:linear-gradient(130deg, rgb(255, 245, 252) 10%, rgb(203, 197, 252) 50%, rgb(162, 216, 252) 100%);
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.24),0 1px 3px 0 rgba(0,0,0,0.19);
+}
+
+.redirectButtonListing:hover{
+  text-decoration: none;
+  border-style:groove !important;
+  color:rgb(65, 53, 53);
+  background:linear-gradient(130deg, rgb(255, 245, 252) 10%, rgb(203, 197, 252) 50%, rgb(162, 216, 252) 100%);
+
+  animation-duration: 1s;
+ }
+
+
 
 
 .main-font{
@@ -125,7 +204,7 @@ main{
 }
 
 .imageBackground{
-  height: 750px !important;
+  height: 750px ;
   border: none;
 
 }
@@ -139,9 +218,14 @@ main{
   box-shadow:  0px 6px 20px 0 rgba(0,0,0,.775);
 }
 
+.homeDetails{
+  width:100%;
+}
+
 .homeDetails li{
   list-style:disc;
   color:  #000000;
+ 
 }
 
 .property-details{
@@ -401,6 +485,22 @@ main{
     background-image: none !important;
   }
 
+  .requestInfoHome{
+    width: 550px;
+    height: 160px;
+    font-size: 4.3em;
+    line-height: 2;
+    margin-left: -25%;
+  }  
+  
+   .redirectButtonListing{
+    width: 550px;
+    height: 160px;
+    font-size: 4.3em;
+    line-height: 2;
+    margin-left: -25%;
+   }
+  
   main{
     padding-left: 3rem;
   }
@@ -422,7 +522,14 @@ main{
 
   .modalClose{
     font-size: 6rem;
+    
   }
+
+  .modalClose:focus{
+    outline: none;
+  }
+
+
 
   ::ng-deep .modal-title{
     font-size: 7rem;
@@ -455,24 +562,26 @@ main{
   }
 
   .infoProgress{
-    font-size:3.45rem;
+    font-size:2.45rem;
   }
 
   .headerText{
-    font-size:9rem;
-    padding-top:9%;
-    margin-left:80px !important;
-    padding-bottom:5%;
+    font-size: 6.5rem;
+    padding-top: 9%;
+    margin-left: 270px;
+    width: 600px;
+    padding-bottom: 5%;
   }
 
   .priceText{
-    margin-left: 30px;
+    margin-left: -40px;
     font-size: 9.65rem;
     width: 800px;
   }
 
  .alignCenter{
    margin-left: 100px;
+   max-width:none;
  }
 
  .panel1{
@@ -487,7 +596,7 @@ main{
   }
 
   .detailsText{
-    font-size:4.8rem;
+    font-size:2.8rem;
     width:900px;
     margin-left: -30px;
   }
@@ -496,12 +605,12 @@ main{
     font-size: 2.rem;
     letter-spacing: 2px !important;
     align-items: center ;
-    padding-bottom: 20rem;
+  
   }
 
   .estTitleText{
     width: 800px;
-    font-size:9rem;
+    font-size:5.3rem;
   }
 
   .lead{
@@ -509,8 +618,8 @@ main{
   }
 
   .bar{
-    font-size:3.2rem;
-    height: 100px;
+    font-size:2.46rem;
+    height: 70px;
 
   }
 
@@ -614,6 +723,18 @@ main{
     background-image: none !important;
   }
 
+  .modal-body {
+    font-size: 3.5rem;
+}
+
+.stack4{
+  font-size: 2.4rem;
+}
+
+.modal-title{
+  font-size: 4rem;
+}
+
   ::ng-deep .modal-lg{
     width:1260px !important;
     height: 14200px !important;
@@ -625,7 +746,10 @@ main{
   }
 
   .contactButton{
-    margin-left: 5.5rem;
+    margin-left: 20%;
+    font-size: 5rem;
+    width: 450px;
+    height: 160px;
   }
 
 
@@ -644,7 +768,7 @@ main{
   }
 
   .homeDetails{
-    margin-left: 8rem;
+    margin-left: 18rem;
     width:100%;
   }
   .lead{
@@ -660,6 +784,91 @@ main{
     margin-left: -400px !important;
 }
 
+.listingImages{
+  margin-left: -21px;
+}
+
+.marketing{
+  margin-right: 40%;
+}
+
+  .featurette{
+    margin-left: 15%;
+    
+  }
+  .headerText{
+    padding-top: 15%;
+    padding-bottom: 5%;
+    width: 1100px;
+    margin-left: 10%;
+    font-size: 7.35rem;
+  }
+
+  .pricing-card-title{
+    margin-left: 100px;
+    width:1100px;
+  }
+
+  .infoProgress{
+    font-size:3.45rem;
+    max-width: 1100 !important;
+  }
+ 
+  .estTitleText{
+    width: 1100px;
+    font-size: 9rem;padding-top: 15%;
+    padding-bottom: 5%;
+    width: 1100px;
+    margin-left: 10%;
+    font-size: 7.35rem;  }
+
+  .msize{
+    left:0;
+  }
+
+  .msize2{
+    left:0;
+  }
+
+  .alignCenter{
+    margin-left: 0%;
+  }
+
+  .detailsText{
+    margin-left: 110px;
+  }
+
+  .contactButton{
+    margin-left: 30%;
+  }
+
+  .button{
+    margin-left: 450px;
+  }
+
+  .priceText{
+    margin-left: 100px;
+  }
+
+  .homeDetails{
+    width: 1100px;
+    margin-left:10%;
+  }
+
+  .lead{
+    font-size: 4.5rem;
+  }
+
+  .redirect{
+    margin-left: 60%;
+    margin-bottom: 45%;
+  }
+
+  .imageBackground {
+    height: 850px;
+    width: 1200px;
+    margin-left: 5%;
+}
   .modal-title{
     font-size: 6rem;
     margin-left: 200px;
@@ -675,9 +884,18 @@ main{
 }
 
   .modal-title{
-    font-size: 6rem;
+    font-size: 4.6rem;
     margin-left: 100px;
   }
+
+  .modal-body {
+    font-size: 4rem;
+ }
+
+ .contactButton{
+  margin-left: 20%;
+
+ }
 
   .needs-validation{
     margin-left: 3%;
@@ -692,10 +910,15 @@ main{
   }
 
   .imageBackground{
-    height: 700px;
-    width: 58.5rem;
+    height: 900px;
+    width: 1200px;
 
   }
+
+  
+  
+  
+  
 
   .line{
     width:940px;
@@ -717,7 +940,7 @@ main{
 }
 
 
-@media (max-width:541px){
+@media (max-width:541px) and (max-height:721px){
   .delta{
     background-image: none !important;
   }
@@ -806,7 +1029,7 @@ main{
   .headerText{
     font-size:9rem;
     padding-top:9%;
-    margin-left:80px !important;
+    margin-left:80px;
     padding-bottom:5%;
 
   }
@@ -960,29 +1183,140 @@ main{
 
 }
 @media (max-width:441px){
+
+  .redirect{
+    margin-left: 65%;
+    margin-top: -15%;
+    width: 65%;
+    margin-bottom: 35%;
+  }
+  
+  .infoProgress{
+    font-size: 3.45rem;
+  }
+
+  
+  .requestInfoHome{
+    width: 580px;
+    height: 160px;
+    font-size: 4.3em;
+    line-height: 2;
+    margin-left: -25%;
+  }  
+    
+   .redirectButtonListing{
+    width: 580px;
+    height: 160px;
+    font-size: 4.3em;
+    line-height: 2;
+    margin-left: -25%;
+   }
+    
+   .marketing{
+    width: 1200px !important;
+    margin-left: -90%;
+  }
+  .listingImages{
+    margin-left: 21%;
+  }
+
+  .imageBackground{
+    width: 1250px;
+    height: 900px;
+  
+  }
+
+
+  .alignCenter{
+    margin-left: -15%;
+    width: 600px;
+    margin-top: 10%;
+  }
+
+  .alignCenter1{
+    margin-left: 0%;
+    width: 600px;
+  }
+
   .priceText{
-    margin-left:-50px;
+    margin-left:300px;
+  }
+
+  .bar1{
+    width: 1080px !important;
+  }
+  .bar{
+    font-size:3.46rem;
+    height: 100px;
+
+  }
+
+  ::ng-deep .panel{
+    width: 1080px !important;
+  }
+
+
+  .headerText{
+    margin-left: 0px;
+    font-size: 9rem;
   }
 
   .needs-validation{
     margin-left: 10%;
   }
 
+  .detailsText{
+    margin-left: 260px;
+    font-size: 4.3rem;
+  }
+
+  .line{
+    display: none;
+  }
+
+  .featurette{
+    margin-left: 30%;
+    margin-bottom: 20%;
+}
+
+.homeDetails{
+  width: 1000px;
+  margin-left: 225px;
+}
+
 
   ::ng-deep .modal-content {
     border-radius: 0px !important;
     background: linear-gradient(90deg, rgba(255,255,255,1) 52%, rgb(195, 225, 255) 100%)!important;
-   
+    width: 1255px !important;
     margin-left: 4.5% !important;
  }
 
  .modal-title{
-   font-size:7rem;
-   margin-left: 70px;
+   font-size: 6rem;
+   margin-left: 15%;
+  }
+
+  .button{
+    margin-left: 645px;
+  }
+
+  .lead{
+    margin-left: -12rem;
   }
 
   .delta{
     background-image: none !important;
+  }
+  
+  .pricing-card-title{
+    margin-left: 350px;
+  }
+
+  .estTitleText{
+    width: 1200px;
+    margin-left: 300px;
+    margin-top: -5%;
   }
 
   .msize2{
@@ -999,10 +1333,128 @@ main{
   }
 
   .contactButton{
-    margin-left: 100px;
+    margin-left: 22.5%;
   }
 
   .stack4{
     width: 90%;
+  }
+  
+}
+
+
+@media (max-width:376px) and (max-height:668px){
+  .alignCenter{
+    margin-left: -12%;
+    padding-top: 5%;
+  }
+
+  .featurette{
+    margin-bottom: 0%;
+  }
+
+  .redirect{
+   
+    margin-top: 5%;
+    width: 65%;
+    margin-bottom: 15%;
+  }
+
+  .mainText{
+    padding-bottom: 0%;
+  }
+
+  .headerText{
+    margin-top: 25%;
+  }
+
+  .line{
+    margin-top: 0% !important
+  }
+}
+
+
+@media (max-width:321px) and (max-height:569px){
+  .alignCenter1{
+    margin-left: 10px;
+  }
+
+  .alignCenter{
+    margin-left: -20px;
+  }
+
+  .listingImages{
+    margin-left: 17.5%;
+  }
+
+  .modal-title{
+    margin-left: 5%;
+    width:90%;
+  }
+
+ ::ng-deep .modal-content{ 
+    width: 1200px !important;
+  }
+
+  .homeDetails{
+    margin-left: 35%;
+  }
+
+  .line{
+    margin-top: 0% !important;
+  }
+
+  .estTitleText{
+    width: 1100px;
+    margin-top: -15%;
+    margin-left: 230px;
+
+  }
+
+  .mainText{
+    padding-bottom: 5rem;
+  }
+
+  .pricing-card-title{
+    margin-left: 250px;
+  }
+
+  .featurette{
+    margin-left: 300px;
+    margin-bottom: 10%;
+  }
+
+  .imageBackground{
+    width: 1150px;
+    height: 900px;
+  }
+
+  .headerText{
+    margin-left: 0px;
+  }
+
+  .button{
+    margin-left: 525px;
+  }
+
+  .contactButton{
+    margin-left: 180px;
+  }
+
+  .msize2{
+    padding-bottom: 8rem;
+  }
+
+  .priceText{
+    margin-left: 200px;
+  }
+
+  .detailsText{
+    margin-left: 155px;
+  }
+
+  .redirect{
+    margin-top: -12%;
+    margin-bottom: 300px;
   }
 }

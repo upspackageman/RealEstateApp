@@ -50,10 +50,15 @@ export class HomeComponent implements OnInit {
   constructor(public accountService: AccountService, private router: Router) { }
 
   ngOnInit() {
+   this.home();
   }
 
  async redirect(){
     await this.router.navigate(['forsale']);
+  }
+
+  async home(){
+   await  window.scroll(0,0);
   }
 
 

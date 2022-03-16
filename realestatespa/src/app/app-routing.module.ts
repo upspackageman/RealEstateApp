@@ -9,6 +9,7 @@ import { AboutComponent } from './about/about.component';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ServerErrorComponent } from './server-error/server-error.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'about', component: AboutComponent},
   {path: 'loginregister', component: LoginregisterComponent},
   {path: 'listing/:id', component: ListingDetailComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'errors', component: TestErrorsComponent},
   {path: 'not-found', component: NotFoundComponent},
   {path: 'server-error', component: ServerErrorComponent},

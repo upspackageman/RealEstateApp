@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
 
   modelLogin: any = {};
   loginForm:FormGroup;
-
+      
   constructor(public accountService: AccountService, private fb: FormBuilder, private router: Router, private toastr: ToastrService) {
 
     this.loginForm = fb.group({
@@ -34,23 +34,23 @@ export class NavbarComponent implements OnInit {
   }
 
 
-  login() {
+  // login() {
 
-    this.modelLogin.email = this.loginForm.value.email;
-    this.modelLogin.password = this.loginForm.value.password;
-    this.accountService.login(this.modelLogin).subscribe(response => {
-      console.log(response);
+    // this.modelLogin.email = this.loginForm.value.email;
+    // this.modelLogin.password = this.loginForm.value.password;
+    // this.accountService.login(this.modelLogin).subscribe(response => {
+      // console.log(response);
 
-    }, error => {
-      console.log(error);
-    })
-    
-    
-  }
+    // }, error => {
+      // console.log(error);
+    // })
+    // 
+    // 
+  // }
 
   logout(){
     this.accountService.logout();
 
   }
 
-}
+} 

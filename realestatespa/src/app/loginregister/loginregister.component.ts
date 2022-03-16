@@ -3,6 +3,7 @@ import { AccountService } from '../_services/account.service';
 import { Observable } from 'rxjs';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { MustMatch } from './password-validator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-loginregister',
@@ -19,7 +20,7 @@ export class LoginregisterComponent implements OnInit {
   
   form: FormGroup = new FormGroup({});
 
-  constructor(private accountService: AccountService, private fb: FormBuilder) {
+  constructor(private accountService: AccountService, private fb: FormBuilder, private router: Router) {
 
     this.registerForm = fb.group({
       firstName:[null,[Validators.required, Validators.minLength(1)]],

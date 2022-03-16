@@ -1,6 +1,5 @@
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using RestSharp;
 using Newtonsoft.Json;
 using System;
 using API.Entities;

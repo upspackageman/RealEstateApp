@@ -32,6 +32,7 @@ import {ToastrModule} from 'ngx-toastr';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ServerErrorComponent } from './server-error/server-error.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -51,7 +52,8 @@ import { ServerErrorComponent } from './server-error/server-error.component';
       AboutComponent,
       TestErrorsComponent,
       NotFoundComponent,
-      ServerErrorComponent
+      ServerErrorComponent,
+      LoginComponent
       
    ],
   imports: [

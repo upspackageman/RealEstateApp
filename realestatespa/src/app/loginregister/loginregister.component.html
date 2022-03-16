@@ -6,15 +6,15 @@
           <div class="col-md-6 mb-3">
             <label for="firstName">First name</label>
             <input type="text" formControlName="firstName"   class="form-control stack4" placeholder="" value="" required="">
-            <div *ngIf="f.firstName.touched && f.firstName.errors" class="alert  alert-font alert-warning register-alert">
-              <div class="pb-3"  *ngIf="f.firstName.errors">First Name is required</div>
+            <div *ngIf="f.firstName.touched && f.firstName.errors" >
+              <div class="pb-3 pt-4 valid"   *ngIf="f.firstName.errors">First Name is required</div>
             </div>
           </div>
           <div class="col-md-6 mb-3">
             <label for="lastName">Last name</label>
             <input type="text" formControlName="lastName" class="form-control stack4"  placeholder="" value="" required="">
-            <div *ngIf="f.lastName.touched && f.lastName.errors" class="alert alert-font alert-warning register-alert">
-              <div class="pb-3" *ngIf="f.lastName.errors.required">Last Name is required</div>
+            <div *ngIf="f.lastName.touched && f.lastName.errors" >
+              <div class="pb-3 pt-4 valid" *ngIf="f.lastName.errors.required">Last Name is required</div>
             </div>
           </div>
         </div> 
@@ -22,32 +22,34 @@
         <div class="mb-3">
           <label for="email">Email </label>
           <input type="email" formControlName="email" class="form-control stack4"  placeholder="you@example.com">
-          <div *ngIf="f.email.touched && f.email.errors" class="alert alert-font alert-warning register-alert">
-            <div class="pb-3"  *ngIf="f.email.errors">Email must be a valid email address</div>
-            <div class="pb-3"  *ngIf="f.email.errors.required">Email is required</div>            
+          <div *ngIf="f.email.touched && f.email.errors" >
+            <div class="pb-3 pt-4 valid"  *ngIf="f.email.errors">Email must be a valid email address</div>
+            <div class="pb-3 pt-0 valid"  *ngIf="f.email.errors.required">Email is required</div>            
           </div>
         </div>
   
         <div class="mb-3">
           <label for="address">Password</label>
           <input type="text" formControlName="password" class="form-control stack4"  placeholder="" required="">
-          <div *ngIf="f.password.touched && !f.password.valid" class="alert alert-font alert-warning register-alert">
-            <div class="pb-3"  *ngIf="f.password.errors.required">Password is required</div>
-            <div class="pb-3"  *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+          <div *ngIf="f.password.touched && !f.password.valid" >
+            <div class="pb-3 pt-4 valid"  *ngIf="f.password.errors.required">Password is required</div>
+            <div class="pb-3 pt-4 valid"  *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
           </div>
         </div>
   
         <div class="mb-3">
           <label for="address">Confirm Password</label>
           <input type="text" formControlName="confirmPassword" class="form-control stack4"  placeholder="" required="">
-          <div *ngIf="f.confirmPassword.touched && f.confirmPassword.errors" class="alert alert-font alert-warning register-alert">
-            <div class="pb-3" *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
-            <div class="pb-3"  *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+          <div *ngIf="f.confirmPassword.touched && f.confirmPassword.errors">
+            <div class="pb-3 pt-4 valid" *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+            <div class="pb-3 pt-4 valid"  *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
           </div>
         </div>  
         <hr class="mb-4">
-        <button class="contactButton pb-3"  [disabled]="!registerForm.valid" type="submit">Register</button>
+        <button class="contactButton"  [disabled]="!registerForm.valid" type="submit">Register</button>
       </form>
+
+      <a class="registerLink" routerLink="/login">Click here to login.</a>
     </div>
     
   </div>

@@ -52,6 +52,16 @@
   height:2rem;
 }
 
+.radioButton{
+  width: 2rem;
+  height: 2rem;
+}
+
+.bedroomWidthRow{
+  width:50rem !important;
+  margin-left:-17rem;
+}
+
 .left {
   display: flex;
   justify-content: center;
@@ -63,9 +73,9 @@
 
 }
 
-#priceSort{
-  width: 100px;
-}
+
+
+
 
 
 
@@ -77,7 +87,10 @@
   width:100% !important;
   height:100% !important;
 }
-
+::ng-deep .close:focus{
+  outline:none;
+  color:red;
+}
 ::ng-deep .close{
   font-size:4rem;
 
@@ -156,7 +169,7 @@
 }
 
 .selectFont{
-  font-size: 17px;
+  font-size:1.5rem;
   font-weight:500;
 }
 
@@ -420,6 +433,9 @@ agm-map {
 
   .moreOptionsHeaderFont{
     font-size:3.55rem ;
+    height: fit-content;
+    width: fit-content;
+    text-align: center;
   }
 
   .moreOptionsHeaderSelectFont{
@@ -455,7 +471,7 @@ agm-map {
     min-width:1625px;
     padding-left:20rem;
 
-    padding-bottom:1%;
+    padding-bottom:11%;
     padding-top:2%;
     z-index:2 !important;
     position: fixed;
@@ -466,7 +482,7 @@ agm-map {
     z-index:2 !important;
     position: fixed;
     display: flex;
-    bottom:8rem;
+    bottom:11rem;
     left: 50rem;
     font-size:4.5rem;
     border-radius: .6rem;
@@ -590,7 +606,10 @@ agm-map {
   }
 
   .moreOptionsHeaderSelectFont{
-    font-size:2rem;
+    font-size:3.3rem;
+    height: fit-content;
+    width: fit-content;
+    text-align: center;
   }
 
   .moreOptionsBodyFont{
@@ -622,7 +641,7 @@ agm-map {
     min-width:1625px;
     padding-left:20rem;
 
-    padding-bottom: 9%;
+    padding-bottom: 18%;
     padding-top:6%;
     z-index:2 !important;
     position: fixed;
@@ -633,7 +652,7 @@ agm-map {
     z-index:2 !important;
     position: fixed;
     display: flex;
-    bottom:10rem;
+    bottom:16rem;
     left: 50rem;
     font-size:4.5rem;
     border-radius: .6rem;
@@ -851,7 +870,7 @@ agm-map {
   }
 
   .cardPadding{
-    padding-bottom:30rem;
+   height:500px;
   }
 
   .options-svg{
@@ -991,8 +1010,8 @@ agm-map {
 @media (max-width:485px){
 
   .radioButton{
-    width: 35px;
-    height:35px;
+    width: 65px;
+    height: 65px;
   }
 
   .options-svg {
@@ -1028,7 +1047,7 @@ agm-map {
     z-index:2 !important;
     position: fixed;
     display: flex;
-    bottom:450px;
+    bottom:675px;
     left: 26rem;
     font-size:4.5rem;
     border-radius: .6rem;
@@ -1052,12 +1071,16 @@ agm-map {
 
   ::ng-deep .close {
 
-    font-size: 5.5rem;
+    font-size: 8rem;
     font-weight: 700;
     line-height: 1;
     color: #000;
     text-shadow: 0 1px 0 #fff;
     opacity: .5;
+}
+
+::ng-deep .modal-content{
+  width: 100% !important;
 }
 
 
@@ -1100,6 +1123,7 @@ agm-map {
   .listing_results{
     max-width:871px;
     min-width:871px;
+    margin-bottom:20%;
   }
   .selectFont{
     margin-left:10px;
@@ -1110,11 +1134,14 @@ agm-map {
   }
 
   .moreOptionsHeaderFont{
-    font-size:3.55rem ;
+    font-size:5.55rem ;
   }
 
   .moreOptionsHeaderSelectFont{
-    font-size:3rem;
+    font-size: 3.7rem;
+    height: fit-content;
+    width: fit-content;
+    text-align: center;
   }
 
   .moreOptionsBodyFont{
@@ -1238,7 +1265,7 @@ agm-map {
     max-width:1180px;
     min-width:1180px;
     padding-left:11rem;
-    padding-bottom: 2rem;
+    padding-bottom: 25%;
     bottom:120;
   }
   .selectOptions{

@@ -1,4 +1,138 @@
+.main{
+    height: 100vh; 
+    background-image: linear-gradient(rgba(43, 43, 43, 0.7), rgba(174, 191, 250, 0.7)), 
+    url(https://images.unsplash.com/photo-1512652296884-f1d6ecc353c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80);    
+    background-size:cover;
+}
 
+.main-section{
+    text-align: center;
+    width:800px; 
+    margin-left: -400px; 
+    position:absolute; 
+    top: 30%; 
+    left:50%; 
+    color:white;
+}
+
+#error-500{
+    margin:0; font-size:150px; line-height:150px; font-weight:bold; text-shadow: 2px 2px 10px rgba(0, 0, 0,.7);
+}
+
+#server-error{
+    margin-top:20px;
+    font-size: 30px;
+}
+
+
+@media (max-width:1025px){
+    #server-error{
+        font-size: 3.5rem;
+    }
+
+    .error-text{
+        font-size:1.8rem;
+        margin-bottom:.05rem;
+    }
+
+    .btn{
+        font-size:3.25rem;
+        margin-top:5%;
+    }
+}
+
+@media (max-width:769px){
+    .main{width: 790px;}
+
+    .btn{font-size:2.25rem;}
+}
+
+@media (max-width:415px){
+    .main{
+        width: 1100px;
+        height: 1700px;
+    }
+
+    .main-section{
+        text-align: center;
+        width: 800px;
+        margin-left: -400px;
+        position: absolute;
+        top: 60%;
+        left: 135%;
+        color: white;
+    }
+
+    #error-404{
+        margin: 0;
+        font-size: 18rem;
+        line-height: 350px;
+        font-weight: bold;
+        text-shadow: 2px 2px 10px rgb(0 0 0 / 70%);
+    }
+
+    #not-found-error{
+        margin-top: 20px;
+        font-size: 5rem;
+    }
+
+    .error-text{
+        font-size:3rem;
+    }
+
+    .btn{
+        font-size: 4rem;
+        margin-top: 8%;
+    }
+    
+}
+
+@media (max-width: 415px) and (max-height: 916px){        
+    .main {
+        width: 1100px;
+        height: 2200px;
+    }
+}
+
+
+@media (max-width: 415px) and (max-height: 824px){        
+    .main {
+        width: 1100px;
+        height: 1900px;
+    }
+}
+
+
+
+
+
+
+   @media (max-width:376px){
+    .main-section{
+       margin-left: -350px;
+    }   
+
+    .main{
+        height: 2100px;
+    }
+   }
+
+   @media (max-width:376px) and (max-height:668px){
+    .main-section{
+       margin-left: -350px;
+    }   
+
+    .main{
+        height: 1900px;
+    }
+   }
+
+
+@media (max-width:321px){
+ .main-section{
+    margin-left: -280px;
+ }   
+}
 
 
 

@@ -419,6 +419,12 @@ a{
   }
 }
 
+@media (max-width:321px){
+ .card{
+  margin-left: -11.8rem;
+ }
+}
+
 
 @media (max-width:280px){
   .card{

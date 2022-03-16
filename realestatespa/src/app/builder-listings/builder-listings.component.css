@@ -1,0 +1,118 @@
+.main{
+    height: 100vh;
+    background-image: linear-gradient(rgba(43, 43, 43, 0.7), rgba(174, 191, 250, 0.7)), url(https://images.unsplash.com/photo-1512652296884-f1d6ecc353c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80); 
+    background-size:cover;
+}
+
+.subtitle{
+    margin-top:20px;
+    font-size: 30px;
+}
+
+.title{
+    margin:0; 
+    font-size:150px; 
+    line-height:150px; 
+    font-weight:bold; 
+    text-shadow: 2px 2px 10px rgba(0, 0, 0,.7);
+}
+
+.section-1{
+    text-align: center; 
+    width:800px; 
+    margin-left: -400px; 
+    position:fixed; 
+    top: 30%; 
+    left:50%; 
+    color:white;
+
+}
+
+
+@media (max-width: 1024px) and (max-height:1366px){
+    .main{
+        width:1100px;
+    }
+}
+
+
+@media (max-width: 821px) and (max-height:1181px){
+    .main{
+        height: 1500px;
+    }
+
+    .title{
+        font-size:230px;
+    }
+
+    .subtitle{
+        font-size: 80px;
+        margin-top: 10%;
+    }
+
+    .btn{
+        margin-top: 5%;
+        font-size:45px;
+    }
+}
+
+
+
+
+
+
+
+@media (max-width: 769px) and (max-height:1025px){
+    .main{
+        height: 1400px;
+    }
+}
+
+
+
+
+
+
+
+
+@media (max-width: 441px){
+
+    .title{
+        font-size: 240px;
+    }
+
+    .subtitle{
+        margin-top: 10%;
+        font-size: 80px;
+    }
+
+    .btn{
+        font-size: 70px;
+        margin-top: 5%;
+    }
+}
+
+@media (max-width: 415px) and (max-height:916px){
+    .main{
+        height: 2300px;
+    }
+}
+
+@media (max-width: 415px) and (max-height:900px){
+    .main{
+        height: 2100px;
+    }
+}
+
+
+@media (max-width: 391px) and (max-height:900px){
+    .main{
+        height: 2300px;
+    }
+}
+
+@media (max-width: 376px) and (max-height:668px){
+    .main{
+        height: 1900px;
+    }
+}

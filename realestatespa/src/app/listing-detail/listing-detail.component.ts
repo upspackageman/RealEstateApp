@@ -54,6 +54,12 @@ export class ListingDetailComponent implements OnInit {
   is_loaded:boolean = true;
   modalRef: BsModalRef;
   customClass = 'customClass';
+  config = {
+    backdrop: true,
+    animated: true,
+    class: 'gray modal-lg',
+    ignoreBackdropClick: false
+  };
      
 
   ngOnInit() {
@@ -177,9 +183,7 @@ export class ListingDetailComponent implements OnInit {
 
   async openModalWithClass(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(
-      template,
-      Object.assign({}, { class: 'gray modal-lg' })
-    );
+      template,this.config);
   }
 
 
@@ -193,6 +197,7 @@ export class ListingDetailComponent implements OnInit {
       console.log(this.contact);
 
        this.emailService.sendEmail(this.contact);
+       this.modalService.hide();
       
        
    

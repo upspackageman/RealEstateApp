@@ -210,7 +210,7 @@ export class ForsaleComponent implements OnInit {
     }
   }
 
-  async searchListing(e){
+  async searchListing(e='92054'){
     this.ListingParams.fulladdress = e;
     console.log(this.ListingParams.fulladdress);
     this.loadListings();
