@@ -1,7 +1,4 @@
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
-using API.Data;
 using API.DTOs;
 using API.Entities;
 using API.Interfaces;
@@ -18,11 +15,13 @@ namespace API.Controllers
        
         private readonly ITokenService _tokenService;
         private readonly UserManager<CustomerUser> _userManager;
-         private readonly SignInManager<CustomerUser> _signInManager;
+        private readonly SignInManager<CustomerUser> _signInManager;
+       
       
         public AccountController(UserManager<CustomerUser> userManager,SignInManager<CustomerUser> signInManager, ITokenService tokenService)
         {
-           _signInManager= signInManager;
+         
+            _signInManager= signInManager;
             _userManager = userManager;
             _tokenService = tokenService;
            
@@ -31,21 +30,25 @@ namespace API.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<CustomerUserDto>> Register(RegisterDto registerDto)
         {
-            if (await UserExists(registerDto.Email)) return BadRequest("Email is taken");       
+            if (await UserExists(registerDto.Email)) return BadRequest("Email is taken");  
 
-            var user = new CustomerUser
-            {
-                Email = registerDto.Email,
-                FirstName = registerDto.FirstName,
-                LastName = registerDto.LastName
-            };
+            var user = new CustomerUser();
+
+            user.UserName = registerDto.Email.ToLower();
+            user.Email = registerDto.Email.ToLower();
+            user.FirstName = registerDto.FirstName;
+            user.LastName = registerDto.LastName;
+
 
             var result = await _userManager.CreateAsync(user, registerDto.Password);   
 
-            if(result.Succeeded) return BadRequest("Username already exists.");                 
+            if(!result.Succeeded) return BadRequest(result.Errors);                 
             return new CustomerUserDto
             {
+                Username = user.UserName,
                 Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
                 Token = _tokenService.CreateToken(user)
             };
 
@@ -65,6 +68,7 @@ namespace API.Controllers
 
             return new CustomerUserDto
             {
+                Username = user.UserName,
                 Email = user.Email,
                 Token = _tokenService.CreateToken(user)
             };
