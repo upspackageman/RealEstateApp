@@ -6,12 +6,11 @@ using API.Extensions;
 using API.Helpers;
 using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-
-using System.Linq;
 using AutoMapper;
 
+
 namespace API.Controllers
-{
+{  
     [ApiController]
     [Route("api/[controller]")]
     public class ListingsController : BaseApiController
@@ -28,7 +27,7 @@ namespace API.Controllers
 
         
 
-        
+       
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ListingDto>>> GetListings([FromQuery] ListingParams listingParams)
         {

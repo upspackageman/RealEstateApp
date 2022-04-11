@@ -1,6 +1,24 @@
 <main>
-    <div class="main">
-      <div class="login-div">
+      <form [formGroup]="loginForm" (ngSubmit)="login()" class="needs-validation register-form" novalidate="">
+        <div class="container">
+          <h1>Login</h1>
+          <p>Please enter the credentials below.</p>
+          <hr>
+      
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" formControlName="email"  name="email" id="email" type="text" class="form-control stack4"required>
+      
+          <label for="psw"><b>Password</b></label>
+          <input type="password" formControlName="password" placeholder="Enter Password" name="psw" id="psw" class="form-control stack4"  required>
+          
+          <div class="container signin">
+            <span>Want access to specials? </span><a class="registerLink" routerLink="/loginregister">Click here to Register.</a>
+          </div>
+          <button  class="contactButton" type="submit" class="registerbtn">Login</button>
+          <p id="terms">By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+        </div>
+      </form>
+      <!-- <div class="login-div">
         <form [formGroup]="loginForm" (ngSubmit)="login()" class="needs-validation" novalidate="">
           
     
@@ -20,8 +38,7 @@
           <a class="registerLink" routerLink="/loginregister">Click here to Register.</a>
  
         </form>
-    </div>
-    </div>
+    </div> -->
   </main> 
     
     

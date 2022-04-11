@@ -42,14 +42,19 @@ namespace API.Controllers
 
             var result = await _userManager.CreateAsync(user, registerDto.Password);   
 
-            if(!result.Succeeded) return BadRequest(result.Errors);                 
+            if(!result.Succeeded) return BadRequest(result.Errors);   
+
+            var roleResult = await _userManager.AddToRoleAsync(user,"Member");
+
+             if(!roleResult.Succeeded) return BadRequest(roleResult.Errors);   
+
             return new CustomerUserDto
             {
                 Username = user.UserName,
                 Email = user.Email,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                Token = _tokenService.CreateToken(user)
+                Token = await _tokenService.CreateToken(user)
             };
 
         }
@@ -70,7 +75,7 @@ namespace API.Controllers
             {
                 Username = user.UserName,
                 Email = user.Email,
-                Token = _tokenService.CreateToken(user)
+                Token = await _tokenService.CreateToken(user)
             };
         }
         private async Task<bool> UserExists(string Email)

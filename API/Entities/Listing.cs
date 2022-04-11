@@ -4,9 +4,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Entities
 {
-    [Index(nameof(Id), IsUnique=true)]
+    [Index(nameof(Id), Name = "Index_Id")]
     public class Listing
     {
+        
         [Key]
         public string Id {get; set;}
         

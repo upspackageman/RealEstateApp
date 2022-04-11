@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inria+Serif&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Heebo&family=Noto+Serif&display=swap');
-
+@import url(https://fonts.googleapis.com/css?family=Oswald:300,400,700);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic);
 
 @-webkit-keyframes puff-in-center {
   0% {
@@ -37,7 +38,7 @@
 
 
 .main-font{
-  font-family: 'Heebo', sans-serif;
+  font-family:'Oswald', sans-serif; 
 }
 
 .puff-in-center {

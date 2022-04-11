@@ -248,8 +248,7 @@ namespace API.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Id")
-                        .IsUnique();
+                    b.HasIndex(new[] { "Id" }, "Index_Id");
 
                     b.ToTable("Listings");
                 });

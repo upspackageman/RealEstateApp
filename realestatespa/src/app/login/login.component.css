@@ -1,17 +1,440 @@
-body{
-
-	color:#6a6f8c;
-  background:#c8c8c8;
-  font:600 16px/18px 'Open Sans',sans-serif;
-}
+@import url(https://fonts.googleapis.com/css?family=Oswald:300,400,700);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic);
 
 
-.main{
+
+/*  */
+main{
 	background-image: linear-gradient(rgba(43, 43, 43, 0.7), rgba(174, 191, 250, 0.7)), url(https://images.unsplash.com/photo-1512652296884-f1d6ecc353c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80); background-size:cover; 
-	padding-top: 1%; 
+	padding-top: 10%; 
 	padding-bottom:20%;
+	height: 900px;
+	font-family:'Oswald', sans-serif; 
 }
 
+.register-form {
+	width: 700px;
+	background-color: white;
+	margin-left: 30%;
+	margin-bottom: 10%;
+	box-shadow: 3px 13px 20px rgba(0, 0, 0, 0.45),
+	-3px -13px 20px rgba(0, 0, 0,0.45);
+  }
+
+  .container {
+	padding: 16px;
+	width: 100%;
+  }
+
+  
+  
+  /* Full-width input fields */
+  input[type=text], input[type=password] {
+	width: 100%;
+	padding: 15px;
+	margin: 5px 0 22px 0;
+	display: inline-block;
+	border: none;
+	background: #f1f1f1;
+  }
+
+  button:focus{
+	  outline: none;
+  }
+  
+  input[type=text]:focus, input[type=password]:focus {
+	background-color: #ddd;
+	outline: none;
+  }
+  
+  /* Overwrite default styles of hr */
+  hr {
+	border: 1px solid #f1f1f1;
+	margin-bottom: 25px;
+  }
+
+  
+  
+  /* Set a style for the submit button */
+  .registerbtn {
+	background-color: #04AA6D;
+	color: white;
+	padding: 16px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	opacity: 0.9;
+  }
+  
+  .registerbtn:hover {
+	opacity: 1;
+  }
+  
+  /* Add a blue text color to links */
+  a {
+	color: dodgerblue;
+  }
+  
+  /* Set a grey background color and center the text of the "sign in" section */
+  .signin {
+	text-align: center;
+  }
+
+
+
+  /* For Desktop View */
+@media screen and (min-width: 1024px) {
+  }
+   
+  /* For Tablet View */
+  @media screen and (min-device-width: 768px)
+  and (max-device-width: 1024px) {
+	main{
+		padding-top: 20%;
+		height: 2000px;
+		width:1500px;
+	}
+
+	.register-form{
+		width: 900px;
+		margin-bottom: 10%;
+		margin-left: 20.5%;
+		background-color: white;
+	}
+
+	.registerbtn{
+		font-size: 4rem;
+	}
+
+	.container{
+		width: 900px;
+	}
+
+	.container h1{
+		font-size: 8rem;
+		text-align: center;
+	}
+
+	.container p{
+		font-size: 3rem;
+		text-align: center;
+	}
+
+	.container label{
+		font-size: 4rem;
+	}
+
+	.container input{
+		font-size: 3.5rem;
+	}
+
+	.signin{
+		font-size: 2rem;
+	}
+
+	#terms{
+		font-size: 1rem;
+	}
+  }
+   
+  /* For Mobile Portrait View */
+  @media screen and (min-device-width:360px) and (max-device-width: 361px)
+  and (orientation: portrait) {
+	main{
+		padding-top: 80% !important;
+		height: 2950px !important;
+		width:2500px!important;
+		margin-left: 0%;
+	}
+
+	.register-form{
+		width: 1100px !important;
+		margin-bottom: 10%;
+		margin-left: 8% !important;
+		background-color: white;
+	}
+
+	.container{
+		width: 900px;
+	}
+
+	.container h1{
+		font-size: 11rem;
+		text-align: center;
+	}
+
+	.container p{
+		font-size: 4rem;
+		text-align: center;
+	}
+
+	.container label{
+		font-size: 5.25rem;
+	}
+	.container input{
+		font-size: 5rem;
+	}
+		
+	.signin{
+		font-size: 3.75rem;
+	}
+	.registerbtn{
+		font-size: 9.5rem;
+		line-height: 1.5;
+	}
+	#terms{
+		font-size: 2.75rem;
+	} 
+}
+
+@media screen and (max-device-width: 480px)
+  and (orientation: portrait) {
+	main{
+		padding-top: 50%;
+		height: 2950px;
+		width:1400px;
+
+	}
+
+	.register-form{
+		width: 1200px;
+		margin-bottom: 10%;
+		margin-left: 8%;
+		background-color: white;
+	}
+
+	.container{
+		width: 900px;
+	}
+
+	.container h1{
+		font-size: 11rem;
+		text-align: center;
+	}
+
+	.container p{
+		font-size: 4rem;
+		text-align: center;
+	}
+
+	.container label{
+		font-size: 5.25rem;
+	}
+	.container input{
+		font-size: 5rem;
+	}
+		
+	.signin{
+		font-size: 3.75rem;
+	}
+	.registerbtn{
+		font-size: 9.5rem;
+		line-height: 1.5;
+	}
+	#terms{
+		font-size: 2.75rem;
+	}
+  }
+   
+  /* For Mobile Landscape View */
+  @media screen and (max-device-width: 640px)
+  and (orientation: landscape) {
+	  /*-maybe---*/
+  }
+   
+  /* For Mobile Phones Portrait or Landscape View */
+  @media screen and (max-device-width: 640px) {
+	  /*-maybe---*  /*-maybe---*/
+  }
+   
+   
+  /* For iPhone 5 Portrait or Landscape View */
+  @media (device-height: 568px) and (device-width: 320px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+	  /*-maybe---*/
+  }
+   
+  /* For iPhone */
+  @media (device-height: 812px) and (device-width: 375px){
+	main{
+		padding-top: 80% !important;
+		height: 3000px !important;
+		
+	}
+	.register-form{
+		width: 1200px;
+		margin-bottom: 10%;
+		margin-left: 8%;
+		background-color: white;
+	}
+	.container{
+		width: 1150px
+	}
+
+	.container h1{
+		font-size: 11rem;
+		text-align: center;
+	}
+
+	.container p{
+		font-size: 4rem;
+		text-align: center;
+	}
+
+	.container label{
+		font-size: 8.25rem !important;
+	}
+
+	.container input{
+		font-size:7.25rem !important;
+	}	
+
+	.signin{
+		font-size: 3.75rem;
+	}
+
+	.registerbtn{
+		font-size: 7rem;
+	}
+
+	#terms{
+		font-size: 2.75rem;
+	}
+
+  }
+
+  
+
+  @media (device-height: 736px) and (device-width: 414px){
+	main{
+		padding-top: 80% !important;
+		height: 2350px !important;
+		width:1400px;
+	}
+	.register-form{
+		width: 1200px;
+		margin-bottom: 10%;
+		margin-left: 8%;
+		background-color: white;
+	}
+	.container{
+		width: 1150px;
+	}
+
+	.container label{
+		font-size: 7.25rem !important;
+	}
+
+	.container input{
+		font-size: 5.75rem !important;
+	}
+
+	.registerbtn{
+		font-size: 6rem !important;
+	}
+  }
+
+  @media (device-height: 667px) and (device-width: 375px)
+ {
+	main{
+		padding-top: 50% !important;
+		height: 2350px !important;
+		width:1400px;
+	}
+
+	.register-form{
+		width: 1200px;
+		margin-bottom: 10%;
+		margin-left: 8%;
+		background-color: white;
+	}
+
+	.container{
+		width: 900px;
+	}
+
+	.container h1{
+		font-size: 11rem;
+		text-align: center;
+	}
+
+	.container p{
+		font-size: 4rem;
+		text-align: center;
+	}
+
+	.container label{
+		font-size: 5.25rem;
+	}
+
+	.container input{
+		font-size: 5rem;
+	}	
+
+	.signin{
+		font-size: 3.75rem;
+	}
+
+	.registerbtn{
+		font-size: 4rem;
+	}
+
+	#terms{
+		font-size: 2.75rem;
+	}
+  }
+
+  @media (device-width: 320px) and (device-height:568px){
+	main{
+		padding-top: 90%;
+		height: 2250px;
+		width:1700px !important;
+
+	}
+
+	.register-form{
+		width: 1200px ;
+		margin-bottom: 10%;
+		margin-left: 2.5%;
+		background-color: white;
+	}
+
+	.container{
+		width: 900px;
+	}
+
+	.container h1{
+		font-size: 11rem;
+		text-align: center;
+	}
+
+	.container p{
+		font-size: 4rem;
+		text-align: center;
+	}
+
+	.container label{
+		font-size: 5.25rem;
+	}
+
+	.container input{
+		font-size: 5rem;
+	}
+	
+
+	.signin{
+		font-size: 3.75rem;
+	}
+
+	.registerbtn{
+		font-size: 4rem;
+	}
+
+	#terms{
+		font-size: 2.75rem;
+	}
+  }
 
 
 
@@ -19,7 +442,9 @@ body{
 
 
 
-/******************************************************/
+/* 
+
+
 
 .login-div {
   margin-top:7%;
@@ -469,4 +894,4 @@ body{
 		margin-top:25%;
 		margin-bottom:38%;
 	}
-}
+} */

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220320205747_Initial")]
-    partial class Initial
+    [Migration("20220406213337_Index")]
+    partial class Index
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -250,8 +250,7 @@ namespace API.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Id")
-                        .IsUnique();
+                    b.HasIndex(new[] { "Id" }, "Index_Id");
 
                     b.ToTable("Listings");
                 });

@@ -34,13 +34,11 @@ export class LoginComponent implements OnInit {
       this.redirect();
     }, error => {
       console.log(error);
-    })
-    
-    
+    })   
   }
 
   async redirect(){
-    await this.router.navigate(['forsale']);
+    await this.router.navigate(['builder-listing']);
   }
 
 }

@@ -309,6 +309,14 @@
 
 }
 
+
+@media ((min-width: 358px)) and  (max-width: 360px)
+ {
+  .site-footer{
+    width:2220px !important;
+  }
+}
+
 @media (max-width:360px){
   .site-footer{
     width:1220px;
