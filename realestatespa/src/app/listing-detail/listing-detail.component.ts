@@ -87,13 +87,11 @@ export class ListingDetailComponent implements OnInit {
 
   }
 
- loadListing(){
-  
+ loadListing(){  
     this.listingsService.getListingsById(this.route.snapshot.paramMap.get('id')).subscribe(listing => {
       this.listing = listing;
       this.mortgageCalulator();      
-    })
-    
+    })    
   }
 
   amountDownPayment(e:number){
@@ -102,15 +100,13 @@ export class ListingDetailComponent implements OnInit {
     console.log(this.percentDownPayment);
     console.log(this.amtDownPayment);
     this.pmiEstimate();
-    this.mortgageCalulator();
-   
+    this.mortgageCalulator();   
   }
 
   percentageDownPayment(e:number){
     this.amtDownPayment = e*.01* this.listing.priceSearch; /* * perecnt entered*/
     this.pmiEstimate();
-    this.mortgageCalulator();
-   
+    this.mortgageCalulator();   
    }
 
   loanProgram(e:number){
@@ -119,15 +115,14 @@ export class ListingDetailComponent implements OnInit {
   }
 
   interestRate(e:number){
-
     if(e==0){
       this.annualInterestRate =.0000001;
       this.pmiEstimate();     
     }
     else{
-    this.annualInterestRate =e * .01;
-    console.log(e);
-    this.pmiEstimate();    
+      this.annualInterestRate = e * .01;
+      console.log(e);
+      this.pmiEstimate();    
     }
     this.mortgageCalulator(); /* = Enter number*/
   }
@@ -193,14 +188,9 @@ export class ListingDetailComponent implements OnInit {
       this.contact.firstName = this.contactForm.value.firstName;
       this.contact.lastName = this.contactForm.value.lastName;
       this.contact.phone = this.contactForm.value.phone;
-
       console.log(this.contact);
-
        this.emailService.sendEmail(this.contact);
        this.modalService.hide();
-      
-       
-   
   }
    
 

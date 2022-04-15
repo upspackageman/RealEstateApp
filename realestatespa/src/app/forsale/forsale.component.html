@@ -128,8 +128,8 @@
   
   
   <ng-template #bedrooms class="modal-sm">
-    <div class="modal-header main-font">
-      <h4 class="modal-title pull-left moreOptionsHeaderFont">Bedrooms</h4>
+    <div class="main-font">
+      <h4 class="moreOptionsHeaderFont">Bedrooms</h4>
        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -170,8 +170,8 @@
   </ng-template>
   
   <ng-template #bathrooms>
-    <div class="modal-header main-font">
-      <h4 class="modal-title pull-left moreOptionsHeaderFont">Bathrooms</h4>
+    <div class="main-font">
+      <h4 class="moreOptionsHeaderFont">Bathrooms</h4>
       <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -210,7 +210,7 @@
       </div>
     </div>
   </ng-template>
-  
+  <!--
   <ng-template #listingStatus>
     <div class="modal-header main-font">
       <h4 class="modal-title pull-left">Listing Status</h4>
@@ -237,12 +237,12 @@
         </div>
       </div>
     </div>
-  </ng-template>
+  </ng-template> -->
   
   <ng-template #moreOptions>
-    <div class="modal-header main-font">
-      <h4 class="modal-title pull-left moreOptionsHeaderFont">More Options</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <div class="main-font">
+      <h4 class="moreOptionsHeaderFont">More Options</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>

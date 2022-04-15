@@ -2,7 +2,7 @@
 src='../assets/NoPhotoAvailable.jpg';" alt="...">
 
 
-<main class="delta" style="padding-top: 3%; width:100vw;height:100%; margin:0px;">
+<main class="delta" style="padding-top: 3%;">
 
 
 
@@ -262,58 +262,87 @@ src='../assets/NoPhotoAvailable.jpg';" alt="...">
   </main>
   
     <ng-template #requestInfo>
-      <div class="modal-header main-font">
-        <h4 class="modal-title modalTitle">Request Information</h4>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-          <span aria-hidden="true" class="modalClose">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body main-font">
-        <div class="row m-5">
-          <h4 class="mb-3"></h4>
-          <form class="needs-validation"  [formGroup]="contactForm"(ngSubmit)="sendMail()" class="needs-validation" novalidate="" novalidate="">
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="firstName">First name</label>
-                <input type="text"  formControlName="firstName" class="form-control stack4" id="firstName" placeholder="" value="" required="">
-                <div *ngIf="f.firstName.touched && f.firstName.errors" class="alert">
-                  <div *ngIf="f.firstName.errors">First Name is required</div>
-                </div>
+      
+      
+      <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true" >&times;</span>
+      </button>
+      <h1 id="inquire-title">Register</h1>
+        <p id="inquire-subtitle">Please fill in this form to create an account.</p>       
+          <form class="inquire-form"  [formGroup]="contactForm"(ngSubmit)="sendMail()" novalidate="">
+            <div class="modal-box">
+              <label for="firstName"><b>First Name</b></label>
+              <input type="text" formControlName="firstName" class="form-control stack4"  placeholder="Enter First Name" name="first-name" id="first-name" required>
+              <div *ngIf="f.firstName.touched && f.firstName.errors" >
+                <div class="pb-3 pt-4 valid"   *ngIf="f.firstName.errors">First Name is required</div>
               </div>
-              <div class="col-md-6 mb-3">
-                <label for="lastName">Last name</label>
-                <input type="text" formControlName="lastName" class="form-control stack4" id="lastName" placeholder="" value="" required="">
-                <div *ngIf="f.lastName.touched && f.lastName.errors" class="alert">
-                  <div *ngIf="f.lastName.errors.required">Last Name is required</div>
-                </div>
+              <label for="firstName"><b>Last Name</b></label>
+              <input type="text" formControlName="lastName" class="form-control stack4" placeholder="Enter Last Name" 
+           name="last-name" id="last-name" required>
+              <div *ngIf="f.lastName.touched && f.lastName.errors" >
+                <div class="pb-3 pt-4 valid"   *ngIf="f.lastName.errors">Last Name is required</div>
               </div>
-            </div>
-            <div class="mb-3">
-              <label for="email">Email <span class="text-muted">(Optional)</span></label>
-              <input type="email" formControlName="email" class="form-control stack4" id="email" placeholder="you@example.com">
-              <div *ngIf="f.email.touched && f.email.errors" class="alert">
-                <div *ngIf="f.email.errors.required">Email is required</div>
-                <div *ngIf="f.email.errors">Invalid email address</div>
+              <label for="email"><b>Email</b></label>
+              <input type="text" formControlName="email" class="form-control stack4"  placeholder="Enter Email" 
+           name="email" id="email" required>
+              <div *ngIf="f.email.touched && f.email.errors">
+                <div  class="pb-3 pt-4 valid" *ngIf="f.email.errors.required">Email is required</div>
+                <div  class="pb-3 pt-4 valid" *ngIf="f.email.errors.email">Email must be a valid email address</div>
               </div>
-            </div>  
-            <div class="mb-3">
-              <label for="address">Phone</label>
-              <input type="text" formControlName="phone" class="form-control stack4" id="address" placeholder="" required="">
+               <label for="Phone">Phone</label>
+              <input type="text" formControlName="phone" class="form-control stack4" id="phone" placeholder="Enter Number" required="">
               <div *ngIf="f.phone.touched && f.phone.errors" class="alert">
-                <div *ngIf="f.phone.errors.required">Phone number is required</div>
-                <div *ngIf="f.phone.errors">Invalid phone number</div>
-              </div>
+                 <div *ngIf="f.phone.errors.required">Phone number is required</div>
+                 <div *ngIf="f.phone.errors">Invalid phone number</div> 
+              </div> 
+
+              <label for="email"><b>Message</b></label>
+              <input type="textarea"  style="height: 250px;" class="form-control stack4"  placeholder=""   id="address" required>
             </div>
-            <div class="mb-3">
-              <label for="address">Message</label>
-              <textarea type="textarea" class="form-control stack4" style="height: 200px;" id="address" placeholder="" required=""></textarea> 
-            </div>
-  
-  
-            <hr class="mb-4">
+            <hr class="mb-4"> 
             <button class="contactButton"  [disabled]="!contactForm.valid" type="submit">Continue</button>
+            <!-- <div class="row"> -->
+              <!-- <div class="col-md-6 mb-3"> -->
+                <!-- <label for="firstName">First name</label> -->
+                <!--  <input type="text"  formControlName="firstName" class="form-control stack4" id="firstName" placeholder="" value="" required=""> --> 
+                <!-- <div *ngIf="f.firstName.touched && f.firstName.errors" class="alert"> -->
+                  <!-- <div *ngIf="f.firstName.errors">First Name is required</div> -->
+                <!-- </div> -->
+              <!-- </div> -->
+              <!-- <div class="col-md-6 mb-3"> -->
+                <!-- <label for="lastName">Last name</label> -->
+                <!--  <input type="text" formControlName="lastName" class="form-control stack4" id="lastName" placeholder="" value="" required=""> --> 
+                <!-- <div *ngIf="f.lastName.touched && f.lastName.errors" class="alert"> -->
+                  <!-- <div *ngIf="f.lastName.errors.required">Last Name is required</div> -->
+                <!-- </div> -->
+              <!-- </div> -->
+            <!-- </div> -->
+            <!-- <div class="mb-3"> -->
+              <!-- <label for="email">Email <span class="text-muted">(Optional)</span></label> -->
+              <!--  <input type="email" formControlName="email" class="form-control stack4" id="email" placeholder="you@example.com">-->
+              <!-- <div *ngIf="f.email.touched && f.email.errors" class="alert"> -->
+                <!-- <div *ngIf="f.email.errors.required">Email is required</div> -->
+                <!-- <div *ngIf="f.email.errors">Invalid email address</div> -->
+              <!-- </div> -->
+            <!-- </div>   -->
+            <!-- <div class="mb-3"> -->
+              <!-- <label for="address">Phone</label> -->
+              <!-- <input type="text" formControlName="phone" class="form-control stack4" id="address" placeholder="" required=""> -->
+              <!-- <div *ngIf="f.phone.touched && f.phone.errors" class="alert"> -->
+                <!-- <div *ngIf="f.phone.errors.required">Phone number is required</div> -->
+                <!-- <div *ngIf="f.phone.errors">Invalid phone number</div> -->
+              <!-- </div> -->
+            <!-- </div> -->
+            <!-- <div class="mb-3"> -->
+              <!-- <label for="address">Message</label> -->
+              <!-- <textarea type="textarea" class="form-control stack4" style="height: 200px;" id="address" placeholder="" required=""></textarea>  -->
+            <!-- </div> -->
+  
+  
+            <!-- <hr class="mb-4"> -->
+            <!-- <button class="contactButton"  [disabled]="!contactForm.valid" type="submit">Continue</button> -->
           </form>
-        </div>
-      </div>
+   
+ 
     </ng-template>
   

@@ -18,7 +18,7 @@ main{
 	width: 700px;
 	background-color: white;
 	margin-left: 30%;
-	margin-bottom: 10%;
+	padding-bottom: 10%;
 	box-shadow: 3px 13px 20px rgba(0, 0, 0, 0.45),
 		-3px -13px 20px rgba(0, 0, 0,0.45);
 	
@@ -180,7 +180,7 @@ main{
 
 	main{
 		padding-top: 20%;
-		height: 2200px;
+		height: 2800px;
 		width:1500px;
 	}
 
@@ -282,7 +282,7 @@ main{
   and (orientation: portrait) {
 	main{
 		padding-top: 60%;
-		height: 3200px;
+		height: 3800px;
 		width:1900px;
 
 	}
@@ -354,7 +354,7 @@ main{
   @media (device-height: 896px) and (device-width: 414px){
 	main{
 		padding-top: 80% !important;
-		height: 3550px !important;
+		height: 3800px !important;
 		width:1900px;
 	}
 	.register-form{
@@ -372,7 +372,7 @@ main{
   @media (device-height: 851px) and (device-width: 393px){
 	main{
 		padding-top: 50%;
-		height: 2950px;
+		height: 3650px;
 		width:1400px;
 	}
 	.register-form{
@@ -415,7 +415,7 @@ main{
 
 	main{
 		padding-top: 50%;
-		height: 2950px !important;
+		height: 3951px !important;
 		width:2200px !important;
 	}
 	.register-form{
@@ -459,7 +459,7 @@ main{
   @media (device-height: 786px) and (device-width: 393px){
 	main{
 		padding-top: 50%;
-		height: 2950px;
+		height: 3550px;
 		width:1400px;
 
 	}
@@ -515,7 +515,7 @@ main{
   and (-webkit-min-device-pixel-ratio: 3) {
 	main{
 		padding-top: 50%;
-		height: 2950px;
+		height: 3850px;
 		width:1400px;
 
 	}
@@ -566,7 +566,7 @@ main{
   @media (device-width: 320px) and (device-height:568px){
 	main{
 		padding-top: 90%;
-		height: 3250px !important;
+		height: 3550px !important;
 		width:1700px !important;
 	}
 	.register-form{

@@ -408,6 +408,13 @@ agm-map {
     min-width:1024px;
   }
 
+  .close span{
+      top: -20px;
+      font-size: 10rem;
+      position:absolute;
+      right: 50px;
+  }
+
   .bedroomWidthRow{
     width:50rem !important;
     margin-left:-17rem;
@@ -415,8 +422,8 @@ agm-map {
   }
 
   .radioButton{
-    width: 2rem;
-    height: 2rem;
+    width: 3.5rem;
+    height: 3.5rem;
   }
 
   .contactButton svg{
@@ -433,14 +440,17 @@ agm-map {
   }
 
   .moreOptionsHeaderFont{
-    font-size:3.55rem ;
+    padding-top: 10%;
+    font-size:7.25rem ;
     height: fit-content;
     width: fit-content;
     text-align: center;
   }
 
   .moreOptionsHeaderSelectFont{
-    font-size:2rem;
+    font-size: 3rem;
+    height: 110px;
+    width: 210px;
   }
 
   .moreOptionsBodyFont{
@@ -602,8 +612,16 @@ agm-map {
     font-size:2.5rem
   }
 
+  .close span{
+      top: -20px;
+      font-size: 8rem;
+      position:absolute;
+      right: 50px;
+  }
+
   .moreOptionsHeaderFont{
-    font-size:3.55rem ;
+    font-size:5.55rem;
+    padding-top: 10%;
   }
 
   .moreOptionsHeaderSelectFont{
@@ -846,6 +864,10 @@ agm-map {
   .marker{
     border-radius: 0px !important;
     width: 380px; height:430px; font-size:26px; border-style: none; border-radius:0px;
+  }
+  
+  .moreOptionsHeaderFont{
+    font-size:4.3rem;
   }
 
 
@@ -1266,7 +1288,7 @@ agm-map {
     max-width:1180px;
     min-width:1180px;
     padding-left:11rem;
-    padding-bottom: 25%;
+
     bottom:120;
   }
   .selectOptions{
@@ -1278,7 +1300,11 @@ agm-map {
 @media (max-width:415px){
   .option{
     padding-top:7.5rem;
-    height: 360px;
+    height: 385px;
+  }
+
+  .pagination_listing_results{
+    bottom: 300px !important;
   }
 
   agm-map{
@@ -1294,9 +1320,6 @@ agm-map {
     width: 8.5rem;
     height: 6rem;
   }
-
-
-
 }
 
 
@@ -1375,6 +1398,7 @@ agm-map {
     max-width:1245px;
     min-width:1245px;
     padding-left:14rem;
+    bottom: 300px !important;
   }
 
   .map_list_button{
