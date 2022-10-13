@@ -8,6 +8,7 @@ import {
 import { catchError, Observable, throwError } from 'rxjs';
 import { NavigationExtras, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CustomErrorComponent } from '../custom-alert/custom-error/custom-error.component';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -29,11 +30,19 @@ export class ErrorInterceptor implements HttpInterceptor {
                 }
                 throw modalStateErrors.flat();
               }else{
-                this.toastr.error(error.statusText === "OK" ? "Bad Request" : error.statusText, error.status);
+                this.toastr.error(error.statusText === "OK" ? "Bad Request" : error.statusText, error.status,{
+                  toastComponent:CustomErrorComponent,
+                  progressBar:true,
+                  timeOut: 5000
+                 });
               }             
               break;
             case 401:
-              this.toastr.error(error.statusText === "OK" ? "Unauthorized" : error.statusText, error.status);
+              this.toastr.error(error.statusText === "OK" ? "Unauthorized" : error.statusText, error.status,{
+                toastComponent:CustomErrorComponent,
+                progressBar:true,
+                timeOut: 5000
+               });
               break;
             case 404:
               this.router.navigateByUrl('not-found');
@@ -43,7 +52,11 @@ export class ErrorInterceptor implements HttpInterceptor {
               this.router.navigateByUrl('server-error', navigationExtras);
               break;
             default:
-              this.toastr.error('An Error occurred');
+              this.toastr.error('An Error occurred','',{
+                toastComponent:CustomErrorComponent,
+                progressBar:true,
+                timeOut: 5000
+               });
               console.log(error);
               break;
           }

@@ -1,9 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AccountService } from '../_services/account.service';
-import { Observable } from 'rxjs';
-import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { MustMatch } from './password-validator';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-loginregister',
@@ -16,11 +16,12 @@ export class LoginregisterComponent implements OnInit {
   modelRegister: any = {};
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   phonePattern = "^(\\+\\d{1,3}( )?)?((\\(\\d{1,3}\\))|\\d{1,3})[- .]?\\d{3,4}[- .]?\\d{4}$";
-  registerForm:FormGroup;
+  clienURI = 'http://192.168.0.28:4200/emailconfirmation';
+  registerForm:UntypedFormGroup;
   
-  form: FormGroup = new FormGroup({});
+  form: UntypedFormGroup = new UntypedFormGroup({});
 
-  constructor(private accountService: AccountService, private fb: FormBuilder, private router: Router) {
+  constructor(private accountService: AccountService, private fb: UntypedFormBuilder, private router: Router) {
 
     this.registerForm = fb.group({
      
@@ -36,7 +37,14 @@ export class LoginregisterComponent implements OnInit {
 
   }
 
-  ngOnInit() :void{}
+  ngOnInit(){
+    this.redirect_register();
+  }
+
+
+  async redirect(){
+    await this.router.navigate(['confirmationsent']);
+  }
 
   register(){
 
@@ -44,11 +52,23 @@ export class LoginregisterComponent implements OnInit {
     this.modelRegister.firstName = this.registerForm.value.firstName;
     this.modelRegister.lastName = this.registerForm.value.lastName;
     this.modelRegister.password = this.registerForm.value.password;
-
-    this.accountService.register(this.modelRegister).subscribe(response =>{
-      console.log(response);
-      this.cancel();
+    this.modelRegister.clientURI = this.clienURI;
+    this.accountService.register(this.modelRegister).subscribe({
+      next: (_) =>{ this.redirect()},
+      error: (err: HttpErrorResponse) => {
+        console.log(err.message);
+      }
     })
+  }
+
+  async redirect_register(){
+    window.scroll(-1000000,-1000000);
+    if(!localStorage.getItem('direct')){
+      localStorage.setItem('direct', 'no reload')
+      location.reload();
+    } else {
+      localStorage.removeItem('direct');
+    }
   }
 
   get f() {

@@ -10,6 +10,9 @@ namespace API.DTOs
         [Required]
         [StringLength(20, MinimumLength =5)]        
         public string Password {get;set;}
+
+        public string ConfirmPassword { get; set;}
+        public string ClientURI { get; set; }
                     
         [Required]
         public string FirstName { get; set; }  

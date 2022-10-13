@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Threading.Tasks;
 using API.Data;
 using Microsoft.AspNetCore.Hosting;
@@ -13,9 +14,13 @@ namespace API
     {
         public static async Task Main(string[] args)
         {
+            
             var host = CreateHostBuilder(args).Build();
             using var scope = host.Services.CreateScope(); 
+            
+            
             var services = scope.ServiceProvider; 
+            
             try
             {
                 var context = services.GetRequiredService<DataContext>(); 
@@ -36,6 +41,7 @@ namespace API
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.UseUrls("http://192.168.0.28:5001");//http://192.168.0.28:5001
                     webBuilder.UseStartup<Startup>();
                 });
     }

@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inria+Serif&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Heebo&family=Noto+Serif&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Oswald:300,400,700);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic);
 
 @-webkit-keyframes text-focus-in {
   0% {
@@ -51,12 +50,16 @@
     opacity: 1;
   }
 }
+button{
+  position: relative;
+  left:-2%;
+}
 
 button:focus{
   outline: none;
-  
-  
 }
+
+
 
 .text-focus-in {
 	-webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
@@ -65,7 +68,7 @@ button:focus{
 
 
 .main-font{
-  font-family: 'Cookie', cursive;
+  font-family:'Oswald', sans-serif;   
 }
 .submit{
   width: 3rem !important;
@@ -81,11 +84,19 @@ button:focus{
 }
 
 .option{
-
-background: -webkit-linear-gradient(top left, rgb(244, 251, 255), rgb(242, 230, 252)) !important;
+ width:100%;
+ display: flex;
+  background: rgb(247, 242, 213);
+  background: linear-gradient(90deg, rgb(247, 242, 213) 0%, rgba(255,255,255,1) 55%);
 
 box-shadow:  0px 6px 9px 0px rgba(0, 0, 0, .3);
-  z-index:3 !important;
+  z-index:7 !important;
+  border-color: #f1e6a3 !important;
+  border-style:ridge;
+  border-width: 1px;
+  border-top: none;
+  border-left: none;
+  border-right:none;
 
 }
 
@@ -100,7 +111,7 @@ box-shadow:  0px 6px 9px 0px rgba(0, 0, 0, .3);
 }
 
 .tracking-in-expand:hover{
-  color:rgb(161, 10, 30) !important;
+  color:rgb(230, 198, 20) !important;
   font-weight: 600;
   -webkit-animation: tracking-in-expand 1.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 	        animation: tracking-in-expand 1.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
@@ -111,18 +122,27 @@ box-shadow:  0px 6px 9px 0px rgba(0, 0, 0, .3);
 	        animation: text-shadow-drop-center 0.6s both;
 }
 
+.navbar-nav{
+margin-left: auto; 
+margin-right: 2%;
+
+}
+
 
 .title {
   text-align: center;
   font-size: 2rem;
+  text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
+  margin-left: 2.5%;;
   letter-spacing: 3px;
 }
 
 .navLinks{
   text-align: center;
   font-size: 1.5rem;
+  text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
   letter-spacing: 2px !important;
-  font-family: 'Heebo', sans-serif;
+  font-family:'Oswald', sans-serif;   
 }
 
 .stack{
@@ -162,6 +182,7 @@ box-shadow:  0px 6px 9px 0px rgba(0, 0, 0, .3);
   
   
 }
+
 
 
 
@@ -249,7 +270,6 @@ box-shadow:  0px 6px 9px 0px rgba(0, 0, 0, .3);
   }
 
   .navLinks{
-    font-family: 'Heebo', sans-serif;
     text-align: center;
     font-size: 4.2rem;
     letter-spacing: 2px !important;
@@ -309,7 +329,7 @@ box-shadow:  0px 6px 9px 0px rgba(0, 0, 0, .3);
 }
 
 
-@media (max-width:360px) {
+@media (max-width:485px) {
   .navbar-toggler-icon {
     width: 4.9em;
     height: 4.9em;
@@ -323,7 +343,7 @@ box-shadow:  0px 6px 9px 0px rgba(0, 0, 0, .3);
 
   .navLinks{
     text-align: center;
-    font-size: 45px;
+    font-size: 4.7rem;
     letter-spacing: 2px !important;
   }
 
@@ -333,4 +353,10 @@ box-shadow:  0px 6px 9px 0px rgba(0, 0, 0, .3);
 
   }
 
+}
+
+@media (max-width:321px) {
+  ::ng-deep footer{
+    width: 1280px !important;
+  }
 }

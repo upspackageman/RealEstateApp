@@ -1,25 +1,22 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark  fixed-top option main-font text-focus-in"  dropdown>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark  fixed-top option main-font text-focus-in"   dropdown>
 
-    <a class="navbar-brand links title" routerLink ='/home'>Beverly Ward Realty</a>
+    <a class="navbar-brand links title" routerLink ='/home'>Beverly Ward Realtor</a>
     <button class="navbar-toggler" dropdownToggle   type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <ul class="navbar-nav ml-auto fullHeader">
       <li class="nav-item">
         <a class="nav-link links navLinks tracking-in-expand"  routerLink ='/home' routerLinkActive='active'><i class="fa fa-user"></i>Home</a>
-      </li>
-      <!-- <li class="nav-item"> -->
-        <!-- <a class="nav-link links navLinks"  routerLink ='/errors' routerLinkActive='active'>Errors</a> -->
-      <!-- </li> -->
-      <li class="nav-item">
+      
+      <!-- <li class="nav-item">
         <a class="nav-link links navLinks tracking-in-expand"  routerLink ='/about' routerLinkActive='active'><i class="fa fa-user"></i>About</a>
-      </li>
+      </li> -->
       <li class="nav-item">
         <a class="nav-link links navLinks tracking-in-expand" routerLink ='/forsale' routerLinkActive='active'> 
           <i class="fa fa-home" aria-hidden="true"></i>Listings</a>
       </li>
       <li class="nav-item" *ngIf="(accountService.currentUser$ | async)===null">
-        <a class="nav-link links navLinks tracking-in-expand" routerLink ='/login' routerLinkActive='active'>Login</a>
+        <a class="nav-link links navLinks tracking-in-expand" routerLink ='/login' routerLinkActive='active'><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a>
       </li>       
       <li class="nav-item" *ngIf="(accountService.currentUser$ | async)" >
         <a class="nav-link links navLinks tracking-in-expand"  routerLink ='/builder-listing' routerLinkActive='active'><i class="fa fa-building-o" aria-hidden="true"></i>Builder's Special</a>
@@ -27,21 +24,6 @@
       <li class="nav-item" *ngIf="(accountService.currentUser$ | async)" >
         <a class="nav-link links navLinks tracking-in-expand" (click)='logout()' routerLink ='/home' routerLinkActive='active'><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
      </li>
-      <!-- <li class="nav-item" *ngIf="(accountService.currentUser$ | async)"> -->
-        <!--  <a class="nav-link links navLinks tracking-in-expand" (click)='logout()' routerLink ='/home' routerLinkActive='active'>Logout</a> -->
-      <!-- </li>  -->
-      <!-- <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
-        <ul class="dropdown-menu" aria-labelledby="dropdown01">
-          <li><a class="dropdown-item" routerLink='/home'>Home</a></li>
-          <li><a class="dropdown-item" routerlink='/loginregister'></a></li>
-        </ul>
-      </li> 
-      <form class="d-flex " *ngIf="(accountService.currentUser$ | async)===null" [formGroup]"loginForm" (ngSubmit)="login()">
-        <input class=" entry me-0 mr-2" formControlName="email" type="text" type="Email" placeholder="Email" >
-        <input class="  entry me-0 mr-2" formControlName="password" type="Password" placeholder="Password" >
-        <button class="btn btn-outline-success" type="submit">Log In</button>
-      </form>-->
     </ul>
     <div class="collapse navbar-collapse" *dropdownMenu id="navbarsExampleDefault">
       <ul class="navbar-nav ml-auto mb-2 mb-md-0" >       
@@ -63,40 +45,6 @@
         <li class="nav-item" *ngIf="(accountService.currentUser$ | async)" >
           <a class="nav-link links navLinks"  routerLink ='/builder-listing' routerLinkActive='active'><i class="fa fa-building-o" aria-hidden="true"></i>Builder's Special</a>
         </li>
-<!--         <form class="d-flex authForm" *ngIf="(accountService.currentUser$ | async)===null" [formGroup]="loginForm" (ngSubmit)="login()">
-          <input class=" loginFormDrpDwn entry me-0 mr-2" formControlName="email" type="text" type="Email" placeholder="Email" >
-          <input class=" loginFormDrpDwn entry me-0 mr-2" formControlName="password" type="Password" placeholder="Password" >
-          <button class="submit btn btn-outline-success" type="submit">Login</button>
-        </form> -->
-        
-        <!-- <li class="nav-item" *ngIf="(accountService.currentUser$ | async)===null">
-          <a class="nav-link links navLinks" routerLink ='/loginregister' routerLinkActive='active'>Register</a>
-        </li> 
-       <li class="nav-item" *ngIf="(accountService.currentUser$ | async)" >
-          <a class="nav-link links navLinks" (click)='logout()' routerLink ='/home' routerLinkActive='active'>Logout</a>
-        </li>  -->
-        <!-- <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
-          <ul class="dropdown-menu" aria-labelledby="dropdown01">
-            <li><a class="dropdown-item" routerLink='/home'>Home</a></li>
-            <li><a class="dropdown-item" routerlink='/loginregister'></a></li>
-          </ul>
-        </li> -->
       </ul>
     </div>
-
-     
-      <!-- <form *ngIf="(accountService.currentUser$ | async)===null" [formGroup]="loginForm" class="d-flex pb-2" (ngSubmit)="login()">
-        <div class="group">
-          <button type="submit" class="signInButton" >Sign In</button>
-          <label  class="stack">Email</label>
-          <input  formControlName="email" type="text" class="input">
-        </div>
-        <div class="group">
-          <label class="stack">Password</label>
-          <input  formControlName="password" type="password" class="input">
-        </div>
-      </form> -->
-
-
 </nav>

@@ -1,348 +1,339 @@
-<img src="{{listing.listingPictures}}" class="image-devices" onerror="this.onerror=null; this.
-src='../assets/NoPhotoAvailable.jpg';" alt="...">
 
 
-<main class="delta" style="padding-top: 3%;">
-
-
-
-
-
-
-    <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
-  
-    <div class="container marketing" >
-  
-      <div class="listingImages roll-in-blurred-left">
-        <div class="imageBackground shade" >
-          <img src="{{listing.listingPictures}}" class="card-img-top p-0 image" onerror="this.onerror=null; this.src='../assets/NoPhotoAvailable.jpg';" alt="...">
-        </div>
-                  <!--img class="img" src="{{listing.listingPictures}}"-->
-      </div>
-  
-  
-      <!-- START THE FEATURETTES -->
-  
-      <hr class="featurette-divider line">
-  
-      <div class=" row featurette mainText main-font puff-in-center">
-        <div class="col-md-7 alignCenter">
-          <h2 class="featurette-heading priceText">{{listing.price}}</h2>
-          <div class="property-details mb-1 detailsText">
-            <span class="property-details-item pr-1">{{listing.bedrooms}} Beds</span>
-            <span class="property-details-item pr-1 pl-1">{{listing.bathTotals}} Baths</span>
-            <span class="pl-1" >{{listing.estimatedSquareFeet | number:'.0-2'}} Sqft</span>
+<img  class="image-device slit-in-horizontal" src ="{{listing.listingPictures}}" onerror="this.onerror=null; this.
+src='../assets/NoPhotoAvailable.jpg';"/>
+<main>
+  <img class="image tilt-in-tl" src ="{{listing.listingPictures}}" onerror="this.onerror=null; this.
+  src='../assets/NoPhotoAvailable.jpg';"/>
+<section class="py-5 service-14">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-6">
+              <h3 class="my-3" id="price">{{listing.price}}</h3>
+              <p id="address" class="mt-5">{{listing.fullAddress}}</p>
+              <button id="request-info"  class="btn  btn-md my-3" (click)="openModalWithClass(requestInfo)">Request Info</button><br>
+              <button id="return-to-listing" class="btn  btn-md my-3" routerLink ='/forsale'>Return to Listings</button>
           </div>
-          <div class="detailsText">
-            <p>{{listing.fullAddress}}</p>
+          <div class="col-lg-6">
+              <div class="mb-5">
+                  <!--img class="rounded img-fluid" src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/features/feature2/market.jpg" alt="wrappixel kit" /-->
+                  <div class="sect">
+                      <h3 class="mt-3">Property Details</h3>
+                      <ul class="mt-5">
+                          <li>Type: {{listing.type}}</li>
+                          <li>Days on Market: {{listing.daysOnMarket}} </li>
+                          <li>Status: {{listing.status}} </li>
+                          <li>Baths: {{listing.bathTotals}}</li>
+                          <li>Full Baths: {{listing.bathFull}}</li>
+                          <li>Half Baths: {{listing.bathsHalf}}</li>
+                          <li>Beds: {{listing.bedrooms}}</li>
+                          <li>Lot Size: {{listing.lotSize}}</li>
+                          <li>Square Ft: {{listing.estimatedSquareFeet | number:'.0-2'}} Sqft</li>
+                      </ul>
+                  </div>
+              </div>
           </div>
-          <span class="interest detailsText">Interested in this home? </span> <br/><button type="button" class="button"  (click)="openModalWithClass(requestInfo)"> Request Info</button>
-        </div>
-        <div class="col-md-5 alignCenter1 propMargin">
-  
-            <h2 class="headerText">Property Details</h2>
-            <ul class="homeDetails ">
-              <li class="lead">Type: {{listing.type}}</li>
-              <li class="lead">Days on Market: {{listing.daysOnMarket}}</li>
-              <li class="lead">Status: {{listing.status}}</li>
-              <li class="lead">Baths: {{listing.bathTotals}}</li>
-              <li class="lead">Full Baths: {{listing.bathFull}}</li>
-              <li class="lead">Half Baths: {{listing.bathsHalf}}</li>
-              <li class="lead">Beds: {{listing.bedrooms}}</li>
-              <li class="lead">Lot Size: {{listing.lotSize}}</li>
-              <li class="lead">Square Ft: {{listing.estimatedSquareFeet | number:'.0-2'}} Sqft</li>
-            </ul>
-        </div>
-      </div>
-  
-  
-      <hr class="featurette-divider line">
-      <h2 class="featurette-heading estTitleText main-font puff-in-center">Estimated Monthly Payment</h2>
-      <h1 class="card-title pricing-card-title title main-font puff-in-center">{{overallPayment | currency:'USD':'symbol':'2.0-2'}} <small class="text-muted">/mo</small></h1>
-      <div class="row featurette mainText main-font puff-in-center">
-        <div class="col-md-7 msize">
-          <span class="infoProgress"> Principal & Interest  </span>
-          <progressbar class="principalProgress bar1"  [max]="overallPayment" [value]="monthlyPayment" >
-  
-          <span>{{(monthlyPayment/overallPayment)| percent}}</span>
-          </progressbar>
-          <span class="infoProgress">Property Taxes</span>
-          <progressbar class="propTaxProgress bar1" [max]="overallPayment" [value]="propTax">
-            <span >{{(propTax/overallPayment)| percent}}</span>
-          </progressbar>
-          <span class="infoProgress">Mortgage Insurance</span>
-          <progressbar class="mortInsProgress bar1" [max]="overallPayment" [value]="pmi">
-            <span >{{(pmi/overallPayment)| percent}}</span>
-          </progressbar>
-          <span class="infoProgress">Property Insurance</span>
-          <progressbar class="homeInsProgress bar1" [max]="overallPayment" [value]="propInsurance">
-            <span >{{(propInsurance/overallPayment)| percent}}</span>
-          </progressbar>
-          <span class="infoProgress">HOA Fees</span>
-          <progressbar class="hoaProgress bar1" [max]="overallPayment" [value]="hoaFee">
-            <span >{{(hoaFee/overallPayment)| percent}}</span>
-          </progressbar>
-        </div>
-  
-        <div class="col-md-7 msize2 puff-in-center">
-  
-          <div class="panel1"></div>
-          <accordion [isAnimated]="true" [closeOthers]="true"  >
-            <accordion-group>
-              <span accordion-heading class="heading bar">
-                Principal & Interest
-              </span>
-              <span accordion-heading class="heading" style="width:100%;">
-                <i class="far fa-arrow-alt-circle-down icon"></i>
-              </span>
-  
-              <span accordion-heading class="heading bar float-right">
-                {{monthlyPayment | currency:'USD':'symbol':'2.0-2'}} /mo
-              </span>
-            <form>
-              <div class="row g-3">
-                <div class="row">
-                  <div class="col-md-6 mt-3 mb-3">
-                    <label for="country">Amt Down Payment</label>
-                    <div class="input-group mb-3">
-                      <input type="text" #amountD class="form-control stack2" aria-label="Amount (to the nearest dollar)" (focusout)="amountDownPayment(amountD.value)" value="{{amtDownPayment | number:'1.0-2'}}">
-                      <div class="input-group-append">
-                        <span class="input-group-text stack">$</span>
-                      </div>
-                    </div>
-  
-                  </div>
-                  <div class="col-md-6 mb-3 mt-3">
-                    <label for="state">% Down Payment</label>
-                    <div class="input-group mb-3">
-                      <input type="number" #interestD class="form-control stack2" aria-label="Amount (to the nearest dollar)" (focusout)="percentageDownPayment(interestD.value)" value="{{percentDownPayment | number:'1.0-2'}}">
-                      <div class="input-group-append">
-                        <span class="input-group-text stack">%</span>
-                      </div>
-                    </div>
-  
-                  </div>
-  
-                </div>
-                <div class="col-sm-6">
-                  <label for="firstName" class="form-label">Loan Program</label>
-                  <select #loan class="custom-select stack d-block w-100" id="loan-program" (change)="loanProgram(loan.value)">
-                    <option class="stack stack3" value=30>30-year fixed</option>
-                    <option class="stack stack3" value=15>15-year fixed</option>
-                    <option class="stack stack3" value="ARM5">5/1 ARM</option>
-                  </select>
-                  <div class="invalid-feedback">
-                    Valid first name is required.
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <label for="lastName" class="form-label ">Interest Rate</label>
-                  <div class="input-group   mb-3">
-                    <input  #interestR type="number" value="0" class="form-control stack2"  (focusout)="interestRate(interestR.value)">
-                    <div class="input-group-append">
-                      <span class="input-group-text stack">%</span>
-                    </div>
-                  </div>
-                  <div class="invalid-feedback">
-                    Valid last name is required.
-                  </div>
-                </div>
-  
-              </div>
-              <hr class="my-4">
-            </form>
-            </accordion-group>
-            <accordion-group>
-              <span accordion-heading class="heading bar">
-                Property Taxes
-              </span>
-              <span accordion-heading class="heading">
-                <i class="far fa-arrow-alt-circle-down icon"></i>
-              </span>
-              <span accordion-heading class="heading  bar float-right">
-                {{propTax | currency:'USD':'symbol':'2.0-2'}} /mo
-              </span>
-              <form class="needs-validation" novalidate="">
-                <div class="input-group">
-  
-                  <input type="text" #tax value="0"class="form-control stack2" placeholder="0" required="" (focusout)="propertyTax(tax.value)">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text stack">%</span>
-                  </div>
-                  <div class="invalid-feedback" style="width: 100%;">
-                    Your username is required.
-                  </div>
-                </div>
-                <hr class="my-4">
-                <!-- <button class="w-100 btn btn-primary btn-lg" type="submit">Calculate</button> -->
-              </form>
-            </accordion-group>
-            <accordion-group>
-              <span accordion-heading class="heading bar">
-                Mortgage Insurance
-              </span>
-              <span accordion-heading class="heading" style="width:100%;">
-                <i class="far fa-arrow-alt-circle-down icon"></i>
-              </span>
-              <span accordion-heading class="heading bar float-right">
-                {{pmi | currency:'USD':'symbol':'2.0-2'}} /mo
-              </span>
-              <div class="col-12 mortageIns">
-                <button type="button" class="pmiButton" (click)="pmiSwitch()">{{pmiButton}}</button><span style="margin-left:2%;" ></span><label>Include mortgage insurance</label>
-              </div>
-            </accordion-group>
-  
-            <accordion-group>
-              <span accordion-heading class="heading bar">
-                Home Insurance
-              </span>
-              <span accordion-heading class="heading" style="width:100%;">
-                <i class="far fa-arrow-alt-circle-down icon"></i>
-              </span>
-              <span accordion-heading class="heading bar float-right">
-                {{propInsurance | currency:'USD':'symbol':'2.0-2'}} /mo
-              </span>
-              <form class="needs-validation" novalidate="">
-                <div class="input-group">
-                  <input type="text" #pInsurance class="form-control stack2" placeholder="0" required="" (focusout)="propertyInsurance(pInsurance.value)">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text stack">/mo</span>
-                  </div>
-                  <div class="invalid-feedback" style="width: 100%;">
-                    Your username is required.
-                  </div>
-                </div>
-                <hr class="my-4">
-                <!-- <button class="w-100 btn btn-primary btn-lg" type="submit">Calculate</button> -->
-              </form>
-            </accordion-group>
-  
-            <accordion-group>
-              <span accordion-heading class="heading bar">
-                HOA fees
-              </span>
-              <span accordion-heading class="heading" style="width:100%;">
-                <i class="far fa-arrow-alt-circle-down icon"></i>
-              </span>
-              <span accordion-heading class="heading bar float-right">
-                {{hoaFee | currency:'USD':'symbol':'2.0-2'}} /mo
-              </span>
-              <form class="needs-validation" novalidate="">
-                <div class="input-group">
-                  <input type="number" #hoaF class="form-control stack2"  placeholder="0" required="" (focusout)="hoaFees(hoaF.value)" >
-                  <div class="input-group-prepend">
-                    <span class="input-group-text stack">/mo</span>
-                  </div>
-                  <div class="invalid-feedback" style="width: 100%;">
-                    Your username is required.
-                  </div>
-                </div>
-                <hr class="my-4">
-              </form>
-            </accordion-group>
-          </accordion>
-  
-        </div>
-      </div>
-  
-      <hr class="featurette-divider line">
-      
-      <div class="redirect">
-        <a class="requestInfoHome" type="button" (click)="openModalWithClass(requestInfo)"> Request Info</a>
-        <br/>
-        <a type="button" class="redirectButtonListing" style="margin-bottom: 20%;" routerLink ='/forsale' > Return To Listings</a>
-      </div>
-      
-      
-      
-  
-    </div>
-  </main>
-  
-    <ng-template #requestInfo>
-      
-      
-      <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
-        <span aria-hidden="true" >&times;</span>
-      </button>
-      <h1 id="inquire-title">Register</h1>
-        <p id="inquire-subtitle">Please fill in this form to create an account.</p>       
-          <form class="inquire-form"  [formGroup]="contactForm"(ngSubmit)="sendMail()" novalidate="">
-            <div class="modal-box">
-              <label for="firstName"><b>First Name</b></label>
-              <input type="text" formControlName="firstName" class="form-control stack4"  placeholder="Enter First Name" name="first-name" id="first-name" required>
-              <div *ngIf="f.firstName.touched && f.firstName.errors" >
-                <div class="pb-3 pt-4 valid"   *ngIf="f.firstName.errors">First Name is required</div>
-              </div>
-              <label for="firstName"><b>Last Name</b></label>
-              <input type="text" formControlName="lastName" class="form-control stack4" placeholder="Enter Last Name" 
-           name="last-name" id="last-name" required>
-              <div *ngIf="f.lastName.touched && f.lastName.errors" >
-                <div class="pb-3 pt-4 valid"   *ngIf="f.lastName.errors">Last Name is required</div>
-              </div>
-              <label for="email"><b>Email</b></label>
-              <input type="text" formControlName="email" class="form-control stack4"  placeholder="Enter Email" 
-           name="email" id="email" required>
-              <div *ngIf="f.email.touched && f.email.errors">
-                <div  class="pb-3 pt-4 valid" *ngIf="f.email.errors.required">Email is required</div>
-                <div  class="pb-3 pt-4 valid" *ngIf="f.email.errors.email">Email must be a valid email address</div>
-              </div>
-               <label for="Phone">Phone</label>
-              <input type="text" formControlName="phone" class="form-control stack4" id="phone" placeholder="Enter Number" required="">
-              <div *ngIf="f.phone.touched && f.phone.errors" class="alert">
-                 <div *ngIf="f.phone.errors.required">Phone number is required</div>
-                 <div *ngIf="f.phone.errors">Invalid phone number</div> 
-              </div> 
+          <!-- Column -->
+          <div class="col-lg-6">
+              <div class="sect">
+                  <h3>Estimated Monthly Payment</h3>
+                  <h3 style="text-align: center;">{{overallPayment| currency:'USD':'symbol':'2.0-0'}}</h3>
 
-              <label for="email"><b>Message</b></label>
-              <input type="textarea"  style="height: 250px;" class="form-control stack4"  placeholder=""   id="address" required>
-            </div>
-            <hr class="mb-4"> 
-            <button class="contactButton"  [disabled]="!contactForm.valid" type="submit">Continue</button>
-            <!-- <div class="row"> -->
-              <!-- <div class="col-md-6 mb-3"> -->
-                <!-- <label for="firstName">First name</label> -->
-                <!--  <input type="text"  formControlName="firstName" class="form-control stack4" id="firstName" placeholder="" value="" required=""> --> 
-                <!-- <div *ngIf="f.firstName.touched && f.firstName.errors" class="alert"> -->
-                  <!-- <div *ngIf="f.firstName.errors">First Name is required</div> -->
-                <!-- </div> -->
-              <!-- </div> -->
-              <!-- <div class="col-md-6 mb-3"> -->
-                <!-- <label for="lastName">Last name</label> -->
-                <!--  <input type="text" formControlName="lastName" class="form-control stack4" id="lastName" placeholder="" value="" required=""> --> 
-                <!-- <div *ngIf="f.lastName.touched && f.lastName.errors" class="alert"> -->
-                  <!-- <div *ngIf="f.lastName.errors.required">Last Name is required</div> -->
-                <!-- </div> -->
-              <!-- </div> -->
-            <!-- </div> -->
-            <!-- <div class="mb-3"> -->
-              <!-- <label for="email">Email <span class="text-muted">(Optional)</span></label> -->
-              <!--  <input type="email" formControlName="email" class="form-control stack4" id="email" placeholder="you@example.com">-->
-              <!-- <div *ngIf="f.email.touched && f.email.errors" class="alert"> -->
-                <!-- <div *ngIf="f.email.errors.required">Email is required</div> -->
-                <!-- <div *ngIf="f.email.errors">Invalid email address</div> -->
-              <!-- </div> -->
-            <!-- </div>   -->
-            <!-- <div class="mb-3"> -->
-              <!-- <label for="address">Phone</label> -->
-              <!-- <input type="text" formControlName="phone" class="form-control stack4" id="address" placeholder="" required=""> -->
-              <!-- <div *ngIf="f.phone.touched && f.phone.errors" class="alert"> -->
-                <!-- <div *ngIf="f.phone.errors.required">Phone number is required</div> -->
-                <!-- <div *ngIf="f.phone.errors">Invalid phone number</div> -->
-              <!-- </div> -->
-            <!-- </div> -->
-            <!-- <div class="mb-3"> -->
-              <!-- <label for="address">Message</label> -->
-              <!-- <textarea type="textarea" class="form-control stack4" style="height: 200px;" id="address" placeholder="" required=""></textarea>  -->
-            <!-- </div> -->
-  
-  
-            <!-- <hr class="mb-4"> -->
-            <!-- <button class="contactButton"  [disabled]="!contactForm.valid" type="submit">Continue</button> -->
-          </form>
-   
- 
-    </ng-template>
-  
+                  <!-- <img class="rounded img-fluid" src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/features/feature2/fruit.jpg" alt="wrappixel kit" /> -->
+
+                 
+                    <div>
+                      
+                        <canvas baseChart
+                          [data]="doughnutChartData"
+                          [legend]="true"
+                          [type]="doughnutChartType"
+                          >
+                        </canvas>
+
+                    </div>
+                 
+                 <!--  <div class="mt-5" id="chart">
+                    <span class="infoProgress mt-5"> Principal & Interest  </span>
+                    <progressbar class="principalProgress bar1"  [max]="overallPayment" [value]="monthlyPayment" >
+            
+                    <span>{{(monthlyPayment/overallPayment)| percent}}</span>
+                    </progressbar>
+                    <span class="infoProgress">Property Taxes</span>
+                    <progressbar class="propTaxProgress bar1" [max]="overallPayment" [value]="propTax">
+                        <span >{{(propTax/overallPayment)| percent}}</span>
+                    </progressbar>
+                    <span class="infoProgress">Mortgage Insurance</span>
+                    <progressbar class="mortInsProgress bar1" [max]="overallPayment" [value]="pmi">
+                        <span >{{(pmi/overallPayment)| percent}}</span>
+                    </progressbar>
+                    <span class="infoProgress">Property Insurance</span>
+                    <progressbar class="homeInsProgress bar1" [max]="overallPayment" [value]="propInsurance">
+                        <span >{{(propInsurance/overallPayment)| percent}}</span>
+                    </progressbar>
+                    <span class="infoProgress">HOA Fees</span>
+                    <progressbar class="hoaProgress bar1" [max]="overallPayment" [value]="hoaFee">
+                        <span >{{(hoaFee/overallPayment)| percent}}</span>
+                    </progressbar>
+                  </div> -->
+              </div>
+          </div>
+          <!-- Column -->
+          <div class="col-lg-6 mt-5 mb-4 ">
+            <div class="accordion mt-5" id="accordionExample">
+                <div class="accordion-item ">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <span style="width:100%;">
+                            Principal & Interest
+                        </span> 
+                        <span class="heading-bar float-right">
+                          {{monthlyPayment | currency:'USD':'symbol':'2.0-2'}} /mo
+                        </span>
+                    </button>
+                  </h2>
+                  <div style="z-index:1" id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <form>
+                            <div class="row g-3">
+                              <div class="row">
+                                <div class="col-md-6 mt-3 mb-3">
+                                  <label for="country">Amt Down Payment</label>
+                                  <div class="input-group mb-3">
+                                    <input type="text" #amountD class="form-control stack2" aria-label="Amount (to the nearest dollar)" (focusout)="amountDownPayment(amountD.value)" value="{{amtDownPayment | number:'1.0-2'}}">
+                                    <div class="input-group-append">
+                                      <span class="input-group-text stack">$</span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-6 mb-3 mt-3">
+                                  <label for="state">% Down Payment</label>
+                                  <div class="input-group mb-3">
+                                    <input type="number" #interestD class="form-control stack2" aria-label="Amount (to the nearest dollar)" (focusout)="percentageDownPayment(interestD.value)" value="{{percentDownPayment | number:'1.0-2'}}">
+                                    <div class="input-group-append">
+                                      <span class="input-group-text stack">%</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-sm-6">
+                                <label for="firstName" class="form-label">Loan Program</label>
+                                <select #loan class="stack" id="loan-program" (change)="loanProgram(loan.value)">
+                                  <option class="stack stack3" value=30>30-year fixed</option>
+                                  <option class="stack stack3" value=15>15-year fixed</option>
+                                  <option class="stack stack3" value="ARM5">5/1 ARM</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                  Valid first name is required.
+                                </div>
+                              </div>
+                              <div class="col-sm-6">
+                                <label for="lastName" class="form-label ">Interest Rate</label>
+                                <div class="input-group   mb-3">
+                                  <input  #interestR type="number" value="0" class="form-control stack2"  (focusout)="interestRate(interestR.value)">
+                                  <div class="input-group-append">
+                                    <span class="input-group-text stack">%</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <span style="width:100%;">
+                            Property Taxes
+                          </span>
+                          <span class="heading-bar float-right">
+                            {{totalTax | currency:'USD':'symbol':'2.0-2'}} /mo
+                          </span>
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <form class="needs-validation" novalidate="">
+                            <div class="input-group ">
+                              <input type="text" #tax class="form-control stack2 "  required="" placeholder="{{propTax}}" (focusout)="propertyTax(tax.value)">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text stack">%</span>
+                              </div>
+                            </div>
+                            <hr class="my-4">
+                            <!-- <button class="w-100 btn btn-primary btn-lg" type="submit">Calculate</button> -->
+                          </form>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <span style="width:100%;">
+                            Mortgage Insurance
+                          </span>
+                          <span class="heading-bar float-right">
+                            {{pmi | currency:'USD':'symbol':'2.0-2'}} /mo
+                          </span>
+                    </button>
+                  </h2>
+                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="col-12 mortageIns">
+                            <button type="button" id="pmi-button" (click)="pmiSwitch()">{{pmiButton}}</button><span style="margin-left:2%;" ></span><label>Include mortgage insurance</label>
+                          </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        <span style="width:100%;">
+                            Home Insurance
+                          </span>
+                          <span class="heading-bar float-right">
+                            {{propInsurance | currency:'USD':'symbol':'2.0-2'}} /mo
+                          </span>
+                      </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                        <form  novalidate="">
+                            <div class="input-group">
+                              <input type="text" #pInsurance class="form-control stack2 mt-5" placeholder="0" required="" (focusout)="propertyInsurance(pInsurance.value)">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text stack mt-5">/mo</span>
+                              </div>
+                            </div>
+                            <!-- <button class="w-100 btn btn-primary btn-lg" type="submit">Calculate</button> -->
+                          </form>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        <span style="width:100%;">
+                            HOA fees
+                          </span>
+                          <span class="heading-bar float-right">
+                            {{hoaFee | currency:'USD':'symbol':'2.0-2'}} /mo
+                          </span>
+                      </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                        <form  novalidate="">
+                            <div class="input-group">
+                              <input type="number" #hoaF class="form-control stack2 mt-5"  placeholder="0" required="" (focusout)="hoaFees(hoaF.value)" >
+                              <div class="input-group-prepend">
+                                <span class="input-group-text stack  mt-5">/mo</span>
+                              </div>
+                            </div>
+                          </form>
+                    </div>
+                  </div>
+                  <div id="mobile-section" class="mt-5">
+                    <button  id="request-info" class="btn  btn-md my-3" (click)="openModalWithClass(requestInfo)">Request Info</button><br>
+                    <button  class="btn  btn-md my-3" routerLink ='/forsale'>Return to Listings</button>
+                  </div>
+              </div>
+          </div>
+          <!-- Column -->
+      </div>
+  </div>
+</section>
+</main>
+<ng-template #requestInfo>
+  <button 
+    *ngIf="isSent!=true"  type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true" style="text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);" >&times;</span>
+  </button>
+  <button 
+    *ngIf="isSent==true"  type="button" class="close" aria-label="Close" (click)="loadListing()">
+    <span aria-hidden="true" >&times;</span>
+  </button>
+  <div *ngIf="isSent!=true" class="contact-box ml-3">
+    <h1  class="font-weight-light mt-2">Property Inquiry</h1>
+    <form class="mt-4" [formGroup]="contactForm"(ngSubmit)="sendMail()" novalidate="">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="form-group mt-2">
+            <input formControlName="firstName" class="form-control"  placeholder="Enter First Name" name="first-name" id="first-name" required>
+          </div>
+          <div *ngIf="f.firstName.touched && f.firstName.errors" >
+            <div class="pb-3 pt-4 valid"   *ngIf="f.firstName.errors">First Name is required</div>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="form-group mt-2">
+            <input formControlName="lastName" class="form-control" placeholder="Enter Last Name" 
+            name="last-name" id="last-name" required>
+          </div>
+          <div *ngIf="f.lastName.touched && f.lastName.errors" >
+            <div class="pb-3 pt-4 valid"   *ngIf="f.lastName.errors">Last Name is required</div>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="form-group mt-2">
+            <input  formControlName="email" class="form-control"  placeholder="Enter Email" 
+            name="email" id="email" required>
+          </div>
+          <div *ngIf="f.email.touched && f.email.errors">
+            <div  class="pb-3 pt-4 valid" *ngIf="f.email.errors.required">Email is required</div>
+            <div  class="pb-3 pt-4 valid" *ngIf="f.email.errors">Email must be a valid email address</div>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="form-group mt-2">
+            <input formControlName="phone" class="form-control stack4" id="phone" placeholder="Enter Number" required="">
+          </div>
+          <div *ngIf="f.phone.touched && f.phone.errors">
+            <div  class="pb-3 pt-4 valid" *ngIf="f.phone.errors.required">Phone number is required</div>
+            <div  class="pb-3 pt-4 valid" *ngIf="f.phone.errors">Invalid phone number</div> 
+         </div> 
+        </div>
+        <div class="col-lg-12">
+          <div class="form-group mt-2">
+            <textarea formControlName="message" class="form-control" rows="3" placeholder="message"></textarea>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="form-group mt-2">
+            <label>
+              <span id="contact-agent">Contact your agent?&nbsp;&nbsp;&nbsp;</span>
+              <input type="checkbox"  (click)="toContactAgent($event)">
+              <!--(click)=activeStatus($event) [checked]="activeSelected"-->
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+        <div  class="col-lg-12">
+          <div class="form-group mt-2">
+            <input *ngIf="contactAgent==true" formControlName="agentName" class="form-control"  placeholder="Agent's Name" name="agent-name" id="agent-name" >
+          </div>
+          <div class="form-group mt-2">
+            <input *ngIf="contactAgent==true"  formControlName="agentEmail"  class="form-control"  placeholder="Agent's Email" name="agent-email" id="agent-email" >
+          </div>
+          <div class="form-group mt-2">
+            <input *ngIf="contactAgent==true"  formControlName="agentPhone" class="form-control"  placeholder="Agent's Phone Number" name="agent-number" id="agent-number" >
+          </div>
+        </div>
+        <div class="col-lg-12 submit-container">
+          <button type="submit" [disabled]="!contactForm.valid" class="btn "><span> SUBMIT</span></button>
+        </div>
+      </div>
+      <div id="terms" class="col-lg-12">
+        <p>By pressing “Submit", you agree that I or a  real estate professionals from Burke Real Estate Consultants, Inc. may call/text you at the number provided above, including properties related to your inquiry. This contact may involve automated or pre-recorded voice technology. Message & data rates may apply. You also agree that I may share any info you submit and info related to your activity on their site with this property’s listing agent. You don’t need to consent as a condition of any purchase and can revoke your consent at any time. You also agree to the  <a  routerLink="/terms/{{listId}}"  (click)="modalRef.hide()">Terms of Use</a> and  <a  routerLink="/terms/{{listId}}"  (click)="modalRef.hide()">Privacy Policy.</a></p>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="isSent==true" class="contact-box ml-3">
+    <div class="container">
+      <h1 id="thankyou">Thank You</h1>
+            <h2 class="title mb-3  font-italic">One of our team members or I will reach out to you shortly!</h2>
+        <div class="col-lg-12 mb-5 sent">
+          <button type="submit" *ngIf="isSent!=true" (click)="modalRef.hide();" class="btn "><span> SUBMIT</span></button>
+          <button type="submit"  *ngIf="isSent==true" (click)="loadListing();" class="btn "><span> View listing</span></button>
+        </div>  
+    </div>    
+  </div>
+</ng-template>

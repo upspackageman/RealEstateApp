@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 using API.Data;
 using API.Entities;
@@ -25,7 +26,10 @@ namespace API.Extensions
             .AddRoleManager<RoleManager<AppRole>>()
             .AddSignInManager<SignInManager<CustomerUser>>()
             .AddRoleValidator<RoleValidator<AppRole>>()
-            .AddEntityFrameworkStores<DataContext>();
+            .AddEntityFrameworkStores<DataContext>()
+            .AddDefaultTokenProviders();
+
+            services.Configure<DataProtectionTokenProviderOptions>(opt => opt.TokenLifespan = TimeSpan.FromHours(2));
             
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>

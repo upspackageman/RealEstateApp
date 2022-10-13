@@ -1,9 +1,100 @@
 <main>
-    <div class="kenburns-top" >
-      <div class="cover" [@banner] = "state" (@banner.done)="onEnd($event)" ng-repeat="cover in UIModel.cover track by cover.id">
-        <h1 class="text-shadow focus-in-expand ">Find your future home</h1>
-        <button class="button button2"> <a routerLink ='/forsale' routerLinkActive='active'>Click Here To Begin!</a> <!-- <a *ngIf="(accountService.currentUser$ | async)===null"  routerLink ='/loginregister' routerLinkActive='active' >Click Here To Begin!</a> --></button>
+  <section class="landing" style="background:linear-gradient(0deg, rgba(14, 35, 54, 0.125), rgba(14, 35, 54, 0.125)),url(https://images.unsplash.com/photo-1630650233871-35a35ff27095?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80); background-repeat:no-repeat; background-size: cover;">
+    <div class="card-body ">
+      <div >       
+          <h1 class="title tracking-in-expand">Welcome to Your Future Home.</h1>
+                        
+      </div>
+      <div>
+          <a class="btn tracking-in-expand" routerLink ='/forsale'><span>Click Here </span></a>
+      </div>
+ 
+    </div>
+  </section>
+  <section class="main-section">
+    <div class="container" >
+          <h2 class="title-mobile">Welcome</h2>
+          <!-- Column -->
+          <div class="d-2">
+              <img class="img-fluid" src="https://media-exp1.licdn.com/dms/image/C4D03AQGjcrAVWp4qyg/profile-displayphoto-shrink_400_400/0/1651185542008?e=1667433600&v=beta&t=wcH_G9gIh0NNTXBNuxuGfOMU4mGwFmKWnQ5xAjkyw8g"  alt="wrapkit" />
+          </div>              
+          <div class="text-box">
+             <h2 class=" title">Welcome</h2>
+             <div>
+                 <p>
+                  Burke Realty agent Beverly Ward is committed to making your buying and selling experience enjoyable, whether you’re looking to upsize, downsize, relocate or invest. Specializing in knowledge of properties at all price points throughout San Diego, Orange, Marin, Sonoma and Napa counties, Beverly works tirelessly to deliver.
+                 </p>
+                     <a routerLink ='/about' routerLinkActive='active' type="submit" class="btn">Learn More</a>
+             </div>
+          </div>
+    </div>
+  </section>
+  <section class="contact-home" style="background:linear-gradient(0deg, rgba(3, 3, 5, 0.068), rgba(6, 7, 1, 0.062)),url(https://images.unsplash.com/photo-1565183928294-7063f23ce0f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80); background-repeat:no-repeat; background-size: cover;">
+    <div class=" contact-form">
+       <h1 class="contact-title">Contact</h1>
+       <form  [formGroup]="contactForm"(ngSubmit)="sendMail(emailSent)" novalidate="">
+         <div class="row">
+           <div class="col-lg-12">
+             <div class="form-group mt-2">
+               <input formControlName="firstName"  class="form-control shadow-none" type="text" placeholder="First Name">
+             </div>
+             <div *ngIf="f.firstName.touched && f.firstName.errors" >
+              <div class="pb-3 pt-4 valid"   *ngIf="f.firstName.errors">First Name is required</div>
+            </div>
+           </div>
+           <div class="col-lg-12">
+             <div class="form-group mt-2">
+               <input formControlName="lastName"  class="form-control shadow-none" type="text" placeholder="Last Name">
+             </div>
+             <div *ngIf="f.lastName.touched && f.lastName.errors" >
+              <div class="pb-3 pt-4 valid"   *ngIf="f.lastName.errors">Last Name is required</div>
+            </div>
+           </div>
+           <div class="col-lg-12">
+             <div class="form-group mt-2">
+               <input formControlName="email" class="form-control shadow-none" type="email" placeholder="email address">
+             </div>
+             <div *ngIf="f.email.touched && f.email.errors">
+              <div  class="pb-3 pt-4 valid" *ngIf="f.email.errors.required">Email is required</div>
+              <div  class="pb-3 pt-4 valid" *ngIf="f.email.errors">Email must be a valid email address</div>
+            </div>
+           </div>
+           <div class="col-lg-12">
+             <div class="form-group mt-2">
+               <input formControlName="phone"  class="form-control shadow-none" type="text" placeholder="phone">
+             </div>
+             <div *ngIf="f.phone.touched && f.phone.errors">
+              <div  class="pb-3 pt-4 valid" *ngIf="f.phone.errors.required">Phone number is required</div>
+              <div  class="pb-3 pt-4 valid" *ngIf="f.phone.errors">Invalid phone number</div> 
+           </div> 
+           </div>
+           <div class="col-lg-12">
+             <div class="form-group mt-2">
+               <textarea formControlName="message"  class="form-control shadow-none" rows="3" placeholder="message"></textarea>
+             </div>
+           </div>
+           <div class="col-lg-12">
+             <button type="submit" [disabled]="!contactForm.valid" class="btn"><span> SUBMIT</span></button>
+           </div>
+         </div>
+       </form>
+    </div>
+  </section>
+</main>
+
+
+<ng-template #emailSent>
+  <div class="contact-box">
+    <div class="container">
+      <h1>Thank You</h1>
+        <br>
+        <div class="contact-text">
+          <h2>One of our team members or I will reach out to you shortly!</h2>
+        </div>
+      
+      <div class="col-lg-12">
+        <button type="submit" (click)="closeModal();" class="btn "><span> CLOSE</span></button>
       </div>
     </div>
-  </main>
-  
+  </div>
+</ng-template>

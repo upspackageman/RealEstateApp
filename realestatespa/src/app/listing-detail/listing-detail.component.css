@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inria+Serif&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Heebo&family=Noto+Serif&display=swap');
 @import url(https://fonts.googleapis.com/css?family=Oswald:300,400,700);
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic);
+
 @-webkit-keyframes roll-in-blurred-left {
   0% {
     -webkit-transform: translateX(-1000px) rotate(-720deg);
@@ -68,1562 +67,1801 @@
   }
 }
 
+@-webkit-keyframes slit-in-diagonal-2 {
+        0% {
+          -webkit-transform: translateZ(-800px) rotate3d(-1, 1, 0, -90deg);
+                  transform: translateZ(-800px) rotate3d(-1, 1, 0, -90deg);
+          -webkit-animation-timing-function: ease-in;
+                  animation-timing-function: ease-in;
+          opacity: 0;
+        }
+        54% {
+          -webkit-transform: translateZ(-160px) rotate3d(-1, 1, 0, -87deg);
+                  transform: translateZ(-160px) rotate3d(-1, 1, 0, -87deg);
+          -webkit-animation-timing-function: ease-in-out;
+                  animation-timing-function: ease-in-out;
+          opacity: 1;
+        }
+        100% {
+          -webkit-transform: translateZ(0) rotate3d(-1, 1, 0, 0);
+                  transform: translateZ(0) rotate3d(-1, 1, 0, 0);
+          -webkit-animation-timing-function: ease-out;
+                  animation-timing-function: ease-out;
+        }
+      }
+      @keyframes slit-in-diagonal-2 {
+        0% {
+          -webkit-transform: translateZ(-800px) rotate3d(-1, 1, 0, -90deg);
+                  transform: translateZ(-800px) rotate3d(-1, 1, 0, -90deg);
+          -webkit-animation-timing-function: ease-in;
+                  animation-timing-function: ease-in;
+          opacity: 0;
+        }
+        54% {
+          -webkit-transform: translateZ(-160px) rotate3d(-1, 1, 0, -87deg);
+                  transform: translateZ(-160px) rotate3d(-1, 1, 0, -87deg);
+          -webkit-animation-timing-function: ease-in-out;
+                  animation-timing-function: ease-in-out;
+          opacity: 1;
+        }
+        100% {
+          -webkit-transform: translateZ(0) rotate3d(-1, 1, 0, 0);
+                  transform: translateZ(0) rotate3d(-1, 1, 0, 0);
+          -webkit-animation-timing-function: ease-out;
+                  animation-timing-function: ease-out;
+        }
+      }
+      
+      @-webkit-keyframes slit-in-horizontal {
+        0% {
+          -webkit-transform: translateZ(-800px) rotateX(90deg);
+                  transform: translateZ(-800px) rotateX(90deg);
+          opacity: 0;
+        }
+        54% {
+          -webkit-transform: translateZ(-160px) rotateX(87deg);
+                  transform: translateZ(-160px) rotateX(87deg);
+          opacity: 1;
+        }
+        100% {
+          -webkit-transform: translateZ(0) rotateX(0);
+                  transform: translateZ(0) rotateX(0);
+        }
+      }
+
+@keyframes slit-in-horizontal {
+        0% {
+          -webkit-transform: translateZ(-800px) rotateX(90deg);
+                  transform: translateZ(-800px) rotateX(90deg);
+          opacity: 0;
+        }
+        54% {
+          -webkit-transform: translateZ(-160px) rotateX(87deg);
+                  transform: translateZ(-160px) rotateX(87deg);
+          opacity: 1;
+        }
+        100% {
+          -webkit-transform: translateZ(0) rotateX(0);
+                  transform: translateZ(0) rotateX(0);
+        }
+      }
+      
+
+.slit-in-horizontal {
+	-webkit-animation: slit-in-horizontal 1.2s ease-out both;
+	        animation: slit-in-horizontal 1.2s ease-out both;
+}
+
+.slit-in-diagonal-2 {
+	-webkit-animation: slit-in-diagonal-2 1.2s ease-out both;
+	        animation: slit-in-diagonal-2 1.2s ease-out both;
+}
+
+@-webkit-keyframes tilt-in-tl {
+        0% {
+          -webkit-transform: rotateY(35deg) rotateX(20deg) translate(-250px, -250px) skew(12deg, 15deg);
+                  transform: rotateY(35deg) rotateX(20deg) translate(-250px, -250px) skew(12deg, 15deg);
+          opacity: 0;
+        }
+        100% {
+          -webkit-transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
+                  transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
+          opacity: 1;
+        }
+      }
+      @keyframes tilt-in-tl {
+        0% {
+          -webkit-transform: rotateY(35deg) rotateX(20deg) translate(-250px, -250px) skew(12deg, 15deg);
+                  transform: rotateY(35deg) rotateX(20deg) translate(-250px, -250px) skew(12deg, 15deg);
+          opacity: 0;
+        }
+        100% {
+          -webkit-transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
+                  transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
+          opacity: 1;
+        }
+      }
+      
+      .tilt-in-tl {
+              position: relative;
+              z-index: 0 !important;
+	-webkit-animation: tilt-in-tl 1.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: tilt-in-tl 1.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
 
 main{
-  width: 100%;
-  height: 100%;
-  font-family:'Oswald', sans-serif; 
-
-
-}
-
-::ng-deep .close{
-
-  font-size: 50px !important;
-}
-
-::ng-deep .close:focus{
-  outline:none;
-  color:red;
-}
-
-::ng-deep .modal-title{
-  font-size: 2rem;
-  margin-left: 117px;
-  margin-top: 10px;
+        display:flex;
+        width: 100%;
+        font-family:'Oswald', sans-serif;     
+        font-size: 28px;
+        flex-wrap:wrap;
+        justify-content: center;
 }
 
 
-.roll-in-blurred-left {
-	-webkit-animation: roll-in-blurred-left 0.65s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
-	        animation: roll-in-blurred-left 0.65s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
-}
-
-.puff-in-center {
-	-webkit-animation: puff-in-center 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
-	        animation: puff-in-center 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
-}
-
-.redirect{
-  margin-left: 35%;
-  width: 60%;
-  margin-bottom:10%;
-}
-
-.requestInfoHome{
-  outline: none;
-  border:none;
-  cursor: pointer;
-  width:50%;
-  height: 80px;
-  border-radius: 2px;
-  font-size: 2rem;
-  line-height: 2;
-  border-style:outset !important;
-  color:black;
-  text-align: center;
-  background:linear-gradient(130deg, rgba(199, 255, 255,1) 10%, rgba(162, 255, 227,1) 50%, rgba(36, 207, 170,1) 100%);
-  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.24),0 1px 3px 0 rgba(0,0,0,0.19);
-}
-
-.requestInfoHome:hover{
-  text-decoration: none;
-  border-style:groove !important;
-  color:rgb(65, 53, 53);
-  background:linear-gradient(130deg, rgb(199, 255, 255) 10%, rgb(162, 255, 227) 30%, rgb(36, 207, 170) 100%);
-  animation-duration: 1s;
- }
- 
- .alert{
-  color: crimson;
-  font-weight: 500;
-  animation-duration: 1s;
- }
 
 
- .redirectButtonListing{
-  outline: none;
-  border:none;
-  cursor: pointer;
-  width:50%;
-  height: 80px;
-  margin-top:4%;
-  border-radius: 2px;
-  font-size: 2rem;
-  line-height: 2;
-  border-style:outset !important;
-  border-color:whitesmoke;
-  color:black;
-  text-align: center;
-  background:linear-gradient(130deg, rgb(255, 245, 252) 10%, rgb(203, 197, 252) 50%, rgb(162, 216, 252) 100%);
-  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.24),0 1px 3px 0 rgba(0,0,0,0.19);
-}
+::ng-deep footer{
+        width: 100%;
+      }
 
-.redirectButtonListing:hover{
-  text-decoration: none;
-  border-style:groove !important;
-  color:rgb(65, 53, 53);
-  background:linear-gradient(130deg, rgb(255, 245, 252) 10%, rgb(203, 197, 252) 50%, rgb(162, 216, 252) 100%);
-
-  animation-duration: 1s;
- }
-
-
-
-
-
-.image-devices{
-  display:none;
-}
+#loan-program{
+        border-color:#d8d67f;
+        width: 100%!important;
+        display: inline-block;
+        outline-color: #d8d67f;
+      }
 
 .image{
-  
-  height: 100%;
-
-}
-
-.container{
-  margin-top:5% !important;
-}
-.mainText{
-  font-size: 18px;
-  letter-spacing: 2px !important;
-}
-
-.msize{
-  left:21rem;
-}
-
-.msize2{
-  left:15rem;
-}
-
-
-
-.listingImages{
-  margin-top:5%;
-  width: 1300px !important;
-  right:400px;
-}
-
-.imageBackground{
-  height: 750px ;
-  border: none;
-
-}
-
-.estTitleText{
-  letter-spacing: 2px;
-  text-align: center;
-}
-
-.shade{
-  box-shadow:  0px 6px 20px 0 rgba(0,0,0,.775);
-}
-
-.homeDetails{
-  width:100%;
-}
-
-.homeDetails li{
-  list-style:none;
-  color:  #000000;
- 
-}
-
-.property-details{
- width:200rem;
-}
-.property-details-item{
-  border-right: 1px solid #4a4a4a;
-}
-
-.percentage{
-  position: absolute;
-  right: 0px;
-  width:10%;
-}
-
-.bar{
-  font-weight:500 !important;
-}
-
-.progress{
-  height: 35px;
-}
-
-.title{
-  letter-spacing: 2px;
-  text-align: center;
-}
-
-.principalProgress{
-  border-radius:0;
-  background-color:rgba(77, 65, 97, 0.05) !important;
-  margin-bottom: 2.5%;
-  box-shadow: 0 .3rem .4rem rgba(0,0,0,.395)!important;
-  width:70% !important;
-}
-
-.propTaxProgress{
-  border-radius:0;
-  background-color:rgba(77, 65, 97, 0.05) !important;
-  margin-bottom: 2.5%;
-  box-shadow: 0 .3rem .4rem rgba(0,0,0,.395)!important;
-  width:70% !important;
-}
-
-.mortInsProgress{
-  border-radius:0;
-  background-color:rgba(77, 65, 97, 0.05) !important;
-  margin-bottom: 2.5%;
-  box-shadow: 0 .3rem .4rem rgba(0,0,0,.395)!important;
-  width:70% !important;
-}
-
-.homeInsProgress{
-  border-radius:0;
-  background-color:rgba(77, 65, 97, 0.05) !important;
-  margin-bottom: 2.5%;
-  box-shadow: 0 .3rem .4rem rgba(0,0,0,.395)!important;
-  width:70% !important;
-}
-
-.hoaProgress{
-  border-radius:0;
-  background-color:rgba(77, 65, 97, 0.05) !important;
-  margin-bottom: 2.5%;
-  width:70% !important;
-  box-shadow: 0 .3rem .4rem rgba(0,0,0,.395)!important;
-}
-
-::ng-deep .progress-bar{
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,22,121,1) 48%, rgba(0,121,255,1) 92%)!important;
-  box-shadow: 0 .3rem 3rem rgba(0,0,0,.695)!important;
-}
-
-.propertyPrice{
-  display: flex;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  align-items: center;
-}
-
-.propoertyTax{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.wrap{
-  position: relative !important;
-}
-
-.downPayment{
-  width:90%
-}
-
-.interest{
-  font-size:20px;
-  text-align: center;
-}
-
-.imageBackground{
-  height: 700px;
-  width: 1100px;
-
-}
-.stack{
-  background-color: rgb(0,0,0,0);
-  border-radius:0px !important;
-  border-style:outset;
-  border-width:2px;
-  border-color:3px 3px 8px #b1b1b1 !important;
+        width: 60%;
+        height: auto;
 }
 
 .stack2{
-  border-radius:0px !important;
-  box-shadow: inset 8px 8px 8px #cbced1,
-              inset -8px -8px 8px #ffffff !important;
-  border-style:none;
-  border-right-style:groove !important;
+      
+        border-color:#d8d67f !important;
+        outline-color: #d8d67f !important;     
 }
 
-.stack3{
-  border-radius:0 !important;
-  background-color:red;
+.stack{
+        border: 1px solid #d8d67f !important;
+        outline-color: #d8d67f !important;     
 }
 
-.stack4{
-  border-radius:0px !important;
-  box-shadow: inset 8px 8px 8px #cbced1,
-              inset -8px -8px 8px #ffffff !important;
-  border-style:none;
-
+#pmi-button{
+        box-shadow: 9.91px 9.91px 15px #D9DADE, -9.91px -9.91px 15px #FFFFFF;
+        background-color: #FFFFFF !important;
+        font-size: 30px !important;
 }
 
-.button{
-  outline: none;
-  border:none;
-  cursor: pointer;
-  width:150px;
-  height: 45px;
-  border-radius: 2px;
-  font-size: 18px;
-  border-style:outset !important;
-  color:black;
-  text-align: center;
-  background:linear-gradient(130deg, rgba(199, 255, 255,1) 10%, rgba(162, 255, 227,1) 50%, rgba(36, 207, 170,1) 100%);
-  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.24),0 1px 3px 0 rgba(0,0,0,0.19);
+#contact-agent{
+        font-size: 2.1rem;
+        text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
 }
 
-.button:hover{
-  border-style:groove !important;
-  color:rgb(65, 53, 53);
-  background:linear-gradient(130deg, rgb(199, 255, 255) 10%, rgb(162, 255, 227) 30%, rgb(36, 207, 170) 100%);
-  animation-duration: 1s;
+label :hover{
+        color: rgb(226, 186, 84);
 }
 
-::ng-deep .panel{
-  border-radius:0 !important;
-  border-style:none !important;
+#pmi-button:hover{
+        background: rgb(247, 242, 213) !important;
+        background: linear-gradient(90deg, rgba(247, 242, 213,.3) 0%, rgba(255,255,255,.3) 55%) !important;
+        border-color: rgb(226, 186, 84);
+        transition: 200ms ease-in-out;
+}
+input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        z-index: -1;
+      }
+      
+      input[type="checkbox"]+span {
+        color: rgb(24, 22, 4);
+        
+      }
+
+ input[type="checkbox"]+span:before {
+        font: 20pt FontAwesome;
+        content: '\00f096';
+        color: rgb(22, 20, 4);
+        display: inline-block;
+        width: 10pt;
+        padding: 2px 0 0 3px;
+        text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
+        margin-right: 0.5em;
+      }
+      
+      input[type="checkbox"]:checked+span:before {
+        font: 22pt FontAwesome;
+        content: '\00f046';
+        text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
+        color: rgb(150, 137, 23);
+      }
+       
+
+
+.image{
+        margin-top: 10%;
+        box-shadow: 9.91px 9.91px 15px #D9DADE, -9.91px -9.91px 15px #FFFFFF;
 }
 
-.icon{
-  float:right;
-  margin-left:30px;
-  font-size: 25px !important;
-}
-
-::ng-deep .modal-lg{
-  width:600px !important;
-}
-
-::ng-deep .modal-header{
-  border:none;
-}
-
-::ng-deep .modal-content{
-  border-radius: 0px !important;
-  background:linear-gradient(90deg, rgba(255,255,255,1) 52%, rgb(195, 225, 255) 100%)!important;
-  width:91% !important;;
-  margin-left:4.5% !important;;
-}
-
-.contactButton{
-  background:linear-gradient(90deg, rgba(255,255,255,1) 35%, rgb(235, 164, 145) 100%)!important;
-  outline: none;
-  border:none;
-  cursor: pointer;
-  width:180px;
-  height: 65px;
-  border-radius: 2px;
-  margin-left:30%;
-  font-size: 18px;
-  border-style:outset !important;
-  color:black;
-  text-align: center;
-  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.24),0 1px 3px 0 rgba(0,0,0,0.19);
-}
-
-.contactButton:hover{
-  border-style:groove !important;
-  color:rgb(65, 53, 53);
-  background:linear-gradient(90deg, rgba(255,255,255,1) 2%, rgb(235, 164, 145) 100%)!important;
-  animation-duration: 1s;
-}
-
-.pmiButton{
-  background:linear-gradient(90deg, rgb(255, 245, 245) 15%, rgb(207, 134, 114) 100%)!important;
-  box-shadow:  0px 2px 2px 0px rgba(26, 17, 14, 0.3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204,198,197,.5);
-  margin-bottom:3% !important;
-	height: 50px;
-  font-weight: 500;
-	position: relative;
-	width: 150px;
-	-webkit-transition: all .1s linear;
-  transition: all .1s linear;
-  border:none;
-}
-
-
-.rot:hover{
-  transform: rotate(180deg) ;
-}
-
-::ng-deep .btn-link{
-  color: rgb(236, 248, 245);
-}
-
-::ng-deep .card-header.panel-enabled {
-  border-radius:0 !important;
-  background: linear-gradient(90deg, rgb(188, 202, 247) 0%, rgb(248, 243, 189) 100%) !important;
-  box-shadow: 0 .2rem .35rem rgba(0,0,0,.295)!important;
-
-}
-
-::ng-deep .panel .panel-body{
-  background: linear-gradient(90deg, rgba(255,255,255,1) 52%, rgba(237,246,255,1) 100%);
-  box-shadow: 0 .2rem .35rem rgba(0,0,0,.295)!important;
-}
-
-.panel1{
-  height:6%;
-}
-
-::ng-deep .panel{
-  margin-bottom:5%;
-}
-
-.heading {
-  color:rgb(0, 0, 0);
-}
-
-
-@media (max-width:1100px){
-  .delta{
-    background-image: none !important;
-  }
-
-  .requestInfoHome{
-    width: 550px;
-    height: 160px;
-    font-size: 4.3em;
-    line-height: 2;
-    margin-left: -10%;
-  }  
-  
-   .redirectButtonListing{
-    width: 550px;
-    height: 160px;
-    font-size: 4.3em;
-    line-height: 2;
-    margin-left: -10%;
-   }
-  
-  main{
-    padding-left: 4.25rem;
-  }
-
-  .container{
-    width:150%;
-  }
-
-  .featurette{
-    margin-left: 8%;
-  }
-  
-  
-
-  ::ng-deep .modal-lg{
-    width:1060px !important;
-    height: 14200px !important;
-    margin-top: 60px;
-  }
-
-  ::ng-deep .fade{
-    width:100%;
-    height:100%;
-  }
-
-  .modalClose{
-    font-size: 6rem;
-    
-  }
-
-  .modalClose:focus{
-    outline: none;
-  }
-
-
-
-  ::ng-deep .modal-title{
-    font-size: 7rem;
-    text-align: center;
-  }
-
-  ::ng-deep .modal-body{
-    font-size: 5.5rem;
-  }
-
-  .stack4{
-    font-size:4.5rem;
-  }
-
-  .contactButton{
-    font-size: 5.5rem;
-    width:500px;
-    height: 170px;
-    margin-left:200px;
-  }
-
-  .interest{
-    display: none;
-
-  }
-
-  .listingImages{
-    margin-top:200px;
-    width: 960px !important;
-    display: none !important;
-  }
-
-  .image-devices{
-    display: flex;
-    width: 1350px;
-  }
-
-
-  .infoProgress{
-    font-size:2.45rem;
-  }
-
-  .headerText{
-    font-size: 6.5rem;
-    padding-top: 9%;
-    margin-left: 200px;
-    width: 900px;
-    padding-bottom: 5%;
-  }
-
-  .priceText{
-    margin-left: 5%;
-    font-size: 9.65rem;
-    width: 800px;
-  }
-
- .alignCenter{
-   margin-left: 100px;
-   max-width:none;
- }
-
- .panel1{
-   height: 30px;
- }
-
- .estTitleText{
-    font-size:3.5rem;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    margin-left: 95px;
-  }
-
-  .detailsText{
-    font-size:2.8rem;
-    width:900px;
-    margin-left: 15%;
-  }
-
-  .mainText{
-    font-size: 2.rem;
-    letter-spacing: 2px !important;
-    align-items: center ;
-  
-  }
-
-  .estTitleText{
-    width: 950px;
-    font-size:5.3rem;
-  }
-
-  .lead{
-    font-size:3.2rem;
-  }
-
-  .bar{
-    font-size:2.46rem;
-    height: 70px;
-
-  }
-
-  .bar1{
-    font-size:2.5rem;
-    height:100px;
-  }
-
-  ::ng-deep .panel{
-    width:950px;
-  }
-
-  ::ng-deep .card{
-    min-width: 500px !important;
-
-  }
-
-  ::ng-deep .principalProgress{
-    min-width: 950px;
-  }
-
-  ::ng-deep .propTaxProgress{
-    min-width: 950px;
-  }
-
-  ::ng-deep .mortInsProgress{
-    min-width: 950px;
-  }
-
-  ::ng-deep .homeInsProgress{
-    min-width: 950px;
-  }
-
-  ::ng-deep .hoaProgress{
-    min-width: 950px;
-  }
-
-  .pricing-card-title{
-    margin-left:0px;
-    font-size: 6rem;
-    padding-bottom:50px;
-  }
-
-  .button{
-    z-index: 0;
-    position: absolute;
-    width:750px;
-    height: 200px;
-    font-size: 7.5rem;
-    margin-left: 50%;
-    border-style:outset !important;
-    transform: translateX(-50%);
-
-  }
-
-  .propMargin{
-    margin-top:210px;
-  }
-
-  .marketing{
-    width: 960px !important;
-  }
-
-  .g-3{
-    font-size:3.5rem;
-  }
-
-  .stack{
-    font-size:4rem;
-  }
-
-  .stack2{
-    font-size:3rem;
-  }
-
-  .stack3{
-    font-size:2rem;
-  }
-
-  .custom-select{
-    height:100px;
-    font-size:3rem;
-  }
-
-  .pmiButton{
-    width:400px;
-    height: 150px;
-  }
-
-  .mortageIns{
-    font-size:3rem;
-  }
-}
-
-
-
-@media screen and (min-device-width: 768px)
-and (max-device-width: 1024px) {
-
-  
-
-}
-
-@media (max-width:1025px) and (max-height:1367px){
-  
-  #inquire-title{
-    margin-top: 5%;
-    text-align: center;
-    font-size: 5rem;
-  }
-
-  #inquire-subtitle{
-    text-align: center;
-    font-size: 2.5rem;
-  }
-  
-  .msize{
-    left:-1rem;
-  }
-
-  .delta{
-    background-image: none !important;
-  }
-
-  .modal-body {
-    font-size: 3.5rem;
-}
-
-.stack4{
-  font-size: 2.4rem;
-}
-
-.modal-title{
-  font-size: 4rem;
-}
-
-  ::ng-deep .modal-lg{
-    width:1260px !important;
-    height: 14200px !important;
-    margin-top: 60px;
-  }
-
-
-  .modal-box{
-    padding: 16px;
-    font-family:'Oswald', sans-serif !important;
-  }
-
-
-  .modal-box label{
-    font-size:3.5rem;
-  }
-
-  .modal-box input{
-    font-size: 3.25rem;
-    width: 1105px;
-  }
-
-
-
-  .inquire-form{
-    margin-top: 10%;
-  }
-
-  ::ng-deep .modal-dialog{
-    max-width:1900px;
-  }
-
-  .close span{
-    font-family:'Oswald', sans-serif !important;
-    font-size: 10rem;
-    position: absolute;
-    left:1050px; 
- 
-  }
-
-  .contactButton{
-    margin-left: 30%;
-    margin-top: 5%;
-    font-size: 5rem;
-    width: 450px;
-    height: 160px;
-    font-family:'Oswald', sans-serif !important;
-    padding-bottom: 2%;
-    margin-bottom: 10%;
-  }
-
-
-  .imageBackground{
-    height: 700px;
-    width: 58.5rem;
-
-  }
-
-  .pricing-card-title{
-    font-size:5rem;
-    margin-left: 10%;
-  }
-
-  .msize2{
-    left:-1rem;
-  }
-
-  .homeDetails{
-    margin-left: 18rem;
-    width: 700px;
-  }
-  .lead{
-    font-size:2.8rem;
-  }
-}
-
-@media (max-width:913px) and (max-height:1369px){
-  ::ng-deep .modal-content {
-    border-radius: 0px !important;
-    background: linear-gradient(90deg, rgba(255,255,255,1) 52%, rgb(195, 225, 255) 100%)!important;
-    width: 1300px !important;
-    margin-left: -11% !important;
-} 
-
-#inquire-title{
-  margin-top: 5%;
-  text-align: center;
-  font-size: 5rem;
-}
-
-#inquire-subtitle{
-  text-align: center;
-  font-size: 2.5rem;
-}
-
-.modal-box{
-  padding: 16px;
-  font-family:'Oswald', sans-serif !important;
-}
-.modal-box label{
-  font-size:3.5rem;
-}
-.modal-box input{
-  font-size:3.25rem;
-}
-.inquire-form{
-  margin-top: 10%;
-}
-::ng-deep .modal-dialog{
-  max-width:1900px;
-}
-.close span{
-  font-family:'Oswald', sans-serif !important;
-  font-size: 10rem;
-  position: absolute;
-  left: 1100px;
-}
-
-.listingImages{
-  margin-left: -21px;
-}
-
-.marketing{
-  margin-right: 40%;
-}
-
-  .featurette{
-    margin-left: 15%;
-    
-  }
-  .headerText{
-    padding-top: 15%;
-    padding-bottom: 5%;
-    width: 1100px;
-    margin-left: 10%;
-    font-size: 7.35rem;
-  }
-
-  .pricing-card-title{
-    margin-left: 100px;
-    width:1100px;
-  }
-
-  .infoProgress{
-    font-size:3.45rem;
-    max-width: 2000px !important;
-  }
- 
-  .estTitleText{
-    width: 1100px;
-    font-size: 9rem;padding-top: 15%;
-    padding-bottom: 5%;
-    width: 1100px;
-    margin-left: 10%;
-    font-size: 7.35rem;  }
-
-  .msize{
-    left:0;
-  }
-
-  .msize2{
-    left:0;
-  }
-
-  .alignCenter{
-    margin-left: 0%;
-  }
-
-  .detailsText{
-    margin-left: 110px;
-  }
-
-  .contactButton{
-    margin-left: 30%;
-    margin-bottom: 5%;
-  }
-
-  .button{
-    margin-left: 450px;
-  }
-
-  .priceText{
-    margin-left: 100px;
-  }
-
-  .homeDetails{
-    width: 1100px;
-    margin-left:10%;
-  }
-
-  .lead{
-    font-size: 4.5rem;
-  }
-
-  .redirect{
-    margin-left: 60%;
-    margin-bottom: 45%;
-  }
-
-  .imageBackground {
-    height: 850px;
-    width: 1200px;
-    margin-left: 5%;
-}
-  .modal-title{
-    font-size: 6rem;
-    margin-left: 200px;
-  }
-}
-
-@media (max-width:821px) and (max-height:1181px){
-  ::ng-deep .modal-content {
-    border-radius: 0px !important;
-    background: linear-gradient(90deg, rgba(255,255,255,1) 52%, rgb(195, 225, 255) 100%)!important;
-    width: 1200px !important;
-    margin-left: 2% !important;
-}
-
- .contactButton{
-  margin-left: 32.5%;
- }
-
-.modal-box label{
-  font-size:3.5rem;
-}
-.modal-box input{
-  font-size: 4.25rem;
-  width: 1230px;
-}
-
-}
-
-
-@media (max-width:769px) and (max-height:1025px){
-
-  .delta{
-    background-image: none !important;
-  }
-
-  #inquire-subtitle{
-    text-align: center;
-    font-size: 2.5rem;    
-  }
-
-  .imageBackground{
-    height: 900px;
-    width: 1200px;
-
-  }
-
-  .contactButton {
-    margin-left: 32%;
-  }
-
-  .close span{
-    left: 1100px;
-  }
-  
-  
-  
-
-  .line{
-    width:940px;
-  }
-
-  ::ng-deep .modal-dialog{
-    max-width:980px !important;
-  }
-
-  ::ng-deep .modal-lg{
-    width:100% !important;
-    height: 100% !important;
-    margin-top: 60px;
-  }
-
-  ::ng-deep .modal-content {
-    width: 1270px !important;
-    margin-left: -14.5% !important;
-}
-}
-
-
-@media (max-width:541px) and (max-height:721px){
-  .delta{
-    background-image: none !important;
-  }
-  .container{
-    width:150%;
-  }
-
-  ::ng-deep .modal-lg{
-    width:1060px !important;
-    height: 14200px !important;
-    margin-left: 30px;
-    margin-top: 60px;
-  }
-
-  ::ng-deep .modal-dialog{
-    max-width: none;
-  }
-
-  main{
-    margin-left: .75rem;
-  }
-
-  .msize{
-    left:0rem;
-  }
-
-  .msize2{
-    left:0rem;
-  }
-
-  .homeDetails{
-    margin-left: .5rem;
-  }
-
-
-  ::ng-deep .fade{
-    width:100%;
-    height:100%;
-  }
-
-   .modalClose{
-    font-size: 6rem;
-  }
-
-  ::ng-deep .modal-title{
-    font-size: 7rem;
-    text-align: center;
-  }
-
-
-  ::ng-deep .modal-body{
-    font-size: 5.5rem;
-  }
-
-  .stack4{
-    font-size:4.5rem;
-  }
-
-  .contactButton{
-    font-size: 5.5rem;
-    width:500px;
-    height: 170px;
-    margin-left:200px;
-  }
-
-
-
-  .interest{
-    display: none;
-
-  }
-
-  .line{
-    width:980px !important;
-  }
-
-  .listingImages{
-    margin-top:200px;
-    width: 960px !important;
-
-  }
-
-  .infoProgress{
-    font-size:3.45rem;
-  }
-  .headerText{
-    font-size:9rem;
-    padding-top:9%;
-    margin-left:80px;
-    padding-bottom:5%;
-
-  }
-
-  .priceText{
-    margin-left: 30px;
-    font-size: 9.65rem;
-    width: 800px;
-  }
-
-
- .alignCenter{
-   margin-left: 100px;
- }
-
-
- .panel1{
-   height: 30px;
- }
-
-
-  .estTitleText{
-    font-size:3.5rem;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    margin-left:60px;
-
-  }
-
-
-  .detailsText{
-    font-size:4.8rem;
-    width:900px;
-    margin-left: -30px;
-  }
-
-  .mainText{
-
-    font-size: 2.rem;
-    letter-spacing: 2px !important;
-    align-items: center ;
-    padding-bottom: 20rem;
-  }
-
-  .estTitleText{
-      width: 800px;
-      font-size:9rem;
-  }
-
-  .lead{
-    font-size:4.8rem;
-  }
-
-  .bar{
-    font-size:3.2rem;
-    height: 100px;
-
-  }
-
-  .bar1{
-    font-size:2.5rem;
-    height:100px;
-  }
-
-  ::ng-deep .panel{
-    width:950px;
-  }
-
-  ::ng-deep .card{
-    min-width: 500px !important;
-  }
-
-  ::ng-deep .principalProgress{
-    min-width: 950px;
-
-  }
-
-  ::ng-deep .propTaxProgress{
-    min-width: 950px;
-
-  }
-
-  ::ng-deep .mortInsProgress{
-    min-width: 950px;
-  }
-
-  ::ng-deep .homeInsProgress{
-    min-width: 950px;
-  }
-
-  ::ng-deep .hoaProgress{
-    min-width: 950px;
-
-  }
-
-  .pricing-card-title{
-    margin-left:0px;
-    font-size: 6rem;
-    padding-bottom:50px;
-  }
-
-  .button{
-    z-index: 0;
-    position: absolute;
-    width:750px;
-    height: 200px;
-    font-size: 7.5rem;
-    margin-left:370px;
-    border-style:outset !important;
-    transform: translateX(-50%);
-
-  }
-
-  .propMargin{
-    margin-top:210px;
-  }
-
-  .marketing{
-    width: 960px !important;
-  }
-
-  .g-3{
-    font-size:3.5rem;
-  }
-
-  .stack{
-    font-size:4rem;
-  }
-
-  .stack2{
-    font-size:3rem;
-  }
-
-  .stack3{
-    font-size:2rem;
-  }
-
-  .custom-select{
-    height:100px;
-    font-size:3rem;
-  }
-
-  .pmiButton{
-    width:400px;
-    height: 150px;
-  }
-
-  .mortageIns{
-    font-size:3rem;
-  }
-
-}
-@media (max-width:441px){
-
-  #inquire-title{
-    font-size: 7rem;
-    text-align: center;
-  }
-
- #inquire-subtitle{
-  font-size: 3.5rem;
-  text-align: center;
- }
-  .image-devices{
-    display: flex;
-    width: 1470px;
-  }
-
-  .redirect{
-    margin-left: 65%;
-    margin-top: -15%;
-    width: 65%;
-    margin-bottom: 35%;
-  }
-  
-  .infoProgress{
-    font-size: 3.45rem;
-  }
-
-  
-  .requestInfoHome{
-    width: 580px;
-    height: 160px;
-    font-size: 4.3em;
-    line-height: 2;
-    margin-left: -25%;
-  }  
-    
-   .redirectButtonListing{
-    width: 580px;
-    height: 160px;
-    font-size: 4.3em;
-    line-height: 2;
-    margin-left: -25%;
-   }
-    
-   .marketing{
-    width: 1200px !important;
-    margin-left: -90%;
-  }
-  .listingImages{
-    margin-left: 21%;
-  }
-
-  .imageBackground{
-    width: 1250px;
-    height: 900px;  
-  }
-
-
-  .alignCenter{
-    margin-left: -15%;
-    width: 600px;
-    margin-top: 10%;
-  }
-
-  .alignCenter1{
-    margin-left: 0%;
-    width: 600px;
-  }
-
-  .priceText{
-    margin-left:300px;
-  }
-
-  .bar1{
-    width: 1080px !important;
-  }
-  .bar{
-    font-size:3.46rem;
-    height: 100px;
-
-  }
-
-  ::ng-deep .panel{
-    width: 1080px !important;
-  }
-
-
-  .headerText{
-    margin-left: 0px;
-    font-size: 9rem;
-  }
-
-  .inquire-form{
-    margin-top: 2.5% !important;
-  }
-
-  .detailsText{
-    margin-left: 260px;
-    font-size: 4.3rem;
-  }
-
-  .line{
-    display: none;
-  }
-
-  .featurette{
-    margin-left: 30%;
-    margin-bottom: 20%;
-}
-
-.homeDetails{
-  width: 1000px;
-  margin-left: 225px;
-}
-
-
-  ::ng-deep .modal-content {
-    border-radius: 0px !important;
-    background: linear-gradient(90deg, rgba(255,255,255,1) 52%, rgb(195, 225, 255) 100%)!important;
-    width: 1400px !important;
-    margin-left: 7% !important;
- }
-
-  .modal-box{
-    padding:20px;
-  }
-
-  .button{
-    margin-left: 645px;
-  }
-
-  .lead{
-    margin-left: -12rem;
-  }
-
-  .delta{
-    background-image: none !important;
-    margin-left: 4.5rem
-  }
-  
-  .pricing-card-title{
-    margin-left: 350px;
-  }
-
-  .estTitleText{
-    width: 1200px;
-    margin-left: 300px;
-    margin-top: -5%;
-  }
-
-  .msize2{
-    margin-left:-23px;
-  }
-
-  .msize{
-    margin-left:-23px;
-  }
-
-  ::ng-deep .modal-lg{
-   margin-left: -6px !important; 
-   width:500px;
-  }
-
-  .contactButton{
-    margin-left: 22.5%;
-  }
-
-  .stack4{
-    width: 90%;
-  }
-  
-}
-
-@media (max-width:414px) {
-  ::ng-deep .modal-content{
-    margin-left: 4% !important;
-  }
-
-  .close span{
-    left: 1250px;
-  }
-
-  .modal-box label{
-  font-size: 5.5rem;
-  }
-
-  .modal-box input{
-    font-size: 6.5rem;
-    width: 1350px;
-  }
-
-  .contactButton{
-    margin-left: 28%;
-    font-size: 8.5rem;
-    width: 600px;
-    height: 280px;
-  }
-}
-
-
-
-@media (max-width:376px) and (max-height:668px){
-  .alignCenter{
-    margin-left: -12%;
-    padding-top: 5%;
-  }
-
-  .featurette{
-    margin-bottom: 0%;
-  }
-
-  .redirect{
+.image-device{
+   display: none;
    
-    margin-top: 5%;
-    width: 65%;
-    margin-bottom: 15%;
+}
+
+.service-14 {
+      color: #291922;
+  font-weight: 300;
   }
 
-  .mainText{
-    padding-bottom: 0%;
+.service-14 h3{
+        font-size: 42px !important;
+        text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
+}
+
+.service-14 .btn{
+        border-radius: 0px;
+        border-width: 5px;        border-color: #1f0616;
+        font-size: 28px !important;
+        box-shadow: 9.91px 9.91px 15px #D9DADE, -9.91px -9.91px 15px #FFFFFF;
+}
+
+.service-14 .btn:hover{
+        background: rgb(247, 242, 213) !important;
+        background: linear-gradient(90deg, rgba(247, 242, 213,.3) 0%, rgba(255,255,255,.3) 55%) !important;
+        border-color: rgb(226, 186, 84);
+        transition: 200ms ease-in-out;
+}
+
+  .service-14 h1, .service-14 h2, .service-14 h3, .service-14 h4, .service-14 h5, .service-14 h6 {
+  color: #3e4555;
   }
 
-  .headerText{
-    margin-top: 25%;
+  .service-14 h3 {
+      line-height: 36px;
+      font-size: 30px;
+      text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
   }
 
-  .line{
-    margin-top: 0% !important
+  .service-14 h6 {
+      line-height: 22px;
+      font-size: 18px;
   }
+
+  .service-14 .badge {
+      line-height: 14px;
+  }
+
+  .service-14 .badge-info {
+      background: #188ef4;
+  }
+
+  .service-14 .font-weight-medium {
+      font-weight: 500;
+  }
+
+  .service-14 a {
+      text-decoration: none;
+  }
+
+  .service-14 .linking {
+      color: #3e4555;
+  }
+
+  .service-14 .linking:hover {
+      color: #316ce8;
+  }
+
+  .service-14 .btn-info-gradiant {
+          background: #188ef4;
+      background: -webkit-linear-gradient(legacy-direction(to right), #188ef4 0%, #316ce8 100%);
+      background: -webkit-gradient(linear, left top, right top, from(#188ef4), to(#316ce8));
+      background: -webkit-linear-gradient(left, #188ef4 0%, #316ce8 100%);
+      background: -o-linear-gradient(left, #188ef4 0%, #316ce8 100%);
+      background: linear-gradient(to right, #188ef4 0%, #316ce8 100%);
+  }
+
+  .service-14 .btn-info-gradiant:hover {
+          background: #316ce8;
+      background: -webkit-linear-gradient(legacy-direction(to right), #316ce8 0%, #188ef4 100%);
+      background: -webkit-gradient(linear, left top, right top, from(#316ce8), to(#188ef4));
+      background: -webkit-linear-gradient(left, #316ce8 0%, #188ef4 100%);
+      background: -o-linear-gradient(left, #316ce8 0%, #188ef4 100%);
+      background: linear-gradient(to right, #316ce8 0%, #188ef4 100%);
+  }
+
+  .service-14 .btn-md {
+      padding: 15px 45px;
+      font-size: 16px;
+  }
+
+  .service-14 ul{
+        list-style-type: none;
+        position: relative;
+        left: -25px;
+    }
+
+
+    .service-14 .container .sect{
+            display: grid;
+            justify-content: center;
+        margin-top: 1%;
+}
+
+.service-14 .container .sect h3{
+        line-height: 1.4;
 }
 
 
-@media (max-width:321px) and (max-height:569px){
-  .delta{
-    margin-left: 0rem;
-  }
+ ::ng-deep .progress{
+        height: 2.5rem;
+        font-size: 2.2rem;
+ }
+ ::ng-deep .panel span{
+        font-size: 2rem;
+ }
 
-  .modal-box input{
-    font-size: 5.5rem;
-    width: 1160px;
-  }
- 
-  .modal-box label{
-    font-size: 4.5rem;
-    width: 1160px;
-  }
+.infoProgress{
+        font-size: 1.2rem !important;
+}
 
+
+.accordion-collapse{
+        border-radius: 0px;
+        background: #ffffff;
+        box-shadow: inset 5px 5px 8px #bfbfbf,
+            inset -5px -5px 8px #ffffff;
+        padding-bottom: 5%;
+        
+}
+
+
+
+
+
+.accordion-button:focus {
+       
+        box-shadow: 0px 0px 0px 4px rgba(51, 47, 24,.4) !important;
+      }
+
+ .accordion-button {
+        background-color:#fff;
+    }
+
+    .accordion-button::after{
+        position: relative;
+        right: 285px;
+        margin-left: auto;
+}
+    .heading-bar{
+            width: 250px;
+            text-align: right;
+
+    }
+
+      
+      .contact3 h1,
+      ::ng-deep .modal-content .contact-box h2,
+      ::ng-deep .modal-content .contact-box3 h3,
+      ::ng-deep .modal-content .contact-box h4,
+      ::ng-deep .modal-content .contact-box h5,
+      ::ng-deep .modal-content .contact-box h6 {
+        color: #3e4555;
+      }
+
+      ::ng-deep #terms{
+        margin-top: 5%;
+        color: #3e4555;
+        font-weight: 50;
+        font-size: 14px;
+      }
+      
+      ::ng-deep .modal-content a {
+        color: #917b03;
+        text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
+        letter-spacing: .5px;
+        text-decoration: none;
+      }
+      
+      ::ng-deep .modal-content .contact-box .font-weight-medium {
+        font-weight: 500;
+      }
+      
+      ::ng-deep .modal-content .contact-box .card-shadow {
+        -webkit-box-shadow: 0px 0px 30px rgba(115, 128, 157, 0.1);
+        box-shadow: 0px 0px 30px rgba(115, 128, 157, 0.1);
+      }
+      
+     
+      ::ng-deep .modal-content .contact-box h1{
+        font-size: 3.5rem; 
+      }
+
+      ::ng-deep .modal-content .contact-box form input{
+              font-size: 1.5rem;
+      }
+
+      ::ng-deep .modal-content .contact-box form textarea{
+        font-size: 1.5rem;
+}
+
+::ng-deep .modal-content .contact-box h1{
+              text-align: center;
+      }
+
+      ::ng-deep .modal-content .contact-box .btn{
+        margin-top:5%;
+        font-size: 2.5rem;
+        position: relative;
+        border-radius: 0px;
+        border-width: 5px;        
+        border-color: #0f0e03;
+        font-size: 28px !important;
+        box-shadow: 9.91px 9.91px 15px #D9DADE, -9.91px -9.91px 15px #FFFFFF;
+}
+
+::ng-deep .modal-content .contact-box .form-control{
+        border-radius: 0px;
+        border-color: #0f0e03;
+        box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #ffffff !important;
+}
+
+::ng-deep .modal-content .contact-box .form-control:focus{
+        border-radius: 0px;
+        border-color: rgb(226, 186, 84);
+        transition: 200ms ease-in-out;
+        outline: none;
+
+}
+
+      
+
+::ng-deep .modal-content .contact-box .btn:hover{
+        background: rgb(247, 242, 213) !important;
+        background: linear-gradient(90deg, rgba(247, 242, 213,.3) 0%, rgba(255,255,255,.3) 55%) !important;
+        border-color: rgb(226, 186, 84);
+        color:  rgb(139, 112, 44);
+        transition: 200ms ease-in-out;
+}
+
+      ::ng-deep .modal-content{
+        font-family:'Oswald', sans-serif;
+       width:100%;
+       border-radius: .01rem;
+       border-color:#f1e100d8;
+       border-width: 1px;
   
-  .alignCenter1{
-    margin-left: 10px;
-  }
+        
+      }
 
-  .alignCenter{
-    margin-left: -20px;
-  }
+      ::ng-deep .modal-content .agent-text{
+              font-size: 1.5rem;
+              margin-right: 5%;
+      }
 
-  .listingImages{
-    margin-left: 17.5%;
-  }
 
-  .modal-title{
-    margin-left: 5%;
-    width:90%;
-  }
+      ::ng-deep .modal-content .submit-container{
+              display: grid;
+              justify-content: center;
+      }
 
- ::ng-deep .modal-content{ 
-    width: 1220px !important;
-  }
+      ::ng-deep .modal-content .contact-box form{
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+        
+      }
 
-  .homeDetails{
-    margin-left: 35%;
-  }
 
-  .line{
-    margin-top: 0% !important;
-  }
+      ::ng-deep .close{
 
-  .estTitleText{
-    width: 1100px;
-    margin-top: -15%;
-    margin-left: 230px;
+        font-size: 80px !important;
+        width: 55px;
+        position: relative;
+        left: 700px;
+        top:-30px;
+        border:none;
+        background:none;
+      }
+      
+      ::ng-deep .close:focus{
+        outline:none;
+        color:rgb(114, 124, 24);
+      }
+      
+      ::ng-deep .modal-title{
+        font-size: 2rem;
+        margin-left: 117px;
+        margin-top: 10px;
+      }
 
-  }
+      ::ng-deep .fade{
+        width:100%;
+        height:100%;
+      }
 
-  .mainText{
-    padding-bottom: 5rem;
-  }
+      ::ng-deep .modal-content .contact-box .container{
+              display: flex;
+              flex-flow: column wrap;
+              justify-content: center;
+              text-align: center;
+      }
 
-  .pricing-card-title{
-    margin-left: 250px;
-  }
+      ::ng-deep .modal-content .contact-box .container h1{
+              font-size: 7rem;
+              text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
+      }
 
-  .featurette{
-    margin-left: 300px;
-    margin-bottom: 10%;
-  }
+      ::ng-deep .modal-content .contact-box .sent .btn{
+              left:0% !important;
+              border-color:#080801d8;
+      }
 
-  .imageBackground{
-    width: 1150px;
-    height: 900px;
-  }
+      ::ng-deep .modal-content .contact-box .sent .btn:hover{
+        left:0% !important;
+        border-color:#f1e100d8;
+      }
+      
+      ::ng-deep #thankyou{
+              font-size: 4rem;
+      }
 
-  .headerText{
-    margin-left: 0px;
-  }
+      .accordion{
+              border: none !important;
+              border-radius: 0px;
+      }
 
-  .button{
-    margin-left: 525px;
-  }
 
-  .contactButton{
-    margin-left: 25%;
-  }
-
-  .msize2{
-    padding-bottom: 8rem;
-  }
-
-  .priceText{
-    margin-left: 200px;
-  }
-
-  .detailsText{
-    margin-left: 155px;
-  }
-
-  .redirect{
-    margin-top: -12%;
-    margin-bottom: 300px;
-  }
+      .accordion-button:not(.collapsed) {
+        color: #01050c !important;
+       
+    }
+.accordion-button{
+        font-size: 24px;
+        text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
+        border-radius: 0px !important;
+        border: none;
+        background: rgb(134, 126, 78) !important;
+        background: linear-gradient(90deg, rgba(189, 176, 101, 0.3) 0%, rgba(240, 238, 193, 0.3) 75%) !important;
 }
+
+.accordion-header{
+        border: none !important;
+         box-shadow: 9.91px 9.91px 15px #D9DADE, -9.91px -9.91px 15px #FFFFFF;
+}
+
+.accordion-item{
+        border-radius: 0px;
+        border: none !important;
+}
+
+.accordion-item form input{
+        box-shadow: inset 5px 5px 8px #bfbfbf,
+        inset -5px -5px 8px #ffffff !important;
+        border-radius: 0px !important;
+        border-style: solid !important;
+        border-color: #241f02;
+        margin-left: 2%;
+}
+
+.accordion-item form input:after {
+        content: '<>' !important;
+        font: 17px "Consolas", monospace;
+        color: rgb(177, 9, 9);
+}
+
+.accordion-item form span{
+        background: none;
+        border-radius: 0px !important;
+        border-style: inset;
+        border-color: #241f02;
+        margin-right: 2.5%;
+
+      
+}
+.accordion-item form{
+        border-radius: 0px !important;
+}
+
+.accordion-button:not(.collapsed)::after {
+        background-image: url("../../assets/accorddian.svg");
+        transform: rotate(-180deg);
+    }
+
+
+#mobile-section{
+        display: none;
+}
+
+#request-info{
+        font-size: 37px !important;
+        color: #181a10e4;
+}
+
+@media (max-width:1200px) {
+    .accordion-button::after{
+         position: relative;
+         right: 190px;
+         margin-left: auto;
+    }
+        
+}
+
+@media (max-width:950px){
+   .service-14{
+           text-align: center;
+   }
+
+   .image{
+           width: 80%;
+           height: auto;
+           margin-top: 15%;
+   }
+
+   .accordion-button::after{
+        position: relative;
+        right: 320px;
+        margin-left: auto;
+   }
+
+   ::ng-deep .close{
+        left: 430px;
+        top:-30px;
+      }
+
+      ::ng-deep .modal-content .contact-box{
+              margin-top: -10%;
+      }
+
+}
+
+
+
+
+
+
+
+
+
+/* 
+
+@media (max-width:1380px) and (min-width:1026px){
+        .image-device{
+            display: flex;
+            width: 2115px;
+         }
+        .image{
+           display: none;
+        }
+      
+        .service-14{
+                width: 2115px;
+        }
+      
+        .service-14 .container{
+              min-width: 1700px;
+        }
+      
+        .service-14 h3 {
+          
+              font-size: 4.25rem !important;
+              width: 800px;
+              margin-bottom: 3% !important;
+          }
+      
+        .service-14 ul li {
+         
+            font-size: 2.25rem;
+        }
+      
+        .service-14 p {
+       
+              font-size: 2.25rem;
+          }
+      
+          .service-14 .btn-md{
+              font-size: 2.6rem;
+         }
+
+         
+      
+       .accordion-body form select{
+               font-size: 1.25rem;    
+       }
+       .accordion-body form span{
+               font-size: 1.25rem;       
+       }
+       .accordion-body form label{
+               font-size: 1.25rem;    
+       }
+       .accordion-body form input{
+               font-size: 1.25rem;    
+       }
+      
+       .accordion-button::after {
+              position: relative;
+              right:350px;
+              margin-left: auto;
+          }
+      
+       #pmi-button{
+              font-size: 1.55rem;    
+      }
+      
+      .mortageIns{
+              font-size: 1.25rem;
+      }
+      
+      .input-mortage input{
+              font-size: 3rem;
+      }
+      
+      
+      
+      
+}
+
+
+  @media (max-width:1290px){
+        .image{
+                margin-top: 10%;
+                margin-left:14%;
+                width:900px;
+        }
+
+
+  }
+
+
+  @media (width: 1280px) and (max-height: 800px){
+        .image-device{
+                width: 1658px;
+        }
+        .service-14{
+                width:1180px;
+                margin-left: 20%;
+        }
+
+        .service-14 .container {
+                min-width: 940px;
+            }
+
+
+        .service-14 .container h3{
+                font-size: 3rem !important;
+        }
+
+        .accordion-button::after{
+                right: 250px;
+        }
+       
+       
+       
+      }
+
+@media (max-width:1025px){
+  .image-device{
+      display: flex;
+      width: 1955px;
+   }
+  .image{
+     display: none;
+  }
+
+  .service-14{
+          width: 1955px;
+  }
+
+  .service-14 .container{
+        min-width: 1700px;
+  }
+
+  .service-14 h3 {
+    
+        font-size: 4.25rem !important;
+        width: 800px;
+        margin-bottom: 3% !important;
+    }
+
+  .service-14 ul li {
+   
+      font-size: 2.25rem;
+  }
+
+  .service-14 p {
+ 
+        font-size: 2.25rem;
+    }
+
+    .service-14 .btn-md{
+        font-size: 2.6rem;
+   }
+
+ .accordion-body form select{
+         font-size: 1.25rem;    
+ }
+ .accordion-body form span{
+         font-size: 1.25rem;       
+ }
+ .accordion-body form label{
+         font-size: 1.25rem;    
+ }
+ .accordion-body form input{
+         font-size: 1.25rem;    
+ }
+
+ .accordion-button::after {
+        position: relative;
+        right:350px;
+        margin-left: auto;
+    }
+
+ #pmi-button{
+        font-size: 1.55rem;    
+}
+
+.mortageIns{
+        font-size: 1.25rem;
+}
+
+.input-mortage input{
+        font-size: 3rem;
+}
+
+::ng-deep #terms{
+        font-size: 1.5rem;
+      }
+
+      ::ng-deep .modal-content .contact-box{
+              position: relative;
+              top:-70px;
+      }
+      
+      ::ng-deep .modal-content .contact-box .font-weight-medium {
+        font-weight: 500;
+      }
+      
+     
+      ::ng-deep .modal-content .contact-box h1{
+        font-size: 4.5rem; 
+      }
+
+      ::ng-deep .modal-content .contact-box form input{
+              font-size: 3.5rem;
+      }
+
+      ::ng-deep .modal-content .contact-box form textarea{
+        font-size: 3.5rem;
+}
+
+::ng-deep .modal-content .contact-box h1{
+              text-align: center;
+              margin-bottom: 2.5%;
+      }
+
+      ::ng-deep .modal-content .contact-box .btn{
+        margin-top:5%;
+        font-size: 4rem !important;
+        left:40%;
+      }
+
+
+         
+
+       ::ng-deep .modal-content{
+       width:165%;
+       margin-left: -29.5%;
+     
+       }
+
+      ::ng-deep .close{
+
+        font-size: 10rem !important;
+        width: 55px;
+        position: relative;
+        margin: 0px;
+        left: 1200px;
+        border:none;
+        background:none;
+      }
+
+
+
+
+}
+
+@media (max-width:921px){
+        main{
+                margin-left: -15%;
+        }
+
+        #price{
+                font-size: 10rem !important;
+        }
+
+        .service-14{
+                width: 1300px;
+        }
+
+        .service-14 .container{
+                min-width:850px !important;
+          }
+        .service-14 h3 {
+  
+                font-size: 5rem !important;
+                width: 1100px;
+                line-height: 1.2;
+                text-align: center;
+              
+            }
+            .service-14 ul{
+                margin-left: 25%;
+                width: 1100px;
+                list-style-type:none;
+            }
+          .service-14 ul li {
+              font-size: 3.35rem;
+          }
+          .service-14 p {
+                font-size: 3rem;
+               
+            }
+
+
+        .image-device{
+                width: 1415px;
+        }
+        #address{
+                position: relative;
+                left: 275px;
+        }
+
+        #request-info{
+                font-size: 6.65rem !important;
+        }
+
+        .service-14 .btn-md{
+          font-size: 5rem !important;
+          position: relative;
+          left:275px;
+        }       
+        .contact3 form div
+        {
+            font-size: 3rem;
+        }
+
+        #mobile-section{
+                align-content: center;
+                display:block;
+                margin-top: 7%;
+        }
+
+        #return-to-listing{
+                display: none;
+        }
+
+        ::ng-deep .progress{
+          height: 8rem;
+          width:1225px !important;
+          font-size: 3rem;
+        } 
+
+         ::ng-deep .panel{
+                width: 1200px;
+         }
+
+         ::ng-deep .panel .card{
+                height: 7rem;
+         }
+
+         ::ng-deep .panel span{
+                font-size: 3rem;
+         }
+
+         ::ng-deep .close{
+                font-size: 9rem !important;
+                left: 730px;
+                top:-45px;
+        }
+
+        ::ng-deep .modal-content .contact-box .btn{
+                margin-top:5%;
+                font-size: 4rem !important;
+                left:35.5%;
+        }
+
+        ::ng-deep .modal-content{
+                width:165%;
+                margin-left: -29.5%;
+        }
+            
+            
+
+        .infoProgress{
+                font-size: 4rem !important;                  
+        }
+
+        
+
+        .accordion{
+                width:1200px;
+
+        }
+
+        .accordion span{
+               font-size: 3rem;
+               line-height: 3;
+        }
+
+        .accordion-button::after{
+                width: 5.25rem;
+                height: 5.25rem;
+                position: relative;
+                right: 550px;
+                margin-left: auto;
+                background-size: 5.25rem;
+        }
+        .accordion-body form span{
+                font-size: 3rem;    
+        }
+
+        .accordion-body form select{
+                font-size: 5rem;
+                padding-bottom: 20px;
+                padding-top: 20px;
+                padding-left: 30px;
+        }
+
+        .accordion-body form label{
+                font-size: 3rem;    
+        }
+
+        .accordion-body form input{
+                font-size: 3rem;    
+        }
+
+        .heading-bar{
+                width: 700px;
+                text-align: right;
+        }
+
+
+        #chart{
+                font-size: 3rem;
+        }
+
+        .accordion-item form input{
+                font-size: 5rem;    
+        }
+            
+}
+
+@media (max-width: 821px) {
+        main{
+        margin-left: -2.5%;
+        }
+
+        .image-device{
+                width: 1475px;
+        }
+
+        .service-14{
+                width: 100%;
+                margin-left: 16%;
+        }
+        
+}
+
+@media (max-width: 768px){
+        .image-device{
+                width: 1450px;
+        }
+}
+
+
+@media (max-width: 541px) {
+
+
+        .image-device{
+                width: 1800px;
+        }
+
+        .service-14{
+                margin-left: 58%;
+        }
+
+        .service-14 ul{
+                position: relative;
+                left: 270px;
+                width: 900px;
+                margin-left: -2%;       
+        }
+
+        
+
+        .accordion-body form input{
+                font-size: 5rem;    
+        }
+
+        .accordion-item form input{
+                font-size: 5rem;    
+        }
+
+        .accordion-body label{
+                font-size: 3rem;    
+        }
+
+        .accordion-item form button{
+               width:400px;  
+        }
+
+        .accordion-body form  select:after{
+               font-size: 300px !important;
+        }
+
+        .accordion-body form select{
+                font-size: 5rem;    
+                background-repeat: no-repeat;
+                
+        }
+        .accordion-body form span{
+                font-size: 5.25rem;
+                width: 175px;
+                text-align: center;  
+        }
+        .accordion-body form label{
+                font-size: 5rem;
+                
+        }
+
+        .accordion-button{
+                padding: 0rem 0rem .2rem 2rem !important;
+        }
+
+        .accordion-button::after{
+                width: 5.25rem;
+                height: 5.25rem;
+                position: relative;
+                right: 550px;
+                margin-left: auto;
+                background-size: 5.25rem;
+        }
+
+        .heading-bar{
+                width: 700px;
+        }
+
+        #pmi-button{
+                font-size: 8.5rem;
+                margin-top: 6%;
+                background: linear-gradient(90deg, rgba(189, 176, 101, 0.3) 0%, rgba(255,255,255,.3) 75%);
+        }
+
+        ::ng-deep .modal-content{
+                right: -50px;
+        }
+        
+}
+
+*/
+@media (max-width: 485px){
+main{
+        width: 1560px;
+}
+
+::ng-deep footer{
+        width: 1560px;
+      }
+
+#contact-agent{
+        font-size: 4.2rem;
+}
+
+#loan-program{
+font-size: 5.5rem;
+}
+
+
+input[type="checkbox"] + span:before {
+        font: 75pt FontAwesome;
+    }
+
+input[type="checkbox"]:checked + span:before {
+        font: 75pt FontAwesome;
+    }
+
+.service-14{
+        display:flex;
+        flex-direction: column;
+        text-align: center;
+        line-height: 1.6;
+}
+.service-14 h3{
+        font-size: 6.5rem !important;
+}
+
+
+.service-14 ul li        {
+        font-size: 5.5rem;
+}
+
+.service-14 .container .sect{
+        margin-top: 12%;
+}
+
+
+.accordion-item form input{
+        font-size: 5rem;  
+        height: 140px;
+        border-style: solid !important; 
+        border-width: 1px;
+        border-color:rgb(31, 27, 7) !important;
+}
+
+.input-group-append span{
+        border-style: outset !important; 
+        border-width: 1px;
+        border-color:rgb(31, 27, 7) !important;
+}
+
+.input-group-prepend span{
+        height: 140px !important; 
+        border-style: outset !important; 
+        border-width: 1px !important;
+        border-color:rgb(31, 27, 7) !important;
+}
+
+.accordion-body label{
+        font-size: 5.5rem;
+}
+
+#pmi-button{
+        font-size: 5rem !important;
+}
+        
+#address{
+        font-size: 4.2rem;
+    }
+
+#mobile-section{
+       display: grid;       
+}
+
+#mobile-section button{
+        font-size: 6rem !important;
+}
+
+#request-info{
+        display: grid;
+        width: 100%;
+        font-size: 6rem !important;
+}
+
+#return-to-listing{
+        display: grid;
+        width: 100%;
+        font-size: 6rem !important;
+}
+
+.image{
+        display: none;
+}
+
+.image-device{
+        display: flex;
+        width: 1565px !important;
+        height: auto;
+}
+
+
+
+
+.accordion span{
+        font-size: 4.1rem;
+}
+
+
+.infoProgress {
+        font-size: 4rem !important;
+}
+
+::ng-deep.progress-bar span {
+        font-size: 4.5rem !important;
+}
+
+::ng-deep.progress {
+        height:110px !important;
+}
+
+.accordion-header{
+   height: 110px;
+}
+
+.heading-bar{
+        width: 100%;
+        height: auto;
+        text-align: right;
+}
+
+.accordion-button{
+  height: 210px;
+}
+
+.accordion-header{
+  height: 210px;
+}
+
+.accordion-button::after{
+    position: relative;
+    right: 485px;
+    margin-left: auto;
+    width: 4.25rem;
+    height: 4.25rem;
+    background-size: 3.25rem !important;
+}
+
+
+.accordion-body form span {
+        font-size: 5.25rem;
+    }
+
+.service-14 .btn-md{
+        font-size: 3rem !important;
+}
+
+::ng-deep .close{
+        font-size: 18rem !important;
+        left:940px;
+        top:-120px;
+}
+::ng-deep .modal-content .contact-box .btn{
+        font-size: 8rem !important
+        
+}
+::ng-deep .modal-content {
+        width: 100% !important;
+        margin-left: .75%;
+    }
+
+    
+
+::ng-deep #terms{
+        font-size: 2.5rem;
+}
+
+::ng-deep .modal-content .contact-box{
+        position: relative;
+        top:-100px;
+}
+      
+::ng-deep .modal-content .contact-box .font-weight-medium {
+        font-weight: 500;
+}
+
+::ng-deep .modal-content .valid{
+        font-size:3.5rem;
+}
+
+      
+
+
+::ng-deep .modal-content .contact-box form input{
+              font-size: 6.5rem;
+}
+
+::ng-deep .modal-content .contact-box form textarea{
+        font-size: 7.5rem;
+}
+
+::ng-deep .modal-content .contact-box h1{
+              text-align: center;
+              margin-bottom: 4.5%;
+              font-size: 10.5rem; 
+}
+
+::ng-deep .modal-content .contact-box .container h1{
+        font-size: 9rem;
+}
+
+::ng-deep .modal-content .contact-box .container h2{
+        font-size: 5rem;
+}
+
+::ng-deep .modal-content .agent-text {
+        font-size: 5.2rem;
+        margin-right: 5%;
+    }
+
+#checkbox{
+        height: 4rem;
+        width: 4rem;
+}
+
+.input-group{
+        height: 200px !important;
+}
+
+}
+
+@media (max-width:385px) {
+        main{      
+            width: 1438px !important;  
+        }
+
+        .image-device{
+                width: 1438px !important;
+        }
+        ::ng-deep footer{
+            width: 1438px !important;
+          }
+      }
+
+@media (max-width:321px) {
+        main{
+                width:1280px;
+        }
+        ::ng-deep footer{
+          width: 1280px !important;
+        }
+
+        ::ng-deep .close{
+                left:1100px;
+        }
+
+        .image-device{
+                width: 1280px !important;
+        }
+      }
+      
+
+/* 
+@media (width:414px) and (height:896px) {
+        ::ng-deep .close{
+                font-size: 18rem !important;
+                left: 1450px;
+                top:-120px;
+        }
+        ::ng-deep .modal-content .contact-box .btn{
+                margin-top:5%;
+                font-size: 4rem !important;
+                left:35.5%;
+        }
+        ::ng-deep .modal-content{
+                width:98%;
+                margin-left: -2%;
+        }
+        
+}
+
+
+@media (width:414px) and (height:736px) {
+        ::ng-deep .close{
+                font-size: 18rem !important;
+                left: 1450px;
+                top:-120px;
+        }
+        ::ng-deep .modal-content .contact-box .btn{
+                margin-top:5%;
+                font-size: 4rem !important;
+                left:35.5%;
+        }
+        ::ng-deep .modal-content{
+                width:98%;
+                margin-left: -2%;
+        }
+        ::ng-deep .modal-content .contact-box .btn{
+                margin-top:5%;
+                font-size: 11rem !important;
+                left:30.5%;
+        }
+        
+}
+
+
+@media (width:412px) and (height:915px) {
+        ::ng-deep .close{
+                font-size: 18rem !important;
+                left: 1450px;
+                top:-120px;
+        }
+        ::ng-deep .modal-content .contact-box .btn{
+                margin-top:5%;
+                font-size: 4rem !important;
+                left:35.5%;
+        }
+        ::ng-deep .modal-content{
+                width:98%;
+                margin-left: -2%;
+        }
+        ::ng-deep .modal-content .contact-box .btn{
+                margin-top:2.5%;
+                font-size: 10rem !important;
+                left:35.5%;
+        }
+        
+}
+
+@media (width:412px) and (height:914px) {
+        ::ng-deep .close{
+                font-size: 18rem !important;
+                left: 1450px;
+                top:-120px;
+        }
+        ::ng-deep .modal-content .contact-box .btn{
+                margin-top:5%;
+                font-size: 4rem !important;
+                left:35.5%;
+        }
+        ::ng-deep .modal-content{
+                width:98%;
+                margin-left: -2%;
+        }
+        ::ng-deep .modal-content .contact-box .btn{
+                margin-top:2.5%;
+                font-size: 10rem !important;
+                left:35.5%;
+        }
+        
+}
+
+
+
+@media (max-width: 411px){
+        .image-device{
+                width: 1640px;;
+        }
+
+        ::ng-deep .modal-content {
+                width: 1402px;
+            }
+        .contact3 .contact-box  form input{
+                width:1200px;
+        }
+        .contact3 .contact-box  form textarea{
+                width:1200px;
+        }
+}
+
+@media (max-width: 393px) and (min-width:391px){
+        .image-device{
+                width: 1570px;
+                height: 1200px;
+        }
+
+        .service-14{
+                margin-left: 45%;
+        }
+
+        ::ng-deep .close{
+                font-size: 18rem !important;
+                left: 1350px;
+                top:-120px;
+        }
+        ::ng-deep .modal-content .contact-box .btn{
+                margin-top:5%;
+                font-size: 4rem !important;
+                left:35.5%;
+        }
+        ::ng-deep .modal-content{
+                width:98%;
+                margin-left: -2%;
+        }
+        
+        ::ng-deep #terms{
+                font-size: 2.5rem;
+        }
+        
+        ::ng-deep .modal-content .contact-box{
+                position: relative;
+                top:-230px;
+        }
+              
+        ::ng-deep .modal-content .contact-box .font-weight-medium {
+                font-weight: 500;
+        }
+              
+        
+        
+        ::ng-deep .modal-content .contact-box form input{
+                      font-size: 6.5rem;
+        }
+        
+        ::ng-deep .modal-content .contact-box form textarea{
+                font-size: 7.5rem;
+        }
+        
+        ::ng-deep .modal-content .contact-box h1{
+                      text-align: center;
+                      margin-bottom: 4.5%;
+                      font-size: 10.5rem; 
+        }
+        
+        ::ng-deep .modal-content .contact-box .btn{
+                margin-top:5%;
+                font-size: 11rem !important;
+                left:30.5%;
+        }
+}
+
+@media (max-width: 390px) and (min-width:377px){
+        .image-device{
+             
+             
+        }
+
+        .service-14{
+                margin-left: 43%;
+        }
+
+        ::ng-deep .close{
+                font-size: 18rem !important;
+                left: 1350px;
+                top:-120px;
+        }
+        ::ng-deep .modal-content .contact-box .btn{
+                margin-top:5%;
+                font-size: 4rem !important;
+                left:35.5%;
+        }
+        ::ng-deep .modal-content{
+                width:98%;
+                margin-left: -2%;
+        }
+        
+        ::ng-deep #terms{
+                font-size: 2.5rem;
+        }
+        
+        ::ng-deep .modal-content .contact-box{
+                position: relative;
+                top:-230px;
+        }
+              
+        ::ng-deep .modal-content .contact-box .font-weight-medium {
+                font-weight: 500;
+        }
+              
+        
+        
+        ::ng-deep .modal-content .contact-box form input{
+                      font-size: 6.5rem;
+        }
+        
+        ::ng-deep .modal-content .contact-box form textarea{
+                font-size: 7.5rem;
+        }
+        
+        ::ng-deep .modal-content .contact-box h1{
+                      text-align: center;
+                      margin-bottom: 4.5%;
+                      font-size: 10.5rem; 
+        }
+        
+        ::ng-deep .modal-content .contact-box .btn{
+                margin-top:5%;
+                font-size: 11rem !important;
+                left:30.5%;
+        }
+}
+
+@media (max-width: 376px) and (min-width:362px){
+        .image-device{
+              
+              
+        }
+
+        .service-14{
+             
+        }
+
+        ::ng-deep .close{
+                font-size: 18rem !important;
+                left: 1250px;
+                top:-120px;
+        }
+        ::ng-deep .modal-content .contact-box .btn{
+                margin-top:5%;
+                font-size: 4rem !important;
+                left:35.5%;
+        }
+        ::ng-deep .modal-content{
+                width:98%;
+                margin-left: -2%;
+        }
+        ::ng-deep .modal-content .contact-box .btn{
+                margin-top:5%;
+                font-size: 11rem !important;
+                left:30.5%;
+        }
+
+       
+       
+       
+
+       
+       
+       
+
+       
+       
+       
+}
+
+
+@media (max-width: 361px) and (min-width:322px){
+        .image-device{
+              
+              
+        }
+
+        .service-14{
+               
+        }
+
+        ::ng-deep .close{
+                font-size: 18rem !important;
+                left: 1250px;
+                top:-120px;
+        }
+        ::ng-deep .modal-content .contact-box .btn{
+                margin-top:5%;
+                font-size: 4rem !important;
+                left:35.5%;
+        }
+        ::ng-deep .modal-content{
+                width:98%;
+                margin-left: -2%;
+        }
+
+        ::ng-deep .modal-content .contact-box .btn{
+                margin-top:5%;
+                font-size: 11rem !important;
+                left:30.5%;
+        }
+        
+}
+
+
+@media (max-width: 321px){
+
+        .image-device{
+              
+              
+        }
+
+        #request-info {
+                font-size: 10.5rem !important;
+            }
+
+            .accordion {
+                width: 1090px;
+            }
+
+            .accordion-button::after{
+                right: 480px;
+            }
+
+            ::ng-deep .progress{
+                    width: 1090px !important;
+            }
+
+            ::ng-deep .close{
+                font-size: 18rem !important;
+                left: 1050px;
+                top:-120px;
+        }
+        ::ng-deep .modal-content .contact-box .btn{
+                margin-top:5%;
+                font-size: 4rem !important;
+                left:35.5%;
+        }
+        ::ng-deep .modal-content{
+                width:98%;
+                margin-left: -2%;
+        }
+        ::ng-deep .modal-content .contact-box .btn{
+                margin-top:5%;
+                font-size: 11rem !important;
+                left:28%;
+        }
+}  */

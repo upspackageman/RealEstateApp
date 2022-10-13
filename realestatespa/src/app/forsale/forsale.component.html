@@ -1,63 +1,200 @@
-
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top shadow-lg option font-family" id="header">
+<main>
+<nav class="navbar navbar-expand-lg  shadow-lg option font-family">
     <div class="container">
-  
-      <div  class="selectOptions text-focus-in  font-family">
-        <ul class="navbar  ml-5">
-            <button class="contactButton font-family" (click)="openModalWithClass(bedrooms)">
-              <a type="button" >
-                <svg class="options-svg" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="4rem" viewBox="0 0 24 24" width="rem" fill="#000000" >
-                  <g>
-                    <path d="M0,0h24v24H0V0z" fill="none" />
-                  </g>
-                  <g>
-                    <path d="M21,10.78V8c0-1.65-1.35-3-3-3h-4c-0.77,0-1.47,0.3-2,0.78C11.47,5.3,10.77,5,10,5H6C4.35,5,3,6.35,3,8v2.78 C2.39,11.33,2,12.12,2,13v6h2v-2h16v2h2v-6C22,12.12,21.61,11.33,21,10.78z M14,7h4c0.55,0,1,0.45,1,1v2h-6V8C13,7.45,13.45,7,14,7 z M5,8c0-0.55,0.45-1,1-1h4c0.55,0,1,0.45,1,1v2H5V8z M4,15v-2c0-0.55,0.45-1,1-1h14c0.55,0,1,0.45,1,1v2H4z"  stroke="white" stroke-width="1" />
-                  </g>
-                </svg>
-              </a>
+        <div  class="selectOptions text-focus-in  font-family">
+        <form  [formGroup]="searchBar">
+          <input #findListing formControlName="search" class=" me-2 ml-5 searchBar main-font" type="search" placeholder="eg. 2144 Oceanside Boulevard, Oceanside, CA 92054" aria-label="Search">
+          <button class="btn searchButton main-font"  type="submit" [disabled]="!searchBar.valid"  (click)="searchListing(findListing.value)" ><i class="fa fa-search" aria-hidden="true"></i></button>
+          <button class="contactButton"  (click)="openModalWithClass(moreOptions)" >
+            <a class="" type="button"  >
+              <i class="fa fa-filter" aria-hidden="true"></i>
+            </a>
           </button>
-            <span class="contactButtonSpan"></span>
-            <button class="contactButton" (click)="openModalWithClass(bathrooms)" >
-              <a  type="button">
-                <svg class="options-svg" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="4rem" viewBox="0 0 24 24" width="4rem" fill="#000000">
-                  <g>
-                    <rect fill="none" height="24" width="24"/>
-                  </g>
-                  <g>
-                    <g>
-                      <circle cx="7" cy="7" r="2" stroke="white" stroke-width="1"/>
-                      <path d="M20,13V4.83C20,3.27,18.73,2,17.17,2c-0.75,0-1.47,0.3-2,0.83l-1.25,1.25C13.76,4.03,13.59,4,13.41,4 c-0.4,0-0.77,0.12-1.08,0.32l2.76,2.76c0.2-0.31,0.32-0.68,0.32-1.08c0-0.18-0.03-0.34-0.07-0.51l1.25-1.25 C16.74,4.09,16.95,4,17.17,4C17.63,4,18,4.37,18,4.83V13h-6.85c-0.3-0.21-0.57-0.45-0.82-0.72l-1.4-1.55 c-0.19-0.21-0.43-0.38-0.69-0.5C7.93,10.08,7.59,10,7.24,10C6,10.01,5,11.01,5,12.25V13H2v6c0,1.1,0.9,2,2,2c0,0.55,0.45,1,1,1h14 c0.55,0,1-0.45,1-1c1.1,0,2-0.9,2-2v-6H20z M20,19H4v-4h16V19z" stroke="white" stroke-width="1"/>
-                    </g>
-                  </g>
-                </svg>
-              </a>
-            </button>
-            <span class="contactButtonSpan"></span>
-            <button class="contactButton" (click)="openModalWithClass(moreOptions)" >
-              <a class="" type="button"  >
-                <svg class="options-svg" xmlns="http://www.w3.org/2000/svg" height="4rem" viewBox="0 0 24 24" width="4rem" fill="#000000">
-                  <path d="M0 0h24v24H0V0z" fill="none"/>
-                  <path d="M19.43 12.98c.04-.32.07-.64.07-.98 0-.34-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.09-.16-.26-.25-.44-.25-.06 0-.12.01-.17.03l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.06-.02-.12-.03-.18-.03-.17 0-.34.09-.43.25l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98 0 .33.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.09.16.26.25.44.25.06 0 .12-.01.17-.03l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.06.02.12.03.18.03.17 0 .34-.09.43-.25l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zm-1.98-1.71c.04.31.05.52.05.73 0 .21-.02.43-.05.73l-.14 1.13.89.7 1.08.84-.7 1.21-1.27-.51-1.04-.42-.9.68c-.43.32-.84.56-1.25.73l-1.06.43-.16 1.13-.2 1.35h-1.4l-.19-1.35-.16-1.13-1.06-.43c-.43-.18-.83-.41-1.23-.71l-.91-.7-1.06.43-1.27.51-.7-1.21 1.08-.84.89-.7-.14-1.13c-.03-.31-.05-.54-.05-.74s.02-.43.05-.73l.14-1.13-.89-.7-1.08-.84.7-1.21 1.27.51 1.04.42.9-.68c.43-.32.84-.56 1.25-.73l1.06-.43.16-1.13.2-1.35h1.39l.19 1.35.16 1.13 1.06.43c.43.18.83.41 1.23.71l.91.7 1.06-.43 1.27-.51.7 1.21-1.07.85-.89.7.14 1.13zM12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" stroke="white" stroke-width="1"/>
-                </svg>
-              </a>
-            </button>
-        </ul>
-        <form class="d-flex formSetting">
-          <input #findListing class="form-control me-2 ml-5 searchBar main-font" type="search" placeholder="eg. 2144 Oceanside Boulevard, Oceanside, CA 92054" aria-label="Search">
-          <button class="btn btn-outline-success searchButton main-font"  type="submit"  (click)="searchListing(findListing.value)" >Search</button>
+          <button class="mapButton"  (click)="mapViewTablet()">
+            <a class="" type="button"  >
+              <i class="fa fa-map-o" aria-hidden="true"></i>
+            </a>
+          </button>
         </form>
       </div>
+      
+  
+      <!-- <div class="selectdiv filter2">
+        <label>
+            <select (change)="pricechange($event.target.value)">
+              <option [value] = "-1">{{currentPrice == -1?'Max Price': currentPrice}}</option>
+                <option [value]= "-1" >--No Max--</option>
+                <option [value]= "price" *ngFor="let price of priceSelect">{{price| currency:'USD':'symbol':'2.0-2'}}</option>
+            </select>
+        </label>
+      </div>
+      <div class="selectdiv filter2">
+        <label>
+            <select (change)="priceSort($event.target.value)">
+              <option [value]="-1">Price Sort</option>
+              <option [value]="1">(High to low)</option>
+              <option [value]="2">(Low to High)</option>
+            </select>
+        </label>
+      </div>
+      <div class="selectdiv filter2">
+        <label class="adjust-space">
+            <select  (change)="bedchange($event.target.value)">
+                <option  id="one" [value]=-1>Beds</option>
+                <option [value]=1>1+</option>
+                <option [value]=2>2+</option>
+                <option [value]=3>3+</option>
+                <option [value]=4>4+</option>
+                <option [value]=5>5+</option>
+                <option [value]=6>6+</option>
+                <option [value]=7>7+</option>
+                <option [value]=8>8+</option>
+                <option [value]=9>9+</option>
+                <option [value]=10>10+</option>
+                
+            </select>
+        </label>
+      </div>
+      <div class="selectdiv filter2">
+        <label  class="adjust-space">
+            <select   (change)="bathchange($event.target.value)">
+              <option id="one" [value]=-1>Baths</option>
+              <option [value]=1>1+</option>
+              <option [value]=2>2+</option>
+              <option [value]=3>3+</option>
+              <option [value]=4>4+</option>
+              <option [value]=5>5+</option>
+              <option [value]=6>6+</option>
+              <option [value]=7>7+</option>
+              <option [value]=8>8+</option>
+              <option [value]=9>9+</option>
+              <option [value]=10>10+</option>
+            </select>
+        </label>
+      </div>
+      <div class="selectdiv filter2">
+        <label  class="adjust-space">
+            <select (change)="estimatedSqFt($event.target.value)">
+              <option value="-1">Sq. Ft.</option>
+              <option value="500" >500</option>
+              <option value="750">750</option>
+              <option value="1000">1,000</option>
+              <option value="1500">1,500</option>
+              <option value="2000">2,000</option>
+              <option value="2500">2,500</option>
+              <option value="3000">3,000</option>
+              <option value="3500">3,500</option>
+              <option value="4000">4,000</option>
+              <option value="4500">4,500</option>
+              <option value="5000">5,000</option>
+              <option value="5500">5,500</option>
+              <option value="6000">6,000</option>
+              <option value="6500">6,500</option>
+              <option value="7000">7,000</option>
+              <option value="10000">10,000</option>
+              <option value="20000">20,000</option>
+              <option value="30000">30,000</option>
+            </select>
+        </label>
+      </div> -->
+      <div class="dropdown">
+        <button  class="listing-status adjust-space" >{{ListingParams.bathtotals == -1?'Baths': ListingParams.bathtotals }}<span 
+      *ngIf="ListingParams.bathtotals !== -1">+</span></button>
+        <div class="dropdown-content" id="price-drpdwn" >
+          <ul>
+            <a href="javascript:void(0)" (click)="bathchange($event.target.value)"><li [value]= "bath" *ngFor="let bath of bathSelect" >{{bath}}+</li></a>
+          </ul>
+        </div>
+      </div>
+      <div class="dropdown" >
+        <button class="listing-status adjust-space">{{ListingParams.bedrooms == -1?'Beds': ListingParams.bedrooms }}<span 
+      *ngIf="ListingParams.bedrooms !== -1">+</span></button>
+        <div class="dropdown-content" id="price-drpdwn">
+          <ul>
+            <a href="javascript:void(0)" (click)="bedchange($event.target.value)"><li [value]= "bed" *ngFor="let bed of bedSelect" >{{bed}}+</li></a>
+          </ul>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button   class="listing-status adjust-space">{{currentSqft == '-1'?'Sq. Ft.': currentSqft +' Sq. Ft.'+ ' >'}}<span 
+      *ngIf="selectedEst !== -1"><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
+        <div class="dropdown-content" id="price-drpdwn">
+          <ul>
+            <a href="javascript:void(0)" (click)="estimatedSqFt($event.target.value)"><li [value]= "sqft" *ngFor="let sqft of sqftSelect" >{{sqft + ' >'}} </li></a>
+          </ul>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button   class="listing-status adjust-space">{{currentPrice == -1?'Max Price': currentPrice | currency:'USD':'symbol':'2.0-2'}}<span *ngIf="currentPrice !== -1"><i class="fa fa-angle-left" aria-hidden="true"></i></span></button>
+        <div class="dropdown-content"  id="price-drpdwn">
+          <ul>
+            <a href="javascript:void(0)" (click)="pricechange($event.target.value)"><li  [value]= "-1" > No Max</li></a>
+              <a href="javascript:void(0)" (click)="pricechange($event.target.value)"><li [value]= "price" *ngFor="let price of priceSelect" >{{price| currency:'USD':'symbol':'2.0-2'}}</li></a>
+          </ul>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button [innerHtml]="pricesortHTML"  class="listing-status adjust-space"></button>
+        <div class="dropdown-content" id="price-sort">
+          <ul>
+            <a href="javascript:void(0)" (click)="priceSort($event.target.value)"><li [value]="1">(High to low)</li></a>
+            <a href="javascript:void(0)" (click)="priceSort($event.target.value)"><li [value]="2">(Low to High)</li></a>
+          </ul>
+        </div>
+      </div>
+      <div class="dropdown">
+        <!--</button> (click)="openModalWithClass(listingStatus)"-->
+          <span  class="listing-status adjust-space">Listing Status</span>
+          <div class="dropdown-content" id="listing-status-desktop">
+            <div class="container-listing-status" >
+              <div class="label-container">
+                  <label>
+                      <input type="checkbox" (click)=activeStatus($event) [checked]="activeSelected" >
+                      <span class="checkmark"></span>
+                      Active&nbsp;&nbsp;&nbsp;
+                    </label>
+                    <label>
+                      <input type="checkbox" (click)=pendingStatus($event) [checked]="pendingSelected">
+                      <span class="checkmark"></span>
+                      Pending&nbsp;&nbsp;&nbsp;
+                    </label>
+                    <label>
+                      <input type="checkbox" (click)=contingentStatus($event) [checked]="contingentSelected">
+                      <span class="checkmark"></span>
+                      Contingent&nbsp;&nbsp;&nbsp;
+                    </label>
+                    <label>
+                      <input type="checkbox" (click)=bomStatus($event) [checked]="bomSelected">
+                      <span class="checkmark"></span>
+                      BOM&nbsp;&nbsp;&nbsp;
+                    </label>
+                    <label>
+                      <input type="checkbox" (click)=forecloseStatus($event) [checked]="forecloseSelected">
+                      <span class="checkmark"></span>
+                      Foreclose&nbsp;&nbsp;&nbsp;
+                    </label>
+                    <label>
+                      <input  type="checkbox" (click)=soldStatus($event) [checked]="soldSelected">
+                      <span class="checkmark"></span>
+                      Sold
+                    </label>
+              </div>
+            </div>
+          </div>
+      </div>
     </div>
+    
+   
+    
   </nav>
   
   <div class="splitscreen font-family">
-    <div [ngStyle]="{'z-index':zIndex}" class="left shadow-lg">
-        <div class="listing_results" >
+    <div   class="left shadow-lg">
+        <div class="listing_results">
           <div class="spacing"></div>
             <div class="list" *ngFor="let listing of listings" >
               <app-listing-card    [listing]= "listing"></app-listing-card>
             </div>
-            <div class="cardPadding"></div>
             <div class="pagination_listing_results1" #pagination>
                 <pagination
                 [maxSize]="maxSize"
@@ -77,7 +214,22 @@
     </div>
   </div>
   
-  <div class="pagination_listing_results" #pagination>
+
+  <button  [ngStyle]="{'z-index':zMap}"  (click)="mapView()" class="map_list_button">
+   <span *ngIf="isMapView" class="map_text_margin">
+    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24"  >
+  
+      <path d="M3,5v14h18V5H3z M7,7v2H5V7H7z M5,13v-2h2v2H5z M5,15h2v2H5V15z M19,17H9v-2h10V17z M19,13H9v-2h10V13z M19,9H9V7h10V9z" />
+    </svg>
+   </span>
+   <span *ngIf="!isMapView" class="map_text_margin">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" >
+      <path d="M0 0h24v24H0V0z" fill="none"/>
+      <path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM10 5.47l4 1.4v11.66l-4-1.4V5.47zm-5 .99l3-1.01v11.7l-3 1.16V6.46zm14 11.08l-3 1.01V6.86l3-1.16v11.84z"  stroke="white" stroke-width="1.5"/>
+    </svg>
+   </span>
+  </button>
+  <div [ngStyle]="{'z-index':zPagination}" class="pagination_listing_results" #pagination>
     <pagination
       [maxSize]="maxSize"
       [boundaryLinks]="true"
@@ -92,23 +244,9 @@
       class="pagination">
     </pagination>
   </div>
-  <button (click)="mapView()" class="map_list_button">
-   <span *ngIf="isMapView" class="map_text_margin">
-    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24"  >
-  
-      <path d="M3,5v14h18V5H3z M7,7v2H5V7H7z M5,13v-2h2v2H5z M5,15h2v2H5V15z M19,17H9v-2h10V17z M19,13H9v-2h10V13z M19,9H9V7h10V9z" />
-    </svg>
-   </span>
-   <span *ngIf="!isMapView" class="map_text_margin">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" >
-      <path d="M0 0h24v24H0V0z" fill="none"/>
-      <path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM10 5.47l4 1.4v11.66l-4-1.4V5.47zm-5 .99l3-1.01v11.7l-3 1.16V6.46zm14 11.08l-3 1.01V6.86l3-1.16v11.84z"  stroke="white" stroke-width="1.5"/>
-    </svg>
-   </span>
-  </button>
   
   <div class="right">
-    <agm-map [(latitude)]="location.lat"  [styles]="location.styles" [(longitude)]="location.lng" [clickableIcons]="location.clickableIcons" [(showDefaultInfoWindow)] ="location.showDefaultInfoWindow" [disableDefaultUI]="location.disableDefaultUI" [(zoom)]="location.zoom" [draggable]="location.draggable">
+    <agm-map [ngStyle]="{'z-index':zIndex}"  [(latitude)]="location.lat"  [styles]="location.styles" [(longitude)]="location.lng" [clickableIcons]="location.clickableIcons" [(showDefaultInfoWindow)] ="location.showDefaultInfoWindow" [disableDefaultUI]="location.disableDefaultUI" [(zoom)]="location.zoom" [draggable]="location.draggable">
       <agm-marker class="myMap" *ngFor="let markers of listings"  [(latitude)]="markers.latitude" [(longitude)]="markers.longitude"   [iconUrl]="location.iconUrl" [agmFitBounds]="true">
         <agm-snazzy-info-window  [border]="location.border" [borderRadius]="location.borderRadius" [maxWidth]="950" [maxHeight]="870" [padding]="location.padding"  [closeWhenOthersOpen]="true">
           <ng-template >
@@ -123,250 +261,205 @@
         </agm-snazzy-info-window>
       </agm-marker>
     </agm-map>
+      
   </div>
-  
-  
-  
-  <ng-template #bedrooms class="modal-sm">
-    <div class="main-font">
-      <h4 class="moreOptionsHeaderFont">Bedrooms</h4>
-       <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-        <span aria-hidden="true">&times;</span>
-      </button>
+</main> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ng-template  #listingStatus>
+  <button type="button" class="close" (click)="modalRef.hide()">
+    &times;
+  </button>
+  <h1 class="status-title">Listing Status</h1>
+  <div class="container-listing-status">
+    <div class="label-container">
+        <label>
+            <input type="checkbox" (click)=activeStatus($event) [checked]="activeSelected" >
+            <span class="checkmark"></span>
+            Active&nbsp;&nbsp;&nbsp;
+          </label>
+          <label>
+            <input type="checkbox" (click)=pendingStatus($event) [checked]="pendingSelected">
+            <span class="checkmark"></span>
+            Pending&nbsp;&nbsp;&nbsp;
+          </label>
+          <label>
+            <input type="checkbox" (click)=contingentStatus($event) [checked]="contingentSelected">
+            <span class="checkmark"></span>
+            Contingent&nbsp;&nbsp;&nbsp;
+          </label>
+          <label>
+            <input type="checkbox" (click)=bomStatus($event) [checked]="bomSelected">
+            <span class="checkmark"></span>
+            BOM&nbsp;&nbsp;&nbsp;
+          </label>
+          <label>
+            <input type="checkbox" (click)=forecloseStatus($event) [checked]="forecloseSelected">
+            <span class="checkmark"></span>
+            Foreclose&nbsp;&nbsp;&nbsp;
+          </label>
+          <label>
+            <input  type="checkbox" (click)=soldStatus($event) [checked]="soldSelected">
+            <span class="checkmark"></span>
+            Sold
+          </label>
     </div>
-    <div class="modal-body main-font">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="form-group" style="text-align: center;">
-            <div  class="labelSection">
-              <label for="beds-_default" class="" data-testid="beds-_default">
-                <input #bed class="ml-2 radioButton" name="beds" id="beds-_default" type="radio" (click)="bedchange(bed.value)" value="0" >
-                <span class=" font-weight-regular absolute selectFont">Any</span>
-              </label>
-              <label for="beds-1" class=" " data-testid="beds-1">
-                <input #bed1 class="ml-2 radioButton" name="beds" id="beds-1" type="radio"(click)="bedchange(bed1.value)"  value="1">
-                <span class=" font-weight-regular absolute selectFont">1+</span>
-              </label>
-              <label for="beds-2" class=" " data-testid="beds-2">
-                <input  #bed2 class="ml-2 radioButton" name="beds" id="beds-2" type="radio" (click)="bedchange(bed2.value)" value="2">
-                <span class=" font-weight-regular absolute selectFont">2+</span>
-              </label>
-              <label for="beds-3" class=" " data-testid="beds-3">
-                <input #bed3 class="ml-2 radioButton" name="beds" id="beds-3" type="radio" (click)="bedchange(bed3.value)" value="3">
-                <span class=" font-weight-regular absolute selectFont">3+</span>
-              </label>
-              <label for="beds-4" class=" " data-testid="beds-4">
-                <input #bed4 class="ml-2 radioButton" name="beds" id="beds-4" type="radio" (click)="bedchange(bed4.value)" value="4">
-                <span class=" font-weight-regular absolute selectFont">4+</span>
-              </label><label    for="beds-5" class="" data-testid="beds-5">
-                <input class="ml-2 radioButton" #bed6 name="beds" id="beds-5" type="radio" (click)="bedchange(bed6.value)" value="5">
-                <span class=" font-weight-regular absolute selectFont">5+</span>
-              </label>
-            </div>
+  </div>
+
+</ng-template>
+  
+  <ng-template #moreOptions   >
+    <button type="button" class="close" (click)="modalRef.hide()">
+      &times;
+    </button>
+      <div class="container">
+          <h1 class="mobile">Bed</h1>
+          <div class="filter-cat">
+              <div  class="selectdiv">
+                  <label>
+                    <select  id="mobileBtnBed"  (change)="bedchange($event.target.value)">
+                      <option   id="one" [value]=-1>{{currentBed == -1?'Beds': currentBed +'+'}}</option>
+                      <option [value]=1>1+</option>
+                      <option [value]=2>2+</option>
+                      <option [value]=3>3+</option>
+                      <option [value]=4>4+</option>
+                      <option [value]=5>5+</option>
+                      <option [value]=6>6+</option>
+                      <option [value]=7>7+</option>
+                      <option [value]=8>8+</option>
+                      <option [value]=9>9+</option>
+                      <option [value]=10>10+</option>
+                      
+                  </select>
+                  </label>
+                </div> 
           </div>
-        </div>
-      </div>
-    </div>
-  </ng-template>
-  
-  <ng-template #bathrooms>
-    <div class="main-font">
-      <h4 class="moreOptionsHeaderFont">Bathrooms</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body main-font">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="form-group">
-            <div class="labelSection">
-              <label for="beds-_default" class="" data-testid="beds-_default">
-                <input class="ml-2 radioButton" #bath name="beds" id="beds-_default" type="radio"  (click)="bathchange(bath.value)"  value="0">
-                <span class=" font-weight-regular absolute selectFont">Any</span>
-              </label>
-              <label for="beds-1" class=" " data-testid="beds-1">
-                <input class="ml-2 radioButton" #bath1 name="beds" id="beds-1" type="radio" (click)="bathchange(bath1.value)" value="1">
-                <span class=" font-weight-regular absolute selectFont">1+</span>
-              </label>
-              <label for="beds-2" class=" " data-testid="beds-2">
-                <input class="ml-2 radioButton" #bath2 name="beds" id="beds-2" type="radio" (click)="bathchange(bath2.value)" value="2">
-                <span class=" font-weight-regular absolute selectFont">2+</span>
-              </label>
-              <label for="beds-3" class=" " data-testid="beds-3">
-                <input class="ml-2 radioButton" #bath3 name="beds" id="beds-3" type="radio" (click)="bathchange(bath3.value)" value="3">
-                <span class=" font-weight-regular absolute selectFont">3+</span>
-              </label>
-              <label for="beds-4" class=" " data-testid="beds-4">
-                <input class="ml-2 radioButton" #bath4 name="beds" id="beds-4" type="radio" (click)="bathchange(bath4.value)" value="4">
-                <span class=" font-weight-regular absolute selectFont">4+</span>
-              </label><label for="beds-5" class="" data-testid="beds-5">
-                <input class="ml-2 radioButton" #bath5 name="beds" id="beds-5" type="radio"(click)="bathchange(bath5.value)" value="5">
-                <span class=" font-weight-regular absolute selectFont">5+</span>
-              </label>
-            </div>
+          <h1 class="mobile">Bath</h1>
+          <div class="filter-cat">
+              <div class="selectdiv">
+                  <label>
+                    <select  id="mobileBtnBath" (change)="bathchange($event.target.value)">
+                      <option id="one" [value]=-1>{{currentBath == -1?'Baths': currentBath +'+'}}</option>
+                      <option [value]=1>1+</option>
+                      <option [value]=2>2+</option>
+                      <option [value]=3>3+</option>
+                      <option [value]=4>4+</option>
+                      <option [value]=5>5+</option>
+                      <option [value]=6>6+</option>
+                      <option [value]=7>7+</option>
+                      <option [value]=8>8+</option>
+                      <option [value]=9>9+</option>
+                      <option [value]=10>10+</option>
+                    </select>
+                  </label>
+                </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </ng-template>
-  <!--
-  <ng-template #listingStatus>
-    <div class="modal-header main-font">
-      <h4 class="modal-title pull-left">Listing Status</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body main-font">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="form-group">
-  
-            <button class="button button2" (click)=activeStatus()>Active</button>
-            <button class="button button2" (click)=contingentStatus()>Contingent</button> <br>
-            <button class="button button2" (click)=pendingStatus()>Status</button>
-            <button class="button button2" (click)=soldStatus()>SOLD</button> <br>
-            <button class="button button2" (click)=bomStatus()>Back On Market</button>
-            <button class="button button2" (click)=withdrawnStatus()>Withdrawn</button> <br>
-            <button class="button button2" (click)=cancelledStatus()>Cancelled</button>
-            <button class="button button2" (click)=expiredStatus()>Expired</button> <br>
-            <button class="button button2" (click)=comingsoonStatus()>Coming Soon</button>
-  
+          <h1 class="mobile">Price</h1>
+          <div class="filter-cat">
+              <div class="selectdiv">
+                  <label>
+                    <select id="mobileBtnPrice" (change)="pricechange($event.target.value)">
+                      <option [value] = "-1">{{currentPrice == -1?'Max Price': currentPrice + ' <'}}</option>
+                        <option [value]= "-1" >--No Max--</option>
+                        <option [value]= "price" *ngFor="let price of priceSelect">{{'$'+ price + ' <' }}</option>
+                    </select>
+                  </label>
+                </div>
+          </div> 
+          <div id="price-spacing">
+
           </div>
-        </div>
-      </div>
-    </div>
-  </ng-template> -->
-  
-  <ng-template #moreOptions>
-    <div class="main-font">
-      <h4 class="moreOptionsHeaderFont">More Options</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body main-font">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="form-group" style="text-align:center;">
-  
-              <p class="moreOptionsBodyFont">Price</p>
-              <select id="Price" class="stack moreOptionsHeaderSelectFont" (change)="pricechange($event.target.value)">
-                <option [value] = "-1">{{currentPrice == -1?'--Select --': currentPrice}}</option>
-                <option [value]= "-1" >--No Max--</option>
-                <option [value]= "price" *ngFor="let price of priceSelect">{{'$'+price}}</option>
-              </select>
-              <span style="margin-left: 10px;"></span>
-              <select id="priceSort" class="stack moreOptionsHeaderSelectFont" (change)="priceSort($event.target.value)">
-                <option [value]="-1">  --Sort--</option>
-                <option [value]="1">(High to low)</option>
-                <option [value]="2">(Low to High)</option>
-              </select>
-  
-              <p></p>
-             <p class="mb-0 mt-2 moreOptionsBodyFont">Square Feet</p>
-              <select id="month"  class="stack moreOptionsHeaderSelectFont" (change)="estimatedSqFt($event.target.value)">
-                <option value="-1">--No Min--</option>
-                <option value="500" >500</option>
-                <option value="750">750</option>
-                <option value="1000">1,000</option>
-                <option value="1500">1,500</option>
-                <option value="2000">2,000</option>
-                <option value="2500">2,500</option>
-                <option value="3000">3,000</option>
-                <option value="3500">3,500</option>
-                <option value="4000">4,000</option>
-                <option value="4500">4,500</option>
-                <option value="5000">5,000</option>
-                <option value="5500">5,500</option>
-                <option value="6000">6,000</option>
-                <option value="6500">6,500</option>
-                <option value="7000">7,000</option>
-                <option value="10000">10,000</option>
-                <option value="20000">20,000</option>
-                <option value="30000">30,000</option>
-              </select>
-            <!--
-            <p class="mb-0 mt-2 moreOptionsBodyFont">Lot Size</p>
-              <select id="month"  class="stack moreOptionsHeaderSelectFont" (change)="estimatedSqFt($event.target.value)">
-                <option value="">--No Min--</option>
-                <option value="1000" rel="icon-temperature">1000</option>
-                <option value="5000">5,000</option>
-                <option value="10000">10,000</option>
-                <option value="20000">20,000</option>
-                <option value="30000">30,000</option>
-                <option value="40000">40,000</option>
-                <option value="50000">50,000</option>
-                <option value="100000">100,000</option>
-                <option value="200000">200,000</option>
-                <option value="500000">500,000</option>
-                <option value="750000">750,000</option>
-                <option value="1000000">1M</option>
-              </select>
-  
-  
-            <p class="mb-0 mt-2 moreOptionsBodyFont">Year Built</p>
-              <select id="month"  class="stack moreOptionsHeaderSelectFont">
-                <option value="hide">--From--</option>
-                <option value="1900" rel="icon-temperature">1900</option>
-                <option value="1910">1910</option>
-                <option value="1920">1920</option>
-                <option value="1930">1930</option>
-                <option value="1940">1940</option>
-                <option value="1950">1950</option>
-                <option value="1960">1960</option>
-                <option value="1970">1970</option>
-                <option value="1980">1980</option>
-                <option value="1990">1990</option>
-                <option value="2000">2000</option>
-                <option value="2005">2005</option>
-                <option value="2010">2010</option>
-                <option value="2015">2015</option>
-                <option value="2016">2016</option>
-                <option value="2017">2017</option>
-                <option value="2018">2018</option>
-                <option value="2019">2019</option>
-                <option value="2020">2020</option>
-                <option value="2021">2021</option>
-            </select>
-            <span style="padding:2px;"> </span>
-            <select id="year"  class="stack moreOptionsHeaderSelectFont">
-              <option value="hide">--Before or At--</option>
-              <option value="1900" rel="icon-temperature">1900</option>
-              <option value="1910y">1910</option>
-              <option value="march">1920</option>
-              <option value="april">1930</option>
-              <option value="may">1940</option>
-              <option value="june">1950</option>
-              <option value="july">1960</option>
-              <option value="august">1970</option>
-              <option value="september">1980</option>
-              <option value="october">1990</option>
-              <option value="november">2000</option>
-              <option value="2019">2005</option>
-              <option value="2019">2010</option>
-              <option value="2019">2015</option>
-              <option value="2019">2016</option>
-              <option value="2019">2017</option>
-              <option value="2019">2018</option>
-              <option value="2019">2019</option>
-              <option value="2019">2020</option>
-              <option value="2019">2021</option>
-            </select> -->
-            <p class="mt-5 moreOptionsBodyFont">Listing Status</p>
-            <button [ngStyle]="{'background':activeColor}" class="button button2 moreOptionsBodyFontButton" (click)=activeStatus()>Active</button>
-            <button [ngStyle]="{'background':contingentColor}"class="button button2 moreOptionsBodyFontButton" (click)=contingentStatus()>Contingent</button> <br>
-            <button [ngStyle]="{'background':pendingColor}" class="button button2 moreOptionsBodyFontButton" (click)=pendingStatus()>Pending</button>
-            <button [ngStyle]="{'background':soldColor}" class="button button2 moreOptionsBodyFontButton" (click)=soldStatus()>SOLD</button> <br>
-            <button [ngStyle]="{'background':bomColor}" class="button button2 moreOptionsBodyFontButton" (click)=bomStatus()>Back On Market</button>
-            <button [ngStyle]="{'background':withdrawnColor}" class="button button2 moreOptionsBodyFontButton" (click)=withdrawnStatus()>Withdrawn</button> <br>
-            <button [ngStyle]="{'background':cancelledColor}" class="button button2 moreOptionsBodyFontButton" (click)=cancelledStatus()>Cancelled</button>
+          <div class="filter-cat">
+                <div class="selectdiv">
+                  <label>
+                    <select id="mobileBtnSort" (change)="priceSort($event.target.value)">
+                      <option [value]="-1">{{currentSort == -1?'Price Sort': currentSort}}</option>
+                      <option [value]="1">(High to low)</option>
+                      <option [value]="2">(Low to High)</option>
+                    </select>
+                  </label>
+                </div>
           </div>
+    
+          <h1 class="mobile">Square Feet</h1>
+          <div class="filter-cat">
+              <div class="selectdiv">
+                  <label>
+                    <select id="mobileBtnSqft" (change)="estimatedSqFt($event.target.value)">
+                      <option value="-1">{{currentSqft == -1?'Sq. Ft.': currentSqft + ' >'}}</option>
+                      <option value="500" >500 > </option>
+                      <option value="750">750 ></option>
+                      <option value="1000">1000 ></option>
+                      <option value="1500">1500 ></option>
+                      <option value="2000">2000 ></option>
+                      <option value="2500">2500 ></option>
+                      <option value="3000">3000 ></option>
+                      <option value="3500">3500 ></option>
+                      <option value="4000">4000 ></option>
+                      <option value="4500">4500 ></option>
+                      <option value="5000">5000 ></option>
+                      <option value="5500">5500 ></option>
+                      <option value="6000">6000 ></option>
+                      <option value="6500">6500 ></option>
+                      <option value="7000">7000 ></option>
+                      <option value="10000">10000 ></option>
+                      <option value="20000">20000 ></option>
+                      <option value="30000">30000 ></option>
+                    </select>
+                  </label>
+                </div>
+          </div>
+          <h1 class="mobile">Listing Status</h1>
+          <div class="label-container">
+            <label>
+                <input type="checkbox" (click)=activeStatus($event) [checked]="activeSelected" >
+                <span class="checkmark"></span>
+                Active&nbsp;&nbsp;&nbsp;
+              </label>
+              <label>
+                <input type="checkbox" (click)=pendingStatus($event) [checked]="pendingSelected">
+                <span class="checkmark"></span>
+                Pending&nbsp;&nbsp;&nbsp;
+              </label>
+              <label>
+                <input type="checkbox" (click)=contingentStatus($event) [checked]="contingentSelected">
+                <span class="checkmark"></span>
+                Contingent&nbsp;&nbsp;&nbsp;
+              </label>
+              <label>
+                <input type="checkbox" (click)=bomStatus($event) [checked]="bomSelected">
+                <span class="checkmark"></span>
+                BOM&nbsp;&nbsp;&nbsp;
+              </label>
+              <label>
+                <input type="checkbox" (click)=forecloseStatus($event) [checked]="forecloseSelected">
+                <span class="checkmark"></span>
+                Foreclose&nbsp;&nbsp;&nbsp;
+              </label>
+              <label>
+                <input  type="checkbox" (click)=soldStatus($event) [checked]="soldSelected">
+                <span class="checkmark"></span>
+                Sold
+              </label>
         </div>
+
       </div>
-    </div>
-  </ng-template>
+</ng-template>
   
   
   

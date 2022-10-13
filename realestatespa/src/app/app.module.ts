@@ -14,13 +14,14 @@ import { LoginregisterComponent } from './loginregister/loginregister.component'
 import { HomeComponent } from './home/home.component';
 import { ForsaleComponent } from './forsale/forsale.component';
 import { ListingCardComponent } from './listing-card/listing-card.component';
-import { ModalModule} from 'ngx-bootstrap/modal';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { ListingDetailComponent } from './listing-detail/listing-detail.component';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { CommonModule } from '@angular/common';
 import { HttpClientJsonpModule } from '@angular/common/http';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
+import { NgChartsModule } from 'ng2-charts';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { BsDropdownModule, BsDropdownConfig } from 'ngx-bootstrap/dropdown';
@@ -33,13 +34,20 @@ import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ServerErrorComponent } from './server-error/server-error.component';
 import { LoginComponent } from './login/login.component';
-
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { EmailConfirmationComponent } from './email-confirmation/email-confirmation.component';
+import { ConfirmationSentComponent } from './confirmation-sent/confirmation-sent.component';
+import { TermsPolicyComponent } from './terms-policy/terms-policy.component';
+import { CustomErrorComponent } from './custom-alert/custom-error/custom-error.component';
 
 
 
 
 @NgModule({
   declarations: [
+    
+    TestErrorsComponent,
     AppComponent,
     NavbarComponent,
     LoginregisterComponent,
@@ -53,11 +61,20 @@ import { LoginComponent } from './login/login.component';
       TestErrorsComponent,
       NotFoundComponent,
       ServerErrorComponent,
-      LoginComponent
+      LoginComponent,
+      ResetPasswordComponent,
+      ForgotPasswordComponent,
+      EmailConfirmationComponent,
+      ConfirmationSentComponent,
+      TermsPolicyComponent,
+      CustomErrorComponent
+     
       
    ],
   imports: [
+    
     GoogleMapsModule,
+    NgChartsModule,
     CommonModule,
     BrowserModule,
     AppRoutingModule,
@@ -81,11 +98,7 @@ import { LoginComponent } from './login/login.component';
       apiKey: 'AIzaSyBM4RMj9NjeZABU92eGAZIA-kmgl4avboo'
     }),
     AgmSnazzyInfoWindowModule
-
-
-
   ],
-
   providers: [TabsetConfig,
               BsDropdownConfig,
               GoogleMapsAPIWrapper,

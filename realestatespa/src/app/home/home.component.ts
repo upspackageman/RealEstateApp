@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import {trigger,style, transition, animate, keyframes, query, stagger, state} from '@angular/animations';
 import { AccountService } from '../_services/account.service';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { EmailService } from '../_services/email.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-home',
@@ -46,21 +50,60 @@ import { AccountService } from '../_services/account.service';
 
 export class HomeComponent implements OnInit {
   state = 'in';
+  form: UntypedFormGroup = new UntypedFormGroup({}); 
+  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  phonePattern = "^(\\+\\d{1,3}( )?)?((\\(\\d{1,3}\\))|\\d{1,3})[- .]?\\d{3,4}[- .]?\\d{4}$";
+  contactForm:UntypedFormGroup; 
+  contact: any = {};
+  modalRef: BsModalRef;
+  config = {
+    backdrop: true,
+    animated: true,
+    class: 'gray modal-lg',
+    ignoreBackdropClick: false
+  };
 
-  constructor(public accountService: AccountService, private router: Router) { }
+  constructor(public accountService: AccountService, private router: Router, private fb: UntypedFormBuilder, private emailService: EmailService,private modalService: BsModalService) {
+
+    this.contactForm = fb.group({      
+      firstName:[null,[Validators.required, Validators.minLength(1)]],
+      lastName:[null,[Validators.required, Validators.minLength(1)]],
+      email:[null,[Validators.required, Validators.pattern(this.emailPattern)]],
+      phone:[null,[Validators.required, Validators.pattern(this.phonePattern)]],
+      message: ['']
+    });
+   }
 
   ngOnInit() {
-   this.home();
+   //this.home();
+   
+   
   }
 
  async redirect(){
     await this.router.navigate(['forsale']);
   }
 
-  async home(){
-   await  window.scroll(0,0);
+  async openModalWithClass(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(
+      template,this.config);
   }
 
+  async closeModal(){
+    location.reload();
+    this.modalRef.hide()
+  }
+  
+
+  async home(){
+    window.scroll(-1000000,-1000000);
+ if(!localStorage.getItem('direct')){
+   localStorage.setItem('direct', 'no reload')
+   location.reload();
+ } else {
+   localStorage.removeItem('direct');
+ }
+}
 
   onEnd(event) {
     this.state = 'in';
@@ -70,5 +113,29 @@ export class HomeComponent implements OnInit {
       }, 0);
     }
   }
+
+  sendMail(template: TemplateRef<any>){
+    this.contact.from = this.contactForm.value.email;
+    this.contact.firstName = this.contactForm.value.firstName;
+    this.contact.lastName = this.contactForm.value.lastName;
+    this.contact.phone = this.contactForm.value.phone;
+    this.contact.message = this.contactForm.value.message;
+    this.contact.subject = "Contact";
+    
+     this.emailService.sendContactEmail(this.contact).subscribe({
+      next: (_) => {
+        //this.modalRef.hide();
+        this.modalService.show(template,this.config);
+        console.log(this.contact);
+    },
+    error: (err: HttpErrorResponse) => {
+      console.log(err);
+    }});
+     //this.modalService.hide();
+}
+
+get f() {
+  return this.contactForm.controls;
+}
 
 }

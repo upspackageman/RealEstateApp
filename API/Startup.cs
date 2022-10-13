@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using API.Data;
+using API.Entities;
 
 namespace API
 {
@@ -22,7 +23,7 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
+            services.AddSingleton(_config.GetSection("EmailConfiguration").Get<EmailConfiguration>());
             services.AddApplicationServices(_config);
             services.AddControllers();
             services.AddCors();
@@ -48,7 +49,6 @@ namespace API
             app.UseRouting();
 
             app.UseCors(policy=>policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("*"));
-
 
             app.UseAuthentication();
 

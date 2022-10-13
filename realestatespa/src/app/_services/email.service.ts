@@ -19,12 +19,28 @@ export class EmailService {
       headers = headers.set('Content-Type', 'application/json');
     }
 
-    this.http.post( this.baseUrl + 'email', mailMessage, {
-      headers
-    }).subscribe(result => {
-      console.log("Email sent!");
-    });
+    console.log(mailMessage);
 
+    return  this.http.post( this.baseUrl + 'email', mailMessage, {
+      headers
+    });
+      
+      
+
+  }
+
+  sendContactEmail(mail: any) {
+    let headers = new HttpHeaders();
+    headers = headers.set('Accept', 'application/json');
+    if (mail) {
+      headers = headers.set('Content-Type', 'application/json');
+    }
+    console.log(mail);
+    return  this.http.post( this.baseUrl + 'email/contact', mail, {
+      headers
+    });
+      
+      
   }
 
 } 

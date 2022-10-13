@@ -8,11 +8,7 @@ namespace API.Interfaces
 {
     public interface IListingRepository
     {
-        void Update(Listing listing);
-
-        Task<bool>SaveAllAsync();
-
-       
+        void Update(Listing listing);       
         Task<Listing> GetListingByIdAsync(string id);
 
         Task<IEnumerable<Listing>> GetListingsAsync();

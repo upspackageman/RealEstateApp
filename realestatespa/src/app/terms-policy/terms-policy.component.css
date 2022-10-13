@@ -1,0 +1,245 @@
+@import url(https://fonts.googleapis.com/css?family=Oswald:300,400,700);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic);
+
+main{
+    background-image: linear-gradient(rgba(43, 43, 43, 0.7), rgba(174, 191, 250, 0.7)), url(https://images.unsplash.com/photo-1512652296884-f1d6ecc353c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80);
+    background-size:cover; 
+    display: flex;
+    font-family:'Oswald', sans-serif; 
+}
+
+.container{
+    width:90%;
+    height: auto;
+    display:  flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10% 10% 10% 10%;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+::ng-deep footer{
+    width:100%;
+    
+  }
+
+.container h1{
+ min-width: 1100px;
+ padding: 0%;
+ text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
+}
+
+.container .accordion-item{
+    background:-webkit-linear-gradient(top left, rgba(255, 245, 218, 0.918),rgb(255, 229, 159), rgba(247, 201, 73, 0.945));
+}
+
+.container .accordion-collapse{
+    background-color: #fff;
+    padding: 0px;
+}
+
+.container .accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(0,0,0,.125);
+}
+
+.container button{
+    color:black;
+    background:-webkit-linear-gradient(top left, rgba(255, 245, 218, 0.918),rgba(255, 229, 159, 0.589), rgba(247, 201, 73, 0.384));
+}
+
+
+
+
+
+#title{
+    text-align: center;
+    margin-top:2%;
+    font-size: 5rem;
+    margin-bottom: 5%;
+    color: rgb(160, 136, 4);
+}
+
+.container p{
+    font-size: 23px;
+    font-weight: 300;
+}
+
+
+
+.btn{
+    color: rgb(160, 136, 4);
+    margin: 5% 5%;
+    padding: 0% 10% 1% 10%;
+    border-color: rgb(160, 136, 4);
+    border-radius: 0px;
+    border-width: 5px;
+    font-size: 2.5rem;
+    border-style: inset;
+    box-shadow: 1px 1px 15px 3px rgba(158, 158, 157, 0.86);
+    text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
+    -webkit-appearance: none;
+}
+
+.btn:hover{
+    border-color: rgb(207, 190, 93);
+    color: rgb(172, 158, 78);
+}
+
+.accordion-button::after{
+    background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+}
+
+@media (max-width:1025px) and (min-width:914px) {
+    .container h1{
+        min-width: 800px;
+        padding: 0%;
+       }
+}
+
+@media (max-width:913px) and (min-width:822px) {
+    .container h1{
+        min-width: 800px;
+        padding: 0%;
+       }
+
+       ::ng-deep footer{
+        width: 912px !important;
+        
+      }
+
+       .container{
+           margin-top: 10%;
+       }
+}
+
+
+
+
+@media (max-width:821px) and (min-width:769px) {
+    .container h1{
+        min-width: 700px;
+        padding: 0%;
+       }
+
+       ::ng-deep footer{
+        width: 821px !important;
+        
+      }
+
+       .container{
+        margin-top: 10%;
+    }
+}
+
+
+@media (max-width:768px) and (min-width:541px) {
+    .container h1{
+        min-width: 600px;
+        padding: 0%;
+       }
+       .container{
+        margin-top: 10%;
+    }
+
+    ::ng-deep footer{
+        width: 768px !important;
+        
+      }
+}
+
+@media (max-width:485px) {
+    main{
+        width:1064px;
+    }
+
+    ::ng-deep footer{
+        width: 1064px !important;
+      }
+
+      ::ng-deep footer  .icons{
+        left: 20px !important;
+      }
+
+    .btn{
+        font-size: 7rem;
+        border-width: .65rem;
+    }
+
+    .container{
+        width: 100%;
+        padding: 25% 1% 20% 1%;
+    }
+
+    .container button{
+        height: 175px;
+    }
+
+    .accordion{
+        width: 1050px;
+    }
+
+    .accordion-button::after {
+        flex-shrink: 0;
+        position: relative;
+        right: 3rem;
+        width: 5rem;
+        height: 3rem;
+        margin-left: auto;
+        background-size: 4.25rem;
+    }
+
+    .container p{
+        font-size: 3.5rem;
+        letter-spacing: .065rem;
+    }
+
+#title{
+font-size: 6.5rem;
+}
+
+
+    .container h1{
+        font-size: 4.3rem;
+        letter-spacing: .065rem;
+        min-width: 990px;
+        padding: 0%;
+       }
+
+     .container button{
+        font-size:4.5rem !important;
+        
+    }
+}
+
+@media (max-width:321px) {
+    main{
+        width: 1280px;
+        height: auto;
+    }
+
+    ::ng-deep footer{
+        width: 1280px !important;
+        
+      }
+
+      ::ng-deep footer  .icons{
+        left: 110px !important;
+      }
+
+    .accordion-button::after {
+        right: 13rem;
+    }
+
+    .container h1{
+        font-size: 4.6rem;
+        min-width: 1140px;
+        padding: 0%;
+       }
+
+       .container p{
+           font-size: 4rem;
+       }
+}

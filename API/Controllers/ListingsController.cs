@@ -15,14 +15,15 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class ListingsController : BaseApiController
     {
-        private readonly IListingRepository _listingRepository;
         private readonly IMapper _mapper;    
 
+        private readonly IUnitOfWork _unitOfWork;
       
-        public ListingsController(IListingRepository listingRepository, IMapper mapper)
+        public ListingsController(IUnitOfWork unitOfWork, IMapper mapper)
         {
+           _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _listingRepository = listingRepository;
+           
         }
 
         
@@ -31,7 +32,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ListingDto>>> GetListings([FromQuery] ListingParams listingParams)
         {
-             var listings = await _listingRepository.GetListingsAsync(listingParams);
+             var listings = await _unitOfWork.ListingRepository.GetListingsAsync(listingParams);
              //var url = "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=1212%20Mitchell%20ST%20Oceanside%20CA%2092054&benchmark=2020&format=json";
              //var _price ="";
              Response.AddPaginationHeader(listings.CurrentPage, listings.PageSize, listings.TotalCount, listings.TotalPages); 
@@ -58,7 +59,7 @@ namespace API.Controllers
         public async Task<ActionResult<Listing>> GetListingById(string id)
         {
 
-            return Ok(await _listingRepository.GetListingByIdAsync(id));
+            return Ok(await _unitOfWork.ListingRepository.GetListingByIdAsync(id));
         }
 
 

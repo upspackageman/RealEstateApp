@@ -43,8 +43,8 @@
           <div class="container signin">
             <span>Already a member? </span><a class="registerLink" routerLink="/login">Click here to login.</a>
           </div>
-          <button type="submit" class="registerbtn">Register</button>
-          <p id="terms">By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+          <button type="submit" [disabled]="!registerForm.valid"  class="registerbtn">Register</button>
+          <p id="terms">By creating an account you agree to our <a  routerLink="/terms/loginregister">Terms & Privacy</a>.</p>
         </div>
         
         
