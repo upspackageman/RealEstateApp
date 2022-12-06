@@ -5,7 +5,8 @@ import { AccountService } from '../_services/account.service';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { EmailService } from '../_services/email.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
+import { HomeContactComponent } from '../modals/home-contact/home-contact.component';
 
 @Component({
   selector: 'app-home',
@@ -63,6 +64,8 @@ export class HomeComponent implements OnInit {
     ignoreBackdropClick: false
   };
 
+  bsModalRef?: BsModalRef;
+
   constructor(public accountService: AccountService, private router: Router, private fb: UntypedFormBuilder, private emailService: EmailService,private modalService: BsModalService) {
 
     this.contactForm = fb.group({      
@@ -79,15 +82,27 @@ export class HomeComponent implements OnInit {
    
    
   }
+  openModalWithComponent() {
+    const initialState: ModalOptions = {
+      initialState: {
+        list: [
+          'Open a modal with component',
+          'Pass your data',
+          'Do something else',
+          '...'
+        ],
+        title: 'Modal with component'
+      }
+    };
+    this.bsModalRef = this.modalService.show(HomeContactComponent, initialState);
+    this.bsModalRef.content.closeBtnName = 'Close';
+  }
 
+  
  async redirect(){
     await this.router.navigate(['forsale']);
   }
 
-  async openModalWithClass(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(
-      template,this.config);
-  }
 
   async closeModal(){
     location.reload();

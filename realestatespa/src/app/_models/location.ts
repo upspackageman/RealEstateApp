@@ -19,5 +19,8 @@ export interface Location {
     label:{};
     styles:any[];
     clickableIcons:boolean;
+    imageSize:any[];
+    gestureHandling:string;
+   
   }
   

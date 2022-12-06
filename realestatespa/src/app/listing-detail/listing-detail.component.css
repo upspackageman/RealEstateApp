@@ -189,7 +189,7 @@
 	        animation: tilt-in-tl 1.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
-main{
+.main-listing{
         display:flex;
         width: 100%;
         font-family:'Oswald', sans-serif;     
@@ -384,6 +384,7 @@ input[type="checkbox"] {
 
 
     .service-14 .container .sect{
+            letter-spacing: 2px;
             display: grid;
             justify-content: center;
         margin-top: 1%;
@@ -441,170 +442,7 @@ input[type="checkbox"] {
     }
 
       
-      .contact3 h1,
-      ::ng-deep .modal-content .contact-box h2,
-      ::ng-deep .modal-content .contact-box3 h3,
-      ::ng-deep .modal-content .contact-box h4,
-      ::ng-deep .modal-content .contact-box h5,
-      ::ng-deep .modal-content .contact-box h6 {
-        color: #3e4555;
-      }
-
-      ::ng-deep #terms{
-        margin-top: 5%;
-        color: #3e4555;
-        font-weight: 50;
-        font-size: 14px;
-      }
-      
-      ::ng-deep .modal-content a {
-        color: #917b03;
-        text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
-        letter-spacing: .5px;
-        text-decoration: none;
-      }
-      
-      ::ng-deep .modal-content .contact-box .font-weight-medium {
-        font-weight: 500;
-      }
-      
-      ::ng-deep .modal-content .contact-box .card-shadow {
-        -webkit-box-shadow: 0px 0px 30px rgba(115, 128, 157, 0.1);
-        box-shadow: 0px 0px 30px rgba(115, 128, 157, 0.1);
-      }
-      
      
-      ::ng-deep .modal-content .contact-box h1{
-        font-size: 3.5rem; 
-      }
-
-      ::ng-deep .modal-content .contact-box form input{
-              font-size: 1.5rem;
-      }
-
-      ::ng-deep .modal-content .contact-box form textarea{
-        font-size: 1.5rem;
-}
-
-::ng-deep .modal-content .contact-box h1{
-              text-align: center;
-      }
-
-      ::ng-deep .modal-content .contact-box .btn{
-        margin-top:5%;
-        font-size: 2.5rem;
-        position: relative;
-        border-radius: 0px;
-        border-width: 5px;        
-        border-color: #0f0e03;
-        font-size: 28px !important;
-        box-shadow: 9.91px 9.91px 15px #D9DADE, -9.91px -9.91px 15px #FFFFFF;
-}
-
-::ng-deep .modal-content .contact-box .form-control{
-        border-radius: 0px;
-        border-color: #0f0e03;
-        box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #ffffff !important;
-}
-
-::ng-deep .modal-content .contact-box .form-control:focus{
-        border-radius: 0px;
-        border-color: rgb(226, 186, 84);
-        transition: 200ms ease-in-out;
-        outline: none;
-
-}
-
-      
-
-::ng-deep .modal-content .contact-box .btn:hover{
-        background: rgb(247, 242, 213) !important;
-        background: linear-gradient(90deg, rgba(247, 242, 213,.3) 0%, rgba(255,255,255,.3) 55%) !important;
-        border-color: rgb(226, 186, 84);
-        color:  rgb(139, 112, 44);
-        transition: 200ms ease-in-out;
-}
-
-      ::ng-deep .modal-content{
-        font-family:'Oswald', sans-serif;
-       width:100%;
-       border-radius: .01rem;
-       border-color:#f1e100d8;
-       border-width: 1px;
-  
-        
-      }
-
-      ::ng-deep .modal-content .agent-text{
-              font-size: 1.5rem;
-              margin-right: 5%;
-      }
-
-
-      ::ng-deep .modal-content .submit-container{
-              display: grid;
-              justify-content: center;
-      }
-
-      ::ng-deep .modal-content .contact-box form{
-        padding-left: 2.5%;
-        padding-right: 2.5%;
-        
-      }
-
-
-      ::ng-deep .close{
-
-        font-size: 80px !important;
-        width: 55px;
-        position: relative;
-        left: 700px;
-        top:-30px;
-        border:none;
-        background:none;
-      }
-      
-      ::ng-deep .close:focus{
-        outline:none;
-        color:rgb(114, 124, 24);
-      }
-      
-      ::ng-deep .modal-title{
-        font-size: 2rem;
-        margin-left: 117px;
-        margin-top: 10px;
-      }
-
-      ::ng-deep .fade{
-        width:100%;
-        height:100%;
-      }
-
-      ::ng-deep .modal-content .contact-box .container{
-              display: flex;
-              flex-flow: column wrap;
-              justify-content: center;
-              text-align: center;
-      }
-
-      ::ng-deep .modal-content .contact-box .container h1{
-              font-size: 7rem;
-              text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
-      }
-
-      ::ng-deep .modal-content .contact-box .sent .btn{
-              left:0% !important;
-              border-color:#080801d8;
-      }
-
-      ::ng-deep .modal-content .contact-box .sent .btn:hover{
-        left:0% !important;
-        border-color:#f1e100d8;
-      }
-      
-      ::ng-deep #thankyou{
-              font-size: 4rem;
-      }
 
       .accordion{
               border: none !important;
@@ -971,7 +809,7 @@ input[type="checkbox"] {
 }
 
 @media (max-width:921px){
-        main{
+        .main-listing{
                 margin-left: -15%;
         }
 
@@ -1137,7 +975,7 @@ input[type="checkbox"] {
 }
 
 @media (max-width: 821px) {
-        main{
+        .main-listing{
         margin-left: -2.5%;
         }
 
@@ -1245,21 +1083,22 @@ input[type="checkbox"] {
 
 */
 @media (max-width: 485px){
-main{
+.main-listing{
         width: 1560px;
 }
 
 ::ng-deep footer{
-        width: 1560px;
+        width: 1565px;
       }
 
-#contact-agent{
+/* #contact-agent{
         font-size: 4.2rem;
-}
+} */
 
 #loan-program{
 font-size: 5.5rem;
 }
+
 
 
 input[type="checkbox"] + span:before {
@@ -1287,6 +1126,7 @@ input[type="checkbox"]:checked + span:before {
 
 .service-14 .container .sect{
         margin-top: 12%;
+        letter-spacing: 3px;
 }
 
 
@@ -1350,7 +1190,7 @@ input[type="checkbox"]:checked + span:before {
 .image-device{
         display: flex;
         width: 1565px !important;
-        height: auto;
+        height: 1450px;
 }
 
 
@@ -1393,7 +1233,7 @@ input[type="checkbox"]:checked + span:before {
 
 .accordion-button::after{
     position: relative;
-    right: 485px;
+    right: 45%;
     margin-left: auto;
     width: 4.25rem;
     height: 4.25rem;
@@ -1409,9 +1249,9 @@ input[type="checkbox"]:checked + span:before {
         font-size: 3rem !important;
 }
 
-::ng-deep .close{
+/* ::ng-deep .close{
         font-size: 18rem !important;
-        left:940px;
+        left:1340px;
         top:-120px;
 }
 ::ng-deep .modal-content .contact-box .btn{
@@ -1420,7 +1260,7 @@ input[type="checkbox"]:checked + span:before {
 }
 ::ng-deep .modal-content {
         width: 100% !important;
-        margin-left: .75%;
+        
     }
 
     
@@ -1470,7 +1310,7 @@ input[type="checkbox"]:checked + span:before {
 ::ng-deep .modal-content .agent-text {
         font-size: 5.2rem;
         margin-right: 5%;
-    }
+    } */
 
 #checkbox{
         height: 4rem;
@@ -1484,7 +1324,7 @@ input[type="checkbox"]:checked + span:before {
 }
 
 @media (max-width:385px) {
-        main{      
+        .main-listing{      
             width: 1438px !important;  
         }
 
@@ -1497,7 +1337,7 @@ input[type="checkbox"]:checked + span:before {
       }
 
 @media (max-width:321px) {
-        main{
+        .main-listing{
                 width:1280px;
         }
         ::ng-deep footer{

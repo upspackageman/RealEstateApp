@@ -17,10 +17,8 @@ import { ListingCardComponent } from './listing-card/listing-card.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ListingDetailComponent } from './listing-detail/listing-detail.component';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
-import { GoogleMapsModule } from '@angular/google-maps';
 import { CommonModule } from '@angular/common';
 import { HttpClientJsonpModule } from '@angular/common/http';
-import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import { NgChartsModule } from 'ng2-charts';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
@@ -29,7 +27,6 @@ import { FooterComponent } from './footer/footer.component';
 import { BuilderListingsComponent } from './builder-listings/builder-listings.component';
 import { AboutComponent } from './about/about.component';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
-import {ToastrModule} from 'ngx-toastr';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ServerErrorComponent } from './server-error/server-error.component';
@@ -40,21 +37,32 @@ import { EmailConfirmationComponent } from './email-confirmation/email-confirmat
 import { ConfirmationSentComponent } from './confirmation-sent/confirmation-sent.component';
 import { TermsPolicyComponent } from './terms-policy/terms-policy.component';
 import { CustomErrorComponent } from './custom-alert/custom-error/custom-error.component';
-
+import { HomeContactComponent } from './modals/home-contact/home-contact.component';
+import { ListingDetailsContactComponent } from './modals/listing-details-contact/listing-details-contact.component';
+import { ForsaleOptionsComponent } from './modals/forsale-options/forsale-options.component';
+import { AgmJsMarkerClustererModule, AgmMarkerCluster } from '@agm/js-marker-clusterer';
+import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ForsaleListingComponent } from './modals/forsale-listing/forsale-listing.component';
+import { ToastrModule } from 'ngx-toastr';
+import { AgmMarkerClustererModule } from '@agm/markerclusterer';
 
 
 
 @NgModule({
   declarations: [
-    
-    TestErrorsComponent,
-    AppComponent,
-    NavbarComponent,
-    LoginregisterComponent,
-    HomeComponent,
-    ForsaleComponent,
-    ListingCardComponent,
-    ListingDetailComponent,
+      
+      HomeContactComponent,
+      ListingDetailsContactComponent,
+      ForsaleOptionsComponent,
+      TestErrorsComponent,
+      AppComponent,
+      NavbarComponent,
+      LoginregisterComponent,
+      HomeComponent,
+      ForsaleComponent,
+      ListingCardComponent,
+      ListingDetailComponent,
       FooterComponent,
       BuilderListingsComponent,
       AboutComponent,
@@ -67,13 +75,15 @@ import { CustomErrorComponent } from './custom-alert/custom-error/custom-error.c
       EmailConfirmationComponent,
       ConfirmationSentComponent,
       TermsPolicyComponent,
-      CustomErrorComponent
+      CustomErrorComponent,
+      ForsaleListingComponent
      
       
    ],
   imports: [
-    
-    GoogleMapsModule,
+  
+    TooltipModule.forRoot(),
+    AgmJsMarkerClustererModule,
     NgChartsModule,
     CommonModule,
     BrowserModule,
@@ -94,12 +104,16 @@ import { CustomErrorComponent } from './custom-alert/custom-error/custom-error.c
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     }),
+    
+    
+    
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBM4RMj9NjeZABU92eGAZIA-kmgl4avboo'
+      apiKey: 'AIzaSyAvra3-d8BHuG3kVd1QfY6Iua8hxFCwQQY'
     }),
     AgmSnazzyInfoWindowModule
   ],
   providers: [TabsetConfig,
+    
               BsDropdownConfig,
               GoogleMapsAPIWrapper,
               {provide:HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true},

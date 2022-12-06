@@ -29,7 +29,9 @@ export interface Listing {
     estimatedSquareFeet: string;
     priceSearch: number;
     highSchoolURL?: any;
-    longitude: number;
-    latitude: number;
+    lon: number;
+    lat: number;
+    isChecked:false;
+   
   }
   

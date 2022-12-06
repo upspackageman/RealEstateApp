@@ -21,7 +21,7 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
   {path: 'forsale', component: ForsaleComponent},
-  {path: 'builder-listing', component: BuilderListingsComponent, canActivate:[AuthGuard]},
+  {path: 'builder-listing', component: BuilderListingsComponent,canActivate:[AuthGuard] },
   {path: 'about', component: AboutComponent},
   {path: 'loginregister', component: LoginregisterComponent},
   {path: 'listing/:id', component: ListingDetailComponent},
@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'emailconfirmation', component: EmailConfirmationComponent },
   { path: 'confirmationsent', component: ConfirmationSentComponent },
   { path: 'terms/:id', component: TermsPolicyComponent },
-  {path: '**', component: NotFoundComponent, pathMatch: 'full'}
+  {path: '**', component: NotFoundComponent, pathMatch: 'full',redirectTo: ''}
 
 ];
 

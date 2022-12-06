@@ -2,13 +2,14 @@ import { Component, HostListener, OnInit, TemplateRef, ViewChild } from '@angula
 import { Listing } from '../_models/listing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ListingsService } from '../_services/listings.service';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 import { AccountService } from '../_services/account.service';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { EmailService } from '../_services/email.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Chart, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
+import { ListingDetailsContactComponent } from '../modals/listing-details-contact/listing-details-contact.component';
 
 
 @Component({
@@ -38,8 +39,10 @@ export class ListingDetailComponent implements OnInit {
 
   public doughnutChartType: ChartType = 'doughnut';
 
+  bsModalRef?: BsModalRef;
+
   constructor(private accountService: AccountService, private listingsService: ListingsService, private route: ActivatedRoute, private modalService: BsModalService,
-    private router: Router, private fb: UntypedFormBuilder, private emailService: EmailService) {
+    private router: Router, fb: UntypedFormBuilder, private emailService: EmailService) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => {
       return false;
     };
@@ -146,17 +149,17 @@ export class ListingDetailComponent implements OnInit {
     this.monthlyPayment = p * (((r / n) * ((1 + (r / n)) ** (n * t))) / (((1 + (r / n)) ** (n * t)) - 1));
     this.pmi = (this.setPmi * (this.homeAmount - this.amtDownPayment)) / 12;
     this.overallPayment = this.monthlyPayment + this.totalTax + this.propInsurance + this.hoaFee + this.pmi;
-    this.doughnutChartData.datasets[0].data[0] = this.monthlyPayment;
-    this.doughnutChartData.datasets[0].data[1] = this.totalTax;
-    this.doughnutChartData.datasets[0].data[2] = this.pmi;
-    this.doughnutChartData.datasets[0].data[3] = this.propInsurance;
-    this.doughnutChartData.datasets[0].data[4] = this.hoaFee;
+    this.doughnutChartData.datasets[0].data[0] = Number(this.monthlyPayment.toFixed(2));
+    this.doughnutChartData.datasets[0].data[1] = Number(this.totalTax.toFixed(2));
+    this.doughnutChartData.datasets[0].data[2] = Number(this.pmi.toFixed(2));
+    this.doughnutChartData.datasets[0].data[3] = Number(this.propInsurance.toFixed(2));
+    this.doughnutChartData.datasets[0].data[4] = Number(this.hoaFee.toFixed(2));
     console.log(this.pmi);
     this.chart?.update();
   }
 
   loadListing() {
-    //this.redirect();
+    
     
     this.listingsService.getListingsById(this.route.snapshot.paramMap.get('id')).subscribe(listing => {
       this.listing = listing;
@@ -164,7 +167,19 @@ export class ListingDetailComponent implements OnInit {
       this.pmiSwitch();
       console.log(this.route.snapshot.paramMap.get('id'));
 
-    })
+    });
+
+   // this.redirect();
+  }
+
+  openModalWithComponent() {
+    const initialState: ModalOptions = {
+      initialState: {
+        listId: this.listId
+      }
+    };
+    this.bsModalRef = this.modalService.show(ListingDetailsContactComponent, initialState);
+    this.bsModalRef.content.closeBtnName = 'Close';
   }
 
   amountDownPayment(e: number) {

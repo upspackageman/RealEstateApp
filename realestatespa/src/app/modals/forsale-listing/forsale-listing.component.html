@@ -1,0 +1,52 @@
+
+<div class="modal-header">
+  <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true" class="visually-hidden">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="card puff-in-center main-font  mt-3 shdw">
+    <div class="row g-0">
+      <div class="col-md-4 imageHolder">
+        <a async routerLink='/listing/{{id}}'  routerLinkActive="router-link-active"><img src="{{listingPictures}}" class="card-img-top p-0 images" onerror="this.onerror=null; this.src='../assets/NoPhotoAvailable.jpg';" alt="...">
+          <span class="member-link animate text-center">
+            View More
+          </span>
+        </a>
+      </div>
+     
+        <div class="card-body ">
+          <h5 class="card-title cardTitle ">{{price}}</h5>
+          <p style="word-wrap: break-word;" class=" cardText ">{{bedrooms}} Beds | {{bathFull +bathsHalf}} Baths | {{estimatedSquareFeet}} SQFT</p>
+          <p class="  cardText">{{fullAddress}} </p>
+        </div>
+     
+    </div>
+  </div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+</div>
+
+
+
+
+
+<!-- 
+  <div class="card puff-in-center main-font  mt-3 shdw">
+    <div class="row g-0">
+      <div class="col-md-4 imageHolder">
+        <a async routerLink='/listing/{{listing.id}}'  routerLinkActive="router-link-active"><img src="{{listing.listingPictures}}" class="card-img-top p-0 images" onerror="this.onerror=null; this.src='../assets/NoPhotoAvailable.jpg';" alt="...">
+          <span class="member-link animate text-center">
+            View More
+          </span>
+        </a>
+      </div>
+     
+        <div class="card-body ">
+          <h5 class="card-title cardTitle ">{{listing.price}}</h5>
+          <p style="word-wrap: break-word;" class=" cardText ">{{listing.bedrooms}} Beds | {{listing.bathFull + listing.bathsHalf}} Baths | {{listing.estimatedSquareFeet}} SQFT</p>
+          <p class="  cardText">{{listing.fullAddress}} </p>
+        </div>
+     
+    </div>
+  </div> -->

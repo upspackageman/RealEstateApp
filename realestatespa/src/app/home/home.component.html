@@ -1,4 +1,4 @@
-<main>
+<main class="main-home">
   <section class="landing" style="background:linear-gradient(0deg, rgba(14, 35, 54, 0.125), rgba(14, 35, 54, 0.125)),url(https://images.unsplash.com/photo-1630650233871-35a35ff27095?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80); background-repeat:no-repeat; background-size: cover;">
     <div class="card-body ">
       <div >       
@@ -16,7 +16,7 @@
           <h2 class="title-mobile">Welcome</h2>
           <!-- Column -->
           <div class="d-2">
-              <img class="img-fluid" src="https://media-exp1.licdn.com/dms/image/C4D03AQGjcrAVWp4qyg/profile-displayphoto-shrink_400_400/0/1651185542008?e=1667433600&v=beta&t=wcH_G9gIh0NNTXBNuxuGfOMU4mGwFmKWnQ5xAjkyw8g"  alt="wrapkit" />
+              <img class="img-fluid" src="https://media.licdn.com/dms/image/C4D03AQGjcrAVWp4qyg/profile-displayphoto-shrink_800_800/0/1651185542008?e=1672876800&v=beta&t=5cPOP3Rw9Wt5TJ3tuE9K7xULWOLZ-kCpNeXInIvqA9M"  alt="wrapkit" />
           </div>              
           <div class="text-box">
              <h2 class=" title">Welcome</h2>
@@ -30,9 +30,9 @@
     </div>
   </section>
   <section class="contact-home" style="background:linear-gradient(0deg, rgba(3, 3, 5, 0.068), rgba(6, 7, 1, 0.062)),url(https://images.unsplash.com/photo-1565183928294-7063f23ce0f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80); background-repeat:no-repeat; background-size: cover;">
-    <div class=" contact-form">
-       <h1 class="contact-title">Contact</h1>
-       <form  [formGroup]="contactForm"(ngSubmit)="sendMail(emailSent)" novalidate="">
+    <div class="contact-form">
+       <h1 class="contact-title desktop">Let's Connect</h1>
+       <form class="desktop" [formGroup]="contactForm"(ngSubmit)="sendMail(emailSent)" novalidate="">
          <div class="row">
            <div class="col-lg-12">
              <div class="form-group mt-2">
@@ -74,25 +74,28 @@
              </div>
            </div>
            <div class="col-lg-12">
-             <button type="submit" [disabled]="!contactForm.valid" class="btn"><span> SUBMIT</span></button>
+            
+             <button  type="submit" [disabled]="!contactForm.valid" class="btn desktop"><span> SUBMIT</span></button>
            </div>
          </div>
        </form>
+       <button type="button" class="btn-mobile mobile" (click)="openModalWithComponent()">Let's Connect</button>
     </div>
+   
   </section>
 </main>
 
 
-<ng-template #emailSent>
+<ng-template class="sent" #emailSent>
   <div class="contact-box">
     <div class="container">
-      <h1>Thank You</h1>
+      <h1>Thank You!</h1>
         <br>
-        <div class="contact-text">
-          <h2>One of our team members or I will reach out to you shortly!</h2>
-        </div>
+        
+          <h2>One of our team members or I will reach out to you shortly.</h2>
+        
       
-      <div class="col-lg-12">
+      <div class="buttonDiv">
         <button type="submit" (click)="closeModal();" class="btn "><span> CLOSE</span></button>
       </div>
     </div>

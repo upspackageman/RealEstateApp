@@ -3,13 +3,14 @@ import { ListingParams } from './../_models/listingParams';
 import { ListingsService } from './../_services/listings.service';
 import { Component, OnInit, TemplateRef, HostListener,  Renderer2, RendererFactory2} from '@angular/core';
 import { Listing } from '../_models/listing';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 import {Pagination} from '../_models/pagination';
 import { Router } from '@angular/router';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import { AccountService } from '../_services/account.service';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { ChartOptions } from 'chart.js';
+import { ClusterIconStyle } from '@google/markerclustererplus';
+import { ForsaleListingComponent } from '../modals/forsale-listing/forsale-listing.component';
 
 
 
@@ -72,6 +73,7 @@ export class ForsaleComponent implements OnInit {
   numberOfPeriodicPaymentsPerYear:number =12; //n
   tenureOfLoansPerYear:number=5; //t
   zIndex:string;
+  _display:string='none'
   zPagination:string;
   searchBar:UntypedFormGroup;
   pricesortHTML:string='<i class="fa fa-sort-amount-asc" aria-hidden="true"></i>';
@@ -79,6 +81,19 @@ export class ForsaleComponent implements OnInit {
   mapIndex = 0;
   zMap = 3;
   mobileFontSize:string;
+  isDisabled:boolean = true;
+  markerClusterIconStyles: ClusterIconStyle[]  = [
+    {
+      textColor: 'red',
+      textSize: 30,
+      height: 42,
+      width: 42,
+      url:'https://raw.githubusercontent.com/googlearchive/js-marker-clusterer/gh-pages/images/m'
+      
+    }
+]
+
+  
   
 
   sqftSelect =[
@@ -162,6 +177,13 @@ export class ForsaleComponent implements OnInit {
     ignoreBackdropClick: false
   };
 
+  mapCard ={
+    maxwidth:1350,
+    maxHeight:3000
+  }
+
+  
+
 
 
 
@@ -174,7 +196,7 @@ export class ForsaleComponent implements OnInit {
     disableDefaultUI: true,
     padding: '0px',
     border:true,
-    borderRadius:'0px',
+    borderRadius:'25px',
     isOpen:true,
     showDefaultInfoWindow: false,
     label:{
@@ -182,6 +204,7 @@ export class ForsaleComponent implements OnInit {
       fontSize:'3rem',
       text:'this.listings'
     },
+    imageSize:[153, 156, 166, 178, 190],
     styles:[
       {
         featureType: "poi",
@@ -190,9 +213,12 @@ export class ForsaleComponent implements OnInit {
         ]
       }
     ],
-    clickableIcons:false
+    clickableIcons:false,
+    gestureHandling:'greedy',
+   
+    
   }
-
+  bsModalRef?: BsModalRef;
   constructor(public accountService: AccountService, private listingService: ListingsService, private fb: UntypedFormBuilder, private modalService: BsModalService,  private router: Router) {
     this.ListingParams = new ListingParams();
     this.searchBar =  fb.group({ search:[null,[Validators.required,Validators.pattern(/\w/)]] });
@@ -214,9 +240,11 @@ export class ForsaleComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
     checkWidth(event?){
       if(window.matchMedia("(min-width:500px)").matches)
-          this.location.iconUrl = '/assets/icons/circle_4.png';
-       else 
-         this.location.iconUrl = '/assets/icons/circle_2.png'; 
+      this.location.iconUrl = '/assets/circle_2.png';
+          
+      else 
+        this.location.iconUrl = '/assets/circle_4.png',
+        this.location.zoom = 14; 
     }
 
     
@@ -226,20 +254,19 @@ export class ForsaleComponent implements OnInit {
     this.listingService.getListings(this.ListingParams).subscribe(response=>{
       
       this.listings = response.result;
+      this.location.lat = this.listings[3].lat;
+      this.location.lng = this.listings[3].lon;
 
-    //  for(let list of this.listings){
-    //   (this.mapService.getAddressMarkerById(list.fullAddress)).subscribe(data =>{
-
-    //     list.latitude = data.result.addressMatches[0].coordinates.x;
-    //     list.longitude = data.result.addressMatches[0].coordinates.y;
-    //     lat = list.latitude;
-    //     lng = list.longitude;
-    //     this.location.lat = lat;
-    //     this.location.lng = lng;
-    //   })
-
-    //   console.log('Lat: ' + lat + 'long: '+lng );
-    // }
+      console.log(this.listings[3].lat, this.listings[3].lon);
+// 
+     for(let list of this.listings){
+      
+       this.location.lat = list.lat;
+       this.location.lng = list.lon;
+      
+// 
+      console.log('Lat: ' + this.location.lat +  ' long: '+this.location.lng );
+    }
 
       this.pagination = response.pagination;
       this.totalCount = response.pagination.totalPages * response.pagination.totalItems;
@@ -263,6 +290,24 @@ export class ForsaleComponent implements OnInit {
   async openModalWithClass(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, this.config);
     console.log(this.activeSelected);
+  }
+
+
+  openModalWithComponent(id,pic,_price,beds,bathsfull, bathhalf,sqft, address) {
+    const initialState: ModalOptions = {
+      initialState: {
+        id:id,
+        listingPictures:pic,
+        bathFull:bathsfull,
+        bathsHalf:bathhalf,
+        bedroom:beds,
+        estimatedSquareFeet:sqft,
+        fullAddress: address,
+        price:_price
+      }
+    };
+    this.bsModalRef = this.modalService.show(ForsaleListingComponent, initialState);
+    this.bsModalRef.content.closeBtnName = 'Close';
   }
 
 

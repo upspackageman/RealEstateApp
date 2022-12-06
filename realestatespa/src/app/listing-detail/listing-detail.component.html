@@ -2,7 +2,7 @@
 
 <img  class="image-device slit-in-horizontal" src ="{{listing.listingPictures}}" onerror="this.onerror=null; this.
 src='../assets/NoPhotoAvailable.jpg';"/>
-<main>
+<main class="main-listing">
   <img class="image tilt-in-tl" src ="{{listing.listingPictures}}" onerror="this.onerror=null; this.
   src='../assets/NoPhotoAvailable.jpg';"/>
 <section class="py-5 service-14">
@@ -11,7 +11,8 @@ src='../assets/NoPhotoAvailable.jpg';"/>
           <div class="col-lg-6">
               <h3 class="my-3" id="price">{{listing.price}}</h3>
               <p id="address" class="mt-5">{{listing.fullAddress}}</p>
-              <button id="request-info"  class="btn  btn-md my-3" (click)="openModalWithClass(requestInfo)">Request Info</button><br>
+              <button id="request-info" class="btn btn-md my-3" (click)="openModalWithComponent()">Request Info</button> <br>
+              <!--<button id="request-info"  class="btn  btn-md my-3" (click)="openModalWithClass(requestInfo)">Request Info</button><br>-->
               <button id="return-to-listing" class="btn  btn-md my-3" routerLink ='/forsale'>Return to Listings</button>
           </div>
           <div class="col-lg-6">
@@ -42,7 +43,7 @@ src='../assets/NoPhotoAvailable.jpg';"/>
                   <!-- <img class="rounded img-fluid" src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/features/feature2/fruit.jpg" alt="wrappixel kit" /> -->
 
                  
-                    <div>
+                    <div class="chart">
                       
                         <canvas baseChart
                           [data]="doughnutChartData"
@@ -232,7 +233,7 @@ src='../assets/NoPhotoAvailable.jpg';"/>
                     </div>
                   </div>
                   <div id="mobile-section" class="mt-5">
-                    <button  id="request-info" class="btn  btn-md my-3" (click)="openModalWithClass(requestInfo)">Request Info</button><br>
+                    <button  id="request-info" class="btn  btn-md my-3"(click)="openModalWithComponent()">Request Info</button><br>
                     <button  class="btn  btn-md my-3" routerLink ='/forsale'>Return to Listings</button>
                   </div>
               </div>
@@ -242,7 +243,7 @@ src='../assets/NoPhotoAvailable.jpg';"/>
   </div>
 </section>
 </main>
-<ng-template #requestInfo>
+<!-- <ng-template #requestInfo>
   <button 
     *ngIf="isSent!=true"  type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
     <span aria-hidden="true" style="text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);" >&times;</span>
@@ -302,8 +303,8 @@ src='../assets/NoPhotoAvailable.jpg';"/>
               <span id="contact-agent">Contact your agent?&nbsp;&nbsp;&nbsp;</span>
               <input type="checkbox"  (click)="toContactAgent($event)">
               <!--(click)=activeStatus($event) [checked]="activeSelected"-->
-              <span class="checkmark"></span>
-            </label>
+          <!--    <span class="checkmark"></span>
+             </label>
           </div>
         </div>
         <div  class="col-lg-12">
@@ -336,4 +337,4 @@ src='../assets/NoPhotoAvailable.jpg';"/>
         </div>  
     </div>    
   </div>
-</ng-template>
+</ng-template> -->
