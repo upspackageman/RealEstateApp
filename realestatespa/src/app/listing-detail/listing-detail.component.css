@@ -423,7 +423,7 @@ input[type="checkbox"] {
 
 .accordion-button:focus {
        
-        box-shadow: 0px 0px 0px 4px rgba(51, 47, 24,.4) !important;
+        box-shadow: 0px 0px 0px .4px rgba(51, 47, 24,.4) !important;
       }
 
  .accordion-button {

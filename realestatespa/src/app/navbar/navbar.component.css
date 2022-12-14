@@ -88,7 +88,7 @@ button:focus{
  display: flex;
   background: rgb(247, 242, 213);
   background: linear-gradient(90deg, rgb(247, 242, 213) 0%, rgba(255,255,255,1) 55%);
-
+  
 box-shadow:  0px 6px 9px 0px rgba(0, 0, 0, .3);
   z-index:7 !important;
   border-color: #f1e6a3 !important;
@@ -132,12 +132,14 @@ margin-right: 2%;
 .title {
   text-align: center;
   font-size: 2rem;
+  -webkit-text-stroke: .5px #9da000 !important;
   text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
   margin-left: 2.5%;;
   letter-spacing: 3px;
 }
 
 .navLinks{
+  -webkit-text-stroke: .5px #9da000 !important;
   text-align: center;
   font-size: 1.5rem;
   text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
@@ -258,8 +260,8 @@ margin-right: 2%;
 
 @media (max-width:485px) {
   .title {
+    -webkit-text-stroke: 1.75px #9da000 !important;
     text-align: center;
-    font-size: 6rem;
     letter-spacing: 3px;
   }
   .navbar-toggler-icon {
@@ -272,7 +274,8 @@ margin-right: 2%;
   .navLinks{
     text-align: center;
     font-size: 4.2rem;
-    letter-spacing: 2px !important;
+    -webkit-text-stroke: 1.25px #9da000 !important;
+    letter-spacing: 3px !important;
   }
 }
 
@@ -290,46 +293,19 @@ margin-right: 2%;
 
   .navLinks{
     text-align: center;
-    font-size: 45px;
+    font-size: 5rem;
     letter-spacing: 2px !important;
   }
 
   .title {
 
-    font-size: 4.5rem;
+    font-size: 5.75rem;
 
   }
 
 }
 
 @media all and (max-width:360px) {
-  .navbar-toggler-icon {
-    width: 2.9em;
-    height: 2.9em;
-    background-size:6.5rem;
-    border-color: rgb(29, 2, 34) !important;
-  }
-
-  .navbar-dark .navbar-toggler {
-    border-width: .35rem;
-  }
-
-  .navLinks{
-    text-align: center;
-    font-size: 45px;
-    letter-spacing: 2px !important;
-  }
-
-  .title {
-
-    font-size: 3.0rem;
-
-  }
-
-}
-
-
-@media (max-width:485px) {
   .navbar-toggler-icon {
     width: 4.9em;
     height: 4.9em;
@@ -343,17 +319,19 @@ margin-right: 2%;
 
   .navLinks{
     text-align: center;
-    font-size: 4.7rem;
+    font-size: 4.2rem;
     letter-spacing: 2px !important;
   }
 
   .title {
 
-    font-size: 6.0rem;
+    font-size: 4.70rem;
 
   }
 
 }
+
+
 
 @media (max-width:321px) {
   ::ng-deep footer{

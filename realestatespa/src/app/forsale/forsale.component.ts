@@ -84,11 +84,11 @@ export class ForsaleComponent implements OnInit {
   isDisabled:boolean = true;
   markerClusterIconStyles: ClusterIconStyle[]  = [
     {
-      textColor: 'red',
-      textSize: 30,
-      height: 42,
-      width: 42,
-      url:'https://raw.githubusercontent.com/googlearchive/js-marker-clusterer/gh-pages/images/m'
+      url:'/assets/marker1.png',
+      height: 40,
+      width: 40,
+      textSize:16,
+      textColor:'black'
       
     }
 ]
@@ -178,7 +178,7 @@ export class ForsaleComponent implements OnInit {
   };
 
   mapCard ={
-    maxwidth:1350,
+    maxWidth:1350,
     maxHeight:3000
   }
 
@@ -239,12 +239,21 @@ export class ForsaleComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
     checkWidth(event?){
-      if(window.matchMedia("(min-width:500px)").matches)
-      this.location.iconUrl = '/assets/circle_2.png';
-          
-      else 
+      if(window.matchMedia('(min-width:500px)').matches){
         this.location.iconUrl = '/assets/circle_4.png',
+        this.mapCard.maxHeight =220;
+      } 
+      else{
+        this.markerClusterIconStyles[0].url ='/assets/marker2.png',
+        this.markerClusterIconStyles[0].width = 100,
+        this.markerClusterIconStyles[0].height = 100,
+        this.markerClusterIconStyles[0].textSize = 50
+        this.mapCard.maxWidth = 1850,
+        this.mapCard.maxHeight = 1950,
+        this.location.iconUrl = '/assets/circle_2.png',
         this.location.zoom = 14; 
+
+      }
     }
 
     

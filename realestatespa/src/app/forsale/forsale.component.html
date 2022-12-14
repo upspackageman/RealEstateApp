@@ -144,7 +144,7 @@
       </div>
       <div class="dropdown">
         <!--</button> (click)="openModalWithClass(listingStatus)"-->
-          <span  class="listing-status adjust-space">Listing Status</span>
+          <button  class="listing-status adjust-space">Listing Status</button>
           <div class="dropdown-content" id="listing-status-desktop">
             <div class="container-listing-status" >
               <div class="label-container">
@@ -217,14 +217,17 @@
 
   <button  [ngStyle]="{'z-index':zMap}"  (click)="mapView()" class="map_list_button">
    <span *ngIf="isMapView" class="map_text_margin">
-    <i class="fa fa-list" aria-hidden="true"></i>
+    <i class="fa fa-list" aria-hidden="true"></i><br>
+    <span>List</span>
+    
     <!-- <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24"  >
   
       <path d="M3,5v14h18V5H3z M7,7v2H5V7H7z M5,13v-2h2v2H5z M5,15h2v2H5V15z M19,17H9v-2h10V17z M19,13H9v-2h10V13z M19,9H9V7h10V9z" />
     </svg> -->
    </span>
    <span *ngIf="!isMapView" class="map_text_margin">
-    <i class="fa fa-map-o" aria-hidden="true"></i>
+    <i class="fa fa-map-o" aria-hidden="true"></i><br>
+    <span>Map</span>
     <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" >
       <path d="M0 0h24v24H0V0z" fill="none"/>
       <path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM10 5.47l4 1.4v11.66l-4-1.4V5.47zm-5 .99l3-1.01v11.7l-3 1.16V6.46zm14 11.08l-3 1.01V6.86l3-1.16v11.84z"  stroke="white" stroke-width="1.5"/>
@@ -249,7 +252,7 @@
   
   <div class="right">
     <agm-map [gestureHandling] ="location.gestureHandling" [ngStyle]="{'z-index':zIndex}"  [(latitude)]="location.lat"  [styles]="location.styles" [(longitude)]="location.lng" [clickableIcons]="location.clickableIcons" [(showDefaultInfoWindow)] ="location.showDefaultInfoWindow" [disableDefaultUI]="location.disableDefaultUI" [(zoom)]="location.zoom" [draggable]="location.draggable">
-      <agm-marker-cluster [styles]="markerClusterIconStyles"  imagePath="https://pngimg.com/uploads/circle/circle_PNG79.png">
+      <!-- <agm-marker-cluster   [styles]="markerClusterIconStyles" > -->
        
          <agm-marker *ngFor="let markers of listings" class="myMap"  [latitude]="markers.lat" [longitude]="markers.lon"   [iconUrl]="location. iconUrl" [agmFitBounds]="true"  >
           <div  > </div>
@@ -260,14 +263,14 @@
                   <div class="card-body cardBody main-font" style="color:black;">
                     <h5 class="card-title cardTitle">{{markers.price}}</h5>
                     <p class="card-text m-0 cardText">{{markers.bedrooms}} Beds | {{markers.bathFull + markers.bathsHalf}} Baths | {{markers. estimatedSquareFeet}} SQFT</p>
-                    <a class="btn tracking-in-expand" routerLink ='/forsale'><span>View Details</span></a>
+                    <a class="btn tracking-in-expand" (click)='redirect(markers.id)'><span>View Details</span></a>
                   </div>
                 </div>
               </ng-template>
             </agm-snazzy-info-window>
          
           </agm-marker>
-    </agm-marker-cluster>
+    <!-- </agm-marker-cluster> -->
     </agm-map>
       
   </div>
