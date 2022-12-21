@@ -193,7 +193,10 @@
         <div class="listing_results">
           <div class="spacing"></div>
             <div class="list" *ngFor="let listing of listings" >
-              <app-listing-card    [listing]= "listing"></app-listing-card>
+              <div class="listing-card mt-3" data-id="{{listing.id}}" >             
+                <app-listing-card  id=""  [listing]= "listing"></app-listing-card>
+              </div>
+              
             </div>
             <div class="pagination_listing_results1" #pagination>
                 <pagination
@@ -251,10 +254,10 @@
   </div>
   
   <div class="right">
-    <agm-map [gestureHandling] ="location.gestureHandling" [ngStyle]="{'z-index':zIndex}"  [(latitude)]="location.lat"  [styles]="location.styles" [(longitude)]="location.lng" [clickableIcons]="location.clickableIcons" [(showDefaultInfoWindow)] ="location.showDefaultInfoWindow" [disableDefaultUI]="location.disableDefaultUI" [(zoom)]="location.zoom" [draggable]="location.draggable">
-      <!-- <agm-marker-cluster   [styles]="markerClusterIconStyles" > -->
+    <agm-map   [gestureHandling] ="location.gestureHandling" [ngStyle]="{'z-index':zIndex}"  [(latitude)]="location.lat"  [styles]="location.styles" [(longitude)]="location.lng" [clickableIcons]="location.clickableIcons" [(showDefaultInfoWindow)] ="location.showDefaultInfoWindow" [disableDefaultUI]="location.disableDefaultUI" [(zoom)]="location.zoom" [draggable]="location.draggable">
+      <agm-marker-cluster   [styles]="markerClusterIconStyles" >
        
-         <agm-marker *ngFor="let markers of listings" class="myMap"  [latitude]="markers.lat" [longitude]="markers.lon"   [iconUrl]="location. iconUrl" [agmFitBounds]="true"  >
+         <agm-marker  [agmFitBounds]="location.agmFitBounds" *ngFor="let markers of listings" class="myMap"  [latitude]="markers.lat" [longitude]="markers.lon"   [iconUrl]="location. iconUrl"  >
           <div  > </div>
            <agm-snazzy-info-window (click) ="openModalWithComponent(markers.id, markers.listingPictures, markers.price,markers.bedrooms, markers.bathsFull, markers.bathsHalf, markers.estimatedSquareFeet, markers.FullAddress)"  [latitude]="markers.lat" [padding]="location.padding" [longitude]="markers.lon" [border]="location.border" [borderRadius]="location. borderRadius" [maxWidth]="mapCard.maxWidth" [maxHeight]="mapCard.maxHeight"  [closeWhenOthersOpen]="true">
               <ng-template>
@@ -270,7 +273,7 @@
             </agm-snazzy-info-window>
          
           </agm-marker>
-    <!-- </agm-marker-cluster> -->
+    </agm-marker-cluster>
     </agm-map>
       
   </div>

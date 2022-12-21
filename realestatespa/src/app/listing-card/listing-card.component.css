@@ -75,7 +75,7 @@
 }
 
 .card{
-  width: 500px !important;
+  width: inherit !important;
   height: 170px;
 }
 
@@ -309,7 +309,7 @@ a{
 }
 */
 
-@media (max-width:1105px){
+@media (max-width:1110px){
 
   .imageHolder{
     width:100%;
@@ -326,10 +326,10 @@ a{
     border-bottom-right-radius: .75rem;
   }
   .card{
-    left: 12.5% !important;
+    left: 0px !important;
     height: auto !important;
-    width: 90% !important;
-    margin-bottom: 5%;
+    /* width: 310px !important; */
+    /* margin-bottom: 5%; */
   }
    .card img{ 
     width: 100% !important;
@@ -349,16 +349,22 @@ a{
 } /*card*/
 
 
+@media (max-width:1024px){
+  /* .card{
+    left: -14px !important;
+  } */
+}
+
 @media (width: 820px) and (height:1180px) {
-  .card{
+  /* .card{
     left: 35px !important;
-  }
+  } */
 }
 
 @media (width: 768px) and (height:1024px) {
-  .card{
+  /* .card{
     left: 35px !important;
-  }
+  } */
 }
 
 @media (max-width:485px){
@@ -381,10 +387,10 @@ a{
   }
 
    .card{
-    left:-400px !important;
-    height: 1750px !important;
-    width: 1600px !important;
-    margin-bottom: 5%;
+    /* left:-400px !important; */
+     height: 1700px !important;  
+    /* width: 1600px !important; */
+    /* margin-bottom: 5%; */
   } 
 
   .card img{
@@ -413,10 +419,10 @@ a{
 
 @media (max-width:414px) {
   .card {
-    left: 8.5% !important;
-    left: 6% !important;
-    top: 75px !important;
-    max-width: 100% !important;width: 98% !important;
+    /* left: 8.5% !important;
+    left: 6% !important; */
+    /* top: 75px !important; */
+    /* max-width: 100% !important;width: 98% !important; */
 }
 }
 
@@ -440,19 +446,19 @@ a{
 
 
 @media (width:384px) {
-  .card{
+  /* .card{
     left:5% !important;
-  }
+  } */
 }
 
 
 
 
 @media (max-width:376px){
-   .card{
+   /* .card{
     left: 7.5% !important;
-    width: 95% !important;
-    } 
+    width: 95% !important; 
+    }  */
 
     .imageHolder{
       height: 1050px !important;
@@ -503,8 +509,8 @@ a{
 
 @media (width:360px) and (height: 740px) {
    .card{
-    left: 150px !important;
-    width: 100%;
+     left: 150px !important; 
+    width: 100%; 
     
   }
 }
@@ -512,9 +518,9 @@ a{
 
 @media (max-width: 321px) {
    .card{
-    top: -100px !important;
-    left: 11% !important;
-    width: 95% !important;
+    /* top: -100px !important; */
+    /* left: 11% !important;
+    width: 95% !important; */
     } 
     .imageHolder{
       height: 850px !important;

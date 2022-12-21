@@ -197,6 +197,7 @@ export class ForsaleComponent implements OnInit {
     padding: '0px',
     border:true,
     borderRadius:'25px',
+    agmFitBounds:true, 
     isOpen:true,
     showDefaultInfoWindow: false,
     label:{
