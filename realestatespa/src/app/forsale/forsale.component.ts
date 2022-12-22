@@ -264,10 +264,10 @@ export class ForsaleComponent implements OnInit {
     this.listingService.getListings(this.ListingParams).subscribe(response=>{
       
       this.listings = response.result;
-      this.location.lat = this.listings[3].lat;
-      this.location.lng = this.listings[3].lon;
+      this.location.lat = this.listings[0].lat;
+      this.location.lng = this.listings[0].lon;
 
-      console.log(this.listings[3].lat, this.listings[3].lon);
+      console.log(this.listings[0].lat, this.listings[0].lon);
 // 
      for(let list of this.listings){
       
@@ -362,7 +362,7 @@ export class ForsaleComponent implements OnInit {
     }
   }
 
-  async searchListing(e='92054'){
+  async searchListing(e:string){
     this.ListingParams.fulladdress = e;
     console.log(this.ListingParams.fulladdress);
     this.loadListings();
