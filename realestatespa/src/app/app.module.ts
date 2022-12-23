@@ -5,7 +5,7 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { TabsModule, TabsetConfig } from 'ngx-bootstrap/tabs';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NgxSpinnerModule } from "ngx-spinner";
-import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
+import { AgmCoreModule } from '@agm/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -40,12 +40,12 @@ import { CustomErrorComponent } from './custom-alert/custom-error/custom-error.c
 import { HomeContactComponent } from './modals/home-contact/home-contact.component';
 import { ListingDetailsContactComponent } from './modals/listing-details-contact/listing-details-contact.component';
 import { ForsaleOptionsComponent } from './modals/forsale-options/forsale-options.component';
-import { AgmJsMarkerClustererModule, AgmMarkerCluster } from '@agm/js-marker-clusterer';
+import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ForsaleListingComponent } from './modals/forsale-listing/forsale-listing.component';
 import { ToastrModule } from 'ngx-toastr';
-import { AgmMarkerClustererModule } from '@agm/markerclusterer';
+
 
 
 
@@ -115,7 +115,6 @@ import { AgmMarkerClustererModule } from '@agm/markerclusterer';
   providers: [TabsetConfig,
     
               BsDropdownConfig,
-              GoogleMapsAPIWrapper,
               {provide:HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true},
               {provide:HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
   bootstrap: [AppComponent]

@@ -51,6 +51,9 @@ namespace API.Data
              
             var query =   _context.Listings.AsQueryable();
 
+            var listingStatus = new List<string>{listingParams.ActiveStatus, listingParams.PendingStatus,listingParams.ContingentStatus, listingParams.BOMStatus, listingParams.SoldStatus};
+
+
             query = listingParams.PriceSort switch{
                1 => query.OrderByDescending(x=> x.PriceSearch),
                _ =>  query.OrderBy(x=> x.PriceSearch)
@@ -80,11 +83,13 @@ namespace API.Data
                  query = query.Where(x=> x.EstimatedSquareFeet >= listingParams.EstimatedSquareFeet);
             }
 
-            query = query.Where(x=> x.FullAddress.Replace(",","").ToLower().Contains(listingParams.FullAddress.Replace(",","").ToLower()));
+            query = query.Where(x=> x.FullAddress.Replace(",","").Replace("  "," ").ToLower().Contains(listingParams.FullAddress.Replace(",","").ToLower()));
             
             //query =  query.Where(x=> x.FullAddress.ToLower().Contains(listingParams.FullAddress.ToLower()));
             
-            query = query.Where(x=> x.Status == listingParams.ActiveStatus || x.Status == listingParams.PendingStatus || x.Status == listingParams.ContingentStatus || x.Status == listingParams.SoldStatus || x.Status == listingParams.BOMStatus || x.Status == listingParams.WithdrawnStatus || x.Status == listingParams.CancelledStatus || x.Status == listingParams.ExpiredStatus || x.Status == listingParams.ComingSoon || x.Status == listingParams.ComingSoon || x.Status == "" || x.Status == null);
+            query =query.Where(x=> listingStatus.Contains(x.Status));
+
+            // query = query.Where(x=> x.Status == listingParams.ActiveStatus || x.Status == listingParams.PendingStatus || x.Status == listingParams.ContingentStatus || x.Status == listingParams.SoldStatus || x.Status == listingParams.BOMStatus || x.Status == listingParams.WithdrawnStatus || x.Status == listingParams.CancelledStatus || x.Status == listingParams.ExpiredStatus || x.Status == listingParams.ComingSoon || x.Status == listingParams.ComingSoon || x.Status == "" || x.Status == null);
             
              
 
