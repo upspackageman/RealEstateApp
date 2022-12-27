@@ -26,6 +26,14 @@ namespace API.Controllers
            
         }
 
+        // [HttpGet]
+        // [Route("GetMarkers")]
+        // public async Task<ActionResult<IEnumerable<MarkerDto>>> GetMarkers([FromQuery] MarkerParams markerParams)
+        // {
+        //         var markers = await _unitOfWork.ListingRepository.GetMarkersAsync(markerParams);
+        //         return Ok(markers);
+        // }
+
         
 
        

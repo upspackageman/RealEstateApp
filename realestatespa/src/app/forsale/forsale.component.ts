@@ -11,6 +11,8 @@ import { AccountService } from '../_services/account.service';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ClusterIconStyle } from '@google/markerclustererplus';
 import { ForsaleListingComponent } from '../modals/forsale-listing/forsale-listing.component';
+import { Marker } from '../_models/marker';
+import { MarkerParams } from '../_models/markerParams';
 
 
 
@@ -27,10 +29,12 @@ import { ForsaleListingComponent } from '../modals/forsale-listing/forsale-listi
 
 
 export class ForsaleComponent implements OnInit {
-  ListingParams:ListingParams;
+  listingParams:ListingParams;
+  markerParams:MarkerParams;
   search:string;
   modalRef: BsModalRef;
   listings: Listing[]=[];
+  markers: Marker[]=[];
   pagination: Pagination;
   numberOfRooms:number = -1;
   numberOfBathrooms: number = -1
@@ -221,7 +225,7 @@ export class ForsaleComponent implements OnInit {
   }
   bsModalRef?: BsModalRef;
   constructor(public accountService: AccountService, private listingService: ListingsService, private fb: UntypedFormBuilder, private modalService: BsModalService,  private router: Router) {
-    this.ListingParams = new ListingParams();
+    this.listingParams = new ListingParams();
     this.searchBar =  fb.group({ search:[null,[Validators.required,Validators.pattern(/\w/)]] });
 
    }
@@ -260,23 +264,31 @@ export class ForsaleComponent implements OnInit {
     
 
   public async loadListings() {
+
+    // this.listingService.getMarkers(this.markerParams).subscribe(response=>{
+    //   this.markers = response.result;
+    //   console.log(this.markers);
+    // });
+
+
+
     
-    this.listingService.getListings(this.ListingParams).subscribe(response=>{
-      
+    this.listingService.getListings(this.listingParams).subscribe(response=>{
+      this.markers = response.result;
       this.listings = response.result;
       this.location.lat = this.listings[0].lat;
       this.location.lng = this.listings[0].lon;
+      let id = this.markers[0].id;
+      
 
-      console.log(this.listings[0].lat, this.listings[0].lon);
-// 
-     for(let list of this.listings){
+    //  for(let list of this.listings){
       
-       this.location.lat = list.lat;
-       this.location.lng = list.lon;
+    //    this.location.lat = list.lat;
+    //    this.location.lng = list.lon;
       
-// 
-      console.log('Lat: ' + this.location.lat +  ' long: '+this.location.lng );
-    }
+      
+    //   console.log('Lat: ' + this.location.lat +  ' long: '+this.location.lng );
+    // }
 
       this.pagination = response.pagination;
       this.totalCount = response.pagination.totalPages * response.pagination.totalItems;
@@ -363,33 +375,33 @@ export class ForsaleComponent implements OnInit {
   }
 
   async searchListing(e:string){
-    this.ListingParams.fulladdress = e;
-    console.log(this.ListingParams.fulladdress);
+    this.listingParams.fulladdress = e;
+    console.log(this.listingParams.fulladdress);
     this.loadListings();
 
   }
 
   async pageChanged(event: any){
-    this.ListingParams.pageNumber = event.page;
+    this.listingParams.pageNumber = event.page;
     window.scroll(0,0);
     this.loadListings();
 
   }
 
   async pricechange(e){
-    this.ListingParams.price=e;
+    this.listingParams.price=e;
     this.currentPrice = e;
     this.loadListings();
-    console.log(this.ListingParams.price);
+    console.log(this.listingParams.price);
   }
 
   async priceSort(e){
-    this.ListingParams.priceSort = e;
-    if(this.ListingParams.priceSort== -1){
+    this.listingParams.priceSort = e;
+    if(this.listingParams.priceSort== -1){
       this.pricesortHTML ='<i class="fa fa-sort-amount-asc" aria-hidden="true"></i>';
       this.currentSort='Price Sort';
     }
-    else if(this.ListingParams.priceSort== 1) {
+    else if(this.listingParams.priceSort== 1) {
       this.pricesortHTML ='<i class="fa fa-sort-amount-desc" aria-hidden="true"></i>';
       this.currentSort = '(High to Low)';
     }
@@ -398,40 +410,40 @@ export class ForsaleComponent implements OnInit {
       this.currentSort ='(Low to High)';
     }
     this.loadListings();
-    console.log(this.ListingParams.priceSort);
+    console.log(this.listingParams.priceSort);
 
   }
 
 
  
 /*   async priceSort(e){
-    this.ListingParams.priceSort = e;
+    this.listingParams.priceSort = e;
     let sortSelect = document.getElementById('sqft-sort') as HTMLInputElement;
 
-    if(this.ListingParams.priceSort == 1){
+    if(this.listingParams.priceSort == 1){
       sortSelect.innerHTML = '<i class="fa fa-sort-amount-desc" aria-hidden="true"></i><span >&nbsp; &nbsp;High to Low</span>';
           
     }
-    else if (this.ListingParams.priceSort == 2){
+    else if (this.listingParams.priceSort == 2){
       sortSelect.innerHTML = '<i class="fa fa-sort-amount-asc" aria-hidden="true"></i><span >&nbsp; &nbsp;Low to High</span>';
     }
-    else if (this.ListingParams.priceSort == -1){
+    else if (this.listingParams.priceSort == -1){
       sortSelect.innerHTML = '<i class="fa fa-sort-amount-asc" aria-hidden="true"></i><span >&nbsp; &nbsp;Low to High</span>';
     }
     
     this.loadListings();
-    console.log(this.ListingParams.priceSort);
+    console.log(this.listingParams.priceSort);
 
   } */
 
   /* async bedchange(e){
-    this.ListingParams.bedrooms=e;
-    //this.numberOfRooms = this.ListingParams.bedrooms;
+    this.listingParams.bedrooms=e;
+    //this.numberOfRooms = this.listingParams.bedrooms;
 
     let bedSelect = document.getElementById('bed-select1') as HTMLInputElement;
 
-    if(this.ListingParams.bedrooms != -1){
-      bedSelect.innerHTML = `<span class="bed-list">${this.ListingParams.bedrooms}+</span>`;
+    if(this.listingParams.bedrooms != -1){
+      bedSelect.innerHTML = `<span class="bed-list">${this.listingParams.bedrooms}+</span>`;
     }
 
     //console.log(this.numberOfRooms);
@@ -448,61 +460,92 @@ currentZip:number = -1;
  */
 
   async bedchange(e:number){
-    this.ListingParams.bedrooms=e;
+    this.listingParams.bedrooms=e;
     this.currentBed = e;
     this.loadListings();
-    console.log(this.ListingParams.bedrooms);
+    console.log(this.listingParams.bedrooms);
   }
 
   async bathchange(e:number){
-    this.ListingParams.bathtotals=e;
+    this.listingParams.bathtotals=e;
     this.currentBath = e;
     this.loadListings();
-    console.log(this.ListingParams.bathtotals);
+    console.log(this.listingParams.bathtotals);
   }
 
   /* async bathchange(e){
-    this.ListingParams.bathtotals=e;
-    this.numberOfBathrooms = this.ListingParams.bathtotals;
+    this.listingParams.bathtotals=e;
+    this.numberOfBathrooms = this.listingParams.bathtotals;
 
     let bedSelect = document.getElementById('bath-select1') as HTMLInputElement;
 
-    if(this.ListingParams.bathtotals != -1){
-      bedSelect.innerHTML = `<span class="bed-list">${this.ListingParams.bathtotals}+</span>`;
+    if(this.listingParams.bathtotals != -1){
+      bedSelect.innerHTML = `<span class="bed-list">${this.listingParams.bathtotals}+</span>`;
     }
 
     this.loadListings();
     //console.log(this.numberOfBathrooms);
   } */
 
+  async listingNotHovered(e){
+    if((e.target.getAttribute("id"))!== null){
+      
+    
+
+    for(let i = 0; i < this.markers.length; i++){
+      if(this.markers[i].id === e.target.id){
+        this.markers[i].isHovered = false;
+        console.log(this.markers[i].id,this.markers[i].isHovered);
+      }
+        
+    }
+  }
+      
+   }
+
+   async listingHovered(e){
+    if((e.target.getAttribute("id"))!== null){
+      
+    
+
+    for(let i = 0; i < this.markers.length; i++){
+      if(this.markers[i].id === e.target.id){
+        this.markers[i].isHovered = true;
+        console.log(this.markers[i].id,this.markers[i].isHovered);
+      }
+        
+    }
+  }
+      
+   }
 
   async activeStatus(e){
     this.activeSelected = e.target.checked;
   
     if(this.activeSelected == true){
-      this.ListingParams.activeStatus='ACTIVE';
-      console.log(this.ListingParams.activeStatus);
+      this.listingParams.activeStatus='ACTIVE';
+      console.log(this.listingParams.activeStatus);
       this.loadListings();
     }
     else{
-      this.ListingParams.activeStatus='';
-      console.log(this.ListingParams.activeStatus);
+      this.listingParams.activeStatus='';
+      console.log(this.listingParams.activeStatus);
       this.loadListings();
     }
-    //console.log(this.ListingParams.activeStatus);
+    //console.log(this.listingParams.activeStatus);
   }
 
 
   async contingentStatus(e){
     this.contingentSelected = e.target.checked;
    if(this.contingentSelected == true){
-     this.ListingParams.contingentStatus='CONTINGENT';
-     console.log(this.ListingParams.contingentStatus);
+     this.listingParams.contingentStatus='CONTINGENT';
+     console.log(this.listingParams.contingentStatus);
      this.loadListings();
    }
    else{
-     this.ListingParams.contingentStatus='';
-     console.log(this.ListingParams.contingentStatus);
+     this.listingParams.contingentStatus='';
+     console.log(this.listingParams.contingentStatus);
      this.loadListings();
    }
   }
@@ -511,13 +554,13 @@ currentZip:number = -1;
     this.pendingSelected = e.target.checked;
 
      if(this.pendingSelected == true){
-      this.ListingParams.pendingStatus='PENDING';
-      console.log(this.ListingParams.pendingStatus);
+      this.listingParams.pendingStatus='PENDING';
+      console.log(this.listingParams.pendingStatus);
       this.loadListings();
     }
     else{
-      this.ListingParams.contingentStatus='';
-      console.log(this.ListingParams.contingentStatus);
+      this.listingParams.contingentStatus='';
+      console.log(this.listingParams.contingentStatus);
       this.loadListings();
     }
   }
@@ -526,13 +569,13 @@ currentZip:number = -1;
     this.soldSelected = e.target.checked;
 
     if(this.soldSelected == true){
-      this.ListingParams.soldStatus='SOLD';
-      console.log(this.ListingParams.soldStatus);
+      this.listingParams.soldStatus='SOLD';
+      console.log(this.listingParams.soldStatus);
       this.loadListings();
     }
     else{
-      this.ListingParams.soldStatus='';
-      console.log(this.ListingParams.soldStatus);
+      this.listingParams.soldStatus='';
+      console.log(this.listingParams.soldStatus);
       this.loadListings();
     }
   }
@@ -540,13 +583,13 @@ currentZip:number = -1;
   async bomStatus(e){
     this.bomSelected = e.target.checked;
     if(this.bomSelected == true){
-      this.ListingParams.bomStatus='BACK ON MARKET';
-      console.log(this.ListingParams.bomStatus);
+      this.listingParams.bomStatus='BACK ON MARKET';
+      console.log(this.listingParams.bomStatus);
       this.loadListings();
     }
     else{
-      this.ListingParams.bomStatus='';
-      console.log(this.ListingParams.bomStatus);
+      this.listingParams.bomStatus='';
+      console.log(this.listingParams.bomStatus);
       this.loadListings();
     }
   }
@@ -554,13 +597,13 @@ currentZip:number = -1;
   async withdrawnStatus(e){
     this.withdrawnSelected = e.target.checked;
     if(this.withdrawnSelected == true){
-      this.ListingParams.withdrawnStatus='BACK ON MARKET';
-      console.log(this.ListingParams.withdrawnStatus);
+      this.listingParams.withdrawnStatus='BACK ON MARKET';
+      console.log(this.listingParams.withdrawnStatus);
       this.loadListings();
     }
     else{
-      this.ListingParams.withdrawnStatus='';
-      console.log(this.ListingParams.withdrawnStatus);
+      this.listingParams.withdrawnStatus='';
+      console.log(this.listingParams.withdrawnStatus);
       this.loadListings();
     }
   }
@@ -568,13 +611,13 @@ currentZip:number = -1;
   async cancelledStatus(e){
     this.cancelledSelected = e.target.checked;
     if(this.cancelledSelected == true){
-      this.ListingParams.cancelledStatus='CANCELLED';
-      console.log(this.ListingParams.cancelledStatus);
+      this.listingParams.cancelledStatus='CANCELLED';
+      console.log(this.listingParams.cancelledStatus);
       this.loadListings();
     }
     else{
-      this.ListingParams.cancelledStatus='';
-      console.log(this.ListingParams.cancelledStatus);
+      this.listingParams.cancelledStatus='';
+      console.log(this.listingParams.cancelledStatus);
       this.loadListings();
     }
   }
@@ -588,127 +631,127 @@ currentZip:number = -1;
   }
 
   //   async activeStatus(){
-  //   if(this.ListingParams.activeStatus==''){
-  //     this.ListingParams.activeStatus='ACTIVE';
+  //   if(this.listingParams.activeStatus==''){
+  //     this.listingParams.activeStatus='ACTIVE';
   //     this.loadListings();
-  //     console.log(this.ListingParams.activeStatus);
+  //     console.log(this.listingParams.activeStatus);
       
   //   }
 
-  //   else if(this.ListingParams.activeStatus=='ACTIVE'){
-  //     this.ListingParams.activeStatus='';
-  //     console.log(this.ListingParams.activeStatus);
+  //   else if(this.listingParams.activeStatus=='ACTIVE'){
+  //     this.listingParams.activeStatus='';
+  //     console.log(this.listingParams.activeStatus);
   //     this.loadListings();
   //   }
   // }
 
   // async contingentStatus(){
-    // if(this.ListingParams.contingentStatus==''){
-      // this.ListingParams.contingentStatus='CONTINGENT';
+    // if(this.listingParams.contingentStatus==''){
+      // this.listingParams.contingentStatus='CONTINGENT';
       // this.loadListings();
     // }
 
-    // else if(this.ListingParams.contingentStatus=='CONTINGENT'){
-      // this.ListingParams.contingentStatus='';
+    // else if(this.listingParams.contingentStatus=='CONTINGENT'){
+      // this.listingParams.contingentStatus='';
       // this.loadListings();
     // }
   // }
 
   // async pendingStatus(){
-    // if(this.ListingParams.pendingStatus==''){
-      // this.ListingParams.pendingStatus='PENDING';
+    // if(this.listingParams.pendingStatus==''){
+      // this.listingParams.pendingStatus='PENDING';
       // this.loadListings();
     // }
 
-    // else if(this.ListingParams.pendingStatus=='PENDING'){
-      // this.ListingParams.pendingStatus='';
+    // else if(this.listingParams.pendingStatus=='PENDING'){
+      // this.listingParams.pendingStatus='';
       // this.loadListings();
     // }
   // }
 
   // async soldStatus(){
-    // if(this.ListingParams.soldStatus==''){
-      // this.ListingParams.soldStatus='SOLD';
+    // if(this.listingParams.soldStatus==''){
+      // this.listingParams.soldStatus='SOLD';
       // this.loadListings();
     // }
 
-    // else if(this.ListingParams.soldStatus=='SOLD'){
-      // this.ListingParams.soldStatus='';
+    // else if(this.listingParams.soldStatus=='SOLD'){
+      // this.listingParams.soldStatus='';
       // this.loadListings();
     // }
   // }
 
   // async bomStatus(){
-    // if(this.ListingParams.bomStatus==''){
-      // this.ListingParams.bomStatus='BACK ON MARKET';
+    // if(this.listingParams.bomStatus==''){
+      // this.listingParams.bomStatus='BACK ON MARKET';
       // this.loadListings();
     // }
 
-    // else if(this.ListingParams.bomStatus=='BACK ON MARKET'){
-      // this.ListingParams.bomStatus='';
+    // else if(this.listingParams.bomStatus=='BACK ON MARKET'){
+      // this.listingParams.bomStatus='';
       // this.loadListings();
     // }
   // }
 
   // async withdrawnStatus(){
-    // if(this.ListingParams.withdrawnStatus==''){
-      // this.ListingParams.withdrawnStatus='WITHDRAWN';
+    // if(this.listingParams.withdrawnStatus==''){
+      // this.listingParams.withdrawnStatus='WITHDRAWN';
       // this.loadListings();
     // }
 
-    // else if(this.ListingParams.withdrawnStatus=='WITHDRAWN'){
-      // this.ListingParams.withdrawnStatus='';
+    // else if(this.listingParams.withdrawnStatus=='WITHDRAWN'){
+      // this.listingParams.withdrawnStatus='';
       // this.loadListings();
     // }
   // }
 
   // async cancelledStatus(){
-    // if(this.ListingParams.cancelledStatus==''){
-      // this.ListingParams.cancelledStatus='CANCELLED';
+    // if(this.listingParams.cancelledStatus==''){
+      // this.listingParams.cancelledStatus='CANCELLED';
       // this.loadListings();
 
     // }
 
-    // else if(this.ListingParams.cancelledStatus=='CANCELLED'){
-      // this.ListingParams.cancelledStatus='';
+    // else if(this.listingParams.cancelledStatus=='CANCELLED'){
+      // this.listingParams.cancelledStatus='';
       // this.loadListings();
     // }
   // }
 
 //  async expiredStatus(){
-    // if(this.ListingParams.expiredStatus==''){
-      // this.ListingParams.expiredStatus = 'EXPIRED';
+    // if(this.listingParams.expiredStatus==''){
+      // this.listingParams.expiredStatus = 'EXPIRED';
       // this.loadListings();
     // }
 // 
-    // else if(this.ListingParams.cancelledStatus=='EXPIRED'){
-      // this.ListingParams.cancelledStatus='';
+    // else if(this.listingParams.cancelledStatus=='EXPIRED'){
+      // this.listingParams.cancelledStatus='';
       // this.loadListings();
     // }
   // }
 
   // async comingsoonStatus(){
-    // if(this.ListingParams.comingsoonStatus==''){
-      // this.ListingParams.comingsoonStatus='ACTIVE';
+    // if(this.listingParams.comingsoonStatus==''){
+      // this.listingParams.comingsoonStatus='ACTIVE';
       // this.loadListings();
 // 
     // }
 // 
-    // else if(this.ListingParams.comingsoonStatus=='ACTIVE'){
-      // this.ListingParams.comingsoonStatus='';
+    // else if(this.listingParams.comingsoonStatus=='ACTIVE'){
+      // this.listingParams.comingsoonStatus='';
       // this.loadListings();
     // }
   // }
 // 
   async estimatedSqFt(e){
     this.currentSqft = e;
-    this.ListingParams.estSqrFt = e;
+    this.listingParams.estSqrFt = e;
     this.loadListings();
     }
 
 
   async lotSize(e){
-    this.ListingParams.lotSize = e;
+    this.listingParams.lotSize = e;
     this.loadListings();
   }
 

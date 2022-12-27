@@ -98,8 +98,8 @@
         </label>
       </div> -->
       <div class="dropdown">
-        <button  class="listing-status adjust-space" >{{ListingParams.bathtotals == -1?'Baths': ListingParams.bathtotals }}<span 
-      *ngIf="ListingParams.bathtotals !== -1">+</span></button>
+        <button  class="listing-status adjust-space" >{{listingParams.bathtotals == -1?'Baths': listingParams.bathtotals }}<span 
+      *ngIf="listingParams.bathtotals !== -1">+</span></button>
         <div class="dropdown-content" id="price-drpdwn" >
           <ul>
             <a href="javascript:void(0)" (click)="bathchange($event.target.value)"><li [value]= "bath" *ngFor="let bath of bathSelect" >{{bath}}+</li></a>
@@ -107,8 +107,8 @@
         </div>
       </div>
       <div class="dropdown" >
-        <button class="listing-status adjust-space">{{ListingParams.bedrooms == -1?'Beds': ListingParams.bedrooms }}<span 
-      *ngIf="ListingParams.bedrooms !== -1">+</span></button>
+        <button class="listing-status adjust-space">{{listingParams.bedrooms == -1?'Beds': listingParams.bedrooms }}<span 
+      *ngIf="listingParams.bedrooms !== -1">+</span></button>
         <div class="dropdown-content" id="price-drpdwn">
           <ul>
             <a href="javascript:void(0)" (click)="bedchange($event.target.value)"><li [value]= "bed" *ngFor="let bed of bedSelect" >{{bed}}+</li></a>
@@ -193,8 +193,8 @@
         <div class="listing_results">
           <div class="spacing"></div>
             <div class="list" *ngFor="let listing of listings" >
-              <div class="listing-card mt-3" data-id="{{listing.id}}" >             
-                <app-listing-card  id=""  [listing]= "listing"></app-listing-card>
+              <div (mouseenter)="listingHovered($event)" (mouseleave)="listingNotHovered($event)" class="listing-card" data-id="{{listing.id}}" >             
+                <app-listing-card    [listing]= "listing"></app-listing-card>
               </div>
               
             </div>

@@ -15,6 +15,10 @@ namespace API.Data
 
         protected override void OnModelCreating(ModelBuilder builder){
             base.OnModelCreating(builder);
+
+            builder.Entity<Listing>()
+                .HasIndex(x => x.Id)
+                .IsUnique();
             
             builder.Entity<CustomerUser>()
                 .HasMany(ur =>ur.UserRoles)

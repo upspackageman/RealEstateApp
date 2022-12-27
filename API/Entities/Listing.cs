@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Entities
 {
-    [Index(nameof(Id), Name = "Index_Id")]
+    [Index(nameof(Id),IsUnique=true)]
     public class Listing
     {
         
