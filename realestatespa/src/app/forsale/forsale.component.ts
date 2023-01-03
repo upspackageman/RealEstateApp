@@ -13,6 +13,8 @@ import { ClusterIconStyle } from '@google/markerclustererplus';
 import { ForsaleListingComponent } from '../modals/forsale-listing/forsale-listing.component';
 import { Marker } from '../_models/marker';
 import { MarkerParams } from '../_models/markerParams';
+import { LatLngBounds } from '@agm/core';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -192,11 +194,12 @@ export class ForsaleComponent implements OnInit {
 
 
   public location:Location = {
-    lat: 51.678410,
-    lng: 7.809007,
+    lat: 33.10716938018116,
+    lng: -117.17115519242,
     iconUrl: '/assets/icons/circle_2.png',
     zoom:11.5,
-    draggable: true,
+    draggable: false,
+    panControl:false,
     disableDefaultUI: true,
     padding: '0px',
     border:true,
@@ -224,7 +227,7 @@ export class ForsaleComponent implements OnInit {
     
   }
   bsModalRef?: BsModalRef;
-  constructor(public accountService: AccountService, private listingService: ListingsService, private fb: UntypedFormBuilder, private modalService: BsModalService,  private router: Router) {
+  constructor(public accountService: AccountService, private listingService: ListingsService, private fb: UntypedFormBuilder, private modalService: BsModalService,  private router: Router, private http: HttpClient) {
     this.listingParams = new ListingParams();
     this.searchBar =  fb.group({ search:[null,[Validators.required,Validators.pattern(/\w/)]] });
 
@@ -233,10 +236,11 @@ export class ForsaleComponent implements OnInit {
 
   ngOnInit() {
     
-    this.redirect_listing();
-    this.loadListings();
+    this.getLocationCoord('92008 CA');
+    //this.redirect_listing();
     this.setColors();
     this.checkWidth();
+
     
 
 
@@ -245,7 +249,6 @@ export class ForsaleComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
     checkWidth(event?){
       if(window.matchMedia('(min-width:500px)').matches){
-        this.location.iconUrl = '/assets/circle_4.png',
         this.mapCard.maxHeight =220;
       } 
       else{
@@ -255,14 +258,13 @@ export class ForsaleComponent implements OnInit {
         this.markerClusterIconStyles[0].textSize = 50
         this.mapCard.maxWidth = 1850,
         this.mapCard.maxHeight = 1950,
-        this.location.iconUrl = '/assets/circle_2.png',
         this.location.zoom = 14; 
 
       }
     }
 
     
-
+  @HostListener('window:resize', ['$event'])
   public async loadListings() {
 
     // this.listingService.getMarkers(this.markerParams).subscribe(response=>{
@@ -274,26 +276,71 @@ export class ForsaleComponent implements OnInit {
 
     
     this.listingService.getListings(this.listingParams).subscribe(response=>{
-      this.markers = response.result;
       this.listings = response.result;
       this.location.lat = this.listings[0].lat;
-      this.location.lng = this.listings[0].lon;
-      let id = this.markers[0].id;
+      this.location.lng = this.listings[0].lng;
       
+      
+    
+     for(let list of this.listings){
+      if(window.matchMedia('(min-width:450px)').matches){
+        list.iconUrl =  '/assets/circle_4.png';
 
-    //  for(let list of this.listings){
+      }
+      else{
+        list.iconUrl = '/assets/circle_2.png';
+      }
       
-    //    this.location.lat = list.lat;
-    //    this.location.lng = list.lon;
       
-      
-    //   console.log('Lat: ' + this.location.lat +  ' long: '+this.location.lng );
-    // }
+      console.log('Lat: ' + this.location.lat +  ' long: '+this.location.lng );
+    }
 
+      this.pagination = response.pagination;
+      this.totalCount = response.pagination.totalPages * response.pagination.totalItems;
+      
+   })
+  }
+
+  @HostListener('window:resize', ['$event'])
+  public async updateListings(newBounds?: LatLngBounds) {
+    console.log(newBounds);
+    this.listingParams.fulladdress = 'CA';
+    this.listingService.getListings(this.listingParams).subscribe(response=>{
+      
+      
+      var _listings = response.result;
+      console.log(_listings);
+      this.listings = _listings.filter((_listing) => newBounds.contains(_listing));
+      
+      
+      console.log('Lat: ' + this.location.lat +  ' long: '+this.location.lng );
+      console.log(this.listings);
+      for(let list of _listings){
+        if(window.matchMedia('(min-width:450px)').matches){
+          list.iconUrl =  '/assets/circle_4.png';
+        }
+        else{
+          list.iconUrl = '/assets/circle_2.png';
+        }
+      }
       this.pagination = response.pagination;
       this.totalCount = response.pagination.totalPages * response.pagination.totalItems;
    })
   }
+
+  getLocationCoord(id:string){
+    var url = 'https://geocode.maps.co/search?q=';
+    console.log(url+id);
+    this.http.get<any>(url+id).subscribe(data => {
+      this.location.lat = data[0].lat;
+      this.location.lng = data[0].lon;
+      this.loadListings();
+      console.log(data[0].boundingbox);
+    })
+    
+    
+  }
+  
 
   
 
@@ -487,15 +534,21 @@ currentZip:number = -1;
     //console.log(this.numberOfBathrooms);
   } */
 
+  @HostListener('window:resize', ['$event'])
   async listingNotHovered(e){
     if((e.target.getAttribute("id"))!== null){
       
     
 
-    for(let i = 0; i < this.markers.length; i++){
-      if(this.markers[i].id === e.target.id){
-        this.markers[i].isHovered = false;
-        console.log(this.markers[i].id,this.markers[i].isHovered);
+    for(let i = 0; i < this.listings.length; i++){
+      if(this.listings[i].id === e.target.id){
+        if(window.matchMedia('(min-width:500px)').matches){
+          this.listings[i].iconUrl =  '/assets/circle_4.png';
+        }
+        else{
+          this.listings[i].iconUrl = '/assets/circle_2.png';
+        }
+        console.log(this.listings[i].id,this.listings[i].isHovered);
       }
         
     }
@@ -503,15 +556,24 @@ currentZip:number = -1;
       
    }
 
+
+
+   @HostListener('window:resize', ['$event'])
    async listingHovered(e){
     if((e.target.getAttribute("id"))!== null){
       
     
 
-    for(let i = 0; i < this.markers.length; i++){
-      if(this.markers[i].id === e.target.id){
-        this.markers[i].isHovered = true;
-        console.log(this.markers[i].id,this.markers[i].isHovered);
+    for(let i = 0; i < this.listings.length; i++){
+      if(this.listings[i].id === e.target.id){
+        if(window.matchMedia('(min-width:500px)').matches){
+          this.listings[i].iconUrl =  '/assets/circle_4_hovered.png';
+        }
+        else{
+          this.listings[i].iconUrl = '/assets/circle_2_hovered.png';
+        }
+        
+        console.log(this.listings[i].id,this.listings[i].isHovered);
       }
         
     }

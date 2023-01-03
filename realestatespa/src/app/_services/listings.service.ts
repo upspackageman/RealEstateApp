@@ -106,6 +106,7 @@ getListingsById(id:string){
   return this.http.get<Listing>(this.baseUrl + 'listings/' + id);
 }
 
+
   private getPaginatedResults<T>(url, params) {
     const paginatedResult: PaginatedResult<T> = new PaginatedResult<T>();
     return this.http.get<T>(url, { observe: 'response', params }).pipe(

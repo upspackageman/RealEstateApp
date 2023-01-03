@@ -193,7 +193,7 @@
         <div class="listing_results">
           <div class="spacing"></div>
             <div class="list" *ngFor="let listing of listings" >
-              <div (mouseenter)="listingHovered($event)" (mouseleave)="listingNotHovered($event)" class="listing-card" data-id="{{listing.id}}" >             
+              <div (mouseenter)="listingHovered($event)" (mouseleave)="listingNotHovered($event)" class="listing-card" data-id="{{listing.id}}">             
                 <app-listing-card    [listing]= "listing"></app-listing-card>
               </div>
               
@@ -254,11 +254,11 @@
   </div>
   
   <div class="right">
-    <agm-map   [gestureHandling] ="location.gestureHandling" [ngStyle]="{'z-index':zIndex}"  [(latitude)]="location.lat"  [styles]="location.styles" [(longitude)]="location.lng" [clickableIcons]="location.clickableIcons" [(showDefaultInfoWindow)] ="location.showDefaultInfoWindow" [disableDefaultUI]="location.disableDefaultUI" [(zoom)]="location.zoom" [draggable]="location.draggable">
-      <agm-marker-cluster   [styles]="markerClusterIconStyles" >
+    <agm-map     [gestureHandling] ="location.gestureHandling" [ngStyle]="{'z-index':zIndex}"  [latitude]="location.lat"  [styles]="location.styles" [longitude]="location.lng" [clickableIcons]="location.clickableIcons" [(showDefaultInfoWindow)] ="location.showDefaultInfoWindow" [disableDefaultUI]="location.disableDefaultUI" [(zoom)]="location.zoom" [draggable]="location.draggable" (boundsChange)="updateListings($event)">
+      <!-- <agm-marker-cluster   [styles]="markerClusterIconStyles" > -->
        
-         <agm-marker  [agmFitBounds]="location.agmFitBounds" *ngFor="let markers of listings" class="myMap"  [latitude]="markers.lat" [longitude]="markers.lon"   [iconUrl]="location. iconUrl">
-           <agm-snazzy-info-window [latitude]="markers.lat" [padding]="location.padding" [longitude]="markers.lon" [border]="location.border" [borderRadius]="location. borderRadius" [maxWidth]="mapCard.maxWidth" [maxHeight]="mapCard.maxHeight"  [closeWhenOthersOpen]="true">
+         <agm-marker  [agmFitBounds]="false" *ngFor="let markers of listings" class="myMap"  [latitude]="markers.lat" [longitude]="markers.lng"   [iconUrl]="markers.iconUrl">
+           <agm-snazzy-info-window [latitude]="markers.lat" [isOpen]="markers.isHovered" [padding]="location.padding" [longitude]="markers.lng" [border]="location.border" [borderRadius]="location. borderRadius" [maxWidth]="mapCard.maxWidth" [maxHeight]="mapCard.maxHeight"  [closeWhenOthersOpen]="true">
               <ng-template>
                 <div class="marker">
                   <a  (click)='redirect(markers.id)'><img src="{{markers.listingPictures}}"  style="border-radius: 0px;"   alt="..." onerror="this.onerror=null; this.src='../assets/NoPhotoAvailable.jpg';" ></a>
@@ -272,7 +272,7 @@
             </agm-snazzy-info-window>
          
           </agm-marker>
-    </agm-marker-cluster>
+    <!-- </agm-marker-cluster> -->
     </agm-map>
       
   </div>

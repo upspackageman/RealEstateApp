@@ -454,13 +454,13 @@ main {
 .listing-card{
   z-index:3;
   margin-top:4.5%;
-  border: 1px groove #d8d67f;
+  border: 0px groove #d8d67f;
   width:502px;
 }
 
 .listing-card:hover
 {
-  border: 3px groove #d8d67f;
+  border: 0px groove #d8d67f;
    
 }
 .selectdiv {

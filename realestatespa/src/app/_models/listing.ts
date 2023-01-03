@@ -29,9 +29,11 @@ export interface Listing {
     estimatedSquareFeet: string;
     priceSearch: number;
     highSchoolURL?: any;
-    lon: number;
+    lng: number;
     lat: number;
-    isChecked:false;
+    iconUrl: string;
+    isHovered: boolean;
+    isChecked:boolean;
    
   }
   

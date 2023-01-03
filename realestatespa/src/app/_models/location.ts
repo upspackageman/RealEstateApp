@@ -4,6 +4,7 @@ export interface Location {
     viewport?: Object;
     zoom: number;
     isOpen?:boolean;
+    panControl?:boolean;
     agmFitBounds:boolean
     address_level_1?:string;
     address_level_2?: string;
