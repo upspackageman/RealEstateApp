@@ -594,7 +594,8 @@ option {
 }
 
 .right {
-  display: flex;
+  width:80%;
+  display: grid;
 }
 
 
@@ -679,7 +680,8 @@ agm-map {
   height: 100%;
   width: 100%;
   position: fixed;
-  top: 0;
+  top: 15.25%;
+  bottom: 20%;
   right: 0;
   background: none;
   color: #fff;

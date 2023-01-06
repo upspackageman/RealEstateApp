@@ -254,18 +254,18 @@
   </div>
   
   <div class="right">
-    <agm-map     [gestureHandling] ="location.gestureHandling" [ngStyle]="{'z-index':zIndex}"  [latitude]="location.lat"  [styles]="location.styles" [longitude]="location.lng" [clickableIcons]="location.clickableIcons" [(showDefaultInfoWindow)] ="location.showDefaultInfoWindow" [disableDefaultUI]="location.disableDefaultUI" [(zoom)]="location.zoom" [draggable]="location.draggable" (boundsChange)="updateListings($event)">
+    <agm-map     [gestureHandling] ="location.gestureHandling" [ngStyle]="{'z-index':zIndex}"  [latitude]="location.lat"  [styles]="location.styles" [longitude]="location.lng" [clickableIcons]="location.clickableIcons" [(showDefaultInfoWindow)] ="location.showDefaultInfoWindow" [disableDefaultUI]="location.disableDefaultUI" [(zoom)]="location.zoom" [draggable]="location.draggable" (boundsChange)="setUpdateListings($event)">
       <!-- <agm-marker-cluster   [styles]="markerClusterIconStyles" > -->
        
-         <agm-marker  [agmFitBounds]="false" *ngFor="let markers of listings" class="myMap"  [latitude]="markers.lat" [longitude]="markers.lng"   [iconUrl]="markers.iconUrl">
-           <agm-snazzy-info-window [latitude]="markers.lat" [isOpen]="markers.isHovered" [padding]="location.padding" [longitude]="markers.lng" [border]="location.border" [borderRadius]="location. borderRadius" [maxWidth]="mapCard.maxWidth" [maxHeight]="mapCard.maxHeight"  [closeWhenOthersOpen]="true">
+         <agm-marker  [agmFitBounds]="false" *ngFor="let marker of markers" class="myMap"  [latitude]="marker.lat" [longitude]="marker.lng"   [iconUrl]="marker.iconUrl">
+           <agm-snazzy-info-window [latitude]="marker.lat" [isOpen]="marker.isHovered" [padding]="location.padding" [longitude]="marker.lng" [border]="location.border" [borderRadius]="location. borderRadius" [maxWidth]="mapCard.maxWidth" [maxHeight]="mapCard.maxHeight"  [closeWhenOthersOpen]="true">
               <ng-template>
                 <div class="marker">
-                  <a  (click)='redirect(markers.id)'><img src="{{markers.listingPictures}}"  style="border-radius: 0px;"   alt="..." onerror="this.onerror=null; this.src='../assets/NoPhotoAvailable.jpg';" ></a>
+                  <a  (click)='redirect(marker.id)'><img src="{{marker.listingPictures}}"  style="border-radius: 0px;"   alt="..." onerror="this.onerror=null; this.src='../assets/NoPhotoAvailable.jpg';" ></a>
                   <div class="card-body cardBody main-font" style="color:black;">
-                    <h5 class="card-title cardTitle">{{markers.price}}</h5>
-                    <p class="card-text m-0 cardText">{{markers.bedrooms}} Beds | {{markers.bathFull + markers.bathsHalf}} Baths | {{markers. estimatedSquareFeet}} SQFT</p>
-                    <a class="btn tracking-in-expand" (click)='redirect(markers.id)'><span>View Details</span></a>
+                    <h5 class="card-title cardTitle">{{marker.price}}</h5>
+                    <p class="card-text m-0 cardText">{{marker.bedrooms}} Beds | {{marker.bathFull + marker.bathsHalf}} Baths | {{marker. estimatedSquareFeet}} SQFT</p>
+                    <a class="btn tracking-in-expand" (click)='redirect(marker.id)'><span>View Details</span></a>
                   </div>
                 </div>
               </ng-template>

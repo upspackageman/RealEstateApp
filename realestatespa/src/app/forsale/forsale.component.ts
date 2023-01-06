@@ -34,6 +34,7 @@ export class ForsaleComponent implements OnInit {
   listingParams:ListingParams;
   markerParams:MarkerParams;
   search:string;
+  isSearch:boolean=false;
   modalRef: BsModalRef;
   listings: Listing[]=[];
   markers: Marker[]=[];
@@ -246,6 +247,21 @@ export class ForsaleComponent implements OnInit {
 
   }
 
+  setUpdateListings(newBounds?: LatLngBounds){
+    if(this.isSearch==true){
+      console.log(this.listingParams.fulladdress);
+      console.log(this.isSearch);
+      this.updateListings(newBounds);
+    }
+    if(this.isSearch==false){
+      this.listingParams.fulladdress = 'CA';
+      console.log(this.listingParams.fulladdress);
+      console.log(this.isSearch);
+      this.updateListings(newBounds);
+
+    }
+  }
+
   @HostListener('window:resize', ['$event'])
     checkWidth(event?){
       if(window.matchMedia('(min-width:500px)').matches){
@@ -273,27 +289,40 @@ export class ForsaleComponent implements OnInit {
     // });
 
 
-
+    console.log(this.listingParams.fulladdress);
     
     this.listingService.getListings(this.listingParams).subscribe(response=>{
       this.listings = response.result;
+      console.log(this.listings);
+      //this.markers += response.result;
       this.location.lat = this.listings[0].lat;
       this.location.lng = this.listings[0].lng;
       
       
     
      for(let list of this.listings){
+      console.log(list);
       if(window.matchMedia('(min-width:450px)').matches){
         list.iconUrl =  '/assets/circle_4.png';
-
+        
       }
       else{
         list.iconUrl = '/assets/circle_2.png';
+        
       }
       
       
       console.log('Lat: ' + this.location.lat +  ' long: '+this.location.lng );
     }
+    for(let list of this.listings){
+     
+      if(!this.markers.includes(list)){
+        this.markers.push(list);
+      }
+    }
+
+    this.markers = [...new Set(this.markers)];
+
 
       this.pagination = response.pagination;
       this.totalCount = response.pagination.totalPages * response.pagination.totalItems;
@@ -304,7 +333,6 @@ export class ForsaleComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   public async updateListings(newBounds?: LatLngBounds) {
     console.log(newBounds);
-    this.listingParams.fulladdress = 'CA';
     this.listingService.getListings(this.listingParams).subscribe(response=>{
       
       
@@ -318,11 +346,24 @@ export class ForsaleComponent implements OnInit {
       for(let list of _listings){
         if(window.matchMedia('(min-width:450px)').matches){
           list.iconUrl =  '/assets/circle_4.png';
+          
         }
         else{
           list.iconUrl = '/assets/circle_2.png';
+          
         }
       }
+
+      for(let list of this.listings){
+  
+        if(this.markers.includes(list)){
+          this.markers.push(list);
+        }
+      }
+      
+      this.markers = [...new Set(this.markers)];
+      console.log(this.markers);
+      console.log(this.listingParams.fulladdress);
       this.pagination = response.pagination;
       this.totalCount = response.pagination.totalPages * response.pagination.totalItems;
    })
@@ -422,7 +463,9 @@ export class ForsaleComponent implements OnInit {
   }
 
   async searchListing(e:string){
+    this.markers=[];
     this.listingParams.fulladdress = e;
+    this.isSearch=true;
     console.log(this.listingParams.fulladdress);
     this.loadListings();
 

@@ -8,7 +8,7 @@ export interface Marker {
     bathsHalf: number;
     bedrooms: number;
     priceSearch: number;
-    lon: number;
+    lng: number;
     lat: number;
     iconUrl: string;
     isHovered: boolean;
