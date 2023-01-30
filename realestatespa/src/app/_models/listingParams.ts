@@ -15,7 +15,7 @@ export class ListingParams
   comingsoonStatus:string ="COMING SOON";
   cancelledStatus:string ="CANCELLED";
   zipcode:number=-1;
-  fulladdress:string = "CA"; 
+  fulladdress:string = "CA 92008"; 
   lotSize:string="0";
   estSqrFt:number =-1;
   priceSort:number = -1;

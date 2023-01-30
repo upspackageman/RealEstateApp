@@ -3,6 +3,7 @@ export interface Listing {
     mls: string;
     fullAddress: string;
     price: string;
+    state:string;
     bathTotals: number;
     bathFull: number;
     bathsHalf: number;

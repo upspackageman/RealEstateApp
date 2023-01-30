@@ -3,100 +3,27 @@
     <div class="container">
         <div  class="selectOptions text-focus-in  font-family">
         <form  [formGroup]="searchBar">
-          <input #findListing formControlName="search" class=" me-2 ml-5 searchBar main-font" type="search" placeholder="eg. 2144 Oceanside Boulevard, Oceanside, CA 92054" aria-label="Search">
-          <button class="searchButton main-font"  type="submit" [disabled]="!searchBar.valid"  (click)="searchListing(findListing.value)" ><i class="fa fa-search" aria-hidden="true"></i></button>
+          <input #findListing formControlName="search" class=" me-2 ml-5 searchBar main-font" type="search" placeholder="eg. 2144 Oceanside Boulevard, Oceanside, CA 92054" aria-label="Search" (focus)="searchMobile()">
+         
+          <button class="searchButton main-font"  type="submit" [disabled]="!searchBar.valid"  (click)="searchListing(findListing.value)" >
+            <a class="" type="button"  >
+              <img src="/assets/search_icon.svg" onerror="this.onerror=null; this.src='image.png'">
+            </a>
+          </button>
           <button class="contactButton"  (click)="openModalWithClass(moreOptions)" >
             <a class="" type="button"  >
-              <i class="fa fa-filter" aria-hidden="true"></i>
+              <img src="/assets/filter_icon.svg" onerror="this.onerror=null; this.src='image.png'">
             </a>
           </button>
           <button class="mapButton"  (click)="mapViewTablet()">
             <a class="" type="button"  >
-              <i class="fa fa-map-o" aria-hidden="true"></i>
+              <img src="/assets/map_icon.svg" onerror="this.onerror=null; this.src='image.png'">
             </a>
           </button>
         </form>
       </div>
       
   
-      <!-- <div class="selectdiv filter2">
-        <label>
-            <select (change)="pricechange($event.target.value)">
-              <option [value] = "-1">{{currentPrice == -1?'Max Price': currentPrice}}</option>
-                <option [value]= "-1" >--No Max--</option>
-                <option [value]= "price" *ngFor="let price of priceSelect">{{price| currency:'USD':'symbol':'2.0-2'}}</option>
-            </select>
-        </label>
-      </div>
-      <div class="selectdiv filter2">
-        <label>
-            <select (change)="priceSort($event.target.value)">
-              <option [value]="-1">Price Sort</option>
-              <option [value]="1">(High to low)</option>
-              <option [value]="2">(Low to High)</option>
-            </select>
-        </label>
-      </div>
-      <div class="selectdiv filter2">
-        <label class="adjust-space">
-            <select  (change)="bedchange($event.target.value)">
-                <option  id="one" [value]=-1>Beds</option>
-                <option [value]=1>1+</option>
-                <option [value]=2>2+</option>
-                <option [value]=3>3+</option>
-                <option [value]=4>4+</option>
-                <option [value]=5>5+</option>
-                <option [value]=6>6+</option>
-                <option [value]=7>7+</option>
-                <option [value]=8>8+</option>
-                <option [value]=9>9+</option>
-                <option [value]=10>10+</option>
-                
-            </select>
-        </label>
-      </div>
-      <div class="selectdiv filter2">
-        <label  class="adjust-space">
-            <select   (change)="bathchange($event.target.value)">
-              <option id="one" [value]=-1>Baths</option>
-              <option [value]=1>1+</option>
-              <option [value]=2>2+</option>
-              <option [value]=3>3+</option>
-              <option [value]=4>4+</option>
-              <option [value]=5>5+</option>
-              <option [value]=6>6+</option>
-              <option [value]=7>7+</option>
-              <option [value]=8>8+</option>
-              <option [value]=9>9+</option>
-              <option [value]=10>10+</option>
-            </select>
-        </label>
-      </div>
-      <div class="selectdiv filter2">
-        <label  class="adjust-space">
-            <select (change)="estimatedSqFt($event.target.value)">
-              <option value="-1">Sq. Ft.</option>
-              <option value="500" >500</option>
-              <option value="750">750</option>
-              <option value="1000">1,000</option>
-              <option value="1500">1,500</option>
-              <option value="2000">2,000</option>
-              <option value="2500">2,500</option>
-              <option value="3000">3,000</option>
-              <option value="3500">3,500</option>
-              <option value="4000">4,000</option>
-              <option value="4500">4,500</option>
-              <option value="5000">5,000</option>
-              <option value="5500">5,500</option>
-              <option value="6000">6,000</option>
-              <option value="6500">6,500</option>
-              <option value="7000">7,000</option>
-              <option value="10000">10,000</option>
-              <option value="20000">20,000</option>
-              <option value="30000">30,000</option>
-            </select>
-        </label>
-      </div> -->
       <div class="dropdown">
         <button  class="listing-status adjust-space" >{{listingParams.bathtotals == -1?'Baths': listingParams.bathtotals }}<span 
       *ngIf="listingParams.bathtotals !== -1">+</span></button>
@@ -220,7 +147,7 @@
 
   <button  [ngStyle]="{'z-index':zMap}"  (click)="mapView()" class="map_list_button">
    <span *ngIf="isMapView" class="map_text_margin">
-    <i class="fa fa-list" aria-hidden="true"></i><br>
+    <img class="mobile_map_icon" src="/assets/list_icon.svg" onerror="this.onerror=null; this.src='image.png'">
     <span>List</span>
     
     <!-- <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24"  >
@@ -229,7 +156,7 @@
     </svg> -->
    </span>
    <span *ngIf="!isMapView" class="map_text_margin">
-    <i class="fa fa-map-o" aria-hidden="true"></i><br>
+    <img class="mobile_map_icon" src="/assets/map_icon.svg" onerror="this.onerror=null; this.src='image.png'">
     <span>Map</span>
     <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" >
       <path d="M0 0h24v24H0V0z" fill="none"/>
@@ -237,8 +164,9 @@
     </svg> -->
    </span>
   </button>
-  <div [ngStyle]="{'z-index':zPagination}" class="pagination_listing_results" #pagination>
+  <div [ngStyle]="{'z-index':zPagination,'display':mapDisplay}" class="pagination_listing_results" #pagination>
     <pagination
+      [ngStyle]="{'display':mapDisplay}"
       [maxSize]="maxSize"
       [boundaryLinks]="true"
       [totalItems]="totalCount"
@@ -252,30 +180,34 @@
       class="pagination">
     </pagination>
   </div>
+
   
-  <div class="right">
-    <agm-map     [gestureHandling] ="location.gestureHandling" [ngStyle]="{'z-index':zIndex}"  [latitude]="location.lat"  [styles]="location.styles" [longitude]="location.lng" [clickableIcons]="location.clickableIcons" [(showDefaultInfoWindow)] ="location.showDefaultInfoWindow" [disableDefaultUI]="location.disableDefaultUI" [(zoom)]="location.zoom" [draggable]="location.draggable" (boundsChange)="setUpdateListings($event)">
+
+    <agm-map #map ([zoomSroll])="location.scrollZoom"  [gestureHandling] ="location.gestureHandling" [ngStyle]="{'z-index':zIndex, 'display':mapDisplay}"  [latitude]="location.lat"  [styles]="location.styles" [longitude]="location.lng" [clickableIcons]="location.clickableIcons" [(showDefaultInfoWindow)] ="location.showDefaultInfoWindow" [disableDefaultUI]="location.disableDefaultUI" [(zoom)]="location.zoom" [draggable]="location.draggable" (boundsChange)="setUpdateListings($event)">
       <!-- <agm-marker-cluster   [styles]="markerClusterIconStyles" > -->
        
-         <agm-marker  [agmFitBounds]="false" *ngFor="let marker of markers" class="myMap"  [latitude]="marker.lat" [longitude]="marker.lng"   [iconUrl]="marker.iconUrl">
-           <agm-snazzy-info-window [latitude]="marker.lat" [isOpen]="marker.isHovered" [padding]="location.padding" [longitude]="marker.lng" [border]="location.border" [borderRadius]="location. borderRadius" [maxWidth]="mapCard.maxWidth" [maxHeight]="mapCard.maxHeight"  [closeWhenOthersOpen]="true">
-              <ng-template>
-                <div class="marker">
-                  <a  (click)='redirect(marker.id)'><img src="{{marker.listingPictures}}"  style="border-radius: 0px;"   alt="..." onerror="this.onerror=null; this.src='../assets/NoPhotoAvailable.jpg';" ></a>
-                  <div class="card-body cardBody main-font" style="color:black;">
-                    <h5 class="card-title cardTitle">{{marker.price}}</h5>
-                    <p class="card-text m-0 cardText">{{marker.bedrooms}} Beds | {{marker.bathFull + marker.bathsHalf}} Baths | {{marker. estimatedSquareFeet}} SQFT</p>
-                    <a class="btn tracking-in-expand" (click)='redirect(marker.id)'><span>View Details</span></a>
-                  </div>
+         <agm-marker  [agmFitBounds]="false" *ngFor="let marker of listings" class="myMap"  [latitude]="marker.lat" [longitude]="marker.lng"   [iconUrl]="marker.iconUrl">
+          <agm-snazzy-info-window [latitude]="marker.lat" [isOpen]="marker.isHovered" [padding]="location.padding" [longitude]="marker.lng" [border]="location.border" [borderRadius]="location.borderRadius" [maxWidth]="mapCard.maxWidth" [maxHeight]="mapCard.maxHeight"  [closeWhenOthersOpen]="true">
+            <ng-template   class="marker">
+             <section class="marker">
+              <a  routerLink ="/listing/{{marker.id}}"><img src="{{marker.listingPictures}}"  style="border-radius: 0px;"   alt="..." 
+                onerror="this.onerror=null; this.src='../assets/NoPhotoAvailable.jpg';" ></a>
+                <div class="card-body cardBody main-font" style="color:black;">
+                  <h5 class="card-title cardTitle">{{marker.price}}</h5>
+                  <p class="card-text m-0 cardText">{{marker.bedrooms}} Beds | {{marker.bathFull + marker.bathsHalf}} Baths | {{marker. 
+                estimatedSquareFeet}} SQFT</p>
+                  <a class="btn tracking-in-expand" routerLink ="/listing/{{marker.id}}">View Details</a>
                 </div>
-              </ng-template>
-            </agm-snazzy-info-window>
+             </section>
+             
+            </ng-template>
+          </agm-snazzy-info-window>
          
           </agm-marker>
     <!-- </agm-marker-cluster> -->
     </agm-map>
       
-  </div>
+
 </main> 
 
 

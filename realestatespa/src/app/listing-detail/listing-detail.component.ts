@@ -98,6 +98,7 @@ export class ListingDetailComponent implements OnInit {
 
 
   ngOnInit() {
+    
     this.loadListing();
     this.checkWidth();
     // console.log(this.doughnutChartData.datasets[0].data[1]);
@@ -159,8 +160,9 @@ export class ListingDetailComponent implements OnInit {
   }
 
   loadListing() {
-    
-    
+   
+    //
+   
     this.listingsService.getListingsById(this.route.snapshot.paramMap.get('id')).subscribe(listing => {
       this.listing = listing;
       this.mortgageCalulator();
@@ -168,8 +170,8 @@ export class ListingDetailComponent implements OnInit {
       console.log(this.route.snapshot.paramMap.get('id'));
 
     });
-
-   // this.redirect();
+    //this.redirect();
+   
   }
 
   openModalWithComponent() {
@@ -264,12 +266,21 @@ export class ListingDetailComponent implements OnInit {
 
     if (!localStorage.getItem('direct')) {
 
-      localStorage.setItem('direct', 'no reload')
 
-      location.reload();
+      setTimeout(()=> {
+        location.reload();
+     }
+     ,700);
+      
+      
+     
+      localStorage.setItem('direct', 'no reload');
+      
+
     } else {
-      window.scroll(-1000000, -1000000);
+      
       localStorage.removeItem('direct');
+      
     }
   }
 

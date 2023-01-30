@@ -6,6 +6,7 @@ import { TabsModule, TabsetConfig } from 'ngx-bootstrap/tabs';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { AgmCoreModule } from '@agm/core';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -45,13 +46,13 @@ import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ForsaleListingComponent } from './modals/forsale-listing/forsale-listing.component';
 import { ToastrModule } from 'ngx-toastr';
-
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 
 @NgModule({
   declarations: [
-      
+
       HomeContactComponent,
       ListingDetailsContactComponent,
       ForsaleOptionsComponent,
@@ -81,9 +82,8 @@ import { ToastrModule } from 'ngx-toastr';
       
    ],
   imports: [
-  
-    TooltipModule.forRoot(),
-    AgmJsMarkerClustererModule,
+   TooltipModule.forRoot(),
+   AgmJsMarkerClustererModule,
     NgChartsModule,
     CommonModule,
     BrowserModule,
@@ -99,18 +99,16 @@ import { ToastrModule } from 'ngx-toastr';
     ProgressbarModule.forRoot(),
     BsDropdownModule.forRoot(),
     HttpClientModule,
+    MatGridListModule,
     HttpClientJsonpModule,
+    AgmSnazzyInfoWindowModule,
     NgxSpinnerModule,
-    ToastrModule.forRoot({
-      positionClass: 'toast-bottom-right'
-    }),
-    
-    
-    
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAvra3-d8BHuG3kVd1QfY6Iua8hxFCwQQY'
     }),
-    AgmSnazzyInfoWindowModule
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right'
+    }),
   ],
   providers: [TabsetConfig,
     

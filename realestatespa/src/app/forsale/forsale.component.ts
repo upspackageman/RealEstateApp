@@ -1,7 +1,7 @@
 import {Location} from './../_models/location';
 import { ListingParams } from './../_models/listingParams';
 import { ListingsService } from './../_services/listings.service';
-import { Component, OnInit, TemplateRef, HostListener,  Renderer2, RendererFactory2} from '@angular/core';
+import { Component, OnInit, TemplateRef, HostListener,  Renderer2, RendererFactory2, ViewChild} from '@angular/core';
 import { Listing } from '../_models/listing';
 import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 import {Pagination} from '../_models/pagination';
@@ -13,7 +13,7 @@ import { ClusterIconStyle } from '@google/markerclustererplus';
 import { ForsaleListingComponent } from '../modals/forsale-listing/forsale-listing.component';
 import { Marker } from '../_models/marker';
 import { MarkerParams } from '../_models/markerParams';
-import { LatLngBounds } from '@agm/core';
+import { AgmMap, LatLngBounds} from '@agm/core';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -31,6 +31,7 @@ import { HttpClient } from '@angular/common/http';
 
 
 export class ForsaleComponent implements OnInit {
+  @ViewChild('map') map: AgmMap;
   listingParams:ListingParams;
   markerParams:MarkerParams;
   search:string;
@@ -50,6 +51,7 @@ export class ForsaleComponent implements OnInit {
   maxSize = 4;
   sortOrder:string = '--Sort--';
   selectedEst = -1;
+  init:number = 0;
   activeSelected:boolean = true; 
   contingentSelected:boolean = true;
   soldSelected:boolean = true;
@@ -80,7 +82,9 @@ export class ForsaleComponent implements OnInit {
   numberOfPeriodicPaymentsPerYear:number =12; //n
   tenureOfLoansPerYear:number=5; //t
   zIndex:string;
-  _display:string='none'
+  mapDisplay:string;
+  borderTop:string;
+  _display:string='none';
   zPagination:string;
   searchBar:UntypedFormGroup;
   pricesortHTML:string='<i class="fa fa-sort-amount-asc" aria-hidden="true"></i>';
@@ -198,7 +202,8 @@ export class ForsaleComponent implements OnInit {
     lat: 33.10716938018116,
     lng: -117.17115519242,
     iconUrl: '/assets/icons/circle_2.png',
-    zoom:11.5,
+    zoom:10.5,
+    scrollZoom:false,
     draggable: false,
     panControl:false,
     disableDefaultUI: true,
@@ -236,9 +241,12 @@ export class ForsaleComponent implements OnInit {
 
 
   ngOnInit() {
-    
-    this.getLocationCoord('92008 CA');
-    //this.redirect_listing();
+    //this.listingParams.fulladdress ='92008 CA';
+    this.redirect_listing();
+    console.log(this.isMapView);
+    this.loadListings();
+    //this.getLocationCoord('92008 CA');
+
     this.setColors();
     this.checkWidth();
 
@@ -264,39 +272,57 @@ export class ForsaleComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
     checkWidth(event?){
-      if(window.matchMedia('(min-width:500px)').matches){
-        this.mapCard.maxHeight =220;
-      } 
-      else{
+      if((window.matchMedia('(max-width:500px)').matches)){
         this.markerClusterIconStyles[0].url ='/assets/marker2.png',
         this.markerClusterIconStyles[0].width = 100,
         this.markerClusterIconStyles[0].height = 100,
         this.markerClusterIconStyles[0].textSize = 50
-        this.mapCard.maxWidth = 1850,
+        this.mapCard.maxWidth = 1750,
         this.mapCard.maxHeight = 1950,
-        this.location.zoom = 14; 
+        this.location.zoom = 13; 
 
+      }
+      else{
+        this.mapCard.maxHeight =290;
       }
     }
 
     
   @HostListener('window:resize', ['$event'])
-  public async loadListings() {
-
+  public async loadListings(lat?, lng?) {
+   // const bounds = this.map.fitBounds;
+    //console.log(newBounds);
     // this.listingService.getMarkers(this.markerParams).subscribe(response=>{
     //   this.markers = response.result;
     //   console.log(this.markers);
     // });
 
-
+   
+   
     console.log(this.listingParams.fulladdress);
-    
+
     this.listingService.getListings(this.listingParams).subscribe(response=>{
       this.listings = response.result;
-      console.log(this.listings);
+      // console.log(_listings);
+      // console.log(newBounds);
+      // if(newBounds!=undefined){
+      //   this.listings = _listings.filter((_listing) => newBounds.contains(_listing));
+      //   console.log(this.listings);
+      // }
+      var url = 'https://geocode.maps.co/search?q=';
+      console.log(this.listings[0].state);
+      console.log(url+this.listings[0].state+' '+this.listings[0].zip);
+      this.http.get<any>(url+this.listings[0].state+' '+this.listings[0].zip).subscribe(data => {
+         this.location.lat = data[0].lat;
+         console.log(data[0].lat);
+         this.location.lng = data[0].lon;
+       // this.loadListings(data[0].lat,data[0].lon);
+        console.log(data[0].boundingbox);
+      })
+      
       //this.markers += response.result;
-      this.location.lat = this.listings[0].lat;
-      this.location.lng = this.listings[0].lng;
+      // this.location.lat = lat;
+      // this.location.lng = lng;
       
       
     
@@ -314,15 +340,15 @@ export class ForsaleComponent implements OnInit {
       
       console.log('Lat: ' + this.location.lat +  ' long: '+this.location.lng );
     }
-    for(let list of this.listings){
+    // for(let list of this.listings){
      
-      if(!this.markers.includes(list)){
-        this.markers.push(list);
-      }
-    }
+    //   if(!this.markers.includes(list)){
+    //     this.markers.push(list);
+    //   }
+    // }
 
-    this.markers = [...new Set(this.markers)];
-
+    // this.markers = [...new Set(this.markers)];
+    //this.markers = this.listings;
 
       this.pagination = response.pagination;
       this.totalCount = response.pagination.totalPages * response.pagination.totalItems;
@@ -332,7 +358,15 @@ export class ForsaleComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   public async updateListings(newBounds?: LatLngBounds) {
+   
+
+   
+
+   
+   
     console.log(newBounds);
+    const bounds = this.map;
+    console.log(bounds);
     this.listingService.getListings(this.listingParams).subscribe(response=>{
       
       
@@ -353,19 +387,25 @@ export class ForsaleComponent implements OnInit {
           
         }
       }
+      //this.markers = this.listings;
 
-      for(let list of this.listings){
+      // for(let list of this.listings){
   
-        if(this.markers.includes(list)){
-          this.markers.push(list);
-        }
-      }
+      //   if(this.markers.includes(list)){
+      //     this.markers.push(list);
+      //   }
+      // }
       
-      this.markers = [...new Set(this.markers)];
-      console.log(this.markers);
+      // this.markers = [...new Set(this.markers)];
+      console.log(this.listings);
       console.log(this.listingParams.fulladdress);
       this.pagination = response.pagination;
       this.totalCount = response.pagination.totalPages * response.pagination.totalItems;
+      if(window.matchMedia('(max-width:450px)').matches && this.init == 0){
+        this.init = 1;
+        this.mapDisplay ='none';
+        this.borderTop = 'none';
+      }
    })
   }
 
@@ -373,9 +413,9 @@ export class ForsaleComponent implements OnInit {
     var url = 'https://geocode.maps.co/search?q=';
     console.log(url+id);
     this.http.get<any>(url+id).subscribe(data => {
-      this.location.lat = data[0].lat;
-      this.location.lng = data[0].lon;
-      this.loadListings();
+      // this.location.lat = data[0].lat;
+      // this.location.lng = data[0].lon;
+      this.loadListings(data[0].lat,data[0].lon);
       console.log(data[0].boundingbox);
     })
     
@@ -422,31 +462,18 @@ export class ForsaleComponent implements OnInit {
 
 
   async redirect_listing(){
-    window.scroll(-1000000,-1000000);
-    if(!localStorage.getItem('direct')){
-      localStorage.setItem('direct', 'no reload')
+    if(!localStorage.getItem('_direct')){
+      localStorage.setItem('_direct', 'no reload')
       location.reload();
     } else {
-      localStorage.removeItem('direct');
+      localStorage.removeItem('_direct');
+      document.getElementById("divFirst").scrollIntoView();
+      
     }
   }
 
-  async mapView(){
-    if(this.isMapView==false){
-      this.zIndex = '4';
-      this.isMapView=true;
-      this.zMap = 5;
-      this.zPagination = '5';
-    }
-    else{
-      this.zMap = 3;
-      this.zIndex = '0';
-      this.isMapView=false;
-      this.zPagination = '0';
 
-    }
-  }
-
+  
   async mapViewTablet(){
     if(this.isMapView==false){
       this.zIndex = '4';
@@ -461,9 +488,55 @@ export class ForsaleComponent implements OnInit {
       this.zPagination = '0';
     }
   }
+ 
+  @HostListener('window:resize', ['$event'])
+  async searchMobile(): Promise<void>{
+    if(window.matchMedia('(max-width:450px)').matches){
+      this.isMapView=true;
+      console.log(this.isMapView);
+      this.mapView();
+    }
+  
+  
 
-  async searchListing(e:string){
-    this.markers=[];
+  
+
+
+
+  }
+
+  @HostListener('window:resize', ['$event'])
+  async mapView(){
+    console.log(this.isMapView);
+    if(this.isMapView==false){
+      this.zIndex = '3';
+      this.mapDisplay= 'inline-flex';
+      
+      this.isMapView=true;
+      this.zMap = 5;
+      this.zPagination = '5';
+    }
+    else {
+      this.zMap = 3;
+      this.zIndex = '0';
+      this.mapDisplay= 'none';
+      
+      this.isMapView=false;
+      this.zPagination = '0';
+
+    }
+
+    return;
+  }
+
+  async zoomChange(e:any){
+    console.log('SCROLL');
+    console.log(e.target.getZoom());
+  }
+
+  
+
+  async searchListing(e:string='CA'){
     this.listingParams.fulladdress = e;
     this.isSearch=true;
     console.log(this.listingParams.fulladdress);
@@ -473,8 +546,21 @@ export class ForsaleComponent implements OnInit {
 
   async pageChanged(event: any){
     this.listingParams.pageNumber = event.page;
-    window.scroll(0,0);
-    this.loadListings();
+   
+    const bounds = this.map;
+    
+    console.log(bounds);
+    let url = `https://geocode.maps.co/reverse?lat=${bounds.latitude}&lon=${bounds.longitude}`;
+    this.http.get<any>(url).subscribe(data => {
+      //this.updateListings(data.boundingbox);
+      console.log(data);
+      console.log(data.address.postcode+' '+data.address.state);
+      this.loadListings();
+
+    });
+    
+  
+    //
 
   }
 
@@ -506,48 +592,6 @@ export class ForsaleComponent implements OnInit {
 
 
  
-/*   async priceSort(e){
-    this.listingParams.priceSort = e;
-    let sortSelect = document.getElementById('sqft-sort') as HTMLInputElement;
-
-    if(this.listingParams.priceSort == 1){
-      sortSelect.innerHTML = '<i class="fa fa-sort-amount-desc" aria-hidden="true"></i><span >&nbsp; &nbsp;High to Low</span>';
-          
-    }
-    else if (this.listingParams.priceSort == 2){
-      sortSelect.innerHTML = '<i class="fa fa-sort-amount-asc" aria-hidden="true"></i><span >&nbsp; &nbsp;Low to High</span>';
-    }
-    else if (this.listingParams.priceSort == -1){
-      sortSelect.innerHTML = '<i class="fa fa-sort-amount-asc" aria-hidden="true"></i><span >&nbsp; &nbsp;Low to High</span>';
-    }
-    
-    this.loadListings();
-    console.log(this.listingParams.priceSort);
-
-  } */
-
-  /* async bedchange(e){
-    this.listingParams.bedrooms=e;
-    //this.numberOfRooms = this.listingParams.bedrooms;
-
-    let bedSelect = document.getElementById('bed-select1') as HTMLInputElement;
-
-    if(this.listingParams.bedrooms != -1){
-      bedSelect.innerHTML = `<span class="bed-list">${this.listingParams.bedrooms}+</span>`;
-    }
-
-    //console.log(this.numberOfRooms);
-    this.loadListings();
-    
-  } */
-/**
- * 
-currentPrice:number = -1;
-currentBath:number = -1;
-currentBed:number = -1;
-currentZip:number = -1; 
- * 
- */
 
   async bedchange(e:number){
     this.listingParams.bedrooms=e;
@@ -562,20 +606,6 @@ currentZip:number = -1;
     this.loadListings();
     console.log(this.listingParams.bathtotals);
   }
-
-  /* async bathchange(e){
-    this.listingParams.bathtotals=e;
-    this.numberOfBathrooms = this.listingParams.bathtotals;
-
-    let bedSelect = document.getElementById('bath-select1') as HTMLInputElement;
-
-    if(this.listingParams.bathtotals != -1){
-      bedSelect.innerHTML = `<span class="bed-list">${this.listingParams.bathtotals}+</span>`;
-    }
-
-    this.loadListings();
-    //console.log(this.numberOfBathrooms);
-  } */
 
   @HostListener('window:resize', ['$event'])
   async listingNotHovered(e){
@@ -735,119 +765,6 @@ currentZip:number = -1;
     console.log(this.forecloseSelected);
   }
 
-  //   async activeStatus(){
-  //   if(this.listingParams.activeStatus==''){
-  //     this.listingParams.activeStatus='ACTIVE';
-  //     this.loadListings();
-  //     console.log(this.listingParams.activeStatus);
-      
-  //   }
-
-  //   else if(this.listingParams.activeStatus=='ACTIVE'){
-  //     this.listingParams.activeStatus='';
-  //     console.log(this.listingParams.activeStatus);
-  //     this.loadListings();
-  //   }
-  // }
-
-  // async contingentStatus(){
-    // if(this.listingParams.contingentStatus==''){
-      // this.listingParams.contingentStatus='CONTINGENT';
-      // this.loadListings();
-    // }
-
-    // else if(this.listingParams.contingentStatus=='CONTINGENT'){
-      // this.listingParams.contingentStatus='';
-      // this.loadListings();
-    // }
-  // }
-
-  // async pendingStatus(){
-    // if(this.listingParams.pendingStatus==''){
-      // this.listingParams.pendingStatus='PENDING';
-      // this.loadListings();
-    // }
-
-    // else if(this.listingParams.pendingStatus=='PENDING'){
-      // this.listingParams.pendingStatus='';
-      // this.loadListings();
-    // }
-  // }
-
-  // async soldStatus(){
-    // if(this.listingParams.soldStatus==''){
-      // this.listingParams.soldStatus='SOLD';
-      // this.loadListings();
-    // }
-
-    // else if(this.listingParams.soldStatus=='SOLD'){
-      // this.listingParams.soldStatus='';
-      // this.loadListings();
-    // }
-  // }
-
-  // async bomStatus(){
-    // if(this.listingParams.bomStatus==''){
-      // this.listingParams.bomStatus='BACK ON MARKET';
-      // this.loadListings();
-    // }
-
-    // else if(this.listingParams.bomStatus=='BACK ON MARKET'){
-      // this.listingParams.bomStatus='';
-      // this.loadListings();
-    // }
-  // }
-
-  // async withdrawnStatus(){
-    // if(this.listingParams.withdrawnStatus==''){
-      // this.listingParams.withdrawnStatus='WITHDRAWN';
-      // this.loadListings();
-    // }
-
-    // else if(this.listingParams.withdrawnStatus=='WITHDRAWN'){
-      // this.listingParams.withdrawnStatus='';
-      // this.loadListings();
-    // }
-  // }
-
-  // async cancelledStatus(){
-    // if(this.listingParams.cancelledStatus==''){
-      // this.listingParams.cancelledStatus='CANCELLED';
-      // this.loadListings();
-
-    // }
-
-    // else if(this.listingParams.cancelledStatus=='CANCELLED'){
-      // this.listingParams.cancelledStatus='';
-      // this.loadListings();
-    // }
-  // }
-
-//  async expiredStatus(){
-    // if(this.listingParams.expiredStatus==''){
-      // this.listingParams.expiredStatus = 'EXPIRED';
-      // this.loadListings();
-    // }
-// 
-    // else if(this.listingParams.cancelledStatus=='EXPIRED'){
-      // this.listingParams.cancelledStatus='';
-      // this.loadListings();
-    // }
-  // }
-
-  // async comingsoonStatus(){
-    // if(this.listingParams.comingsoonStatus==''){
-      // this.listingParams.comingsoonStatus='ACTIVE';
-      // this.loadListings();
-// 
-    // }
-// 
-    // else if(this.listingParams.comingsoonStatus=='ACTIVE'){
-      // this.listingParams.comingsoonStatus='';
-      // this.loadListings();
-    // }
-  // }
-// 
   async estimatedSqFt(e){
     this.currentSqft = e;
     this.listingParams.estSqrFt = e;

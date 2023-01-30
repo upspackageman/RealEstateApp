@@ -50,7 +50,8 @@
 
 
 .shdw{
-  box-shadow: 0 .2rem 1rem rgba(0,0,0,.495)!important;
+  box-shadow:  5px 5px 10px #969696,
+      -5px -5px 10px #ffffff !important;
   border-style:none;
   border-top-left-radius: .2rem;
   border-top-right-radius: .25rem;
@@ -470,10 +471,10 @@ a{
 }
 
 @media (max-width:360px) and (max-height:800px) {
-  /* .card{
-    left: 10.5% !important;
-   
-    }  */
+  .card{
+    left: 3% !important;
+    width: 90% !important; 
+    }  
 }
 
 

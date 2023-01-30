@@ -1,6 +1,7 @@
 export interface Location {
     lat: number;
     lng: number;
+    scrollZoom:boolean;
     viewport?: Object;
     zoom: number;
     isOpen?:boolean;

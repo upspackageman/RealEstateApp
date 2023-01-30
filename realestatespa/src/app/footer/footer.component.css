@@ -1,5 +1,5 @@
 .footer{
- z-index: 2;
+ z-index: -2;
   font-family: 'Oswald', sans-serif;
   background: linear-gradient(90deg, rgb(190, 183, 140) 0%, rgb(248, 248, 213) 65%); 
   position:absolute;

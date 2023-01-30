@@ -1,4 +1,6 @@
+<main class="modal-request">
 
+</main>
   <button 
     *ngIf="isSent!=true"  type="button" class="close" aria-label="Close" (click)="bsModalRef.hide()">
     <span aria-hidden="true" style="text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);" >&times;&#xFE0E;</span>
@@ -64,13 +66,13 @@
         </div>
         <div  class="col-lg-12">
           <div class="form-group mt-2">
-            <input *ngIf="contactAgent==true" formControlName="agentName" class="form-control"  placeholder="Agent's Name" name="agent-name" id="agent-name" >
+            <input *ngIf="contactAgent" formControlName="agentName" class="form-control"  placeholder="Agent's Name" name="agent-name" id="agent-name" >
           </div>
           <div class="form-group mt-2">
-            <input *ngIf="contactAgent==true"  formControlName="agentEmail"  class="form-control"  placeholder="Agent's Email" name="agent-email" id="agent-email" >
+            <input *ngIf="contactAgent"  formControlName="agentEmail"  class="form-control"  placeholder="Agent's Email" name="agent-email" id="agent-email" >
           </div>
           <div class="form-group mt-2">
-            <input *ngIf="contactAgent==true"  formControlName="agentPhone" class="form-control"  placeholder="Agent's Phone Number" name="agent-number" id="agent-number" >
+            <input *ngIf="contactAgent"  formControlName="agentPhone" class="form-control"  placeholder="Agent's Phone Number" name="agent-number" id="agent-number" >
           </div>
         </div>
         <div class="col-lg-12 submit-container">

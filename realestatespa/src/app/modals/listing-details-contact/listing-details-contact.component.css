@@ -264,7 +264,7 @@ input[type="checkbox"] {
     ::ng-deep .close{
         font-size: 18rem !important;
         left:90%;
-        top:-120px;
+        top:-120px  !important;
 }
 ::ng-deep .modal-content .contact-box .btn{
         font-size: 8rem !important

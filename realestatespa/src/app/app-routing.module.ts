@@ -17,6 +17,7 @@ import { ConfirmationSentComponent } from './confirmation-sent/confirmation-sent
 import { TermsPolicyComponent } from './terms-policy/terms-policy.component';
 import { AuthGuard } from './_guards/auth.guard';
 
+
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},

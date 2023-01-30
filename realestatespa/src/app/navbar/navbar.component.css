@@ -1,6 +1,18 @@
 @import url(https://fonts.googleapis.com/css?family=Oswald:300,400,700);
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic);
 
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(-1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
 @-webkit-keyframes text-focus-in {
   0% {
     -webkit-filter: blur(12px);
@@ -59,11 +71,14 @@ button:focus{
   outline: none;
 }
 
+.slide-in-top {
+	animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
 
 
 .text-focus-in {
-	-webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-	        animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	-webkit-animation: text-focus-in .25s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	        animation: text-focus-in .25s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
 
 
@@ -289,6 +304,8 @@ margin-right: 2%;
 
   .navbar-dark .navbar-toggler {
     border-width: .35rem;
+    box-shadow:  5px 5px 10px #969696,
+         -5px -5px 10px #ffffff !important;
   }
 
   .navLinks{

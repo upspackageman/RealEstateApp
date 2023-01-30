@@ -1,10 +1,11 @@
 
-
-<img  class="image-device slit-in-horizontal" src ="{{listing.listingPictures}}" onerror="this.onerror=null; this.
+<img   class="image-device slit-in-horizontal" src ="{{listing.listingPictures}}" onerror="this.onerror=null; this.
 src='../assets/NoPhotoAvailable.jpg';"/>
 <main class="main-listing">
   <img class="image tilt-in-tl" src ="{{listing.listingPictures}}" onerror="this.onerror=null; this.
-  src='../assets/NoPhotoAvailable.jpg';"/>
+src='../assets/NoPhotoAvailable.jpg';"/>
+  
+  
 <section class="py-5 service-14">
   <div class="container">
       <div class="row">
@@ -40,9 +41,9 @@ src='../assets/NoPhotoAvailable.jpg';"/>
                   <h3>Estimated Monthly Payment</h3>
                   <h3 style="text-align: center;">{{overallPayment| currency:'USD':'symbol':'2.0-0'}}</h3>
 
-                  <!-- <img class="rounded img-fluid" src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/features/feature2/fruit.jpg" alt="wrappixel kit" /> -->
-
                  
+
+                
                     <div class="chart">
                       
                         <canvas baseChart
@@ -243,6 +244,7 @@ src='../assets/NoPhotoAvailable.jpg';"/>
   </div>
 </section>
 </main>
+
 <!-- <ng-template #requestInfo>
   <button 
     *ngIf="isSent!=true"  type="button" class="close" aria-label="Close" (click)="modalRef.hide()">

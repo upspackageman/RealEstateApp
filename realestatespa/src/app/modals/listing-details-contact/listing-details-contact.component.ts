@@ -16,7 +16,7 @@ export class ListingDetailsContactComponent implements OnInit {
   title?: string;
   closeBtnName?: string;
   listId:string;
-  contactAgent: boolean = false;
+  contactAgent: boolean=true;
   isSent: boolean = false;
   contact: any = {};
   form: UntypedFormGroup = new UntypedFormGroup({});
@@ -43,9 +43,11 @@ export class ListingDetailsContactComponent implements OnInit {
 
 
   ngOnInit(): void {
+    
+    
   }
 
-
+  
   get f() {
     return this.contactForm.controls;
   }
