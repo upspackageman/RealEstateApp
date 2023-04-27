@@ -34,20 +34,6 @@ export class NavbarComponent implements OnInit {
   }
 
 
-  // login() {
-
-    // this.modelLogin.email = this.loginForm.value.email;
-    // this.modelLogin.password = this.loginForm.value.password;
-    // this.accountService.login(this.modelLogin).subscribe(response => {
-      // console.log(response);
-
-    // }, error => {
-      // console.log(error);
-    // })
-    // 
-    // 
-  // }
-
   logout(){
     this.accountService.logout();
 

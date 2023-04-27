@@ -2,7 +2,7 @@ export class ListingParams
 {
   price:number= -1;
   pageNumber:number= 1;
-  pageSize:number = 20;
+  pageSize:number = 100;
   bedrooms: number =-1;
   bathtotals: number =-1;
   activeStatus:string ="ACTIVE";

@@ -12,7 +12,7 @@ export class EmailConfirmationComponent implements OnInit {
   showSuccess: boolean;
   showError: boolean;
   errorMessage: string;
-  successMessage:string = "";
+  successMessage: string = "";
 
   constructor(private accountService: AccountService, private _route: ActivatedRoute) { }
 
@@ -20,24 +20,26 @@ export class EmailConfirmationComponent implements OnInit {
     this.confirmEmail();
   }
 
-  private confirmEmail(){
+  private confirmEmail() {
     this.showError = this.showSuccess = false;
     const token = this._route.snapshot.queryParams['token'];
     const email = this._route.snapshot.queryParams['email'];
     console.log(token);
     console.log(email);
-    this.accountService.confirmEmail(token,email)
-    .subscribe({
-      next: (_) =>{ this.showSuccess = true, 
-        this.successMessage = "Your account is now activated";
-        console.log("SUCCCESSS!!!!!")},
-      error: (err: HttpErrorResponse) => {
-        this.showError = true;
-        this.errorMessage = err.message;
-        this.successMessage = this.errorMessage;
-        console.log(this.errorMessage);
-      }
-    })
+    this.accountService.confirmEmail(token, email)
+      .subscribe({
+        next: (_) => {
+          this.showSuccess = true,
+          this.successMessage = "Your account is now activated";
+          console.log("SUCCCESSS!!!!!")
+        },
+        error: (err: HttpErrorResponse) => {
+          this.showError = true;
+          this.errorMessage = err.message;
+          this.successMessage = this.errorMessage;
+          console.log(this.errorMessage);
+        }
+      })
   }
 
 }

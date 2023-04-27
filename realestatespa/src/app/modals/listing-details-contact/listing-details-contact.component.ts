@@ -15,8 +15,9 @@ export class ListingDetailsContactComponent implements OnInit {
 
   title?: string;
   closeBtnName?: string;
-  listId:string;
-  contactAgent: boolean=true;
+  listId: string;
+  contactAgent: boolean = false;
+  contactAgentDisp: string = 'none';
   isSent: boolean = false;
   contact: any = {};
   form: UntypedFormGroup = new UntypedFormGroup({});
@@ -24,9 +25,9 @@ export class ListingDetailsContactComponent implements OnInit {
   phonePattern = "^(\\+\\d{1,3}( )?)?((\\(\\d{1,3}\\))|\\d{1,3})[- .]?\\d{3,4}[- .]?\\d{4}$";
   contactForm: UntypedFormGroup;
 
-  
 
-  constructor(public bsModalRef: BsModalRef,private fb: UntypedFormBuilder, private emailService: EmailService) { 
+
+  constructor(public bsModalRef: BsModalRef, private fb: UntypedFormBuilder, private emailService: EmailService) {
     this.contactForm = fb.group({
       firstName: [null, [Validators.required, Validators.minLength(1)]],
       lastName: [null, [Validators.required, Validators.minLength(1)]],
@@ -41,13 +42,12 @@ export class ListingDetailsContactComponent implements OnInit {
   }
 
 
+  ngOnInit() {
+    this.toContactAgent(false);
 
-  ngOnInit(): void {
-    
-    
   }
 
-  
+
   get f() {
     return this.contactForm.controls;
   }
@@ -81,6 +81,6 @@ export class ListingDetailsContactComponent implements OnInit {
     });
   }
 
-  
+
 
 }

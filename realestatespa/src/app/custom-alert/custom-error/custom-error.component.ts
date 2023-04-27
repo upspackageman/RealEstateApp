@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { animate, keyframes, state, style, transition, trigger} from "@angular/animations";
+import { animate, keyframes, state, style, transition, trigger } from "@angular/animations";
 import { Toast, ToastrService, ToastPackage } from "ngx-toastr";
 
 @Component({

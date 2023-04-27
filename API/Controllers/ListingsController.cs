@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using API.DTOs;
 using API.Entities;
 using API.Extensions;
@@ -26,48 +27,27 @@ namespace API.Controllers
            
         }
 
-        // [HttpGet]
-        // [Route("GetMarkers")]
-        // public async Task<ActionResult<IEnumerable<MarkerDto>>> GetMarkers([FromQuery] MarkerParams markerParams)
-        // {
-        //         var markers = await _unitOfWork.ListingRepository.GetMarkersAsync(markerParams);
-        //         return Ok(markers);
-        // }
-
-        
-
-       
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ListingDto>>> GetListings([FromQuery] ListingParams listingParams)
         {
              var listings = await _unitOfWork.ListingRepository.GetListingsAsync(listingParams);
-             //var url = "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=1212%20Mitchell%20ST%20Oceanside%20CA%2092054&benchmark=2020&format=json";
-             //var _price ="";
-             Response.AddPaginationHeader(listings.CurrentPage, listings.PageSize, listings.TotalCount, listings.TotalPages); 
+             var regex = new Regex("[^0-9\\s]");
+
+             foreach (var item in listings)
+             {
+                item.FullAddress = item.FullAddress.Replace(item.FullAddress, $"XXXX XXXXX  {item.City}, {item.State}");
+             }
              
-            
-
-            //  foreach(var listing in listings){
-
-            //      var url = "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address="+listing.FullAddress+"&benchmark=2020&format=json";
-            //      var client = new RestClient(url);
-            //      var request = new RestRequest(url, DataFormat.Json);
-            //      var response = client.Get(request);
-            //      var coord = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(response.Content);
-            //      listing.Lat = coord.result.addressMatches[0].coordinates.x;
-            //      listing.Lon = coord.result.addressMatches[0].coordinates.y;
-            // }
-
-              
-            
+             Response.AddPaginationHeader(listings.CurrentPage, listings.PageSize, listings.TotalCount, listings.TotalPages); 
 
             return Ok(listings);
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<Listing>> GetListingById(string id)
         {
-
-            return Ok(await _unitOfWork.ListingRepository.GetListingByIdAsync(id));
+            var listing = await _unitOfWork.ListingRepository.GetListingByIdAsync(id);
+            listing.FullAddress = listing.FullAddress.Replace(listing.FullAddress, $"XXXX XXXXX  {listing.City}, {listing.State}");
+            return Ok(listing);
         }
 
 

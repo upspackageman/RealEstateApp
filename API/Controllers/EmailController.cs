@@ -18,13 +18,12 @@ namespace API.Controllers
         public EmailController(IUnitOfWork unitOfWork, EmailConfiguration emailConfig)
         {
            _unitOfWork = unitOfWork;
-            _emailConfig = emailConfig;
+           _emailConfig = emailConfig;
         }
         
         [HttpPost]
         public async Task<IActionResult> SendMail([FromBody]Email email)
         {
-            
             var client = new System.Net.Mail.SmtpClient(_emailConfig.SmtpServer, _emailConfig.Port);
             client.UseDefaultCredentials = false;
             client.EnableSsl = true;
@@ -48,7 +47,6 @@ namespace API.Controllers
             mailMessage.BodyEncoding = System.Text.Encoding.UTF8;
             mailMessage.IsBodyHtml =true;
             mailMessage.SubjectEncoding = System.Text.Encoding.UTF8;
-
             await client.SendMailAsync(mailMessage);
 
             return Ok();

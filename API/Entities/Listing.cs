@@ -5,14 +5,20 @@ using Microsoft.EntityFrameworkCore;
 namespace API.Entities
 {
     [Index(nameof(Id),IsUnique=true)]
+    [Index(nameof(MLS))]
+    [Index(nameof(FullAddress))]
+    [Index(nameof(PriceSearch))]
+    [Index(nameof(Status))]
     public class Listing
     {
         
         [Key]
         public string Id {get; set;}
         
+
         public string MLS {get;set;}
 
+        [StringLength(250)]
         public string FullAddress {get; set;}
 
         public string Price {get;set;}
@@ -75,7 +81,6 @@ namespace API.Entities
 
         public string Community {get;set;}
 
-        
         public int PriceSearch {get;set;}
 
         public double Lat {get;set;}

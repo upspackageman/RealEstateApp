@@ -53,12 +53,6 @@ namespace API.Data
 
             var listingStatus = new List<string>{listingParams.ActiveStatus, listingParams.PendingStatus,listingParams.ContingentStatus, listingParams.BOMStatus, listingParams.SoldStatus};
 
-
-            query = listingParams.PriceSort switch{
-               1 => query.OrderByDescending(x=> x.PriceSearch),
-               _ =>  query.OrderBy(x=> x.PriceSearch)
-            };           
-
             if(listingParams.Price != -1 ){
                 query = query.Where(x=> x.PriceSearch <= listingParams.Price );
             }
@@ -89,9 +83,13 @@ namespace API.Data
             
             query =query.Where(x=> listingStatus.Contains(x.Status));
 
-            // query = query.Where(x=> x.Status == listingParams.ActiveStatus || x.Status == listingParams.PendingStatus || x.Status == listingParams.ContingentStatus || x.Status == listingParams.SoldStatus || x.Status == listingParams.BOMStatus || x.Status == listingParams.WithdrawnStatus || x.Status == listingParams.CancelledStatus || x.Status == listingParams.ExpiredStatus || x.Status == listingParams.ComingSoon || x.Status == listingParams.ComingSoon || x.Status == "" || x.Status == null);
-            
-             
+            if(listingParams.PriceSort!=1){
+                 query = query.OrderBy(x=> x.PriceSearch);
+            }
+            else{
+                 query = query.OrderByDescending(x=> x.PriceSearch);
+                 
+            }
 
             return await PagedList<ListingDto>.CreateAsync(query.ProjectTo<ListingDto>(_mapper
                 .ConfigurationProvider).AsNoTracking(), listingParams.PageNumber, listingParams.PageSize);

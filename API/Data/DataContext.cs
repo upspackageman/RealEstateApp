@@ -20,6 +20,13 @@ namespace API.Data
                 .HasIndex(x => x.Id)
                 .IsUnique();
             
+
+            builder.Entity<Listing>()
+                .HasIndex(x => x.PriceSearch);
+
+            builder.Entity<Listing>()
+                .HasIndex(x => x.Status);
+            
             builder.Entity<CustomerUser>()
                 .HasMany(ur =>ur.UserRoles)
                 .WithOne(u => u.User)

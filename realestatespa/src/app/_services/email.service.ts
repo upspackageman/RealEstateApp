@@ -21,11 +21,11 @@ export class EmailService {
 
     console.log(mailMessage);
 
-    return  this.http.post( this.baseUrl + 'email', mailMessage, {
+    return this.http.post(this.baseUrl + 'email', mailMessage, {
       headers
     });
-      
-      
+
+
 
   }
 
@@ -36,11 +36,11 @@ export class EmailService {
       headers = headers.set('Content-Type', 'application/json');
     }
     console.log(mail);
-    return  this.http.post( this.baseUrl + 'email/contact', mail, {
+    return this.http.post(this.baseUrl + 'email/contact', mail, {
       headers
     });
-      
-      
+
+
   }
 
 } 

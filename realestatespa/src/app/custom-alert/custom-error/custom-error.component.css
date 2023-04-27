@@ -3,90 +3,93 @@
 
 
 :host {
-  font-family:'Oswald', sans-serif;   
+  font-family: 'Oswald', sans-serif;
   display: inline-block !important;
   background-color: rgb(228, 230, 134);
-    position: relative !important;
-    overflow: hidden !important;
-    margin: 0 0 20px !important;
-    padding: 15px 5px 30px 10px !important;
-    width: 300px !important;
-    max-width: 300px!important;
-    border-radius: 5px;
-    border-style: outset;
-    border-width: 1px;
-    border-color: rgb(194, 196, 106);;
-    color: #000;
-    pointer-events: all;
-    cursor: pointer;
-    text-align: center;
-    bottom: 50px !important;
-    text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
-    letter-spacing: 3px;
-    
-    background-position: 12px 10px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  margin: 0 0 20px !important;
+  padding: 15px 5px 30px 10px !important;
+  width: 300px !important;
+  max-width: 300px !important;
+  border-radius: 5px;
+  border-style: outset;
+  border-width: 1px;
+  border-color: rgb(194, 196, 106);
+  color: #000;
+  pointer-events: all;
+  cursor: pointer;
+  text-align: center;
+  bottom: 50px !important;
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, .3), 0px -1px 0px rgba(0, 0, 0, .7);
+  letter-spacing: 3px;
+
+  background-position: 12px 10px !important;
+}
+
+:host.toast {
+  background-color: aqua;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+:host.border-blue {
+  border-top: 4px solid #04c4f3;
+}
+
+:host.border-green {
+  border-top: 4px solid #51d21a;
+}
+
+:host.border-red {
+  border-top: 4px solid red;
+}
+
+.toast-close-button {
+  color: #999;
+  opacity: 1;
+}
+
+.toast-close-button:hover {
+  color: #02ceff;
+}
+
+.col-9 {
+  display: grid !important;
+  justify-content: center !important;
+  margin-top: 10%;
+  width: 100% !important;
+}
+
+.custom-title {
+  color: #111;
+
+}
+
+.custom-message {
+  color: #333;
+}
+
+
+@media (max-width:480px) {
+  :host {
+    width: 1100px !important;
+    max-width: 1100px !important;
+    font-size: 7rem;
+    background-size: 10rem !important;
+    right: 50px;
   }
 
-  :host.toast{
-    background-color: aqua;
+  .toast-progress {
+    height: 16px !important;
   }
-
-
-
-  
-  
-
-
-
-
-
-
-
-  :host.border-blue {
-    border-top: 4px solid #04c4f3;
-  }
-  :host.border-green {
-    border-top: 4px solid #51d21a;
-  }
-  :host.border-red {
-    border-top: 4px solid red;
-  }
-  
-  .toast-close-button {
-    color: #999;
-    opacity: 1;
-  }
-  .toast-close-button:hover {
-    color: #02ceff;
-  }
-
-  .col-9{
-    display: grid !important;
-    justify-content: center !important;
-    margin-top: 10%;
-    width: 100% !important;
-  }
-  
-  .custom-title {
-    color: #111;
-    
-  }
-  .custom-message {
-    color: #333;
-  }
-
-
-  @media (max-width:480px) {
-    :host{
-      width: 1100px !important;
-      max-width: 1100px!important;
-      font-size:7rem;
-      background-size: 10rem !important;
-      right:50px;
-    }
-
-    .toast-progress{
-      height: 16px !important;
-    }
-  }
-  
+}

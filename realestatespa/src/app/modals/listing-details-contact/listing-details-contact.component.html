@@ -1,96 +1,106 @@
 <main class="modal-request">
 
 </main>
-  <button 
-    *ngIf="isSent!=true"  type="button" class="close" aria-label="Close" (click)="bsModalRef.hide()">
-    <span aria-hidden="true" style="text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);" >&times;&#xFE0E;</span>
-  </button>
-  <button 
-    *ngIf="isSent==true"  type="button" class="close" aria-label="Close" (click)="bsModalRef.hide()">
-    <span aria-hidden="true" >&times;</span>
-  </button>
-  <div *ngIf="isSent!=true" class="contact-box ml-3">
-    <h1  class="font-weight-light mt-2">Property Inquiry</h1>
-    <form class="mt-4" [formGroup]="contactForm"(ngSubmit)="sendMail()" novalidate="">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="form-group mt-2">
-            <input formControlName="firstName" class="form-control"  placeholder="Enter First Name" name="first-name" id="first-name" required>
-          </div>
-          <div *ngIf="f.firstName.touched && f.firstName.errors" >
-            <div class="pb-3 pt-4 valid"   *ngIf="f.firstName.errors">First Name is required</div>
-          </div>
+<button *ngIf="isSent!=true" type="button" class="close" aria-label="Close" (click)="bsModalRef.hide()">
+  <span aria-hidden="true"
+    style="text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);">&times;&#xFE0E;</span>
+</button>
+<button *ngIf="isSent==true" type="button" class="close" aria-label="Close" (click)="bsModalRef.hide()">
+  <span aria-hidden="true">&times;</span>
+</button>
+<div *ngIf="isSent!=true" class="contact-box ml-3">
+  <h1 class="font-weight-light mt-2">Property Inquiry</h1>
+  <form class="mt-4" [formGroup]="contactForm" (ngSubmit)="sendMail()" novalidate="">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group mt-2">
+          <input formControlName="firstName" class="form-control" placeholder="Enter First Name" name="first-name"
+            id="first-name" required>
         </div>
-        <div class="col-lg-12">
-          <div class="form-group mt-2">
-            <input formControlName="lastName" class="form-control" placeholder="Enter Last Name" 
-            name="last-name" id="last-name" required>
-          </div>
-          <div *ngIf="f.lastName.touched && f.lastName.errors" >
-            <div class="pb-3 pt-4 valid"   *ngIf="f.lastName.errors">Last Name is required</div>
-          </div>
-        </div>
-        <div class="col-lg-12">
-          <div class="form-group mt-2">
-            <input  formControlName="email" class="form-control"  placeholder="Enter Email" 
-            name="email" id="email" required>
-          </div>
-          <div *ngIf="f.email.touched && f.email.errors">
-            <div  class="pb-3 pt-4 valid" *ngIf="f.email.errors.required">Email is required</div>
-            <div  class="pb-3 pt-4 valid" *ngIf="f.email.errors">Email must be a valid email address</div>
-          </div>
-        </div>
-        <div class="col-lg-12">
-          <div class="form-group mt-2">
-            <input formControlName="phone" class="form-control stack4" id="phone" placeholder="Enter Number" required="">
-          </div>
-          <div *ngIf="f.phone.touched && f.phone.errors">
-            <div  class="pb-3 pt-4 valid" *ngIf="f.phone.errors.required">Phone number is required</div>
-            <div  class="pb-3 pt-4 valid" *ngIf="f.phone.errors">Invalid phone number</div> 
-         </div> 
-        </div>
-        <div class="col-lg-12">
-          <div class="form-group mt-2">
-            <textarea formControlName="message" class="form-control" rows="3" placeholder="message"></textarea>
-          </div>
-        </div>
-        <div class="col-lg-12">
-          <div class="form-group mt-2">
-            <label>
-              <span id="contact-agent">Contact your agent?&nbsp;&nbsp;&nbsp;</span>
-              <input id="checkbox" type="checkbox"  (click)="toContactAgent($event)">
-              <!--(click)=activeStatus($event) [checked]="activeSelected"-->
-              <span class="checkmark"></span>
-            </label>
-          </div>
-        </div>
-        <div  class="col-lg-12">
-          <div class="form-group mt-2">
-            <input *ngIf="contactAgent" formControlName="agentName" class="form-control"  placeholder="Agent's Name" name="agent-name" id="agent-name" >
-          </div>
-          <div class="form-group mt-2">
-            <input *ngIf="contactAgent"  formControlName="agentEmail"  class="form-control"  placeholder="Agent's Email" name="agent-email" id="agent-email" >
-          </div>
-          <div class="form-group mt-2">
-            <input *ngIf="contactAgent"  formControlName="agentPhone" class="form-control"  placeholder="Agent's Phone Number" name="agent-number" id="agent-number" >
-          </div>
-        </div>
-        <div class="col-lg-12 submit-container">
-          <button type="submit" [disabled]="!contactForm.valid" class="btn "><span> SUBMIT</span></button>
+        <div *ngIf="f.firstName.touched && f.firstName.errors">
+          <div class="pb-3 pt-4 valid" *ngIf="f.firstName.errors">First Name is required</div>
         </div>
       </div>
-      <div id="terms" class="col-lg-12">
-        <p>By pressing “Submit", you agree that I or a  real estate professionals from Burke Real Estate Consultants, Inc. may call/text you at the number provided above, including properties related to your inquiry. This contact may involve automated or pre-recorded voice technology. Message & data rates may apply. You also agree that I may share any info you submit and info related to your activity on their site with this property’s listing agent. You don’t need to consent as a condition of any purchase and can revoke your consent at any time. You also agree to the  <a  (click)="bsModalRef.hide()" routerLink="/terms/{{listId}}"  >Terms of Use</a> and  <a (click)="bsModalRef.hide()" routerLink="/terms/{{listId}}"  >Privacy Policy.</a></p>
+      <div class="col-lg-12">
+        <div class="form-group mt-2">
+          <input formControlName="lastName" class="form-control" placeholder="Enter Last Name" name="last-name"
+            id="last-name" required>
+        </div>
+        <div *ngIf="f.lastName.touched && f.lastName.errors">
+          <div class="pb-3 pt-4 valid" *ngIf="f.lastName.errors">Last Name is required</div>
+        </div>
       </div>
-    </form>
+      <div class="col-lg-12">
+        <div class="form-group mt-2">
+          <input formControlName="email" class="form-control" placeholder="Enter Email" name="email" id="email"
+            required>
+        </div>
+        <div *ngIf="f.email.touched && f.email.errors">
+          <div class="pb-3 pt-4 valid" *ngIf="f.email.errors.required">Email is required</div>
+          <div class="pb-3 pt-4 valid" *ngIf="f.email.errors">Email must be a valid email address</div>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="form-group mt-2">
+          <input formControlName="phone" class="form-control stack4" id="phone" placeholder="Enter Number" required="">
+        </div>
+        <div *ngIf="f.phone.touched && f.phone.errors">
+          <div class="pb-3 pt-4 valid" *ngIf="f.phone.errors.required">Phone number is required</div>
+          <div class="pb-3 pt-4 valid" *ngIf="f.phone.errors">Invalid phone number</div>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="form-group mt-2">
+          <textarea formControlName="message" class="form-control" rows="3" placeholder="message"></textarea>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="form-group mt-2">
+          <label>
+            <span id="contact-agent">Contact your agent?&nbsp;&nbsp;&nbsp;</span>
+            <input id="checkbox" type="checkbox" (click)="toContactAgent($event)">
+            <!--(click)=activeStatus($event) [checked]="activeSelected"-->
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+      <div *ngIf="contactAgent" class="slide-in-top col-lg-12">
+        <div   class="form-group mt-2">
+          <input    formControlName="agentName" class="form-control" placeholder="Agent's Name" name="agent-name"
+            id="agent-name">
+        </div>
+        <div   class="form-group mt-2">
+          <input formControlName="agentEmail" class="form-control" placeholder="Agent's Email" name="agent-email"
+            id="agent-email">
+        </div>
+        <div  class="form-group mt-2">
+          <input formControlName="agentPhone" class="form-control" placeholder="Agent's Phone Number"
+            name="agent-number" id="agent-number">
+        </div>
+      </div>
+      <div class="col-lg-12 submit-container">
+        <button type="submit" [disabled]="!contactForm.valid" class="btn "><span> SUBMIT</span></button>
+      </div>
+    </div>
+    <div id="terms" class="col-lg-12">
+      <p>By pressing “Submit", you agree that I or a real estate professionals from Burke Real Estate Consultants, Inc.
+        may call/text you at the number provided above, including properties related to your inquiry. This contact may
+        involve automated or pre-recorded voice technology. Message & data rates may apply. You also agree that I may
+        share any info you submit and info related to your activity on their site with this property’s listing agent.
+        You don’t need to consent as a condition of any purchase and can revoke your consent at any time. You also agree
+        to the  <a (click)="bsModalRef.hide()" routerLink="/terms/{{listId}}">Terms of Use</a> and  <a
+          (click)="bsModalRef.hide()" routerLink="/terms/{{listId}}">Privacy Policy.</a></p>
+    </div>
+  </form>
+</div>
+<div *ngIf="isSent==true" class="contact-box ml-3">
+  <div class="container">
+    <h1 id="thankyou">Thank You!</h1>
+    <h2 class="title mb-3  font-italic">One of our team members or I will reach out to you shortly.</h2>
+    <div class="col-lg-12 mb-5 sent">
+      <button type="submit" *ngIf="isSent!=true" (click)="bsModalRef.hide();" class="btn "><span> SUBMIT</span></button>
+      <button type="submit" *ngIf="isSent==true" (click)="bsModalRef.hide();" class="btn "><span> View
+          listing</span></button>
+    </div>
   </div>
-  <div *ngIf="isSent==true" class="contact-box ml-3">
-    <div class="container">
-      <h1 id="thankyou">Thank You!</h1>
-            <h2 class="title mb-3  font-italic">One of our team members or I will reach out to you shortly.</h2>
-        <div class="col-lg-12 mb-5 sent">
-          <button type="submit" *ngIf="isSent!=true" (click)="bsModalRef.hide();" class="btn "><span> SUBMIT</span></button>
-          <button type="submit"  *ngIf="isSent==true" (click)="bsModalRef.hide();" class="btn "><span> View listing</span></button>
-        </div>  
-    </div>    
-  </div>
+</div>

@@ -50,10 +50,6 @@ main{
     background:-webkit-linear-gradient(top left, rgba(255, 245, 218, 0.918),rgba(255, 229, 159, 0.589), rgba(247, 201, 73, 0.384));
 }
 
-
-
-
-
 #title{
     text-align: center;
     margin-top:2%;
@@ -114,9 +110,6 @@ main{
            margin-top: 10%;
        }
 }
-
-
-
 
 @media (max-width:821px) and (min-width:769px) {
     .container h1{

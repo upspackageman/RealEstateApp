@@ -4,85 +4,90 @@
 
 @-webkit-keyframes tracking-in-expand {
     0% {
-      letter-spacing: -0.5em;
-      opacity: 0;
+        letter-spacing: -0.5em;
+        opacity: 0;
     }
+
     40% {
-      opacity: 0.6;
+        opacity: 0.6;
     }
+
     100% {
-      opacity: 1;
+        opacity: 1;
     }
-  }
-  @keyframes tracking-in-expand {
+}
+
+@keyframes tracking-in-expand {
     0% {
-      letter-spacing: -0.5em;
-      opacity: 0;
+        letter-spacing: -0.5em;
+        opacity: 0;
     }
+
     40% {
-      opacity: 0.6;
+        opacity: 0.6;
     }
+
     100% {
-      opacity: 1;
+        opacity: 1;
     }
-  }
+}
 
 .tracking-in-expand {
-	-webkit-animation: tracking-in-expand 1.1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-	        animation: tracking-in-expand 1.1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    -webkit-animation: tracking-in-expand 1.1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    animation: tracking-in-expand 1.1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 }
 
-  
-  .c2a8 {
-    -webkit-animation:  kenburns-bottom 11s ease-out infinite alternate-reverse both;
-	animation:  kenburns-bottom 11s ease-out infinite alternate-reverse both; 
+
+.c2a8 {
+    -webkit-animation: kenburns-bottom 11s ease-out infinite alternate-reverse both;
+    animation: kenburns-bottom 11s ease-out infinite alternate-reverse both;
 }
 
-.main-home{
+.main-home {
     font-size: 24px;
-    font-family:'Oswald', sans-serif;   
-    width:100%;
+    font-family: 'Oswald', sans-serif;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    
+
 }
 
-.mobile{
+.mobile {
     display: none;
 }
 
 
-.main-home .title{
+.main-home .title {
     text-align: center;
 }
 
-::ng-deep footer{
+::ng-deep footer {
     width: 100%;
-  }
+}
 
 
 
-.landing{
+.landing {
     height: 1000px;
     width: 100%;
     height: auto;
 }
 
 
-.landing .card-body{
-  
-    text-align: center; 
+.landing .card-body {
 
-    margin-bottom: 15%; 
-    margin-top: 20%;  
+    text-align: center;
+
+    margin-bottom: 15%;
+    margin-top: 20%;
 }
 
-.landing .card-body  .container{
-    
-   
+.landing .card-body .container {
+
+
     display: flex;
-    flex-wrap:wrap;
-    justify-content:center;
+    flex-wrap: wrap;
+    justify-content: center;
     background-color: rgba(255, 255, 255, 0);
     padding: 2.5% 0% 2.5% 0%;
     border-radius: .35rem;
@@ -91,173 +96,154 @@
     border-style: ridge;
     width: 100%;
     /* box-shadow: 1px 1px 35px 3px rgba(158, 158, 157, 0.86) */
-    
-    
+
+
 }
 
-.landing .card-body  .container .text-box-landing{
+.landing .card-body .container .text-box-landing {
     width: 100%;
 }
 
-.landing h1{
+.landing h1 {
     font-family: 'Marck Script', 'cursive';
     font-size: 6.3rem;
     color: #fff;
-    text-shadow: 0px 5px 4px rgba(39, 32, 32, 0.3), 0px -5px 4px rgba(0,0,0,.7);
+    text-shadow: 0px 5px 4px rgba(39, 32, 32, 0.3), 0px -5px 4px rgba(0, 0, 0, .7);
 }
 
-.landing .card-body .btn{
+.landing .card-body .btn {
     border-color: rgb(255, 255, 255);
-    
+
     background-color: rgba(255, 255, 255, 0);
     border-width: 5px;
     border-radius: 0px;
     /* box-shadow: 8px 8px 8px #cbced1,  -8px -8px 8px #181717 !important; */
 }
 
-.landing .card-body .btn:hover{
+.landing .card-body .btn:hover {
     border-color: rgb(207, 190, 93);
     background-color: rgba(255, 255, 255, 0.267);
-    
+
 }
 
 
-.landing .card-body .btn span{
+.landing .card-body .btn span {
     color: #fff;
     font-size: 3rem;
 }
 
-.landing .card-body .btn span:hover{
+.landing .card-body .btn span:hover {
     color: rgb(207, 190, 93) !important;
-    
+
 }
 
 
 
-.main-section{
+.main-section {
     width: 100%;
     height: auto;
     padding-bottom: 5%;
     margin-top: 5%;
-    
+
 }
 
-.main-section .container{
-    width:90%;
+.main-section .container {
+    width: 90%;
     display: flex;
     flex-direction: row;
 }
 
 
-.main-section .container .text-box{
- 
-    width:100%;
+.main-section .container .text-box {
+
+    width: 100%;
 }
 
-.main-section .container .text-box p{
+.main-section .container .text-box p {
     letter-spacing: 1.5px;
     font-weight: 300;
     font-size: 30px;
 }
 
-.main-section .btn{
+.main-section .btn {
     border-color: black;
     border-radius: 0px;
     border-width: 5px;
     font-size: 2.5rem;
     box-shadow: 1px 1px 15px 3px rgba(158, 158, 157, 0.86);
-    -webkit-appearance: none;
+    /* -webkit-appearance: none; */
 }
 
-.main-section .btn:hover{
+.main-section .btn:hover {
     border-color: rgb(207, 190, 93);
     color: rgb(172, 158, 78);
 }
 
-.main-section .img-fluid{
-    width: 100%;
+.main-section .img-fluid {
+    width: 600px;
     height: auto;
     padding-right: 10%;
 }
 
-.main-section .title-mobile{
+.main-section .title-mobile {
     display: none;
-    text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
+    text-shadow: 0px 1px 0px rgba(255, 255, 255, .3), 0px -1px 0px rgba(0, 0, 0, .7);
 }
 
-.main-section .title{
-    text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
+.main-section .title {
+    text-shadow: 0px 1px 0px rgba(255, 255, 255, .3), 0px -1px 0px rgba(0, 0, 0, .7);
 }
 
-.contact-home{
+.contact-home {
     display: flex;
     width: 100%;
     height: auto;
     padding-bottom: 5%;
 }
 
-.contact-home .contact-form{
+.contact-home .contact-form {
     display: flex;
     justify-content: center;
     flex-flow: column wrap;
-   padding-top: 2.5%;
-   width: 80%;
-   margin-left: 10%;
-   
+    padding-top: 2.5%;
+    width: 80%;
+    margin-left: 10%;
+
 }
 
-.contact-home .btn{
-    margin-left: 44.5%;
+.contact-home .btn {
+    margin-left: 40%;
     margin-top: 2%;
     color: #f0efa9;
     border-color: #f0efa9;
     border-radius: 0px;
     border-width: 5px;
-    font-size:3.25rem;
-    -webkit-appearance: none;
+    font-size: 3.25rem;
+    /* -webkit-appearance: none; */
     text-shadow: .25px .55px 3px #27220cc7;
     box-shadow: 1px 1px 35px 3px rgba(49, 49, 46, 0.685)
 }
 
-.contact-home .btn:hover{
+.contact-home .btn:hover {
     border-color: #beb02cd8;
-    
+
 }
 
 
 
 
-.contact-home .contact-form h1{
+.contact-home .contact-form h1 {
     text-align: center;
     font-size: 4rem;
     color: #fff;
     text-shadow: .25px .55px 3px #27220cc7;
-    
+
 }
 
 
-.contact-home .contact-form form input{
-background:rgba(63, 59, 6, 0.103);
+.contact-home .contact-form form input {
+    background: rgba(63, 59, 6, 0.103);
 
- border-radius: 0px;
- border-width: 3px;
- border-color: #999236d8;
- color: #fff !important;
- font-size: 1.5rem;
- text-shadow: .25px .55px 3px #27220cc7;
-}
-
-.contact-home .contact-form form input:focus{
-    border-color: #beb02cd8;
-}
-
-.contact-home .contact-form form textarea:focus{
-    border-color: #beb02cd8;
-}
-
-
-.contact-home .contact-form form textarea{
-    background:rgba(63, 59, 6, 0.103);
     border-radius: 0px;
     border-width: 3px;
     border-color: #999236d8;
@@ -266,309 +252,230 @@ background:rgba(63, 59, 6, 0.103);
     text-shadow: .25px .55px 3px #27220cc7;
 }
 
-.contact-home .contact-form  .valid{
+.contact-home .contact-form form input:focus {
+    border-color: #beb02cd8;
+}
+
+.contact-home .contact-form form textarea:focus {
+    border-color: #beb02cd8;
+}
+
+
+.contact-home .contact-form form textarea {
+    background: rgba(63, 59, 6, 0.103);
+    border-radius: 0px;
+    border-width: 3px;
+    border-color: #999236d8;
+    color: #fff !important;
+    font-size: 1.5rem;
+    text-shadow: .25px .55px 3px #27220cc7;
+}
+
+.contact-home .contact-form .valid {
     color: #f0efa9;
     text-shadow: .25px .55px 3px #27220cc7;
 }
 
-.contact-home .contact-form form textarea::placeholder{
+.contact-home .contact-form form textarea::placeholder {
     background: none;
     color: #fff !important;
 }
 
 
-.contact-home .contact-form form input::placeholder{ 
+.contact-home .contact-form form input::placeholder {
     color: #fff !important;
-   }
-
-
-/* ::ng-deep .modal-content{
-    margin-top: 25%;
-    font-family:'Oswald', sans-serif;
-   width:100%;
-   border-radius: .01rem;
-   border-color:#f1e100d8;
-   border-width: 1.2px;
-   border-radius: 2.8px;
-    
-  }
-
-::ng-deep .contact-box .container{
-    width: 90%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
 }
 
-::ng-deep .contact-box .container h1{
-    font-size: 5rem;
-}
 
-*/
 
-::ng-deep .modal-content{
+::ng-deep .modal-content {
     border-color: #f1e100d8;
-   
+
 }
 
-::ng-deep .contact-box .container{
-    font-family:'Oswald', sans-serif;  
-    text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
+::ng-deep .contact-box .container {
+    font-family: 'Oswald', sans-serif;
+    text-shadow: 0px 1px 0px rgba(255, 255, 255, .3), 0px -1px 0px rgba(0, 0, 0, .7);
     display: grid;
-    
+
 }
-::ng-deep .contact-box .container .btn{
+
+::ng-deep .contact-box .container .btn {
     margin-top: 2%;
     margin-bottom: 5%;
     color: #111001d8;
     border-radius: 2.8px;
     border-color: #f1e100d8;
     border-width: 1.2px;
-    font-size:2.25rem;
-    -webkit-appearance: none;
-    
-    
+    font-size: 2.25rem;
+    /* -webkit-appearance: none; */
+
+
 }
 
-::ng-deep .contact-box .container h1{
+::ng-deep .contact-box .container h1 {
     text-align: center;
     letter-spacing: 1px;
     font-weight: 200 !important;
 }
 
 
-::ng-deep .contact-box .container h2{
+::ng-deep .contact-box .container h2 {
     text-align: center;
     letter-spacing: 1px;
     font-weight: 100 !important;
 }
 
 
-::ng-deep .contact-box .container .buttonDiv{
+::ng-deep .contact-box .container .buttonDiv {
     display: grid;
     justify-content: center;
 }
 
-::ng-deep .contact-box .container .btn:hover{
+::ng-deep .contact-box .container .btn:hover {
     border-width: 2.4px;
     border-color: #f1e100d8;
     color: #f1e100d8;
     text-shadow: .25px .55px 3px #27220cc7;
     box-shadow: 1px 1px 10px 3px rgba(49, 49, 46, 0.473);
     transition: 200ms ease-in-out;
-} 
+}
 
 
-::ng-deep .sent{
+::ng-deep .sent {
     font-weight: 100 !important;
 }
 
-/*
 
-   
 
-   @media (max-width: 1550px){ 
-    .contact-home .btn{
-        margin-left: 43.55%;
+@media (width: 1024px) and (height:1366px) {
+    .contact-home .btn {
+        margin-left: 40% !important;
     }
-   }
+}
 
-   @media (max-width: 1400px){ 
-    .contact-home .btn{
-        margin-left: 41.75%;
-    }
-   }
 
-   @media (max-width: 1200px){ 
-    .landing h1{
-        font-size: 6.5rem;
-    }
-   }
-
-   @media (max-width: 1150px){ 
-    .contact-home .btn{
+@media (width:1280px) and (height:800px) {
+    .contact-home .btn {
         margin-left: 40%;
     }
+}
 
-    .contact-home .btn:focus{
-        border-color: #beb02cd8;
-        
-    }
-
-    .landing .card-body .btn:focus{
-        border-color: rgb(207, 190, 93);
-        font-size:3.25rem;
-        
-    }
-   }
-
-
-   @media (max-width: 1000px){ 
-    .contact-home .btn{
+@media (max-width: 821px) {
+    .contact-home .btn {
         margin-left: 37.5%;
     }
-    .landing h1{
-        font-size: 5rem;
-    }
-   }
+}
 
-   @media (max-width: 768px){ 
-    .landing h1{
-        font-size: 3.75rem;
-    }
-   }
- 
-   @media (max-width: 700px){ 
-    .contact-home .btn{
-        margin-left: 35.5%;
+@media (max-width: 485px) {
+    .main-home {
+        width: 1560px;
     }
 
-    .landing h1{
-        font-size: 3.2rem;
-    }
-   }
-
-   @media (max-width: 571px){ 
-    .contact-home .btn{
-        margin-left: 29.5%;
-    }
-   }
-
-   @media (max-width: 916px){ 
-    /* ::ng-deep .contact-box .container h2{
-        text-align: center;
-    }
-
-    ::ng-deep .contact-box .container .btn {
-        margin-left: 0%;
-    } */
-  /* }*/
-
-
-  @media  (width: 1024px) and (height:1366px){
-    .contact-home .btn{
-                margin-left: 40% !important;
-            }
-  }
-
-
- @media (width:1280px) and (height:800px) {
-    .contact-home .btn{
-        margin-left: 40%;
-    }
- }
-
- @media (max-width: 821px) {
-     .contact-home .btn{
-        margin-left: 37.5%;
-     }
- }
-
-   @media (max-width: 485px){ 
-    .main-home{      
-        width: 1560px;  
-    }
-
-    .mobile{
+    .mobile {
         display: grid;
     }
 
-    .desktop{
+    .desktop {
         display: none !important;
     }
 
-    .contact-home{
-        height:1500px;
+    .contact-home {
+        height: 1500px;
     }
 
-    ::ng-deep footer{
+    ::ng-deep footer {
         width: 1560px;
-      }
+    }
 
-    .landing{
+    .landing {
         height: 1700px;
     }
 
-    .landing h1{
+    .landing h1 {
         font-size: 8rem;
     }
 
-    .landing .card-body{
-    
+    .landing .card-body {
+
         margin-top: 45%;
         margin-bottom: 35%;
     }
 
-    .landing .card-body .btn{
+    .landing .card-body .btn {
         margin-top: 2.5%;
         padding: 1% 3% 1.5% 3%;
         border-width: 12.5px;
     }
 
-    .landing .card-body .btn span{
+    .landing .card-body .btn span {
         font-size: 7rem;
     }
-    .main-section .container{
-        width:90%;
+
+    .main-section .container {
+        width: 90%;
         display: flex;
-        flex-direction: column;  
+        flex-direction: column;
         padding-bottom: 5%;
-        
+
     }
 
-    .main-section .title-mobile{
+    .main-section .title-mobile {
         display: grid;
         text-align: center;
         font-size: 5rem;
     }
 
-    .main-section .title{
+    .main-section .title {
         display: none;
     }
 
-    .main-section .d-2{
+    .main-section .d-2 {
         border-style: solid;
         border-width: 10px;
         border-color: #968e1bd8;
-        padding:15% 15% 15% 15%;
+        padding: 15% 15% 15% 15%;
         margin-top: 5%;
         margin-bottom: 5%;
     }
-     .main-section .img-fluid{
-         padding-right: 0%;
-         line-height: 1.7;
-     }
 
-     .main-section .container .text-box p{
-         font-size: 4.3rem;
-     }
-     .main-section .btn{
-         display: grid;
-         font-size: 6rem;
-     }
-     .contact-home .contact-form h1{
-     
-        font-size: 8rem; 
+    .main-section .img-fluid {
+        width: 100%;
+        padding-right: 0%;
+        line-height: 1.7;
     }
 
-    .contact-home .contact-form  .valid{
-        font-size:3.5rem;
+    .main-section .container .text-box p {
+        font-size: 4.3rem;
     }
 
-    .contact-home .contact-form form input{
+    .main-section .btn {
+        display: grid;
+        font-size: 6rem;
+    }
+
+    .contact-home .contact-form h1 {
+
+        font-size: 8rem;
+    }
+
+    .contact-home .contact-form .valid {
+        font-size: 3.5rem;
+    }
+
+    .contact-home .contact-form form input {
         font-size: 3.7rem;
     }
 
-    .contact-home .contact-form form textarea{
+    .contact-home .contact-form form textarea {
         font-size: 3.7rem;
     }
 
-    .contact-home .btn{
+    .contact-home .btn {
         font-size: 6.5rem;
     }
 
-    .contact-home .btn-mobile{
+    .contact-home .btn-mobile {
         margin-top: 2%;
         background-color: rgba(255, 255, 255, 0);
         color: #f0efa9;
@@ -577,1003 +484,40 @@ background:rgba(63, 59, 6, 0.103);
         border-radius: 0px;
         border-width: 11px;
         font-size: 10.5rem;
-        -webkit-appearance: none;
+        /* -webkit-appearance: none; */
         text-shadow: .25px .55px 3px #27220cc7;
         /* box-shadow: 1px 1px 35px 3px rgba(49, 49, 46, 0.685) */
     }
-    
-    .contact-home .btn:hover{
+
+    .contact-home .btn:hover {
         border-color: #beb02cd8;
-        
-    }
-/* 
-    ::ng-deep .contact-box .container h2{
-        font-size: 3.5rem;
-        text-align: center;
+
     }
 
-    ::ng-deep .contact-box .container .btn {
-        margin-left: 0%;
-        margin-top: 8%;
-        margin-bottom: 8%;
+}
+
+@media (max-width:385px) {
+    .main-home {
+        width: 1438px;
     }
 
-    ::ng-deep .contact-box .container .btn span{
-        font-size: 7rem;
+    ::ng-deep footer {
+        width: 1438px;
     }
+}
 
-    ::ng-deep .fade{
-        width:100%;
-        height:100%;
-      } */
-
-  }
-
-  @media (max-width:385px) {
-    .main-home{      
-        width: 1438px ;  
-    }
-    ::ng-deep footer{
-        width: 1438px ;
-      }
-  }
-
-  @media (max-width:321px) {
-      .main-home{
+@media (max-width:321px) {
+    .main-home {
         width: 1280px !important;
-      }
+    }
 
-      .contact-home .contact-form form input{
+    .contact-home .contact-form form input {
         font-size: 4.7rem;
     }
-    .contact-home .contact-form form textarea{
+
+    .contact-home .contact-form form textarea {
         font-size: 4.7rem;
     }
-  }
- 
- 
-
-/* 
-   @media (max-width: 1480px) and (min-width:1381px){
-    .main-home{
-        width: 1405px;
-    }
-    .contact .contact-form{
-        width: 60%;
-        left:20%;
-    }
-
-    .contact .btn{
-        left:350px;
-    }
-    
-    
-   }
-    
-   @media (max-width: 1380px) and (min-width:1351px){
-        .main-home{
-            width: 2115px;
-        }
-
-        .landing{
-            height:800px;
-        }
-       
-       
-       
-
-        .landing .card-body{
-            left:10px;
-        }
-
-        .main-section .main-home-subsection{
-           width: 800px;
-           position: relative;
-           left: 400px;
-           top:-340px;
-        }
-
-        .main-section .d-2{
-            position: relative;
-            left: -90px;
-        }
-
-        .main-section .btn{
-            position: relative;
-            left:400px;
-        }
-
-        .main-section .d-2 img{
-            width: 500px;
-           
-        }
-
-        .contact{
-            height: 1000px;
-        }
-
-         .contact .contact-form{
-            width: 60%;
-            left:20%;
-        }
-
-        .contact .contact-form h1{
-            font-size: 8rem;
-        }
-
-        .contact .btn{
-            font-size: 5.5rem;
-           left: 500px;           
-        }
-   }
-
-
-
-   @media (max-width: 1300px) and (min-width:1026px){
-    .main-home{
-        width:1280px;
-    }
-    .contact .contact-form{
-        width: 60%;
-        left:20%;
-    }
-    .contact .btn{
-        left:350px;
-    }
-
-    .main-section .d-2 img{
-        width: 500px;
-       
-    }
-    
-    
-   }
-
-
-   @media (width: 1280px) and (height:800px){
-    .main-home{
-        width: 1658px;
-    }
-
-    .contact .btn{
-        left: 420px;
-    }
-  }
-  
-  
-
-   @media (max-width: 1200px) and (min-width:1026px){
-
-    .main-section{
-        height: 700px;
-    }
-
-    .main-section .d-2{
-        position: relative;
-        left:-100px;
-       
-    }
-    .main-section .d-2 img{
-        width: 500px;
-       
-    }
-   }
-
-   
-
-   @media (max-width: 1025px) and (min-width:916px){
-
-    .main-home{
-        width: 1955px;
-    }
-
-    .landing .card-body .btn span{
-        font-size: 5.7rem;
-    }
-    .main-section .d-2{
-       position: relative;
-       left:-400px;
-    }
-    .main-section .main-home-subsection .text-box{
-        width: 1000px;
-        position: relative;
-        left:-170px;
-        font-size: 1.85rem;
-   }
-
-   .main-section .title{
-    font-size: 3rem;
-}
-
-   .main-section .btn{
-    position: relative;
-    font-size: 4.5rem;
-    top:-50px;
-    left:650px;
-}
-.contact{
-    height:1100px;
-}
-
-.contact .btn{
-    position: relative;
-    left:370px;
-    font-size:4.5rem;
-}
-
-.contact .contact-form{
-    top:100px;
-}
-
-.contact .contact-form h1{
-   
-    font-size: 7rem;
-  
-    
-}
-
-.contact .contact-form form input{
- font-size: 3rem;
-}
-
-.contact .contact-form form textarea{
-    font-size: 3rem;
-}
-}
-
-   @media (max-width: 915px) and (min-width:822px){
-    .main-home{
-        width: 1415px;
-    }
-
-    .landing h1{
-      font-size: 10rem;
-          }
-   
-    .landing .card-body{
-       left:0px;
-     }
- 
-     .landing .card-body .btn span{
-        font-size: 8rem; 
-     }
-
-    .main-section{
-     height: 2350px;
- }
-
- .main-section .d-flex{
-      padding-top: 5.5%;
-     
- }
-
-
- .main-section .btn{
-     position: relative;
-     font-size: 12rem;
-     left:200px;
-}
-
-.main-section .main-home-subsection .text-box{
-    position: relative;
-    left:-300px;
-    width:1200px;
-}
-
- .main-section .main-home-subsection{
-     padding-left: 10px;
-     text-align: center;
-     width: 90%;
-     margin-left: 5%;
-     font-size: 3.5rem;
- }
- 
-
- .main-section .title-mobile{
-  display: grid;
-
-  text-align: center;
-  font-size: 6.5rem;
-}
-
-.main-section .title{
-  display: none;
- 
- 
-}
-
- .main-section .d-2{
-     width: 400px;
-     margin-left:50px;
-     margin-top: 3.5%;
-     margin-bottom: 3.5%;
-  
- }
-
-    .contact{
-        height: 1250px;
-    }
-
-    .contact .btn{
-     position: relative;
-     left:425px;
-     font-size:7.25rem;
- }
- 
- 
- .contact .contact-form h1{
-     text-align: center;
-     font-size: 8rem;
-     color: #fff;
-     
- }      
-
-    .contact .contact-form form input{
-    
-      font-size: 3.5rem;
-     }
-
-   .contact .contact-form form textarea{
-         font-size: 3.5rem;
-     }
-
-    .contact .contact-form{
-     position: relative;
-     width: 80%;
-     left:10%;
-     top:100px;
- }
-
-}
-
-   @media (max-width: 821px) and (min-width:770px){
-    .main-home{
-        width: 821px;
-    }
-
-    .landing{
-        height: 900px;
-    }
-
-    .landing h1{
-      font-size: 4rem;
-          }
-   
-    .landing .card-body{
-       left:0px;
-     }
- 
-     .landing .card-body .btn span{
-        font-size: 3rem; 
-     }
-
-    .main-section{
-     height: 1350px;
- }
-
- .main-section .d-flex{
-      padding-top: 5.5%;
-     
- }
-
-
- .main-section .btn{
-     position: relative;
-     font-size: 3rem;
-     left:200px;
-}
-
-.main-section .main-home-subsection .text-box{
-    position: relative;
-    width:100%;
-}
-
- .main-section .main-home-subsection{
-     padding-left: 10px;
-     text-align: center;
-     width: 90%;
-     margin-left: 5%;
-     font-size: 1.5rem;
- }
- 
-
- .main-section .title-mobile{
-  display: grid;
-
-  text-align: center;
-  font-size: 4.5rem;
-}
-
-.main-section .title{
-  display: none;
- 
- 
-}
-
- .main-section .d-2{
-     width: 400px;
-     margin-left:95px;
-     margin-top: 3.5%;
-     margin-bottom: 3.5%;
-  
- }
-
-    .contact{
-        height:750px;
-    }
-
-    .contact .btn{
-     position: relative;
-     left: 35%;
-     font-size:3.25rem;
- }
- 
- 
- .contact .contact-form h1{
-     text-align: center;
-     font-size: 4rem;
-     color: #fff;
-     
- }      
-
-    .contact .contact-form form input{
-    
-      font-size: 1.5rem;
-      border-color: #beb02cd8 !important;
-      
-     } 
-
-   .contact .contact-form form textarea{
-         font-size: 1.5rem;
-     }
-
 }
 
 
-
-   @media (max-width: 769px) and (min-width:542px){
-    .main-home{
-        max-width: 769px;
-        min-width: 542px;
-        
-    }
-
-    .landing{
-        height: 900px;
-    }
-
-    .landing h1{
-      font-size: 4rem;
-          }
-   
-    .landing .card-body{
-       left:0px;
-     }
- 
-     .landing .card-body .btn span{
-        font-size: 3rem; 
-     }
-
-    .main-section{
-     height: 1350px;
- }
-
- .main-section .d-flex{
-      padding-top: 5.5%;
-     
- }
-
-
- .main-section .btn{
-     position: relative;
-     font-size: 3rem;
-     left:200px;
-}
-
-.main-section .main-home-subsection .text-box{
-    position: relative;
-    width:100%;
-}
-
- .main-section .main-home-subsection{
-     padding-left: 10px;
-     text-align: center;
-     width: 90%;
-     margin-left: 5%;
-     font-size: 1.5rem;
- }
- 
-
- .main-section .title-mobile{
-  display: grid;
-
-  text-align: center;
-  font-size: 4.5rem;
-}
-
-.main-section .title{
-  display: none;
- 
- 
-}
-
- .main-section .d-2{
-     display: grid;
-     align-content: center;
-     width: 400px;
-     margin-left:95px;
-     margin-top: 3.5%;
-     margin-bottom: 3.5%;
-  
- }
-
-    .contact{
-        height: 650px;
-    }
-
-    .contact .btn{
-     left:40%;
-     font-size:2.25rem;
- }
- 
- 
- .contact .contact-form h1{
-     text-align: center;
-     font-size: 4rem;
-     color: #fff;
-     
- }      
-
-    .contact .contact-form form input{
-    
-      font-size: 1.5rem;
-     }
-
-   .contact .contact-form form textarea{
-         font-size: 1.5rem;
-     }
-
-
-}
-
-
-   @media (max-width: 540px){
-       .main-home{
-           width: 1800px;
-       }
-
-       .landing h1{
-         font-size: 10rem;
-             }
-      
-       .landing .card-body{
-          left:0px;
-        }
-    
-        .landing .card-body .btn span{
-           font-size: 8rem; 
-        }
-
-       .main-section{
-        height: 2100px;
-    }
-
-    .main-section .d-flex{
-         padding-top: 5.5%;
-        
-    }
-
-
-    .main-section .btn{
-        position: relative;
-        font-size: 12rem;
-        left:380px;
- }
-
-    .main-section .main-home-subsection{
-        padding-left: 10px;
-        text-align: center;
-        width: 90%;
-        margin-left: 5%;
-        font-size: 3.5rem;
-    }
-
-    .main-section .title-mobile{
-     display: grid;
-     text-align: center;
-     font-size: 6.5rem;
- }
-
- .main-section .title{
-     display: none;
-    
-    
- }
-
-    .main-section .d-2{
-        width: 400px;
-        margin-left:550px;
-        margin-top: 3.5%;
-        margin-bottom: 3.5%;
-     
-    }
-
-       .contact{
-           height: 1250px;
-       }
-
-       .contact .btn{
-        position: relative;
-        left:550px;
-        font-size:7.25rem;
-    }
-    
-    
-    .contact .contact-form h1{
-        text-align: center;
-        font-size: 8rem;
-        color: #fff;
-        
-    }      
-
-       .contact .contact-form form input{
-       
-         font-size: 3.5rem;
-        }
-
-      .contact .contact-form form textarea{
-            font-size: 3.5rem;
-        }
-
-       .contact .contact-form{
-        position: relative;
-        width: 80%;
-        left:10%;
-        top:100px;
-    }
-
-   }
-   
-
-   @media (max-width: 485px){
-       .main-home{
-           width: 1650px;
-       }
-
-       .landing h1{
-           font-size: 10rem;
-       }
-
-       .landing .card-body{
-           left:0px;
-       }
-
-       .landing .card-body .btn span{
-          font-size: 8rem; 
-       }
-
-       .main-section{
-           height: 3200px;
-       }
-
-       .main-section .d-flex{
-            padding-top: 5.5%;
-           
-       }
-
-
-       .main-section .btn{
-           position: relative;
-           font-size: 12rem;
-           left:340px;
-    }
-
-       .main-section .main-home-subsection{
-           padding-left: 10px;
-           text-align: center;
-           width: 90%;
-           margin-left: 5%;
-           font-size: 5rem;
-       }
-
-       .main-section .title-mobile{
-        display: grid;
-        text-align: center;
-        font-size: 6.5rem;
-    }
-
-    .main-section .title{
-        display: none;
-       
-       
-    }
-
-       .main-section .d-2{
-           width: 400px;
-           margin-left:500px;
-           margin-top: 3.5%;
-           margin-bottom: 3.5%;
-        
-       }
-       .contact{
-        height: 2000px;
-       }
-
-       .contact .contact-form{
-        position: relative;
-        left:0px;
-        top:200px;
-        padding-bottom: 5%;
-    }
-
-        .contact .contact-form h1{
-        font-size: 12.5rem;        
-    }
-
-    .contact .contact-form{
-        width: 90%;
-        left:5%;
-        
-    }
-
-    .contact .btn{
-        font-size: 8rem;
-        left:530px;
-        border-width: .5rem;
-    }
-
-
-    .contact .contact-form form input{
-         font-size: 6rem;
-        }
-        
-    .contact .contact-form form textarea{
-            font-size: 5.5rem;
-        }
-               
-
-   }
-
-
-   @media (max-width: 411px){
-    .main-home{
-        width: 1640px;
-    } 
-   }
-
-   @media (max-width:395px) {
-       .main-home{
-           width: 1570px;
-       }
-
-       .landing h1{
-        font-size: 7.5rem;
-      }
-
-
-
-      .main-section .btn{
-        position: relative;
-        font-size: 12rem;
-        left:270px;
-      }
-
-      .landing .card-body{
-        text-align: center;
-        position: relative;
-        left: 0px;
-        top:300px;
-    }
-
-      .landing .card-body .btn{
-        border-color: #fff;
-        border-width: 5px;
-        border-radius: 0px;
-    }
-    
-    .landing .card-body .btn span{
-        color: #fff;
-        font-size: 9rem;
-    }
-
- 
-       
-   }
-
-   @media (width: 390px){
-    .main-home{
-        width:1535px;
-    }
-   }
-
-   @media (width: 384px){
-    .main-home{
-        width:1535px;
-    }
-   }
-   
-   @media (width: 375px)and (height:812px){
-    .main-section .d-2 {
-        width: 400px;
-        margin-left: 440px;
-    }
-
-    .contact .btn{
-        font-size: 7rem;
-        left:490px;
-        border-width: .5rem;
-    }
-
-    .contact .contact-form{
-        width: 90%;
-        left:5%;
-        
-    }
-   }
-
-
-
-@media (width: 375px)and (height:667px){
-    .main-home{
-        width:1500px;
-    }
-
-    .main-section{
-        height: 2150px;
-    }
-
-    
-
-    .main-section .main-home-subsection {
-        padding-left: 10px;
-        text-align: center;
-        width: 90%;
-        margin-left: 5%;
-        font-size: 3.5rem;
-    }
-
-    .main-section .d-2{
-        width: 400px;
-        margin-left:450px;
-        margin-top: 3.5%;
-        margin-bottom: 3.5%;
-     
-    }
-
-    .main-section .title {
-        display: none;
-    }
-
-    .main-section .title-mobile {
-        display: grid;
-        text-align: center;
-        font-size: 6.5rem;
-    }
-
-    .contact{
-        height:1400px;
-    }
-
-    .contact .contact-form h1{
-        font-size: 7.75rem;
-    }
-
-    .contact .contact-form{
-        width: 90%;
-        left:5%;
-        
-    }
-
-    .contact .btn{
-        font-size: 7rem;
-        left:500px;
-        border-width: .5rem;
-    }
-    .contact .contact-form form input{
-         font-size: 3.5rem;
-        }
-        
-    .contact .contact-form form textarea{
-            font-size: 3.5rem;
-        }
-    
-    
-}
-
-@media (max-width:376px) {
-    .main-home{
-        width:  1500px;
-    }
-}
-
-@media (max-width:361px) {
-    .main-home{
-        width: 1440px;
-    }
-
-    .landing h1{
-        font-size: 8.5rem;
-    }
-    .main-section{
-        height: 3350px;
-    }
-
-    
-
-    .main-section .d-2{
-        width: 400px;
-        margin-left:400px;
-     
-    }
-
-    .main-section .btn{
-        left:240px;
-    }
-
-    .contact{
-        height: 1900px;
-    }
-
-    .contact .btn{
-       
-        left:430px;
-     
-    }
-}
-
-
-@media (max-width: 321px){
-
-    .main-home{
-      width:1280px !important;
-    }
-
-    .main-section .d-2{
-        width: 400px;
-        margin-left:330px;
-     
-    }
-
-    .main-section .btn{
-        position: relative;
-        font-size: 12rem;
-        left:165px;
-    }
-
-
-
-    .contact .contact-form{
-        width: 90%;
-        left:5%;
-        
-    }
-    .contact .btn{
-        left:375px;
-    }
-   
-}
-
-@media (max-width:281px){
-    .main-home{
-      width: 1120px !important;
-    }
-
-    .main-section{
-        height: 2500px;
-    }
-
-    .main-section .d-2{
-        width: 400px;
-        margin-left:260px;
-     
-    }
-
-    .main-section .btn{
-        left:90px;
-    }
-
-    .contact .btn{
-        left:250px;
-    }
-  }
- */

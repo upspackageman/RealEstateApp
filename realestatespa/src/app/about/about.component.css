@@ -4,188 +4,231 @@
 
 
 
-.main{display: flex; margin-top: 5%; margin-bottom:10%; width:100% ;}
-#main {width: 100%; padding:0;}
-.content-asset p {margin:0 auto;}
-.breadcrumb {display:none;}
+.about-main {
+  display: flex;
+  margin-top: 5%;
+  margin-bottom: 10%;
+  width: 100%;
+}
 
-::ng-deep footer{
+#main {
+  width: 100%;
+  padding: 0;
+}
+
+.content-asset p {
+  margin: 0 auto;
+}
+
+.breadcrumb {
+  display: none;
+}
+
+::ng-deep footer {
   width: 100%;
 }
 
 /* Helpers */
 /**************************/
-.margin-top-10 {padding-top:20px;}
-.margin-bot-10 {padding-bottom:10px;}
+.margin-top-10 {
+  padding-top: 20px;
+}
+
+.margin-bot-10 {
+  padding-bottom: 10px;
+}
 
 /* Typography */
 /**************************/
 #parallax-world-of-ugg h1 {
-  font-family:'Oswald', sans-serif; 
-  font-size:24px; 
-  font-weight:400; 
-  text-transform: uppercase; 
-  color:black; 
-  padding:0; 
-  margin:0;}
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: black;
+  padding: 0;
+  margin: 0;
+}
 
-#ugg-margin{
-  margin-bottom:10%;
+#ugg-margin {
+  margin-bottom: 10%;
 }
 
 #parallax-world-of-ugg h2 {
-  font-family:'Oswald', sans-serif; 
-  font-size:70px; 
-  letter-spacing:10px; 
-  text-align:center; 
-  color:white; 
-  font-weight:400; 
-  text-transform:uppercase; 
-  z-index:10; 
-  opacity:.9;}
+  font-family: 'Oswald', sans-serif;
+  font-size: 70px;
+  letter-spacing: 10px;
+  text-align: center;
+  color: white;
+  font-weight: 400;
+  text-transform: uppercase;
+  z-index: 10;
+  opacity: .9;
+}
 
 #parallax-world-of-ugg h3 {
-  font-family:'Oswald', sans-serif; 
-  font-size:14px; 
-  line-height:0; 
-  font-weight:400; 
-  letter-spacing:8px; 
-  text-transform: uppercase; 
-  color:black;}
+  font-family: 'Oswald', sans-serif;
+  font-size: 14px;
+  line-height: 0;
+  font-weight: 400;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  color: black;
+}
 
 #parallax-world-of-ugg p {
-  font-family:'Source Sans Pro', sans-serif;
-   font-weight:350; 
-   font-size:2.2rem; 
-   line-height:37px;}
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 350;
+  font-size: 2.2rem;
+  line-height: 37px;
+}
 
 .first-character {
-  font-weight:400; 
-  float: left; 
-  font-size: 84px; 
-  line-height: 64px; 
+  font-weight: 400;
+  float: left;
+  font-size: 84px;
+  line-height: 64px;
   padding-top: 4px;
-  padding-right: 8px; 
-  padding-left: 3px; 
-  font-family: 'Source Sans Pro', sans-serif;}
+  padding-right: 8px;
+  padding-left: 3px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
 
-.sc {color: #3b8595;}
-.ny {color: #3d3c3a;}
-.atw {color: #c48660;}
+.sc {
+  color: #3b8595;
+}
+
+.ny {
+  color: #3d3c3a;
+}
+
+.atw {
+  color: #c48660;
+}
 
 /* Section - Title */
 /**************************/
 #parallax-world-of-ugg .title {
-  background: white; 
-  padding: 60px; 
-  margin:0 auto; 
-  text-align:center;}
+  background: white;
+  padding: 60px;
+  margin: 0 auto;
+  text-align: center;
+}
 
 #parallax-world-of-ugg .title h1 {
-  font-size:35px; 
-  letter-spacing:8px;}
+  font-size: 35px;
+  letter-spacing: 8px;
+}
 
 /* Section - Block */
 /**************************/
 #parallax-world-of-ugg .block {
-  background: white; 
-  padding: 60px; 
-  width:100%; 
-  margin:0 auto; 
-  text-align:justify;}
+  background: white;
+  padding: 60px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: justify;
+}
 
 #parallax-world-of-ugg .block-gray {
   background: #f2f2f2;
-  padding: 60px;}
+  padding: 60px;
+}
 
 #parallax-world-of-ugg .section-overlay-mask {
-  position: absolute; 
-  top: 0; 
-  left: 0; 
-  width: 100%; 
-  height: 100%; 
-  background-color: black; 
-  opacity: 0.70;}
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.70;
+}
 
 /* Section - Parallax */
 /**************************/
 #parallax-world-of-ugg .parallax-zero {
-  padding-top: 200px; 
-  padding-bottom: 200px; 
-  overflow: hidden; 
-  position: relative; 
-  width: 100%; 
-  background-image: url(https://images.unsplash.com/photo-1639084932160-bf4a5083aff7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80); 
-  background-attachment: fixed; 
-  background-size: cover; 
-  -moz-background-size: cover; 
-  -webkit-background-size: cover; 
-  background-repeat: no-repeat; 
+  padding-top: 200px;
+  padding-bottom: 200px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  background-image: url(https://images.unsplash.com/photo-1639084932160-bf4a5083aff7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80);
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -webkit-background-repeat: no-repeat;
+  background-repeat: no-repeat;
   background-position: top center;
- }
+}
 
 #parallax-world-of-ugg .parallax-one {
-  padding-top: 200px; 
-  padding-bottom: 200px; 
-  overflow: hidden; 
-  position: relative; 
-  width: 100%; 
-  background-image: url(https://images.unsplash.com/photo-1495300146178-72c79633b1fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80); 
-  background-attachment: fixed; 
-  background-size: cover; 
-  -moz-background-size: cover; 
-  -webkit-background-size: cover; 
-  background-repeat: no-repeat; 
+  padding-top: 200px;
+  padding-bottom: 200px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  background-image: url(https://images.unsplash.com/photo-1495300146178-72c79633b1fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80);
+  background-attachment: fixed;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-repeat: no-repeat;
   background-position: top center;
- }
+}
 
 #parallax-world-of-ugg .parallax-two {
-  padding-top: 200px; 
-  padding-bottom: 200px; 
-  overflow: hidden; position: relative; 
-  width: 100%; 
-  background-image: url(https://images.unsplash.com/photo-1557343641-97b5c5ca08de?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1852&q=80); 
-  background-attachment: fixed; 
-  background-size: cover; 
-  -moz-background-size: cover; 
-  -webkit-background-size: cover; 
-  background-repeat: no-repeat; 
-  background-position: center center;}
+  padding-top: 200px;
+  padding-bottom: 200px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  background-image: url(https://images.unsplash.com/photo-1557343641-97b5c5ca08de?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1852&q=80);
+  background-attachment: fixed;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
 
 #parallax-world-of-ugg .parallax-three {
-  padding-top: 200px; 
-  padding-bottom: 200px; 
-  overflow: hidden; 
-  position: relative; 
+  padding-top: 200px;
+  padding-bottom: 200px;
+  overflow: hidden;
+  position: relative;
   width: 100%;
-  background-image: url(https://images.unsplash.com/photo-1503458610011-da24d1a36d7b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80); 
-  background-attachment: fixed; 
-  background-size: cover; 
-  -moz-background-size: cover; 
-  -webkit-background-size: cover; 
-  background-repeat: no-repeat; 
-  background-position: center center;}
+  background-image: url(https://images.unsplash.com/photo-1503458610011-da24d1a36d7b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);
+  background-attachment: fixed;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
 
 /* Extras */
 /**************************/
 #parallax-world-of-ugg .line-break {
-  border-bottom:1px solid black; 
-  width: 150px; 
-  margin:0 auto;}
-
-  #return-to-listing{
-    border-radius: 0px;
-    border-width: 5px;        
-    border-color: #1f0616;
-    font-family: 'Marck Script', 'cursive';
-    font-weight: 100;
-  
-    font-size: 2.5rem !important;
+  border-bottom: 1px solid black;
+  width: 150px;
+  margin: 0 auto;
 }
 
-#return-to-listing:hover{
+#return-to-listing {
+  border-radius: 0px;
+  border-width: 5px;
+  border-color: #1f0616;
+  font-family: 'Marck Script', 'cursive';
+  font-weight: 100;
+
+  font-size: 2.5rem !important;
+}
+
+#return-to-listing:hover {
   background: rgb(247, 242, 213) !important;
-  background: linear-gradient(90deg, rgba(247, 242, 213,.3) 0%, rgba(255,255,255,.3) 55%) !important;
+  background: linear-gradient(90deg, rgba(247, 242, 213, .3) 0%, rgba(255, 255, 255, .3) 55%) !important;
   box-shadow: 9.91px 9.91px 15px #D9DADE, -9.91px -9.91px 15px #FFFFFF;
   border-color: rgb(226, 186, 84);
   font-weight: bold;
@@ -195,421 +238,469 @@
 /* Media Queries */
 /**************************/
 
-@media (width: 1280px) and (height:800px){
-  .main{
+@media (width: 1280px) and (height:800px) {
+  .about-main {
     width: 1658px;
   }
-  ::ng-deep footer{
+
+  ::ng-deep footer {
     width: 1658px;
   }
 }
 
+@media screen and (max-width: 1025px) {
+  #parallax-world-of-ugg {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 5.5rem;
+}
+}
 
-@media screen and (max-width: 1025px)  {
-  .main{
-    width:1955px;
+@media screen and (max-width: 760px) {
+  .about-main {
+    width: 1955px;
   }
 
-  ::ng-deep footer{
+  ::ng-deep footer {
     width: 1955px;
   }
 
   #parallax-world-of-ugg .parallax-zero {
-    padding-top: 900px; 
+    padding-top: 900px;
     padding-bottom: 900px;
-   }
+  }
 
   #parallax-world-of-ugg .parallax-one {
-    padding-top: 600px; 
-    padding-bottom: 600px; 
-   }
-  
-  #parallax-world-of-ugg .parallax-two {
-    padding-top: 600px; 
-    padding-bottom: 600px; 
-    }
-  
-  #parallax-world-of-ugg .parallax-three {
-    padding-top: 600px; 
-    padding-bottom: 600px; 
-   }
-  
-  
-  #ugg-margin{
-    margin-bottom:10%;
+    padding-top: 600px;
+    padding-bottom: 600px;
   }
-  
+
+  #parallax-world-of-ugg .parallax-two {
+    padding-top: 600px;
+    padding-bottom: 600px;
+  }
+
+  #parallax-world-of-ugg .parallax-three {
+    padding-top: 600px;
+    padding-bottom: 600px;
+  }
+
+
+  #ugg-margin {
+    margin-bottom: 10%;
+  }
+
   #parallax-world-of-ugg h2 {
-    font-family:'Oswald', sans-serif; 
-    font-size:8rem; 
-    letter-spacing:10px; 
-    text-align:center; 
-    color:white; 
-    font-weight:400; 
-    text-transform:uppercase; 
-    z-index:10; 
-    opacity:.9;}
-  
-  
+    font-family: 'Oswald', sans-serif;
+    font-size: 8rem;
+    letter-spacing: 10px;
+    text-align: center;
+    color: white;
+    font-weight: 400;
+    text-transform: uppercase;
+    z-index: 10;
+    opacity: .9;
+  }
+
+
   #parallax-world-of-ugg p {
-    font-family:'Source Sans Pro', sans-serif;
-     font-weight:400; 
-     font-size:4.3rem; 
-     line-height:5.5rem;}
-  
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    font-size: 4.3rem;
+    line-height: 5.5rem;
+  }
+
   .first-character {
-    font-weight:400; 
-    float: left; 
-    font-size: 20rem; 
-    line-height: 15rem; 
+    font-weight: 400;
+    float: left;
+    font-size: 20rem;
+    line-height: 15rem;
     padding-top: 4px;
-    padding-right: 8px; 
-    padding-left: 3px; 
-    font-family: 'Source Sans Pro', sans-serif;}
-  
-  .sc {color: #3b8595;}
-  .ny {color: #3d3c3a;}
-  .atw {color: #c48660;}
-  
+    padding-right: 8px;
+    padding-left: 3px;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+
+  .sc {
+    color: #3b8595;
+  }
+
+  .ny {
+    color: #3d3c3a;
+  }
+
+  .atw {
+    color: #c48660;
+  }
+
   /* Section - Title */
   /**************************/
   #parallax-world-of-ugg .title {
-    background: white; 
-    padding: 60px; 
-    margin:0 auto; 
-    text-align:center;}
-  
+    background: white;
+    padding: 60px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
   #parallax-world-of-ugg .title h1 {
-    font-size:35px; 
-    letter-spacing:8px;}
+    font-size: 35px;
+    letter-spacing: 8px;
+  }
 }
 
 
 
-@media screen and (max-width: 915px) and (min-width: 541px) {
-  .main{
-    width:1475px;
-  }
-
-  ::ng-deep footer{
+@media screen and (max-width: 767px) and (min-width: 540px) {
+  .about-main {
     width: 1475px;
   }
-  
-  #ugg-margin{
-    margin-bottom:10%;
+
+  ::ng-deep footer {
+    width: 1475px;
   }
-  
+
+  #ugg-margin {
+    margin-bottom: 10%;
+  }
+
   #parallax-world-of-ugg h2 {
-    font-family:'Oswald', sans-serif; 
-    font-size:8rem; 
-    letter-spacing:10px; 
-    text-align:center; 
-    color:white; 
-    font-weight:400; 
-    text-transform:uppercase; 
-    z-index:10; 
-    opacity:.9;}
-  
-  
+    font-family: 'Oswald', sans-serif;
+    font-size: 8rem;
+    letter-spacing: 10px;
+    text-align: center;
+    color: white;
+    font-weight: 400;
+    text-transform: uppercase;
+    z-index: 10;
+    opacity: .9;
+  }
+
+
   #parallax-world-of-ugg p {
-    font-family:'Source Sans Pro', sans-serif;
-     font-weight:400; 
-     font-size:4.3rem; 
-     line-height:5.5rem;}
-  
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    font-size: 4.3rem;
+    line-height: 5.5rem;
+  }
+
   .first-character {
-    font-weight:400; 
-    float: left; 
-    font-size: 20rem; 
-    line-height: 15rem; 
+    font-weight: 400;
+    float: left;
+    font-size: 20rem;
+    line-height: 15rem;
     padding-top: 4px;
-    padding-right: 8px; 
-    padding-left: 3px; 
-    font-family: 'Source Sans Pro', sans-serif;}
-  
-  .sc {color: #3b8595;}
-  .ny {color: #3d3c3a;}
-  .atw {color: #c48660;}
-  
+    padding-right: 8px;
+    padding-left: 3px;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+
+  .sc {
+    color: #3b8595;
+  }
+
+  .ny {
+    color: #3d3c3a;
+  }
+
+  .atw {
+    color: #c48660;
+  }
+
   /* Section - Title */
   /**************************/
   #parallax-world-of-ugg .title {
-    background: white; 
-    padding: 60px; 
-    margin:0 auto; 
-    text-align:center;}
-  
+    background: white;
+    padding: 60px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
   #parallax-world-of-ugg .title h1 {
-    font-size:35px; 
-    letter-spacing:8px;}
-    #return-to-listing:focus{
-      background: rgb(247, 242, 213) !important;
-      background: linear-gradient(90deg, rgba(247, 242, 213,.3) 0%, rgba(255,255,255,.3) 55%) !important;
-      box-shadow: 9.91px 9.91px 15px #D9DADE, -9.91px -9.91px 15px #FFFFFF;
-      border-color: rgb(226, 186, 84);
-      font-weight: bold;
-      transition: 200ms ease-in-out;}
-  
+    font-size: 35px;
+    letter-spacing: 8px;
+  }
+
+  #return-to-listing:focus {
+    background: rgb(247, 242, 213) !important;
+    background: linear-gradient(90deg, rgba(247, 242, 213, .3) 0%, rgba(255, 255, 255, .3) 55%) !important;
+    box-shadow: 9.91px 9.91px 15px #D9DADE, -9.91px -9.91px 15px #FFFFFF;
+    border-color: rgb(226, 186, 84);
+    font-weight: bold;
+    transition: 200ms ease-in-out;
+  }
+
 }
 
 
 @media screen and (max-width: 540px) and (min-width: 486px) {
-  .main{
-    width:1800px;
-  }
-
-  ::ng-deep footer{
+  .about-main {
     width: 1800px;
   }
-  
-  #ugg-margin{
-    margin-bottom:10%;
+
+  ::ng-deep footer {
+    width: 1800px;
   }
-  
+
+  #ugg-margin {
+    margin-bottom: 10%;
+  }
+
   #parallax-world-of-ugg h2 {
-    font-family:'Oswald', sans-serif; 
-    font-size:8rem; 
-    letter-spacing:10px; 
-    text-align:center; 
-    color:white; 
-    font-weight:400; 
-    text-transform:uppercase; 
-    z-index:10; 
-    opacity:.9;}
-  
-  
+    font-family: 'Oswald', sans-serif;
+    font-size: 8rem;
+    letter-spacing: 10px;
+    text-align: center;
+    color: white;
+    font-weight: 400;
+    text-transform: uppercase;
+    z-index: 10;
+    opacity: .9;
+  }
+
+
   #parallax-world-of-ugg p {
-    font-family:'Source Sans Pro', sans-serif;
-     font-weight:400; 
-     font-size:4.3rem; 
-     line-height:5.5rem;}
-  
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    font-size: 4.3rem;
+    line-height: 5.5rem;
+  }
+
   .first-character {
-    font-weight:400; 
-    float: left; 
-    font-size: 20rem; 
-    line-height: 15rem; 
+    font-weight: 400;
+    float: left;
+    font-size: 20rem;
+    line-height: 15rem;
     padding-top: 4px;
-    padding-right: 8px; 
-    padding-left: 3px; 
-    font-family: 'Source Sans Pro', sans-serif;}
-  
-  .sc {color: #3b8595;}
-  .ny {color: #3d3c3a;}
-  .atw {color: #c48660;}
-  
+    padding-right: 8px;
+    padding-left: 3px;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+
+  .sc {
+    color: #3b8595;
+  }
+
+  .ny {
+    color: #3d3c3a;
+  }
+
+  .atw {
+    color: #c48660;
+  }
+
   /* Section - Title */
   /**************************/
   #parallax-world-of-ugg .title {
-    background: white; 
-    padding: 60px; 
-    margin:0 auto; 
-    text-align:center;}
-  
+    background: white;
+    padding: 60px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
   #parallax-world-of-ugg .title h1 {
-    font-size:35px; 
-    letter-spacing:8px;}
+    font-size: 35px;
+    letter-spacing: 8px;
+  }
 }
 
 
 @media screen and (max-width: 485px) {
-  .main{
-    width:1650px;
-  }
-
-  ::ng-deep footer{
+  .about-main {
     width: 1650px;
   }
-  
-  #ugg-margin{
-    margin-bottom:10%;
+
+  ::ng-deep footer {
+    width: 1650px;
+  }
+
+  #ugg-margin {
+    margin-bottom: 10%;
   }
 
   #return-to-listing {
     font-size: 7.5rem !important;
     border-color: #8a7814;
-}
-  
+  }
+
   #parallax-world-of-ugg h2 {
-    font-family:'Oswald', sans-serif; 
-    font-size:8rem; 
-    letter-spacing:10px; 
-    text-align:center; 
-    color:white; 
-    font-weight:400; 
-    text-transform:uppercase; 
-    z-index:10; 
-    opacity:.9;}
-  
-  
+    font-family: 'Oswald', sans-serif;
+    font-size: 8rem;
+    letter-spacing: 10px;
+    text-align: center;
+    color: white;
+    font-weight: 400;
+    text-transform: uppercase;
+    z-index: 10;
+    opacity: .9;
+  }
+
+
   #parallax-world-of-ugg p {
-    font-family:'Source Sans Pro', sans-serif;
-     font-weight:400; 
-     font-size:4.3rem; 
-     line-height:5.5rem;}
-  
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    font-size: 4.3rem;
+    line-height: 5.5rem;
+  }
+
   .first-character {
-    font-weight:400; 
-    float: left; 
-    font-size: 20rem; 
-    line-height: 15rem; 
+    font-weight: 400;
+    float: left;
+    font-size: 20rem;
+    line-height: 15rem;
     padding-top: 4px;
-    padding-right: 8px; 
-    padding-left: 3px; 
-    font-family: 'Source Sans Pro', sans-serif;}
-  
-  .sc {color: #3b8595;}
-  .ny {color: #3d3c3a;}
-  .atw {color: #c48660;}
-  
+    padding-right: 8px;
+    padding-left: 3px;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+
+  .sc {
+    color: #3b8595;
+  }
+
+  .ny {
+    color: #3d3c3a;
+  }
+
+  .atw {
+    color: #c48660;
+  }
+
   /* Section - Title */
   /**************************/
   #parallax-world-of-ugg .title {
-    background: white; 
-    padding: 60px; 
-    margin:0 auto; 
-    text-align:center;}
-  
+    background: white;
+    padding: 60px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
   #parallax-world-of-ugg .title h1 {
-    font-size:35px; 
-    letter-spacing:8px;}
+    font-size: 35px;
+    letter-spacing: 8px;
+  }
 }
 
 
-@media screen and (max-width: 399px){
-  .main{
+@media screen and (max-width: 399px) {
+  .about-main {
     width: 1535px;
   }
 
-  ::ng-deep footer{
+  ::ng-deep footer {
     width: 1535px;
   }
-  
-  #ugg-margin{
-    margin-bottom:10%;
+
+  #ugg-margin {
+    margin-bottom: 10%;
   }
-  
+
   #parallax-world-of-ugg h2 {
-    font-family:'Oswald', sans-serif; 
-    font-size:8rem; 
-    letter-spacing:10px; 
-    text-align:center; 
-    color:white; 
-    font-weight:400; 
-    text-transform:uppercase; 
-    z-index:10; 
-    opacity:.9;}
-  
-  
+    font-family: 'Oswald', sans-serif;
+    font-size: 8rem;
+    letter-spacing: 10px;
+    text-align: center;
+    color: white;
+    font-weight: 400;
+    text-transform: uppercase;
+    z-index: 10;
+    opacity: .9;
+  }
+
+
   #parallax-world-of-ugg p {
-    font-family:'Source Sans Pro', sans-serif;
-     font-weight:400; 
-     font-size:4.3rem; 
-     line-height:5.5rem;}
-  
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    font-size: 4.3rem;
+    line-height: 5.5rem;
+  }
+
   .first-character {
-    font-weight:400; 
-    float: left; 
-    font-size: 20rem; 
-    line-height: 15rem; 
+    font-weight: 400;
+    float: left;
+    font-size: 20rem;
+    line-height: 15rem;
     padding-top: 4px;
-    padding-right: 8px; 
-    padding-left: 3px; 
-    font-family: 'Source Sans Pro', sans-serif;}
-  
-  .sc {color: #3b8595;}
-  .ny {color: #3d3c3a;}
-  .atw {color: #c48660;}
-  
+    padding-right: 8px;
+    padding-left: 3px;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+
+  .sc {
+    color: #3b8595;
+  }
+
+  .ny {
+    color: #3d3c3a;
+  }
+
+  .atw {
+    color: #c48660;
+  }
+
   /* Section - Title */
   /**************************/
   #parallax-world-of-ugg .title {
-    background: white; 
-    padding: 60px; 
-    margin:0 auto; 
-    text-align:center;}
-  
+    background: white;
+    padding: 60px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
   #parallax-world-of-ugg .title h1 {
-    font-size:35px; 
-    letter-spacing:8px;}
+    font-size: 35px;
+    letter-spacing: 8px;
+  }
 }
 
 
-@media (max-width: 395px){
-  .main{
+@media (max-width: 395px) {
+  .about-main {
     width: 1570px;
   }
 
-  ::ng-deep footer{
+  ::ng-deep footer {
     width: 1570px;
   }
 }
 
-@media (max-width: 385px){
-  .main {
-      width: 1438px !important;
+@media (max-width: 385px) {
+  .about-main {
+    width: 1538px;
+  }
+
+  ::ng-deep footer {
+    width: 1538px;
   }
 
 }
 
-@media (max-width: 375px){
-  .main{
+@media (max-width: 375px) {
+  .about-main {
     width: 1500px;
   }
 
-  ::ng-deep footer{
+  ::ng-deep footer {
     width: 1500px;
   }
 }
 
-@media (max-width: 360px){
-  .main{
+@media (max-width: 360px) {
+  .about-main {
     width: 1440px;
   }
 
-  ::ng-deep footer{
+  ::ng-deep footer {
     width: 1440px;
   }
 }
 
-@media (max-width: 321px){
-  .main{
+@media (max-width: 321px) {
+  .about-main {
     width: 1280px;
   }
-  ::ng-deep footer{
+
+  ::ng-deep footer {
     width: 1280px;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

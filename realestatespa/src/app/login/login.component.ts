@@ -11,18 +11,18 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
- modelLogin: any = {};
- loginForm:FormGroup;
+  modelLogin: any = {};
+  loginForm: FormGroup;
 
-  constructor(public accountService: AccountService,private toastr: ToastrService, private fb: FormBuilder, private router: Router) {
-    
+  constructor(public accountService: AccountService, private toastr: ToastrService, private fb: FormBuilder, private router: Router) {
+
     this.loginForm = fb.group({
-      email:[null,[Validators.required]],
-      password:[null,[Validators.required]]
+      email: [null, [Validators.required]],
+      password: [null, [Validators.required]]
     })
-   }
+  }
 
-  ngOnInit(){
+  ngOnInit() {
     this.redirect_login()
   }
 
@@ -35,21 +35,21 @@ export class LoginComponent implements OnInit {
       this.redirect();
     }, error => {
       console.log(error);
-    })   
+    })
   }
 
 
-  async redirect_login(){
-      window.scroll(-1000000,-1000000);
-      if(!localStorage.getItem('direct')){
-        localStorage.setItem('direct', 'no reload')
-        location.reload();
-      } else {
-        localStorage.removeItem('direct');
-      }
+  async redirect_login() {
+    window.scroll(-1000000, -1000000);
+    if (!localStorage.getItem('direct')) {
+      localStorage.setItem('direct', 'no reload')
+      location.reload();
+    } else {
+      localStorage.removeItem('direct');
     }
+  }
 
-  async redirect(){
+  async redirect() {
     await this.router.navigate(['builder-listing']);
   }
 

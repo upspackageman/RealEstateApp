@@ -12,12 +12,12 @@ import { AccountService } from '../_services/account.service';
 export class ForgotPasswordComponent implements OnInit {
 
   forgotPasswordForm: UntypedFormGroup
-  successMessage: string='';
+  successMessage: string = '';
   errorMessage: string;
   showSuccess: boolean;
   showError: boolean;
-  
-  constructor(public accountService: AccountService) { 
+
+  constructor(public accountService: AccountService) {
     this.forgotPasswordForm = new UntypedFormGroup({
       email: new UntypedFormControl("", [Validators.required])
     })
@@ -26,7 +26,7 @@ export class ForgotPasswordComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public forgotPassword (){
+  public forgotPassword() {
     this.showError = this.showSuccess = false;
 
     const forgotPassDto: ForgotPassword = {
@@ -35,16 +35,17 @@ export class ForgotPasswordComponent implements OnInit {
     }
 
     this.accountService.forgotPassword(forgotPassDto)
-    .subscribe({
-      next: (_) => {
-      this.showSuccess = true;
-      this.successMessage = 'The link has been sent, please check your email to reset your password.'
-      console.log(this.successMessage);
-    },
-    error: (err: HttpErrorResponse) => {
-      this.showError = true;
-      this.errorMessage = err.message;
-      console.log(this.errorMessage);
-    }})
+      .subscribe({
+        next: (_) => {
+          this.showSuccess = true;
+          this.successMessage = 'The link has been sent, please check your email to reset your password.'
+          console.log(this.successMessage);
+        },
+        error: (err: HttpErrorResponse) => {
+          this.showError = true;
+          this.errorMessage = err.message;
+          console.log(this.errorMessage);
+        }
+      })
   }
 }

@@ -1,61 +1,56 @@
-
-<img   class="image-device slit-in-horizontal" src ="{{listing.listingPictures}}" onerror="this.onerror=null; this.
-src='../assets/NoPhotoAvailable.jpg';"/>
+<img class="image-device slit-in-horizontal" src="{{listing.listingPictures}}" onerror="this.onerror=null; this.
+src='../assets/NoPhotoAvailable.jpg';" />
 <main class="main-listing">
-  <img class="image tilt-in-tl" src ="{{listing.listingPictures}}" onerror="this.onerror=null; this.
-src='../assets/NoPhotoAvailable.jpg';"/>
-  
-  
-<section class="py-5 service-14">
-  <div class="container">
+  <img class="image tilt-in-tl" src="{{listing.listingPictures}}" onerror="this.onerror=null; this.
+src='../assets/NoPhotoAvailable.jpg';" />
+
+
+  <section class="py-5 service-14">
+    <div class="container">
       <div class="row">
-          <div class="col-lg-6">
-              <h3 class="my-3" id="price">{{listing.price}}</h3>
-              <p id="address" class="mt-5">{{listing.fullAddress}}</p>
-              <button id="request-info" class="btn btn-md my-3" (click)="openModalWithComponent()">Request Info</button> <br>
-              <!--<button id="request-info"  class="btn  btn-md my-3" (click)="openModalWithClass(requestInfo)">Request Info</button><br>-->
-              <button id="return-to-listing" class="btn  btn-md my-3" routerLink ='/forsale'>Return to Listings</button>
+        <div class="col-lg-6">
+          <h3 class="my-3" id="price">{{listing.price}}</h3>
+          <p id="address" class="mt-5">{{listing.fullAddress}}</p>
+          <button id="request-info" class="btn btn-md my-3" (click)="openModalWithComponent()">Request Info</button>
+          <br>
+          <!--<button id="request-info"  class="btn  btn-md my-3" (click)="openModalWithClass(requestInfo)">Request Info</button><br>-->
+          <button id="return-to-listing" class="btn  btn-md my-3" routerLink='/forsale'>Return to Listings</button>
+        </div>
+        <div class="col-lg-6">
+          <div class="mb-5">
+            <div class="sect">
+              <h3 class="mt-3">Property Details</h3>
+              <ul class="mt-5">
+                <li>Type: {{listing.type}}</li>
+                <li>Days on Market: {{listing.daysOnMarket}} </li>
+                <li>Status: {{listing.status}} </li>
+                <li>Baths: {{listing.bathTotals}}</li>
+                <li>Full Baths: {{listing.bathFull}}</li>
+                <li>Half Baths: {{listing.bathsHalf}}</li>
+                <li>Beds: {{listing.bedrooms}}</li>
+                <li>Lot Size: {{listing.lotSize}}</li>
+                <li>Square Ft: {{listing.estimatedSquareFeet | number:'.0-2'}} Sqft</li>
+              </ul>
+            </div>
           </div>
-          <div class="col-lg-6">
-              <div class="mb-5">
-                  <!--img class="rounded img-fluid" src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/features/feature2/market.jpg" alt="wrappixel kit" /-->
-                  <div class="sect">
-                      <h3 class="mt-3">Property Details</h3>
-                      <ul class="mt-5">
-                          <li>Type: {{listing.type}}</li>
-                          <li>Days on Market: {{listing.daysOnMarket}} </li>
-                          <li>Status: {{listing.status}} </li>
-                          <li>Baths: {{listing.bathTotals}}</li>
-                          <li>Full Baths: {{listing.bathFull}}</li>
-                          <li>Half Baths: {{listing.bathsHalf}}</li>
-                          <li>Beds: {{listing.bedrooms}}</li>
-                          <li>Lot Size: {{listing.lotSize}}</li>
-                          <li>Square Ft: {{listing.estimatedSquareFeet | number:'.0-2'}} Sqft</li>
-                      </ul>
-                  </div>
-              </div>
-          </div>
-          <!-- Column -->
-          <div class="col-lg-6">
-              <div class="sect">
-                  <h3>Estimated Monthly Payment</h3>
-                  <h3 style="text-align: center;">{{overallPayment| currency:'USD':'symbol':'2.0-0'}}</h3>
+        </div>
+        <!-- Column -->
+        <div class="col-lg-6">
+          <div class="sect">
+            <h3>Estimated Monthly Payment</h3>
+            <h3 style="text-align: center;">{{overallPayment| currency:'USD':'symbol':'2.0-0'}}</h3>
 
-                 
 
-                
-                    <div class="chart">
-                      
-                        <canvas baseChart
-                          [data]="doughnutChartData"
-                          [legend]="true"
-                          [type]="doughnutChartType"
-                          >
-                        </canvas>
 
-                    </div>
-                 
-                 <!--  <div class="mt-5" id="chart">
+
+            <div class="chart">
+
+              <canvas baseChart [data]="doughnutChartData" [legend]="true" [type]="doughnutChartType">
+              </canvas>
+
+            </div>
+
+            <!--  <div class="mt-5" id="chart">
                     <span class="infoProgress mt-5"> Principal & Interest  </span>
                     <progressbar class="principalProgress bar1"  [max]="overallPayment" [value]="monthlyPayment" >
             
@@ -78,171 +73,192 @@ src='../assets/NoPhotoAvailable.jpg';"/>
                         <span >{{(hoaFee/overallPayment)| percent}}</span>
                     </progressbar>
                   </div> -->
-              </div>
           </div>
-          <!-- Column -->
-          <div class="col-lg-6 mt-5 mb-4 ">
-            <div class="accordion mt-5" id="accordionExample">
-                <div class="accordion-item ">
-                  <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        <span style="width:100%;">
-                            Principal & Interest
-                        </span> 
-                        <span class="heading-bar float-right">
-                          {{monthlyPayment | currency:'USD':'symbol':'2.0-2'}} /mo
-                        </span>
-                    </button>
-                  </h2>
-                  <div style="z-index:1" id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <form>
-                            <div class="row g-3">
-                              <div class="row">
-                                <div class="col-md-6 mt-3 mb-3">
-                                  <label for="country">Amt Down Payment</label>
-                                  <div class="input-group mb-3">
-                                    <input type="text" #amountD class="form-control stack2" aria-label="Amount (to the nearest dollar)" (focusout)="amountDownPayment(amountD.value)" value="{{amtDownPayment | number:'1.0-2'}}">
-                                    <div class="input-group-append">
-                                      <span class="input-group-text stack">$</span>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="col-md-6 mb-3 mt-3">
-                                  <label for="state">% Down Payment</label>
-                                  <div class="input-group mb-3">
-                                    <input type="number" #interestD class="form-control stack2" aria-label="Amount (to the nearest dollar)" (focusout)="percentageDownPayment(interestD.value)" value="{{percentDownPayment | number:'1.0-2'}}">
-                                    <div class="input-group-append">
-                                      <span class="input-group-text stack">%</span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <label for="firstName" class="form-label">Loan Program</label>
-                                <select #loan class="stack" id="loan-program" (change)="loanProgram(loan.value)">
-                                  <option class="stack stack3" value=30>30-year fixed</option>
-                                  <option class="stack stack3" value=15>15-year fixed</option>
-                                  <option class="stack stack3" value="ARM5">5/1 ARM</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                  Valid first name is required.
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <label for="lastName" class="form-label ">Interest Rate</label>
-                                <div class="input-group   mb-3">
-                                  <input  #interestR type="number" value="0" class="form-control stack2"  (focusout)="interestRate(interestR.value)">
-                                  <div class="input-group-append">
-                                    <span class="input-group-text stack">%</span>
-                                  </div>
-                                </div>
-                              </div>
+        </div>
+        <!-- Column -->
+        <div class="col-lg-6 mt-5 mb-4 ">
+          <div class="accordion mt-5" id="accordionExample">
+            <div class="accordion-item ">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                  aria-expanded="true" aria-controls="collapseOne">
+                  <span style="width:100%;">
+                    Principal & Interest
+                  </span>
+                  <span class="heading-bar float-right">
+                    {{monthlyPayment | currency:'USD':'symbol':'2.0-2'}} /mo
+                  </span>
+                </button>
+              </h2>
+              <div style="z-index:1" id="collapseOne" class="accordion-collapse collapse show"
+                aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <form>
+                    <div class="row g-3">
+                      <div class="row">
+                        <div class="col-md-6 mt-3 mb-3">
+                          <label for="country">Amt Down Payment</label>
+                          <div class="input-group mb-3">
+                            <input type="text" #amountD class="form-control stack2"
+                              aria-label="Amount (to the nearest dollar)" (focusout)="amountDownPayment(amountD.value)"
+                              value="{{amtDownPayment | number:'1.0-2'}}">
+                            <div class="input-group-append">
+                              <span class="input-group-text stack">$</span>
                             </div>
-                          </form>
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        <span style="width:100%;">
-                            Property Taxes
-                          </span>
-                          <span class="heading-bar float-right">
-                            {{totalTax | currency:'USD':'symbol':'2.0-2'}} /mo
-                          </span>
-                    </button>
-                  </h2>
-                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <form class="needs-validation" novalidate="">
-                            <div class="input-group ">
-                              <input type="text" #tax class="form-control stack2 "  required="" placeholder="{{propTax}}" (focusout)="propertyTax(tax.value)">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text stack">%</span>
-                              </div>
-                            </div>
-                            <hr class="my-4">
-                            <!-- <button class="w-100 btn btn-primary btn-lg" type="submit">Calculate</button> -->
-                          </form>
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        <span style="width:100%;">
-                            Mortgage Insurance
-                          </span>
-                          <span class="heading-bar float-right">
-                            {{pmi | currency:'USD':'symbol':'2.0-2'}} /mo
-                          </span>
-                    </button>
-                  </h2>
-                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <div class="col-12 mortageIns">
-                            <button type="button" id="pmi-button" (click)="pmiSwitch()">{{pmiButton}}</button><span style="margin-left:2%;" ></span><label>Include mortgage insurance</label>
                           </div>
+                        </div>
+                        <div class="col-md-6 mb-3 mt-3">
+                          <label for="state">% Down Payment</label>
+                          <div class="input-group mb-3">
+                            <input type="number" #interestD class="form-control stack2"
+                              aria-label="Amount (to the nearest dollar)"
+                              (focusout)="percentageDownPayment(interestD.value)"
+                              value="{{percentDownPayment | number:'1.0-2'}}">
+                            <div class="input-group-append">
+                              <span class="input-group-text stack">%</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <label for="firstName" class="form-label">Loan Program</label>
+                        <select #loan class="stack" id="loan-program" (change)="loanProgram(loan.value)">
+                          <option class="stack stack3" value=30>30-year fixed</option>
+                          <option class="stack stack3" value=15>15-year fixed</option>
+                          <option class="stack stack3" value="ARM5">5/1 ARM</option>
+                        </select>
+                        <div class="invalid-feedback">
+                          Valid first name is required.
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <label for="lastName" class="form-label ">Interest Rate</label>
+                        <div class="input-group   mb-3">
+                          <input #interestR type="number" value="0" class="form-control stack2"
+                            (focusout)="interestRate(interestR.value)">
+                          <div class="input-group-append">
+                            <span class="input-group-text stack">%</span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  <span style="width:100%;">
+                    Property Taxes
+                  </span>
+                  <span class="heading-bar float-right">
+                    {{totalTax | currency:'USD':'symbol':'2.0-2'}} /mo
+                  </span>
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <form class="needs-validation" novalidate="">
+                    <div class="input-group ">
+                      <input type="text" #tax class="form-control stack2 " required="" placeholder="{{propTax}}"
+                        (focusout)="propertyTax(tax.value)">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text stack">%</span>
+                      </div>
+                    </div>
+                    <hr class="my-4">
+                    <!-- <button class="w-100 btn btn-primary btn-lg" type="submit">Calculate</button> -->
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  <span style="width:100%;">
+                    Mortgage Insurance
+                  </span>
+                  <span class="heading-bar float-right">
+                    {{pmi | currency:'USD':'symbol':'2.0-2'}} /mo
+                  </span>
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <div class="col-12 mortageIns">
+                    <button type="button" id="pmi-button" (click)="pmiSwitch()">{{pmiButton}}</button><span
+                      style="margin-left:2%;"></span><label>Include mortgage insurance</label>
                   </div>
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingFour">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                        <span style="width:100%;">
-                            Home Insurance
-                          </span>
-                          <span class="heading-bar float-right">
-                            {{propInsurance | currency:'USD':'symbol':'2.0-2'}} /mo
-                          </span>
-                      </button>
-                    </h2>
-                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-                        <form  novalidate="">
-                            <div class="input-group">
-                              <input type="text" #pInsurance class="form-control stack2 mt-5" placeholder="0" required="" (focusout)="propertyInsurance(pInsurance.value)">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text stack mt-5">/mo</span>
-                              </div>
-                            </div>
-                            <!-- <button class="w-100 btn btn-primary btn-lg" type="submit">Calculate</button> -->
-                          </form>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingFive">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                        <span style="width:100%;">
-                            HOA fees
-                          </span>
-                          <span class="heading-bar float-right">
-                            {{hoaFee | currency:'USD':'symbol':'2.0-2'}} /mo
-                          </span>
-                      </button>
-                    </h2>
-                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-                        <form  novalidate="">
-                            <div class="input-group">
-                              <input type="number" #hoaF class="form-control stack2 mt-5"  placeholder="0" required="" (focusout)="hoaFees(hoaF.value)" >
-                              <div class="input-group-prepend">
-                                <span class="input-group-text stack  mt-5">/mo</span>
-                              </div>
-                            </div>
-                          </form>
-                    </div>
-                  </div>
-                  <div id="mobile-section" class="mt-5">
-                    <button  id="request-info" class="btn  btn-md my-3"(click)="openModalWithComponent()">Request Info</button><br>
-                    <button  class="btn  btn-md my-3" routerLink ='/forsale'>Return to Listings</button>
-                  </div>
               </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  <span style="width:100%;">
+                    Home Insurance
+                  </span>
+                  <span class="heading-bar float-right">
+                    {{propInsurance | currency:'USD':'symbol':'2.0-2'}} /mo
+                  </span>
+                </button>
+              </h2>
+              <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                data-bs-parent="#accordionExample">
+                <form novalidate="">
+                  <div class="input-group">
+                    <input type="text" #pInsurance class="form-control stack2 mt-5" placeholder="0" required=""
+                      (focusout)="propertyInsurance(pInsurance.value)">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text stack mt-5">/mo</span>
+                    </div>
+                  </div>
+                  <!-- <button class="w-100 btn btn-primary btn-lg" type="submit">Calculate</button> -->
+                </form>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                  <span style="width:100%;">
+                    HOA fees
+                  </span>
+                  <span class="heading-bar float-right">
+                    {{hoaFee | currency:'USD':'symbol':'2.0-2'}} /mo
+                  </span>
+                </button>
+              </h2>
+              <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                data-bs-parent="#accordionExample">
+                <form novalidate="">
+                  <div class="input-group">
+                    <input type="number" #hoaF class="form-control stack2 mt-5" placeholder="0" required=""
+                      (focusout)="hoaFees(hoaF.value)">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text stack  mt-5">/mo</span>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div id="mobile-section" class="mt-5">
+              <button id="request-info" class="btn  btn-md my-3" (click)="openModalWithComponent()">Request
+                Info</button><br>
+              <button class="btn  btn-md my-3" routerLink='/forsale'>Return to Listings</button>
+            </div>
           </div>
-          <!-- Column -->
+        </div>
+        <!-- Column -->
       </div>
-  </div>
-</section>
+    </div>
+  </section>
 </main>
 
 <!-- <ng-template #requestInfo>
@@ -305,7 +321,7 @@ src='../assets/NoPhotoAvailable.jpg';"/>
               <span id="contact-agent">Contact your agent?&nbsp;&nbsp;&nbsp;</span>
               <input type="checkbox"  (click)="toContactAgent($event)">
               <!--(click)=activeStatus($event) [checked]="activeSelected"-->
-          <!--    <span class="checkmark"></span>
+<!--    <span class="checkmark"></span>
              </label>
           </div>
         </div>

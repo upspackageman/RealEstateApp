@@ -26,7 +26,7 @@ export class AppComponent {
   }
 
   onActivate() {
-    window.scroll(0,0);
+  //  window.scroll(0,0);
 }
 
 }

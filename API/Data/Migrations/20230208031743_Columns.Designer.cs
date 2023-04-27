@@ -4,14 +4,16 @@ using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230208031743_Columns")]
+    partial class Columns
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -175,8 +177,7 @@ namespace API.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("FullAddress")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("HighSchool")
                         .HasColumnType("nvarchar(max)");
@@ -206,7 +207,7 @@ namespace API.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MLS")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MasterBedroomDimensions")
                         .HasColumnType("nvarchar(max)");
@@ -227,7 +228,7 @@ namespace API.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Status")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
@@ -249,15 +250,8 @@ namespace API.Data.Migrations
 
                     b.HasKey("Id");
 
-
                     b.HasIndex("Id")
                         .IsUnique();
-
-                    b.HasIndex("MLS");
-
-                    b.HasIndex("PriceSearch");
-
-                    b.HasIndex("Status");
 
                     b.ToTable("Listings");
                 });
