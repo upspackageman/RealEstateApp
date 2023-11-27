@@ -22,24 +22,34 @@ export class TermsPolicyComponent implements OnInit {
     if(this.previousUrl === 'login'){
         this.link =  this.previousUrl;
         this.redirect = 'Login';
-        console.log(this.link);
     }
     else if(this.previousUrl === 'loginregister'){
       this.link = this.previousUrl;
       this.redirect = 'Register';
-      console.log(this.link);
+      
     }
     else{
       this.link ='listing/'+ this.previousUrl;
       this.redirect = 'Return to Listing';
-      console.log(this.link);
     }
 
-    
   });
    }
 
   ngOnInit(): void {
+    this.term();
+  }
+
+  async term() {
+    if (!localStorage.getItem('term')) {
+      localStorage.setItem('term', 'no reload')
+      const currentUrl = this.router.url;
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
+    } else {
+      localStorage.removeItem('term');
+    }
   }
 
 }

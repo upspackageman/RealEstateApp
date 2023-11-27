@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Listing } from '../_models/listing';
+import { User } from '../_models/user';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ListingsService } from '../_services/listings.service';
 import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
@@ -7,9 +8,12 @@ import { AccountService } from '../_services/account.service';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { EmailService } from '../_services/email.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Chart, ChartData, ChartEvent, ChartType } from 'chart.js';
+import { Chart, ChartData, ChartEvent, ChartOptions, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { ListingDetailsContactComponent } from '../modals/listing-details-contact/listing-details-contact.component';
+import { ListingParams } from '../_models/listingParams';
+import { take } from 'rxjs';
+
 
 
 @Component({
@@ -21,7 +25,9 @@ import { ListingDetailsContactComponent } from '../modals/listing-details-contac
 
 
 export class ListingDetailComponent implements OnInit {
-  listing: Listing;
+  listing: Listing | undefined;
+  listingParams: ListingParams | undefined;
+  user: User |undefined;
   contact: any = {};
   form: UntypedFormGroup = new UntypedFormGroup({});
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
@@ -31,23 +37,69 @@ export class ListingDetailComponent implements OnInit {
   public doughnutChartLabels: string[] = ['Principal & Interest', 'Property Taxes', 'Mortage Insurance', 'Home Insurance', 'HOA'];
 
   public doughnutChartData: ChartData<'doughnut'> = {
+    
     labels: this.doughnutChartLabels,
+    
     datasets: [
-      { data: [350, 450, 100, 55, 78] }
-    ]
+      { 
+        data: [350, 450, 100, 55, 78],
+        backgroundColor: [
+          'rgba(255, 228, 225, 0.8)',
+          'rgba(196, 233, 215, 0.8)',
+          'rgba(220, 220, 220, 0.8)',
+          'rgba(230, 230, 250, 0.8)',
+          'rgba(1255, 229, 180, 0.8)',
+        ],
+        hoverBackgroundColor: [
+          'rgba(255, 228, 229, 1)',
+          'rgba(196, 238, 215, 1)',
+          'rgba(225, 220, 220, 1)',
+          'rgba(230, 235, 250, 1)',
+          'rgba(1255, 229, 185, 1)',
+        ]
+      
+      }
+    ],
+   
+
+  };
+
+  public doughnutChartOptions: ChartOptions = {
+    responsive: true,
+    plugins: {
+      tooltip: {
+        backgroundColor: 'rgba(64, 61, 7, 0.8)', // Set the desired background color here
+
+      },
+    },
   };
 
   public doughnutChartType: ChartType = 'doughnut';
+
+
+  
 
   bsModalRef?: BsModalRef;
 
   constructor(private accountService: AccountService, private listingsService: ListingsService, private route: ActivatedRoute, private modalService: BsModalService,
     private router: Router, fb: UntypedFormBuilder, private emailService: EmailService) {
+      this.accountService.currentUser$.pipe(take(1)).subscribe({
+        next: user => {
+          if (user) this.user = user;
+        }
+      });
     this.router.routeReuseStrategy.shouldReuseRoute = () => {
       return false;
     };
 
+    
+   
+  
+  
+  
+    
     Chart.defaults.font.family = "'Oswald', sans-serif";
+
     this.contactForm = fb.group({
       firstName: [null, [Validators.required, Validators.minLength(1)]],
       lastName: [null, [Validators.required, Validators.minLength(1)]],
@@ -95,14 +147,15 @@ export class ListingDetailComponent implements OnInit {
 
 
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
-
+  
+ 
 
   ngOnInit() {
-
+    
     this.loadListing();
+   
     this.checkWidth();
-    // console.log(this.doughnutChartData.datasets[0].data[1]);
-    // console.log(this.doughnutChartLabels[0]);
+    
   }
 
   @HostListener('window:resize', ['$event'])
@@ -116,9 +169,6 @@ export class ListingDetailComponent implements OnInit {
       console.log(Chart.defaults.font.size);
       this.chart?.update();
     }
-
-
-
   }
 
 
@@ -138,6 +188,34 @@ export class ListingDetailComponent implements OnInit {
     numberOfPeriodicPaymentsPerYear:number; 12 //n
     tenureOfLoansPerYear:number=5; //t
     */
+
+
+    console.log(this.tenureOfLoansPerYear);
+    const mort_30 = document.getElementById("30-fix-rate") as HTMLElement;
+    const mort_15 = document.getElementById("15-fix-rate") as HTMLElement;
+    const mort_5 = document.getElementById("5-arm") as HTMLElement;
+
+    switch (this.tenureOfLoansPerYear){
+      case 30:
+        mort_30.style.opacity='1';
+        mort_15.style.opacity='0.5';
+        mort_5.style.opacity='0.5';
+        break;
+      case 15:
+        mort_15.style.opacity='1';
+        mort_30.style.opacity='0.5';
+        mort_5.style.opacity='0.5';
+        break;
+      case 5:
+        mort_5.style.opacity='1';
+        mort_15.style.opacity='0.5';
+        mort_30.style.opacity='0.5';
+        break;
+
+    } 
+    console.log(mort_30);
+    console.log(mort_15);
+    console.log(mort_5);
 
     this.homeAmount = this.listing.priceSearch;
     let r: number = this.annualInterestRate;
@@ -160,17 +238,17 @@ export class ListingDetailComponent implements OnInit {
   }
 
   loadListing() {
-
-
-
-    this.listingsService.getListingsById(this.route.snapshot.paramMap.get('id')).subscribe(listing => {
-      this.listing = listing;
-      this.mortgageCalulator();
-      this.pmiSwitch();
-      console.log(this.route.snapshot.paramMap.get('id'));
-
-    });
+    
     this.redirect();
+   
+    this.listingsService.getListingsById(this.route.snapshot.paramMap.get('id')).subscribe(listing => {
+      
+      this.listing = listing;
+    //  this.loanProgram(this.tenureOfLoansPerYear);
+     this.mortgageCalulator();
+      
+    });
+   
 
   }
 
@@ -199,7 +277,19 @@ export class ListingDetailComponent implements OnInit {
     this.mortgageCalulator();
   }
 
+  init_loadProgram(){
+    const mort_30 = document.getElementById("30-fix-rate") as HTMLElement;
+    const mort_15 = document.getElementById("15-fix-rate") as HTMLElement;
+    const mort_5 = document.getElementById("5-arm") as HTMLElement;
+    
+    mort_30.style.opacity='1  !important';
+    mort_15.style.opacity='0.5 !important';
+    mort_5.style.opacity='0.5  !important';
+    console.log(mort_5);
+  }
+
   loanProgram(e: number) {
+   
     this.tenureOfLoansPerYear = e;/* = Enter number*/
     this.mortgageCalulator();
   }
@@ -218,7 +308,7 @@ export class ListingDetailComponent implements OnInit {
   }
 
   propertyTax(e: number = 5) {
-    this.propTax = e; /* * percent entered */
+    this.propTax = e *1; /* * percent entered */
     this.mortgageCalulator();
   }
 
@@ -265,28 +355,27 @@ export class ListingDetailComponent implements OnInit {
   async redirect() {
 
     if (!localStorage.getItem('direct')) {
+      this.pmiSwitch();
+      
+      setTimeout(()=>{
 
-
-      setTimeout(() => {
-        location.reload();
-      }
-        , .001);
-
-
-
+        const currentUrl = this.router.url;
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.router.navigate([currentUrl]);
+        
+      });
+      }, 10);
       localStorage.setItem('direct', 'no reload');
-
-
     } else {
-
+      this.pmiSwitch();
       localStorage.removeItem('direct');
-
     }
   }
 
   async toContactAgent(e) {
-    this.contactAgent = e.target.checked;
-    console.log(this.contactAgent);
+    if(e.target){
+      this.contactAgent = e.target.checked;
+    }    
   }
 
   async openModalWithClass(template: TemplateRef<any>) {

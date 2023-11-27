@@ -19,10 +19,18 @@ namespace API.Data
             builder.Entity<Listing>()
                 .HasIndex(x => x.Id)
                 .IsUnique();
-            
 
             builder.Entity<Listing>()
                 .HasIndex(x => x.PriceSearch);
+
+            builder.Entity<Listing>()
+                .HasIndex(x => x.BathTotals);
+
+            builder.Entity<Listing>()
+                .HasIndex(x => x.Bedrooms);
+            
+            builder.Entity<Listing>()
+                .HasIndex(x => x.Type);
 
             builder.Entity<Listing>()
                 .HasIndex(x => x.Status);

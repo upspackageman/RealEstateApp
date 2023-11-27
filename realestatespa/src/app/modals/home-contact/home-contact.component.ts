@@ -1,8 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { BsModalRef } from 'ngx-bootstrap/modal';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { EmailService } from 'src/app/_services/email.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-contact',
@@ -27,7 +28,7 @@ export class HomeContactComponent implements OnInit {
 
   contactForm: UntypedFormGroup;
 
-  constructor(public bsModalRef: BsModalRef, private fb: UntypedFormBuilder, private emailService: EmailService) {
+  constructor(public bsModalRef: BsModalRef, private fb: UntypedFormBuilder,private router: Router, private emailService: EmailService,private modalService: BsModalService) {
     this.contactForm = fb.group({
       firstName: [null, [Validators.required, Validators.minLength(1)]],
       lastName: [null, [Validators.required, Validators.minLength(1)]],
@@ -40,6 +41,16 @@ export class HomeContactComponent implements OnInit {
 
 
   ngOnInit(): void {
+  }
+
+  async redirect() {
+    await this.router.navigate(['home']);
+  }
+
+  async closeModal() {
+    this.modalService?.hide();
+   this.redirect();
+   
   }
 
   sendMail() {

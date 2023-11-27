@@ -1,42 +1,41 @@
 @import url(https://fonts.googleapis.com/css?family=Oswald:300,400,700);
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic);
 
+/*https://images.unsplash.com/photo-1512652296884-f1d6ecc353c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80*/
 
+/*  */
 main {
-	background-image: linear-gradient(rgba(43, 43, 43, 0.7), rgba(174, 191, 250, 0.7)), url(https://images.unsplash.com/photo-1512652296884-f1d6ecc353c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80);
+	background-image: linear-gradient(rgba(43, 43, 43, 0.7), rgba(174, 191, 250, 0.7)), url(/assets/bg.jpg);
 	background-size: cover;
-	padding-top: 5%;
+	padding-top: 10%;
+	padding-bottom: 20%;
 	height: 1300px;
 	font-family: 'Oswald', sans-serif;
-
-}
-
-::ng-deep footer {
 	width: 100%;
+	letter-spacing: 1.5px;
+    font-weight: 300;
 }
 
-.valid {
-	color: #6a701a;
-	margin-top: -40px;
-	font-size: 16px;
+
+
+input:focus {
+	outline: none;
+
 }
 
 .register-form {
+	border-radius: .35rem;
+	position: relative;
+	left:30%;
 	width: 700px;
 	background-color: white;
-	margin-left: 30%;
-	padding-bottom: 10%;
+	margin-bottom: 10%;
 	box-shadow: 3px 13px 20px rgba(0, 0, 0, 0.45),
 		-3px -13px 20px rgba(0, 0, 0, 0.45);
-
-
 }
 
-.stack4 {
-	border-radius: 2px !important;
-	box-shadow: inset 8px 8px 8px #cbced1,
-		inset -8px -8px 8px #ffffff !important;
-	border-style: none;
+.toast-custom {
+	background-color: rgba(15, 196, 202, 0.7)
 }
 
 
@@ -46,17 +45,6 @@ main {
 	width: 100%;
 }
 
-.container h1 {
-	text-align: center;
-}
-
-.container p {
-	text-align: center;
-}
-
-button:focus {
-	outline: none;
-}
 
 
 /* Full-width input fields */
@@ -66,14 +54,26 @@ input[type=text], input[type=password] {
 	margin: 5px 0 22px 0;
 	display: inline-block;
 	border: solid;
-	border-radius: 0px;
+	border-width: 1px;
+	border-radius: .25rem;
 	background: #f1f1f1;
 	border-color: #b39e2a;
+	box-shadow: inset 8px 8px 8px #cbced1,
+		inset -8px -8px 8px #ffffff !important;
+}
+
+button:focus {
+	outline: none;
 }
 
 input[type=text]:focus, input[type=password]:focus {
 	background-color: #ddd;
 	outline: none;
+}
+
+.form-control:focus {
+	outline: none;
+	box-shadow: none;
 }
 
 /* Overwrite default styles of hr */
@@ -82,19 +82,23 @@ hr {
 	margin-bottom: 25px;
 }
 
+
+
 /* Set a style for the submit button */
+
 .registerbtn {
 	background-color: #ffffff;
 	color: rgb(7, 6, 2);
 	font-size: 30px;
 	padding: 16px 20px;
-	margin: 8px 0;
+	margin: 4px 0;
 	border: solid;
 	cursor: pointer;
 	width: 80%;
 	margin-left: 10%;
 	border-color: rgb(12, 10, 4);
-	border-width: 5px !important;
+	border-width: 1px !important;
+	border-radius: .25rem;
 	opacity: 0.9;
 	box-shadow: 8px 8px 8px #cbced1, -8px -8px 8px #ffffff !important;
 }
@@ -117,141 +121,64 @@ a:hover {
 
 /* Set a grey background color and center the text of the "sign in" section */
 .signin {
+	text-align: center;
+}
 
+
+#terms {
+	font-size: 1rem;
 	text-align: center;
 }
 
 
 
-
-
-
-
 /* For Desktop View */
-@media screen and (min-width: 1024px) {
-
-	.valid {
-
-
-		font-size: 2.3rem;
-	}
-}
-
-/*-Pixels---*/
-
-@media (device-width:411px) and (device-height:823px) {
-
-	.container {
-		width: 1200px !important;
-	}
-
-	.register-form {
-		width: 1250px !important;
-		margin-left: 6% !important;
-	}
-
-}
-
-@media (device-width:411px) and (device-height:731px) {
-
-	main {
-		padding-top: 20%;
-	}
-
-
-
-	.register-form {
-		width: 1400px !important;
-		margin-left: 6.5% !important;
-	}
-
-	.container {
-		width: 1250px !important;
-	}
-}
-
-
-/*--samsung devices---*/
-
-@media (device-width:412px) and (device-height:914px) {
-	main {
-		padding-top: 20%;
-		height: 3650px !important;
-		width: 1600px !important;
-	}
-
-	::ng-deep footer {
-		width: 1600px;
-	}
-
-	.container {
-		width: 1250px !important;
-	}
-
-	.register-form {
-		width: 1400px !important;
-		margin-bottom: 10%;
-		margin-left: 6% !important;
-		background-color: white;
-	}
-}
-
+@media screen and (min-width: 1024px) {}
 
 /* For Tablet View */
-@media screen and (max-device-height: 1366px) and (max-device-width: 1024px) {
-
-	.valid {
-
-
-		font-size: 3.5rem;
-	}
-
+@media (height: 1366px) and (width: 1024px) {
 	main {
-		padding-top: 20%;
-		height: 2800px;
-		width: 1955px;
-	}
-
-	::ng-deep footer {
-		width: 1955px;
+		padding-top: 0%;
+		width: 100%;
+		height: 1700px;
 	}
 
 	.register-form {
-		width: 1100px;
-		left: -135px;
 		position: relative;
-		top: 100px;
+		top: 200px;
+		width: 80%;
+		left:10%;
+		background-color: white;
 	}
 
 	.registerbtn {
-		font-size: 4rem;
+		font-size: 3rem;
 	}
 
 	.container {
-		width: 900px;
+		width: 100%;
 	}
 
 	.container h1 {
-		font-size: 8rem;
+		font-size: 4rem;
 		text-align: center;
 	}
 
 	.container p {
-		font-size: 3rem;
+		font-size: 2rem;
 		text-align: center;
 	}
 
 	.container label {
-		font-size: 4rem;
+		font-size: 2rem;
 	}
 
 	.container input {
-		font-size: 3.5rem;
+		font-size: 1.5rem;
 	}
 
-
 	.signin {
-		font-size: 2rem;
+		font-size: 1rem;
 	}
 
 	#terms {
@@ -260,959 +187,746 @@ a:hover {
 }
 
 
-@media (max-device-width: 915px) {
-	main {
-		padding-top: 0%;
-		height: 1950px;
-		width: 1415px;
-	}
+@media (max-width: 1280px) and (max-height:800px) {
 
-	::ng-deep footer {
-		width: 1415px;
+	main {
+		width: 100%;
 	}
 
 	.register-form {
-		width: 900px;
-		position: relative;
-		top: 100px;
-		left: -140px;
-	}
 
-	.container h1 {
-		font-size: 6rem;
-		text-align: center;
-	}
-
-	.container p {
-		font-size: 2.5rem;
-		text-align: center;
-	}
-
-	.container label {
-		font-size: 3rem;
-	}
-
-	.container input {
-		font-size: 3.25rem;
-	}
-
-	.signin {
-		font-size: 2rem;
+		width: 50%;
+		left: 25%;
 	}
 
 	.registerbtn {
-		font-size: 5.5rem;
-
+		font-size: 2rem;
+		padding: 16px 20px;
+		width: 60%;
+    	margin-left: 20%;
 	}
 
+	.container{
+		width: 100%;
+	}
+
+	.container h1 {
+		font-size: 1.8rem;
+		text-align: center;
+	}
+
+	.container h3 {
+		margin-top: 20px;
+		font-size: 1rem;
+		
+	}
+	.container p {
+		font-size: 1.4rem;
+		text-align: center;
+	}
+	.container label {
+		font-size: 1.2rem;
+	}
+	.container input {
+		font-size: 1.2rem;
+	}
+
+	.signin {
+		font-size: 1rem;
+	}
 	#terms {
-		font-size: 1.75rem;
+		font-size: 1rem;
 	}
-}
+	
+   
+  
+	
+  }
 
-@media (max-device-width: 820px) and (max-device-width:1180px) {
+
+
+@media (max-width: 915px) {
 	main {
 		padding-top: 20%;
-		height: 2450px;
-		width: 1475px;
-	}
-
-	::ng-deep footer {
-		width: 1475px;
+		width: 1050px;
 	}
 
 	.register-form {
-		width: 900px;
-		position: relative;
-		top: 100px;
-		left: -140px;
-	}
-}
-
-@media (device-height: 1024px) and (device-width: 768px) {
-	main {
-		width: 1450px !important;
+		top: 100px;		
+		width: 80%;
+		left:10%;
 	}
 
-	::ng-deep footer {
-		width: 1450px;
-	}
+
 }
 
 
-@media (max-device-width: 540px) and (max-device-width:720px) {
+@media (width: 820px) and (height:1180px) {
 	main {
-		width: 1800px;
+		padding-top: 0%;
+		width: 950px;
 	}
 
-	::ng-deep footer {
-		width: 1800px;
-	}
 
 	.register-form {
-		width: 900px;
-		position: relative;
-		top: 100px;
-		left: -70px;
+		top: 160px;
+		width: 80%;
+		left:10%;
+		
 	}
 }
 
-
-@media (device-width: 1280px) and (device-height:800px) {
+@media (max-width: 769px){
 	main {
-		width: 1658px;
-		padding-top: 10%;
-	}
-
-	::ng-deep footer {
-		width: 1658px;
-	}
-
-	.register-form {
-		position: relative;
-		left: 0px;
-	}
-}
-
-/* For Mobile Portrait View */
-@media screen and (min-device-width:360px) and (max-device-width: 361px) and (orientation: portrait) {
-	main {
-		padding-top: 80% !important;
-		height: 3250px !important;
-		width: 2500px !important;
-		margin-left: -6.6%;
-
-	}
-
-	::ng-deep footer {
-		width: 2500px;
-	}
-
-	.register-form {
-		width: 1100px !important;
-		margin-bottom: 10%;
-		margin-left: 8% !important;
-		background-color: white;
-	}
-
-	.container {
+		padding-top: 20%;
 		width: 900px;
 	}
 
-	.container h1 {
-		font-size: 11rem;
-		text-align: center;
-	}
-
-	.container p {
-		font-size: 4rem;
-		text-align: center;
-	}
-
-	.container label {
-		font-size: 5.25rem;
-	}
-
-	.container input {
-		font-size: 5rem;
-	}
-
-	.signin {
-		font-size: 3.75rem;
-	}
-
-	.registerbtn {
-		font-size: 9.5rem;
-		line-height: 1.5;
-	}
-
-	#terms {
-		font-size: 2.75rem;
+	.register-form {
+		top: 30px;
+		width: 80%;
+		left:10%;
+		
 	}
 }
 
-
-
-@media screen and (max-device-width: 480px) and (orientation: portrait) {
+@media (width: 540px) and (height:720px) {
 	main {
-		padding-top: 60%;
-		height: 3800px;
-		width: 1600px !important;
-
-	}
-
-	::ng-deep footer {
-		width: 1600px;
-	}
-
-	.valid {
-
-		font-size: 4rem;
-	}
-
-	.register-form {
-		width: 1200px;
-		left: 0px;
-	}
-
-	.container {
+		padding-top: 20%;
 		width: 900px;
 	}
 
-	.container h1 {
-		font-size: 11rem;
-		text-align: center;
-	}
-
-	.container p {
-		font-size: 4rem;
-		text-align: center;
-	}
-
-	.container label {
-		font-size: 5.25rem;
-	}
-
-	.container input {
-		font-size: 5rem;
-	}
-
-	.signin {
-		font-size: 3.75rem;
-	}
-
-	.registerbtn {
-		font-size: 9.5rem;
-		line-height: 1.5;
-	}
-
-	#terms {
-		font-size: 2.75rem;
-	}
-}
-
-@media (device-height: 736px) and (device-width: 414px) {
-	main {
-
-		height: 3000px !important;
-		width: 1650px !important;
-	}
-
-	::ng-deep footer {
-		width: 1650px;
-	}
 
 	.register-form {
-
-		width: 1620px !important;
-		left: -480px !important;
+		top: 80px;
+		left: 10%;
+		width: 80%;
 	}
 
-	.register-form .container {
-		width: 90% !important;
-	}
-
-	.register-form label {
-		width: 100%
-	}
-
-	.register-form input {
-		width: 100%;
-	}
 }
 
-@media (device-height: 915px) and (device-width: 412px) {
-	main {
-
-		height: 3000px !important;
-		width: 1650px !important;
-	}
-
-	::ng-deep footer {
-		width: 1650px;
-	}
-
-	.register-form {
-
-		width: 1600px !important;
-		left: -480px !important;
-	}
-
-	.register-form .container {
-		width: 90% !important;
-	}
-
-	.register-form label {
-		width: 100%
-	}
-
-	.register-form input {
-		width: 100%;
-	}
-}
-
-@media (device-height: 914px) and (device-width: 412px) {
-	main {
-
-		height: 3000px !important;
-		width: 1650px !important;
-	}
-
-	::ng-deep footer {
-		width: 1650px;
-	}
-
-	.register-form {
-
-		width: 1610px !important;
-		left: -80px !important;
-	}
-
-	.register-form .container {
-		width: 90% !important;
-	}
-
-	.register-form label {
-		width: 100%
-	}
-
-	.register-form input {
-		width: 100%;
-	}
-}
-
-
-@media (device-height: 823px) and (device-width: 411px) {
-	main {
-
-		height: 3000px !important;
-		width: 1640px !important;
-	}
-
-	::ng-deep footer {
-		width: 1640px;
-	}
-
-	.register-form {
-
-		width: 1585px !important;
-		left: -70px !important;
-	}
-
-	.register-form .container {
-		width: 90% !important;
-	}
-
-	.register-form label {
-		width: 100%
-	}
-
-	.register-form input {
-		width: 100%;
-	}
-}
-
-@media (device-height: 731px) and (device-width: 411px) {
-	main {
-
-		height: 3000px !important;
-		width: 1640px !important;
-	}
-
-	::ng-deep footer {
-		width: 1640px;
-	}
-
-	.register-form {
-
-		width: 1608px !important;
-		left: -90px !important;
-	}
-
-	.register-form .container {
-		width: 90% !important;
-	}
-
-	.register-form label {
-		width: 100%
-	}
-
-	.register-form input {
-		width: 100%;
-	}
-}
-
-@media (width:390px) and (height:844px) {
-	main {
-		width: 1535px !important;
-	}
-
-	::ng-deep footer {
-		width: 1535px;
-	}
-
-	.register-form {
-		width: 1512px !important;
-		left: -450px !important;
-	}
-
-	.register-form .container {
-		width: 90%;
-	}
-
-	.register-form label {
-		width: 100%
-	}
-
-	.register-form input {
-		width: 100%;
-	}
-}
-
-@media (width:393px) and (height:851px) {
-	main {
-		width: 1570px !important;
-	}
-
-	.register-form {
-		width: 1540px !important;
-		left: -455px !important;
-	}
-
-	.register-form .container {
-		width: 90% !important;
-	}
-
-	.register-form label {
-		width: 100%
-	}
-
-	.register-form input {
-		width: 100%;
-	}
-}
-
-@media (width:393px) and (height:786px) {
-	main {
-		width: 1570px !important;
-	}
-
-	::ng-deep footer {
-		width: 1570px;
-	}
-
-	.register-form {
-		width: 1550px !important;
-		left: -115px !important;
-	}
-
-	.register-form .container {
-		width: 90% !important;
-	}
-
-	.register-form label {
-		width: 100%
-	}
-
-	.register-form input {
-		width: 100%;
-	}
-}
-
-@media (width:375px) and (height:812px) {
-	main {
-		width: 1500px !important;
-	}
-
-	::ng-deep footer {
-		width: 1500px;
-	}
-
-	.register-form {
-		width: 1470px !important;
-		left: -435px !important;
-	}
-
-	.register-form .container {
-		width: 90% !important;
-	}
-
-	.register-form label {
-		width: 100%
-	}
-
-	.register-form input {
-		width: 100%;
-	}
-}
-
-@media (device-height: 667px) and (device-width: 375px) {
-	main {
-
-		height: 3300px !important;
-		width: 1500px !important;
-	}
-
-	::ng-deep footer {
-		width: 1500px;
-	}
-
-	.register-form {
-
-		width: 1470px !important;
-		left: -435px !important;
-	}
-
-	.register-form .container {
-		width: 90%;
-	}
-
-	.register-form label {
-		width: 100%
-	}
-
-	.register-form input {
-		width: 100%;
-	}
-}
-
-@media (device-height: 800px) and (device-width: 360px) {
-	main {
-		width: 1465px !important;
-	}
-
-	::ng-deep footer {
-		width: 1465px;
-	}
-
-	.register-form {
-
-		width: 1415px !important;
-		left: -80px !important;
-	}
-
-	.register-form .container {
-		width: 90%;
-	}
-
-	.register-form label {
-		width: 100%
-	}
-
-	.register-form input {
-		width: 100%;
-	}
-}
 
 /* For Mobile Landscape View */
-@media screen and (max-device-width: 640px) and (orientation: landscape) {
+@media screen and (max-width: 640px) and (orientation: landscape) {
 	/*-maybe---*/
 }
 
 /* For Mobile Phones Portrait or Landscape View */
-@media screen and (max-device-width: 640px) {
-	/*-maybe---*  /*-maybe---*/
+@media screen and (max-width: 640px) {
+	/*-maybe---*  /*-maybe--500px-*/
 }
 
 
-/* For iPhone 5 Portrait or Landscape View */
-@media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) {
-	/*-maybe---*/
-}
 
-/* For iPhone 6 and 6 plus Portrait or Landscape View */
-@media (device-height: 896px) and (device-width: 414px) {
+@media (max-width:480px) {
 	main {
-		padding-top: 80% !important;
-		height: 3800px !important;
-		width: 1650px !important;
-	}
-
-	::ng-deep footer {
-		width: 1650px;
-	}
-
-	.register-form {
-		width: 1620px !important;
-		left: -480px;
-
-	}
-
-	.container {
+		padding-top: 20%;
 		width: 1500px;
-	}
-}
-
-
-@media (device-height: 851px) and (device-width: 393px) {
-	main {
-		padding-top: 50%;
-		height: 3650px;
-		width: 1400px;
-	}
-
-	::ng-deep footer {
-		width: 1400px;
+		height:2400px;
 	}
 
 	.register-form {
-		width: 1300px;
-		left: -350px;
-		margin-bottom: 10%;
-		background-color: white;
-	}
-
-	.container {
-		width: 1250px !important;
-	}
-
-	.container h1 {
-		font-size: 11rem;
-		text-align: center;
-	}
-
-	.container p {
-		font-size: 4rem;
-		text-align: center;
-	}
-
-	.container label {
-		font-size: 5.25rem;
-	}
-
-	.container input {
-		font-size: 5rem;
-	}
-
-	.signin {
-		font-size: 3.75rem;
-	}
-
-	.registerbtn {
-		font-size: 4rem;
-	}
-
-	#terms {
-		font-size: 2.75rem;
-	}
-}
-
-/*--Samsung --*/
-
-@media (device-height: 740px) and (device-width: 360px) {
-
-	main {
-		padding-top: 50%;
-		height: 3951px !important;
-		width: 2200px !important;
-	}
-
-	::ng-deep footer {
-		width: 2200px;
-	}
-
-	.register-form {
-		width: 1300px !important;
-		margin-bottom: 10%;
-		margin-left: 4.5% !important;
-		background-color: white;
-	}
-
-	.container {
-		width: 1250px !important;
-	}
-
-	.container h1 {
-		font-size: 11rem;
-		text-align: center;
-	}
-
-	.container p {
-		font-size: 4rem;
-		text-align: center;
-	}
-
-	.container label {
-		font-size: 5.25rem;
-	}
-
-	.container input {
-		font-size: 5rem;
-	}
-
-	.signin {
-		font-size: 3.75rem;
-	}
-
-	.registerbtn {
-		font-size: 4rem;
-	}
-
-	#terms {
-		font-size: 2.75rem;
-	}
-
-}
-
-
-
-@media (device-height: 786px) and (device-width: 393px) {
-	main {
-		padding-top: 50%;
-		height: 3550px;
-		width: 1400px;
-
-	}
-
-	::ng-deep footer {
-		width: 1400px;
-	}
-
-	.register-form {
-		width: 1350px;
-		margin-bottom: 10%;
-		margin-left: 8%;
-		background-color: white;
-	}
-
-	.container {
-		width: 1150px !important;
-	}
-
-	.container h1 {
-		font-size: 11rem;
-		text-align: center;
-	}
-
-	.container p {
-		font-size: 4rem;
-		text-align: center;
-	}
-
-	.container label {
-		font-size: 5.25rem;
-	}
-
-	.container input {
-		font-size: 5rem;
-	}
-
-
-	.signin {
-		font-size: 3.75rem;
-	}
-
-	.registerbtn {
-		font-size: 4rem;
-	}
-
-	#terms {
-		font-size: 2.75rem;
-	}
-}
-
-@media (width:384px) and (height:854px) {
-
-	main {
-		width: 1535px !important;
-	}
-
-	::ng-deep footer {
-		width: 1535px;
-	}
-
-	.register-form {
-		width: 1510px;
-		left: -450px;
-	}
-
-	.register-form .container {
-		width: 90%;
-	}
-
-	.register-form label {
-		width: 100%
-	}
-
-	.register-form input {
-		width: 100%;
-	}
-}
-
-@media (device-width: 384px) and (device-height:640px) {
-	main {
-		padding-top: 90%;
-		height: 3550px !important;
-		width: 1535px !important;
-	}
-
-	::ng-deep footer {
-		width: 1535px;
-	}
-
-	.register-form {
-		width: 1500px;
-		margin-bottom: 10%;
-		margin-left: 20px;
-		background-color: white;
-	}
-
-	.register-form .container {
-		width: 90%;
-	}
-
-	.register-form label {
-		width: 100%
-	}
-
-	.register-form input {
-		width: 100%;
-	}
-}
-
-
-
-
-
-@media (min-device-height: 667px) and (min-device-width: 375px) and (-webkit-min-device-pixel-ratio: 3) {
-	main {
-		padding-top: 50%;
-		height: 3850px;
-
-
-	}
-
-
-	.register-form {
-		width: 1200px;
-		left: -320px;
-	}
-
-	.container {
-		width: 900px;
-	}
-
-	.container h1 {
-		font-size: 11rem;
-		text-align: center;
-	}
-
-	.container p {
-		font-size: 4rem;
-		text-align: center;
-	}
-
-	.container label {
-		font-size: 5.25rem;
-	}
-
-	.container input {
-		font-size: 5rem;
-	}
-
-
-	.signin {
-		font-size: 3.75rem;
-	}
-
-	.registerbtn {
-		font-size: 4rem;
-	}
-
-	#terms {
-		font-size: 2.75rem;
-	}
-}
-
-@media (device-width: 320px) and (device-height:568px) {
-	main {
-		padding-top: 90%;
-		height: 3550px !important;
-		width: 1700px !important;
-	}
-
-	.register-form {
-		width: 1200px;
-		margin-bottom: 10%;
-		margin-left: 2.5%;
-		background-color: white;
-	}
-
-	.register-form .container {
-		width: 90% !important;
-	}
-
-	.register-form label {
-		width: 100%
-	}
-
-	.register-form input {
-		width: 100%;
-	}
-
-	.container {
-		width: 900px;
+		top: 200px;
+		left: 10%;
+		width:80%
 	}
 
 	.container h1 {
 		font-size: 8rem;
 		text-align: center;
 	}
-
+	.container h3 {
+		margin-top: 20px;
+		font-size: 5rem;
+		
+	}
 	.container p {
-		font-size: 3rem;
+		font-size: 4rem;
 		text-align: center;
 	}
-
 	.container label {
-		font-size: 5.25rem;
+		font-size: 3.2rem;
 	}
-
 	.container input {
-		font-size: 5rem;
+		font-size: 4.2rem;
+	}
+	.registerbtn{
+		font-size: 4.2rem;
 	}
 
 	.signin {
-		font-size: 3.75rem;
+		font-size: 3rem;
 	}
 
-	.registerbtn {
-		font-size: 4rem;
+	.signin span {
+		font-size: 3rem;
 	}
 
+	.signin a {
+		font-size: 3rem;
+	}
 	#terms {
-		font-size: 2.75rem;
+		font-size: 2rem;
 	}
 }
 
-
-@media (device-width: 320px) and (device-height:658px) {
-	main {
-		padding-top: 90%;
-		height: 3550px !important;
-		width: 1280px !important;
+@media (width:414px) and (height:736px) {
+	.register-form {
+		top: 300px;
+		left: 10%;
+		width:80%
 	}
 
-	::ng-deep footer {
-		width: 1280px;
+}
+
+@media (max-width:411px) and (max-height:731px){
+	.register-form {
+		top: 300px;
+		width:80%;
+		left:-15%;
+	}
+}
+
+@media (max-width:393px){
+	.register-form {
+		top: 200px;
+		width:80%
+	}
+}
+
+@media (max-width:393px) and (max-height:786px) {
+	.register-form {
+		top: 200px;
+		left: 10%;
+		width:80%
+	}
+}
+
+@media (max-width:385px) {
+	main {
+		padding-top: 20%;
+	}
+}
+
+@media (max-width:385px) and (max-height:640px) {
+	main {
+		padding-top: 20%;
 	}
 
 	.register-form {
-		width: 1220px;
-		margin-bottom: 10%;
-		margin-left: 2.5%;
-		background-color: white;
-	}
-
-	.register-form .container {
-		width: 90%;
-	}
-
-	.register-form label {
-		width: 100%
-	}
-
-	.register-form input {
-		width: 100%;
+		top: 200px;
+		left: 10%;
+		width:80%
 	}
 }
+
+@media (width:375px) and (height:667px) {
+	.register-form {
+		top: 200px;
+		left: 10%;
+		width:80%
+	}
+}
+
+@media (max-width:360px) {
+	main {
+		padding-top: 20%;
+		width: 1400px;
+	}
+
+	.register-form {
+		top: 200px;
+		left: 10%;
+		width:80%
+	}
+}
+
+
+@media (max-width:320px) {
+
+	main {
+		padding-top: 20%;
+		width: 1250px;
+	}
+
+	.register-form {
+		top: 200px;
+		left: 10%;
+		width:80%
+	}
+
+	
+
+	.container h1 {
+		font-size: 4.8rem;
+		text-align: center;
+	}
+	.container h3 {
+		margin-top: 20px;
+		font-size: 3rem;
+		
+	}
+	.container p {
+		text-align: center;
+	}
+
+
+}
+
+
+
+
+
+/* 
+
+
+
+.login-div {
+  margin-top:7%;
+  margin-left: 35%;
+  padding-bottom:8%;
+  margin-bottom:10%;
+  width:430px;
+  padding: 60px 35px 35px 35px;
+  border-radius: 2px;
+  background: linear-gradient(130deg, rgb(255, 255, 255) 10%, rgb(227, 236, 247) 40%, rgb(179, 218, 255) 100%);
+  box-shadow: 3px 13px 20px rgba(0, 0, 0, 0.45),
+              -3px -13px 20px rgba(0, 0, 0,0.45);
+}
+
+.registerLink{
+	color: black;
+    margin-left: 20%;
+    font-size: 1.4rem;
+}
+
+.stack4{
+  border-radius:2px !important;
+  box-shadow: inset 8px 8px 8px #cbced1,
+              inset -8px -8px 8px #ffffff !important;
+  border-style:none;
+
+
+}
+
+.contactButton{
+  outline: none;
+  border:none;
+  cursor: pointer;
+  width:100%;
+  height: 60px;
+  border-radius: 2px;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+  color:#fff;
+  text-align: center;
+  background:linear-gradient(130deg, rgb(74, 255, 255) 10%, rgb(74, 247, 209) 30%, rgb(36, 207, 170) 100%);
+  box-shadow: 3px 3px 8px #b1b1b1,
+              -3px -3px 8px #ffffff;
+  transition: 0.5s;
+ 
+}
+
+.register-alert{
+  border-radius: 2px !important;
+  margin-top:2px;
+  color:white;
+  border: none;
+  background:linear-gradient(130deg, rgba(255, 0, 0, 1) 10%, rgba(243, 50, 50, 0.85) 40%, rgb(219, 86, 86) 80%);
+  box-shadow:0 1px 9px 0 rgba(37, 35, 35, 0.5),0 1px 9px 0 rgba(26, 24, 24, 0.425);
+  font-weight: 600;
+  animation-duration: 5s;
+}
+
+.valid{
+	color: crimson;
+	font-weight: 500;
+	font-size: 1.3rem;
+}
+
+.needs-validation{
+	padding-bottom:10%;
+}
+
+@media (max-width: 1024px) and (max-height:1366px){
+
+	.registerLink{
+		color: black;
+    	margin-left: 22%;
+    	font-size: 1.9rem;
+	}
+	.main{
+		width:100%;
+   		height: 1300px;
+	}
+
+	.login-div {
+		margin-top:25%;
+		margin-left: 20%;
+		width: 60%;
+        font-size: 1.95rem;
+		
+	}
+}
+
+@media (max-width:914px) and (max-height:1368px){
+	.login-div {
+		margin-top: 20%;
+		margin-left: 11%;
+		width:700px;
+		
+	}
+
+	.registerLink{
+		color: black;
+    	margin-left: 30%;
+    	font-size: 1.4rem;
+	}
+
+	.textLabel{
+		font-size: 2.5rem;
+	}
+
+	.stack4{
+		font-size:2rem;
+	}
+
+
+
+	.main{
+		height: 1300px;
+	}
+}
+
+@media (max-width:821px) and (max-height:1181px){
+	.login-div {
+		margin-top: 18%;
+		width: 80%;
+        margin-left: 10%;
+        font-size: 2.5rem;
+	}
+
+	.registerLink{
+		color: black;
+		margin-left: 23%;
+		font-size: 2.6rem;
+	}
+
+    .contactButton{
+        font-size:2.5rem;
+    }
+
+    .stack4{
+        font-size: 2rem;
+    }
+
+	.main{
+		height: 1500px;
+		width:130vw;
+	}
+}
+
+
+@media (max-width:768px) and (max-height:1125px){
+	.main{
+		width:100%;
+   		height: 1100px;
+	}
+
+	.textLabel{
+		font-size: 2rem;
+	}
+
+	.registerLink{
+		color: black;
+		margin-left: 20%;
+		font-size: 1.8rem;
+	}
+
+	.stack4{
+		font-size: 2rem;
+	}
+
+	.login-div {
+		margin-top:25%;
+		margin-left: 115px;
+		width:70%;
+	
+	}
+}
+
+@media (max-width:415px){
+	.login-div {
+		margin-top:40%;
+		margin-left: 10%;
+		margin-bottom:18%;
+		width:80%;
+		height: 50%;
+		padding: 60px 35px 35px 35px;
+		border-radius: 2px;
+		background: linear-gradient(130deg, rgb(255, 255, 255) 10%, rgb(227, 236, 247) 40%, rgb(179, 218, 255) 100%);
+		box-shadow: 3px 13px 20px rgba(0, 0, 0, 0.45),
+					-3px -13px 20px rgba(0, 0, 0,0.45);
+	  }
+
+	  .registerLink{
+		color: black;
+		margin-left: 21%;
+		font-size: 3rem;
+	   }
+
+	  .main{
+		background-image: linear-gradient(rgba(43, 43, 43, 0.7), rgba(174, 191, 250, 0.7)), url(https://images.unsplash.com/photo-1512652296884-f1d6ecc353c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80); background-size:cover; 
+		padding-top: 1%; 
+		padding-bottom:60%;
+		width:1120px;
+   		 height: 2440px;
+	}
+
+	label{
+		font-size: 3.2rem;
+	}
+	.stack4{
+		font-size: 4rem;
+	}
+
+	input{
+		font-size: 2.75rem;
+	}
+
+	.contactButton{
+		font-size: 2.75rem;
+		height: 100px;
+	}
+
+	.alert-font{
+		font-size: 2.75rem;
+		
+	}
+}
+
+@media (max-width:415px) and( min-height:822px){
+	.login-div {
+		margin-top:15%;
+		margin-left: 13rem;
+		margin-bottom:8%;
+		width:730px;
+		height: 1850px;
+		padding: 60px 35px 35px 35px;
+		border-radius: 2px;
+		background: linear-gradient(130deg, rgb(255, 255, 255) 10%, rgb(227, 236, 247) 40%, rgb(179, 218, 255) 100%);
+		box-shadow: 3px 13px 20px rgba(0, 0, 0, 0.45),
+					-3px -13px 20px rgba(0, 0, 0,0.45);
+	  }
+
+	  .main{
+		background-image: linear-gradient(rgba(43, 43, 43, 0.7), rgba(174, 191, 250, 0.7)), url(https://images.unsplash.com/photo-1512652296884-f1d6ecc353c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80); background-size:cover; 
+		padding-top: 1%; 
+		padding-bottom:60%;
+		width:1120px;
+   		 height: 2140px;
+	}
+
+	label{
+		font-size: 2.75rem;
+	}
+
+	input{
+		font-size: 2.75rem;
+	}
+
+	.contactButton{
+		font-size: 2.75rem;
+		height: 100px;
+	}
+
+	.alert-font{
+		font-size: 2.75rem;
+		
+	}
+}
+
+
+
+@media (max-width:415px) and (max-height: 824px){
+	.login-div {
+		margin-top: 40%;
+		margin-left: 10%;
+		margin-bottom: 8%;
+		width: 80%;
+		height: 50%;
+		padding: 60px 35px 35px 35px;
+		border-radius: 2px;
+		background: linear-gradient(130deg, rgb(255, 255, 255) 10%, rgb(227, 236, 247) 40%, rgb(179, 218, 255) 100%);
+		box-shadow: 3px 13px 20px rgba(0, 0, 0, 0.45),
+					-3px -13px 20px rgba(0, 0, 0,0.45);
+	  }
+
+	  .main{
+		background-image: linear-gradient(rgba(43, 43, 43, 0.7), rgba(174, 191, 250, 0.7)), url(https://images.unsplash.com/photo-1512652296884-f1d6ecc353c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80); background-size:cover; 
+		padding-top: 1%; 
+		padding-bottom:60%;
+		width:1120px;
+   		 height: 2200px;
+	}
+
+	label{
+		font-size: 2.75rem;
+	}
+
+	input{
+		font-size: 2.75rem;
+	}
+
+	.contactButton{
+		font-size: 2.75rem;
+		height: 100px;
+	}
+
+	.alert-font{
+		font-size: 2.75rem;
+		
+	}
+}
+
+@media (max-width:412px) and (max-height:732px){
+	.login-div {
+		margin-top: 40%;
+		margin-left: 10%;
+		margin-bottom: 8%;
+		width: 80%;
+		height: 50%;
+		padding: 60px 35px 35px 35px;
+		border-radius: 2px;
+		background: linear-gradient(130deg, rgb(255, 255, 255) 10%, rgb(227, 236, 247) 40%, rgb(179, 218, 255) 100%);
+		box-shadow: 3px 13px 20px rgba(0, 0, 0, 0.45),
+					-3px -13px 20px rgba(0, 0, 0,0.45);
+	  }
+
+	  .main{
+		background-image: linear-gradient(rgba(43, 43, 43, 0.7), rgba(174, 191, 250, 0.7)), url(https://images.unsplash.com/photo-1512652296884-f1d6ecc353c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80); background-size:cover; 
+		padding-top: 1%; 
+		padding-bottom:60%;
+		width:1120px;
+   		 height: 1840px;
+	}
+
+	label{
+		font-size: 2.75rem;
+	}
+
+	input{
+		font-size: 2.75rem;
+	}
+
+	.contactButton{
+		font-size: 2.75rem;
+		height: 100px;
+	}
+
+	.alert-font{
+		font-size: 2.75rem;
+		
+	}
+}
+
+@media (max-width:376px){
+	.login-div {
+		margin-top:25%;
+		margin-left:8%;
+		margin-bottom:8%;
+		width:930px;
+		height: 40%;
+		padding: 60px 35px 35px 35px;
+		border-radius: 2px;
+		background: linear-gradient(130deg, rgb(255, 255, 255) 10%, rgb(227, 236, 247) 40%, rgb(179, 218, 255) 100%);
+		box-shadow: 3px 13px 20px rgba(0, 0, 0, 0.45),
+					-3px -13px 20px rgba(0, 0, 0,0.45);
+	  }
+
+	  .registerLink{
+		color: black;
+		margin-left: 20%;
+		font-size: 3rem;
+	}
+
+	  .main{
+		background-image: linear-gradient(rgba(43, 43, 43, 0.7), rgba(174, 191, 250, 0.7)), url(https://images.unsplash.com/photo-1512652296884-f1d6ecc353c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80); background-size:cover; 
+		padding-top: 1%; 
+		padding-bottom:60%;
+		width:1120px;
+   		 height: 2340px;
+	}
+
+	label{
+		font-size: 3.2rem;
+	}
+
+	.stack4{
+		font-size: 4rem;
+	}
+
+	input{
+		font-size: 2.75rem;
+	}
+
+	.contactButton{
+		font-size: 2.75rem;
+		height: 100px;
+	}
+
+	.alert-font{
+		font-size: 2.75rem;
+		
+	}
+}
+
+
+@media (max-width:361px){
+	.login-div {
+		margin-top: 40%;
+		margin-left: 10%;
+		margin-bottom: 8%;
+		width: 80%;
+		height: 50%;
+		padding: 60px 35px 35px 35px;
+		border-radius: 2px;
+		background: linear-gradient(130deg, rgb(255, 255, 255) 10%, rgb(227, 236, 247) 40%, rgb(179, 218, 255) 100%);
+		box-shadow: 3px 13px 20px rgba(0, 0, 0, 0.45),
+					-3px -13px 20px rgba(0, 0, 0,0.45);
+	  }
+
+	  .main{
+		background-image: linear-gradient(rgba(43, 43, 43, 0.7), rgba(174, 191, 250, 0.7)), url(https://images.unsplash.com/photo-1512652296884-f1d6ecc353c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80); background-size:cover; 
+		padding-top: 1%; 
+		padding-bottom:60%;
+		width:1120px;
+   		 height: 2140px;
+	}
+
+	label{
+		font-size: 2.75rem;
+	}
+
+	input{
+		font-size: 2.75rem;
+	}
+
+	.contactButton{
+		font-size: 2.75rem;
+		height: 100px;
+	}
+
+	.alert-font{
+		font-size: 2.75rem;
+		
+	}
+}
+
+@media (max-width:322px){
+	.login-div {
+		margin-top:25%;
+		margin-bottom:38%;
+	}
+} */

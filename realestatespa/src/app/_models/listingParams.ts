@@ -11,11 +11,11 @@ export class ListingParams
   soldStatus:string ="SOLD";
   bomStatus:string ="BACK ON MARKET";
   withdrawnStatus:string ="WITHDRAWN";
-  expiredStatus:string ="EXPIRED";
+  expiredStatus:string ="FORECLOSED";
   comingsoonStatus:string ="COMING SOON";
   cancelledStatus:string ="CANCELLED";
   zipcode:number=-1;
-  fulladdress:string = "CA 92008"; 
+  fulladdress:string = " CA"; 
   lotSize:string="0";
   estSqrFt:number =-1;
   priceSort:number = -1;

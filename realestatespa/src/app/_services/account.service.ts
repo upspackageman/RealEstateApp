@@ -1,10 +1,10 @@
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import {map} from 'rxjs/operators';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import {catchError, map} from 'rxjs/operators';
 import { User } from '../_models/user';
 import { ForgotPassword } from '../_models/forgotPassword';
-import { ReplaySubject } from 'rxjs';
+import { ReplaySubject, throwError } from 'rxjs';
 import { CustomEncoder } from '../_models/customEncoder';
 
 @Injectable({
@@ -12,6 +12,7 @@ import { CustomEncoder } from '../_models/customEncoder';
 })
 export class AccountService {
   baseUrl = environment.apiUrl;
+  callback = environment.apiUrl;
   private currentUserSource = new ReplaySubject<User>(1);
   currentUser$ = this.currentUserSource.asObservable();
 
@@ -36,12 +37,15 @@ constructor(private http: HttpClient) { }
           localStorage.setItem('user', JSON.stringify(user));
           this.currentUserSource.next(user);
         }
-      })
+      }),
+      catchError(this.handleError)
     )
   }
 
   forgotPassword(forgotPassword:ForgotPassword){
-    return this.http.post(this.baseUrl + 'account/forgotpassword', forgotPassword)
+    return this.http.post(this.baseUrl + 'account/forgotpassword', forgotPassword).pipe(
+      catchError(this.handleError)
+    );
     
   }
 
@@ -55,7 +59,9 @@ constructor(private http: HttpClient) { }
     console.log(params.get('token'));
     console.log(params.get('email'));
     
-    return this.http.get(this.baseUrl + 'account/emailconfirmation', { params: params });
+    return this.http.get(this.baseUrl + 'account/emailconfirmation', { params: params }) .pipe(
+      catchError(this.handleError)
+    );
   }
 
 
@@ -70,6 +76,17 @@ constructor(private http: HttpClient) { }
   logout(){
     localStorage.removeItem('user');
     this.currentUserSource.next(null);
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    // You can handle different types of errors here
+    // For example, you can log the error or display a user-friendly message
+    console.error('An error occurred:', error);
+    console.error (error.status);
+    if(error.status===400){
+
+    }
+    return throwError('Something went wrong. Please try again later.');
   }
 
 }

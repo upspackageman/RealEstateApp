@@ -107,18 +107,19 @@ export class HomeComponent implements OnInit {
 
 
   async closeModal() {
-    location.reload();
-    this.modalRef.hide()
+    this.modalService?.hide()
+   this.home();
+   
   }
 
 
   async home() {
     if (!localStorage.getItem('direct')) {
       localStorage.setItem('direct', 'no reload')
-      setTimeout(() => {
-        location.reload();
-      }
-        , .001);
+      const currentUrl = this.router.url;
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
     } else {
       localStorage.removeItem('direct');
     }

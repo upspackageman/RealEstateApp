@@ -43,7 +43,8 @@ export class ListingDetailsContactComponent implements OnInit {
 
 
   ngOnInit() {
-    this.toContactAgent(false);
+    //this.redirect();
+    //this.toContactAgent(false);
 
   }
 
@@ -53,8 +54,10 @@ export class ListingDetailsContactComponent implements OnInit {
   }
 
   async toContactAgent(e) {
-    this.contactAgent = e.target.checked;
-    console.log(this.contactAgent);
+     if (e.target) {
+      this.contactAgent = e.target.checked;
+      console.log(this.contactAgent);
+    }
   }
 
   sendMail() {
@@ -80,7 +83,17 @@ export class ListingDetailsContactComponent implements OnInit {
       }
     });
   }
-
+  async redirect() {
+    if (!localStorage.getItem('direct')) {
+      setTimeout(() => {
+        location.reload();
+      }
+        , .0001);
+      localStorage.setItem('direct', 'no reload');
+    } else {
+      localStorage.removeItem('direct');
+    }
+  }
 
 
 }

@@ -26,17 +26,21 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
   async dropdown(){
     let clicked:boolean =true;
-
+    
   }
 
 
   logout(){
+    console.log(this.accountService)
     this.accountService.logout();
 
   }
+
+  
 
 } 

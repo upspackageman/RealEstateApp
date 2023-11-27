@@ -20,6 +20,10 @@ export class EmailConfirmationComponent implements OnInit {
     this.confirmEmail();
   }
 
+  
+
+  
+
   private confirmEmail() {
     this.showError = this.showSuccess = false;
     const token = this._route.snapshot.queryParams['token'];

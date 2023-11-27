@@ -23,15 +23,15 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.redirect_login()
+  
   }
 
 
   login() {
     this.modelLogin.email = this.loginForm.value.email;
     this.modelLogin.password = this.loginForm.value.password;
-    this.accountService.login(this.modelLogin).subscribe(response => {
-      console.log(response);
+    this.accountService.login(this.modelLogin).subscribe(_ => {
+      
       this.redirect();
     }, error => {
       console.log(error);
@@ -39,18 +39,28 @@ export class LoginComponent implements OnInit {
   }
 
 
-  async redirect_login() {
-    window.scroll(-1000000, -1000000);
-    if (!localStorage.getItem('direct')) {
-      localStorage.setItem('direct', 'no reload')
-      location.reload();
-    } else {
-      localStorage.removeItem('direct');
-    }
-  }
+  // async redirect_login() {
+
+  //   if (!localStorage.getItem('direct')) {
+  //     localStorage.setItem('direct', 'no reload')
+  //     this.redirect();
+  //   //   const currentUrl = this.router.url;
+  //   //   this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+  //   //   this.router.navigate([currentUrl]);
+      
+  //   // });
+  //   } else {
+     
+  //     localStorage.removeItem('direct');
+  //     this.redirect();
+  //   }
+  // }
 
   async redirect() {
     await this.router.navigate(['builder-listing']);
   }
+
+
+  
 
 }

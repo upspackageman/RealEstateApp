@@ -18,7 +18,7 @@
             id="first-name" required>
         </div>
         <div *ngIf="f.firstName.touched && f.firstName.errors">
-          <div class="pb-3 pt-4 valid" *ngIf="f.firstName.errors">First Name is required</div>
+          <div class=" valid" *ngIf="f.firstName.errors">First Name is required</div>
         </div>
       </div>
       <div class="col-lg-12">
@@ -27,7 +27,7 @@
             id="last-name" required>
         </div>
         <div *ngIf="f.lastName.touched && f.lastName.errors">
-          <div class="pb-3 pt-4 valid" *ngIf="f.lastName.errors">Last Name is required</div>
+          <div class=" valid" *ngIf="f.lastName.errors">Last Name is required</div>
         </div>
       </div>
       <div class="col-lg-12">
@@ -36,8 +36,8 @@
             required>
         </div>
         <div *ngIf="f.email.touched && f.email.errors">
-          <div class="pb-3 pt-4 valid" *ngIf="f.email.errors.required">Email is required</div>
-          <div class="pb-3 pt-4 valid" *ngIf="f.email.errors">Email must be a valid email address</div>
+          <div class=" valid" *ngIf="f.email.errors.required">Email is required</div>
+          <div class=" valid" *ngIf="f.email.errors">Email must be a valid email address</div>
         </div>
       </div>
       <div class="col-lg-12">
@@ -45,8 +45,8 @@
           <input formControlName="phone" class="form-control stack4" id="phone" placeholder="Enter Number" required="">
         </div>
         <div *ngIf="f.phone.touched && f.phone.errors">
-          <div class="pb-3 pt-4 valid" *ngIf="f.phone.errors.required">Phone number is required</div>
-          <div class="pb-3 pt-4 valid" *ngIf="f.phone.errors">Invalid phone number</div>
+          <div class=" valid" *ngIf="f.phone.errors.required">Phone number is required</div>
+          <div class=" valid" *ngIf="f.phone.errors">Invalid phone number</div>
         </div>
       </div>
       <div class="col-lg-12">
@@ -64,7 +64,7 @@
           </label>
         </div>
       </div>
-      <div *ngIf="contactAgent" class="slide-in-top col-lg-12">
+      <div *ngIf="contactAgent" class="scale-up-ver-top col-lg-12">
         <div   class="form-group mt-2">
           <input    formControlName="agentName" class="form-control" placeholder="Agent's Name" name="agent-name"
             id="agent-name">
@@ -90,6 +90,7 @@
         You don’t need to consent as a condition of any purchase and can revoke your consent at any time. You also agree
         to the  <a (click)="bsModalRef.hide()" routerLink="/terms/{{listId}}">Terms of Use</a> and  <a
           (click)="bsModalRef.hide()" routerLink="/terms/{{listId}}">Privacy Policy.</a></p>
+         <p style="text-align:center"> Beverly Ward, REALTOR® a Burke Real Estate Consultant California DRE#01992425</p>
     </div>
   </form>
 </div>

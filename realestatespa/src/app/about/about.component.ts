@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-about',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.about();
@@ -15,25 +16,14 @@ export class AboutComponent implements OnInit {
   async about() {
 
     if (!localStorage.getItem('direct')) {
-
-
-
       localStorage.setItem('direct', 'no reload')
-      setTimeout(() => {
-        location.reload();
-      }
-        , 1);
+      const currentUrl = this.router.url;
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
 
     } else {
       localStorage.removeItem('direct');
-
-
-
-
-
-
-
-
     }
   }
 

@@ -34,6 +34,36 @@
   }
 }
 
+@-webkit-keyframes scale-up-ver-top {
+  0% {
+    -webkit-transform: scaleY(0.4);
+            transform: scaleY(0.4);
+    -webkit-transform-origin: 100% 0%;
+            transform-origin: 100% 0%;
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+    -webkit-transform-origin: 100% 0%;
+            transform-origin: 100% 0%;
+  }
+}
+@keyframes scale-up-ver-top {
+  0% {
+    -webkit-transform: scaleY(0.4);
+            transform: scaleY(0.4);
+    -webkit-transform-origin: 100% 0%;
+            transform-origin: 100% 0%;
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+    -webkit-transform-origin: 100% 0%;
+            transform-origin: 100% 0%;
+  }
+}
+
+
 @-webkit-keyframes slide-in-top {
   0% {
     -webkit-transform: translateY(-1000px);
@@ -63,6 +93,11 @@
 .slide-in-top {
 	-webkit-animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	        animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.scale-up-ver-top {
+	-webkit-animation: scale-up-ver-top 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: scale-up-ver-top 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
 .contact3 h1,
@@ -123,21 +158,21 @@
   margin-top: 5%;
   font-size: 2.5rem;
   position: relative;
-  border-radius: 0px;
-  border-width: 5px;
+  border-radius: .25rem;
+  border-width: 1.75px;
   border-color: #0f0e03;
   font-size: 28px !important;
   box-shadow: 9.91px 9.91px 15px #D9DADE, -9.91px -9.91px 15px #FFFFFF;
 }
 
 ::ng-deep .modal-content .contact-box .form-control {
-  border-radius: 0px;
+  border-radius: .25rem;
+  border-width: 1.75px;
   border-color: #0f0e03;
   box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #ffffff !important;
 }
 
 ::ng-deep .modal-content .contact-box .form-control:focus {
-  border-radius: 0px;
   border-color: rgb(226, 186, 84);
   transition: 200ms ease-in-out;
   outline: none;
@@ -238,6 +273,7 @@
 
 input[type="checkbox"]+span:before {
   font: 20pt FontAwesome;
+  font-weight: 100 !important;
   content: '\00f096';
   color: rgb(22, 20, 4);
   display: inline-block;
@@ -293,6 +329,7 @@ input[type="checkbox"] {
 
 
   ::ng-deep .modal-dialog .modal-content {
+    
     margin-top: 1.5% !important;
     border-color: #c9b337;
     border-width: 7px;

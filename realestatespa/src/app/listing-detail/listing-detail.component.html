@@ -38,14 +38,14 @@ src='../assets/NoPhotoAvailable.jpg';" />
         <div class="col-lg-6">
           <div class="sect">
             <h3>Estimated Monthly Payment</h3>
-            <h3 style="text-align: center;">{{overallPayment| currency:'USD':'symbol':'2.0-0'}}</h3>
+            <h3>{{overallPayment| currency:'USD':'symbol':'2.0-0'}}</h3>
 
 
 
 
             <div class="chart">
 
-              <canvas baseChart [data]="doughnutChartData" [legend]="true" [type]="doughnutChartType">
+              <canvas baseChart [data]="doughnutChartData" [legend]="true" [type]="doughnutChartType" [options]="doughnutChartOptions">
               </canvas>
 
             </div>
@@ -76,7 +76,7 @@ src='../assets/NoPhotoAvailable.jpg';" />
           </div>
         </div>
         <!-- Column -->
-        <div class="col-lg-6 mt-5 mb-4 ">
+        <div class="calc col-lg-6 mt-5 mb-4 ">
           <div class="accordion mt-5" id="accordionExample">
             <div class="accordion-item ">
               <h2 class="accordion-header" id="headingOne">
@@ -97,15 +97,13 @@ src='../assets/NoPhotoAvailable.jpg';" />
                     <div class="row g-3">
                       <div class="row">
                         <div class="col-md-6 mt-3 mb-3">
-                          <label for="country">Amt Down Payment</label>
-                          <div class="input-group mb-3">
-                            <input type="text" #amountD class="form-control stack2"
-                              aria-label="Amount (to the nearest dollar)" (focusout)="amountDownPayment(amountD.value)"
-                              value="{{amtDownPayment | number:'1.0-2'}}">
-                            <div class="input-group-append">
-                              <span class="input-group-text stack">$</span>
-                            </div>
-                          </div>
+                          <label for="firstName" class="form-label">Loan Program</label>
+                        <div  id="loan-display">
+                          <div id="30-fix-rate" value=30 (click)="loanProgram(30)">30-year fixed</div>
+                          <div id="15-fix-rate" value=15 (click)="loanProgram(15)">15-year fixed</div>
+                          <div id="5-arm"value=5 (click)="loanProgram(5)">5/1 ARM</div>
+                        </div>
+                          
                         </div>
                         <div class="col-md-6 mb-3 mt-3">
                           <label for="state">% Down Payment</label>
@@ -121,15 +119,20 @@ src='../assets/NoPhotoAvailable.jpg';" />
                         </div>
                       </div>
                       <div class="col-sm-6">
-                        <label for="firstName" class="form-label">Loan Program</label>
-                        <select #loan class="stack" id="loan-program" (change)="loanProgram(loan.value)">
+                        <label for="country">Amt Down Payment</label>
+                          <div class="input-group mb-3">
+                            <input type="text" #amountD class="form-control stack2"
+                              aria-label="Amount (to the nearest dollar)" (focusout)="amountDownPayment(amountD.value)"
+                              value="{{amtDownPayment | number:'1.0-2'}}">
+                            <div class="input-group-append">
+                              <span class="input-group-text stack">$</span>
+                            </div>
+                          </div>
+                        <!-- <select #loan class="stack" id="loan-program" (change)="loanProgram(loan.value)">
                           <option class="stack stack3" value=30>30-year fixed</option>
                           <option class="stack stack3" value=15>15-year fixed</option>
-                          <option class="stack stack3" value="ARM5">5/1 ARM</option>
-                        </select>
-                        <div class="invalid-feedback">
-                          Valid first name is required.
-                        </div>
+                          <option class="stack stack3" value="5">5/1 ARM</option>
+                        </select> -->
                       </div>
                       <div class="col-sm-6">
                         <label for="lastName" class="form-label ">Interest Rate</label>

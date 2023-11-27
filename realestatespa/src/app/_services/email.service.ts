@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { catchError, map, throwError } from 'rxjs';
 import { environment } from './../../environments/environment';
 
 @Injectable({
@@ -19,11 +19,10 @@ export class EmailService {
       headers = headers.set('Content-Type', 'application/json');
     }
 
-    console.log(mailMessage);
 
-    return this.http.post(this.baseUrl + 'email', mailMessage, {
-      headers
-    });
+    return this.http.post(this.baseUrl + 'email', mailMessage, {headers}) .pipe(
+      catchError(this.handleError)
+    );
 
 
 
@@ -35,12 +34,16 @@ export class EmailService {
     if (mail) {
       headers = headers.set('Content-Type', 'application/json');
     }
-    console.log(mail);
-    return this.http.post(this.baseUrl + 'email/contact', mail, {
-      headers
-    });
-
-
+    return this.http.post(this.baseUrl + 'email/contact', mail, {headers}).pipe(
+      catchError(this.handleError));
   }
+
+  private handleError(error: HttpErrorResponse) {
+    // You can handle different types of errors here
+    // For example, you can log the error or display a user-friendly message
+    console.error('An error occurred:', error);
+    return throwError('Something went wrong. Please try again later.');
+  }
+
 
 } 

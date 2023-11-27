@@ -30,7 +30,6 @@ namespace API.DTOs
         public string MasterBedroomDimensions {get;set;}
 
         public string Neighborhood {get;set;}
-        
 
         public string Status {get;set;}
 
@@ -62,7 +61,7 @@ namespace API.DTOs
 
         public string MiddleSchool {get;set;}
 
-       public string ListingDate {get;set;}
+        public string ListingDate {get;set;}
 
         public string Community {get;set;}
 

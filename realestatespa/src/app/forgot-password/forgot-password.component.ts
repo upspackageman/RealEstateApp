@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ForgotPassword } from '../_models/forgotPassword';
 import { AccountService } from '../_services/account.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-forgot-password',
@@ -31,7 +32,7 @@ export class ForgotPasswordComponent implements OnInit {
 
     const forgotPassDto: ForgotPassword = {
       email: this.forgotPasswordForm.value.email,
-      clientURI: 'http://192.168.0.28:4200/resetpassword'
+      clientURI: environment.apiUrl+'resetpassword'
     }
 
     this.accountService.forgotPassword(forgotPassDto)
@@ -44,7 +45,7 @@ export class ForgotPasswordComponent implements OnInit {
         error: (err: HttpErrorResponse) => {
           this.showError = true;
           this.errorMessage = err.message;
-          console.log(this.errorMessage);
+          console.log(err);
         }
       })
   }

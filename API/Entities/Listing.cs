@@ -3,12 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 
 namespace API.Entities
-{
-    [Index(nameof(Id),IsUnique=true)]
-    [Index(nameof(MLS))]
-    [Index(nameof(FullAddress))]
-    [Index(nameof(PriceSearch))]
-    [Index(nameof(Status))]
+{    [Index( nameof(PriceSearch), nameof(MLS), nameof(Id), nameof(Status), nameof(BathTotals), nameof(Bedrooms))]
     public class Listing
     {
         
@@ -53,7 +48,7 @@ namespace API.Entities
 
         public string WaterDistrictURL {get;set;}
 
-        public int zip {get;set;} 
+        public int Zip {get;set;} 
 
         public string WalkScore {get;set;}
 

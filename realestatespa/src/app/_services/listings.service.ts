@@ -5,9 +5,11 @@ import { PaginatedResult } from './../_models/pagination';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { Marker } from '../_models/marker';
+import { AccountService } from './account.service';
+import { User } from '../_models/user';
 
 
 @Injectable({
@@ -19,62 +21,54 @@ export class ListingsService {
   listings: Listing[] = [];
   listingCache = new Map();
   paginatedResult:PaginatedResult<Listing[]> = new PaginatedResult<Listing[]>;
-
+  user: User |undefined;
   markers: Marker[] = [];
   markerCache = new Map();
+  listingParams:ListingParams | undefined;
 
 
-
-  constructor(private http: HttpClient) { }
-
-  // getMarkers(markerParams: MarkerParams){
-
-  //   var pageNumber = 1; 
-  //   var pageSize = 99999999;
-
-
-  //   var response =this.markerCache.get(Object.values(markerParams).join('-'));
-  //   if(response){
-  //     return of(response)
-  //   }
-
-
-  //   let params = this.getPaginationHeaders(pageNumber, pageSize)
-  //   params = params.append('price', markerParams.price.toString());
-  //   params = params.append('bedrooms', markerParams.bedrooms.toString());
-  //   params = params.append('bathtotals', markerParams.bathtotals.toString());
-  //   params = params.append('activeStatus', markerParams.activeStatus);
-  //   params = params.append('pendingStatus', markerParams.pendingStatus);
-  //   params = params.append('contingentStatus', markerParams.contingentStatus);
-  //   params = params.append('withdrawnStatus', markerParams.withdrawnStatus);
-  //   params = params.append('cancelledStatus', markerParams.cancelledStatus);
-  //   params = params.append('bomStatus', markerParams.bomStatus);
-  //   params = params.append('expiredStatus', markerParams.expiredStatus);
-  //   params = params.append('comingsoonStatus', markerParams.comingsoonStatus);
-  //   params = params.append('soldStatus', markerParams.soldStatus);
-  //   params = params.append('zipcode', markerParams.zipcode.toString());
-  //   params = params.append('fulladdress', markerParams.fulladdress);
-  //   params = params.append('lotsize', markerParams.lotSize);
-  //   params = params.append('estimatedsquarefeet', markerParams.estSqrFt.toString());
-  //   params = params.append('pricesort', markerParams.priceSort.toString());
+  constructor(private http: HttpClient, private accountService:AccountService) { 
+    this.accountService.currentUser$.pipe(take(1)).subscribe({
+      next: (user) =>{
+     
+          this.listingParams = new ListingParams();
+          this.user = user;
+          
+        
+      }
+    })
+  }
 
 
 
 
-  //   return this.getPaginatedResults<Marker[]>(this.baseUrl + 'markers', params)
-  //     .pipe(map(response => {
-  //       this.markerCache.set(Object.values(markerParams).join('-'), response);
-  //       console.log(response);
-  //       return response;
-  //     }))
-  // }
+
+
+  getListingParams(){
+   //console.log(this.listingParams);
+    return this.listingParams;
+    
+  }
+
+  setListingParams(params: ListingParams){
+    if(params.pageNumber !== this.listingParams?.pageNumber){
+        params.pageNumber = 1;
+    }
+    this.listingParams = params;
+  }
+
+  resetListingParams(){
+    this.listingParams = new ListingParams();
+    return this.listingParams;
+  }
 
   getListings(listingParams: ListingParams) {
-    var response = this.listingCache.get(Object.values(listingParams).join('-'));
-    if (response) {
-      return of(response)
-    }
-
+   //console.log(listingParams);
+   
+    var key = Object.values(listingParams).join('-');
+    var response = this.listingCache.get(key);
+   //console.log(response);
+   //console.log(Array.from(this.listingCache.keys()));
     let params = this.getPaginationHeaders(listingParams.pageNumber, listingParams.pageSize)
     params = params.append('price', listingParams.price.toString());
     params = params.append('bedrooms', listingParams.bedrooms.toString());
@@ -94,16 +88,32 @@ export class ListingsService {
     params = params.append('estimatedsquarefeet', listingParams.estSqrFt.toString());
     params = params.append('pricesort', listingParams.priceSort.toString());
 
+   
+    
+  
 
+   if (response!==undefined) {
+ 
+     return of(response)
+   }
+   else{
+   
     return this.getPaginatedResults<Listing[]>(this.baseUrl + 'listings', params)
       .pipe(map(response => {
         this.listingCache.set(Object.values(listingParams).join('-'), response);
-        console.log(response);
         return response;
+        
       }))
+
+    }
   }
 
   getListingsById(id: string) {
+   
+   
+    const listing = [...this.listingCache.values()].reduce((arr,elem)=>arr.concat(elem.result),[]).find((listing:Listing) =>listing.id ===id);
+    if(listing) return of(listing);
+  
     return this.http.get<Listing>(this.baseUrl + 'listings/' + id);
   }
 
@@ -117,9 +127,6 @@ export class ListingsService {
           paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
 
         }
-        console.log();
-        console.log(paginatedResult);
-        console.log(paginatedResult.pagination);
         return paginatedResult;
       })
     );

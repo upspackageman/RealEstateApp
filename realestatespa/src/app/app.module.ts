@@ -1,6 +1,6 @@
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule} from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { TabsModule, TabsetConfig } from 'ngx-bootstrap/tabs';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -17,7 +17,7 @@ import { ForsaleComponent } from './forsale/forsale.component';
 import { ListingCardComponent } from './listing-card/listing-card.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ListingDetailComponent } from './listing-detail/listing-detail.component';
-import { PaginationModule } from 'ngx-bootstrap/pagination';
+//import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { CommonModule } from '@angular/common';
 import { HttpClientJsonpModule } from '@angular/common/http';
 import { NgChartsModule } from 'ng2-charts';
@@ -46,13 +46,16 @@ import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ForsaleListingComponent } from './modals/forsale-listing/forsale-listing.component';
 import { ToastrModule } from 'ngx-toastr';
-import {MatGridListModule} from '@angular/material/grid-list';
+import {MatPaginatorIntl,MatPaginatorModule} from '@angular/material/paginator';
+import { PaginationComponent } from './pagination/pagination.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
 @NgModule({
   declarations: [
-
+    PaginationComponent,
       HomeContactComponent,
       ListingDetailsContactComponent,
       ForsaleOptionsComponent,
@@ -81,9 +84,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
      
       
    ],
+   exports: [PaginationComponent],
   imports: [
+    NgbPaginationModule,
    TooltipModule.forRoot(),
-   AgmJsMarkerClustererModule,
     NgChartsModule,
     CommonModule,
     BrowserModule,
@@ -93,25 +97,28 @@ import {MatGridListModule} from '@angular/material/grid-list';
     TabsModule,
     ReactiveFormsModule,
     FormsModule,
-    PaginationModule.forRoot(),
+  //  PaginationModule.forRoot(),
     ModalModule.forRoot(),   
     AccordionModule.forRoot(),
     ProgressbarModule.forRoot(),
     BsDropdownModule.forRoot(),
     HttpClientModule,
-    MatGridListModule,
+    MatPaginatorModule,
     HttpClientJsonpModule,
     AgmSnazzyInfoWindowModule,
     NgxSpinnerModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAvra3-d8BHuG3kVd1QfY6Iua8hxFCwQQY'
+      apiKey: 'AIzaSyAvra3-d8BHuG3kVd1QfY6Iua8hxFCwQQY',
+      apiVersion: '3.31'
     }),
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     }),
+    NgbModule,
   ],
+  schemas:[ CUSTOM_ELEMENTS_SCHEMA],
   providers: [TabsetConfig,
-    
+              MatPaginatorIntl,
               BsDropdownConfig,
               {provide:HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true},
               {provide:HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],

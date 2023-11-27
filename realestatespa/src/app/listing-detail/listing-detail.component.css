@@ -166,13 +166,13 @@
 
 
 .slit-in-horizontal {
-        -webkit-animation: slit-in-horizontal 1.2s ease-out both;
-        animation: slit-in-horizontal 1.2s ease-out both;
+        -webkit-animation: slit-in-horizontal .5s ease-out both;
+        animation: slit-in-horizontal .5s ease-out both;
 }
 
 .slit-in-diagonal-2 {
-        -webkit-animation: slit-in-diagonal-2 1.2s ease-out both;
-        animation: slit-in-diagonal-2 1.2s ease-out both;
+        -webkit-animation: slit-in-diagonal-2 .5s ease-out both;
+        animation: slit-in-diagonal-2 .5s ease-out both;
 }
 
 @-webkit-keyframes tilt-in-tl {
@@ -206,8 +206,8 @@
 .tilt-in-tl {
         position: relative;
         z-index: 0 !important;
-        -webkit-animation: tilt-in-tl 1.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-        animation: tilt-in-tl 1.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        -webkit-animation: tilt-in-tl .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        animation: tilt-in-tl .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 .main-listing {
@@ -220,12 +220,6 @@
 }
 
 
-
-
-::ng-deep footer {
-        width: 100%;
-}
-
 #loan-program {
         border-color: #d8d67f;
         width: 100% !important;
@@ -234,12 +228,24 @@
 }
 
 .image {
-        width: 60%;
-        height: auto;
+        border-radius: .2rem;
+        border-width: 1px;
+        border-style:ridge;
+        border-color: #b8b61c;
+        width: 100%;
+        height: 590px;
+        margin-left: 80%;
+        margin-right: 80%;
+        
+}
+
+.mortageIns{
+        position: relative;
+        top:15px;
 }
 
 .stack2 {
-
+      
         border-color: #d8d67f !important;
         outline-color: #d8d67f !important;
 }
@@ -247,12 +253,36 @@
 .stack {
         border: 1px solid #d8d67f !important;
         outline-color: #d8d67f !important;
+        border-radius: .25rem;
 }
 
 #pmi-button {
-        box-shadow: 9.91px 9.91px 15px #D9DADE, -9.91px -9.91px 15px #FFFFFF;
+        border-width: 1.8px;
+        border-radius: 0.25rem;
+        box-shadow: 1px 1px 2px 1px rgba(158, 158, 157, 0.46);
         background-color: #FFFFFF !important;
         font-size: 30px !important;
+}
+
+#loan-display{
+        box-shadow: inset 5px 5px 8px #bfbfbf, inset -5px -5px 8px #ffffff !important;
+        display: grid;
+        justify-content: center;
+        margin-left: 10px;
+        width:90%;
+        border-style: solid;
+        border-width: 1px;
+        border-color: #d8d67f !important;
+        outline-color: #d8d67f !important;
+}
+
+
+
+#loan-display div{
+        text-shadow: 2px -.1px 2px rgba(0, 0, 0, .3);
+        margin-top: 5px; 
+        margin-bottom: 5px; 
+        cursor: pointer;
 }
 
 #contact-agent {
@@ -323,11 +353,11 @@ input[type="checkbox"]:checked+span:before {
 }
 
 .service-14 .btn {
-        border-radius: 0px;
-        border-width: 5px;
+        border-radius: .35rem;
+        border-width: 1.75px;
         border-color: #1f0616;
         font-size: 28px !important;
-        box-shadow: 9.91px 9.91px 15px #D9DADE, -9.91px -9.91px 15px #FFFFFF;
+        box-shadow: 2px 2px 4px 1px rgba(158, 158, 157, 0.46);
 }
 
 .service-14 .btn:hover {
@@ -415,6 +445,7 @@ input[type="checkbox"]:checked+span:before {
 
 .service-14 .container .sect h3 {
         line-height: 1.4;
+        text-align: center;
 }
 
 
@@ -471,8 +502,19 @@ input[type="checkbox"]:checked+span:before {
 
 .accordion {
         border: none !important;
-        border-radius: 0px;
+        
 }
+
+.accordion-item:nth-child(1) button{
+        border-top-left-radius: .25rem !important;
+        border-top-right-radius: .25rem !important;
+}
+
+.accordion-item:nth-child(5) button{
+        border-bottom-left-radius: .15rem !important;
+        border-bottom-right-radius: .15rem !important;
+}
+
 
 
 .accordion-button:not(.collapsed) {
@@ -502,7 +544,8 @@ input[type="checkbox"]:checked+span:before {
 .accordion-item form input {
         box-shadow: inset 5px 5px 8px #bfbfbf,
                 inset -5px -5px 8px #ffffff !important;
-        border-radius: 0px !important;
+        border-top-left-radius:.25rem !important;
+        border-bottom-left-radius:.25rem !important;
         border-style: solid !important;
         border-color: #241f02;
         margin-left: 2%;
@@ -516,7 +559,10 @@ input[type="checkbox"]:checked+span:before {
 
 .accordion-item form span {
         background: none;
-        border-radius: 0px !important;
+        border-top-right-radius:.25rem !important;
+        border-bottom-right-radius:.25rem !important;
+        border-top-left-radius:0rem !important;
+        border-bottom-left-radius:0rem !important;
         border-style: inset;
         border-color: #241f02;
         margin-right: 2.5%;
@@ -543,6 +589,58 @@ input[type="checkbox"]:checked+span:before {
         color: #181a10e4;
 }
 
+@media (max-width:1280px) and (max-height:800px) {
+
+        .image{
+                height: 430px;
+        }
+        #request-info {
+                font-size: 24px !important;
+                color: #181a10e4;
+        }
+
+        .service-14 .btn {
+                font-size: 24px !important;
+
+        }
+
+        .service-14 h3 {
+                font-size: 32px !important;
+        }
+
+        .service-14  ul li {
+                font-size: 24px;
+        }
+
+
+        .calc span {
+                font-size: 18px;
+        }
+
+
+        .calc label {
+                font-size: 20px;
+        }
+
+        #loan-program {
+                position: relative;
+                font-size: 1.2rem;
+                top: -5px;
+        }
+
+
+        #pmi-button {
+                font-size: 18px !important;
+        }
+
+
+
+
+
+
+
+}
+
 @media (max-width:1200px) {
         .accordion-button::after {
                 position: relative;
@@ -557,6 +655,10 @@ input[type="checkbox"]:checked+span:before {
                 text-align: center;
         }
 
+        .main-listing {
+                width: 1050px;
+        }
+
         .image {
                 width: 80%;
                 height: auto;
@@ -569,34 +671,50 @@ input[type="checkbox"]:checked+span:before {
                 margin-left: auto;
         }
 
-        ::ng-deep .close {
-                left: 430px;
-                top: -30px;
-        }
 
-        ::ng-deep .modal-content .contact-box {
-                margin-top: -10%;
-        }
 
+
+}
+
+@media (max-width:821px) {
+        .main-listing {
+                width: 950px;
+        }
+}
+
+@media (max-width:768px) {
+        .main-listing {
+                width: 900px;
+        }
 }
 
 @media (max-width: 485px) {
         .main-listing {
-                width: 1560px;
+                width: 1500px;
         }
+
+       
+       
+       
+       
 
 
         .mortageIns {
-                padding-top: 70px;
+                top:70px;
+                padding-bottom: 70px;
         }
-
-        ::ng-deep footer {
-                width: 1565px;
-        }
-
 
         #loan-program {
                 font-size: 5.5rem;
+        }
+
+        #loan-display{
+                width: 99%;
+        }
+
+        #loan-display div{
+                font-size: 5.5rem;
+                height: 210px;
         }
 
 
@@ -690,7 +808,7 @@ input[type="checkbox"]:checked+span:before {
 
         .image-device {
                 display: flex;
-                width: 1565px;
+                width: 1500px;
                 height: 1180px;
         }
 
@@ -706,13 +824,13 @@ input[type="checkbox"]:checked+span:before {
                 font-size: 4rem !important;
         }
 
-        ::ng-deep.progress-bar span {
+        /* ::ng-deep.progress-bar span {
                 font-size: 4.5rem !important;
         }
 
         ::ng-deep.progress {
                 height: 110px !important;
-        }
+        } */
 
         .accordion-header {
                 height: 110px;
@@ -766,32 +884,33 @@ input[type="checkbox"]:checked+span:before {
 
 @media (max-width:385px) {
         .main-listing {
-                width: 1438px;
+                width: 1500px;
         }
 
         .image-device {
-                width: 1438px ;
+                width: 1500px;
         }
 
-        ::ng-deep footer {
-                width: 1438px;
+}
+
+@media (max-width:361px) {
+        .main-listing {
+                width: 1400px;
         }
+
+        .image-device {
+                width: 1400px;
+        }
+
 }
 
 @media (max-width:321px) {
         .main-listing {
-                width: 1280px;
+                width: 1250px;
         }
 
-        ::ng-deep footer {
-                width: 1280px !important;
-        }
-
-        ::ng-deep .close {
-                left: 1100px;
-        }
 
         .image-device {
-                width: 1280px !important;
+                width: 1250px !important;
         }
 }

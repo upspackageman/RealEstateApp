@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using API.Data;
 using API.Entities;
+using StackExchange.Redis;
 
 namespace API
 {
@@ -23,13 +24,17 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton(_config.GetSection("EmailConfiguration").Get<EmailConfiguration>());
+            
             services.AddApplicationServices(_config);
             services.AddControllers();
             services.AddCors();
             services.AddIdentityServices(_config);
+            services.AddScoped<EmailConfiguration>(_ => _config.GetSection("EmailConfiguration").Get<EmailConfiguration>());
+            
             services.AddDbContext<DataContext>(options =>{
-                options.UseSqlServer(_config.GetConnectionString("DefualtConnection"));
+                
+                options.UseSqlServer();
+                options.UseSqlServer(_config.GetConnectionString("DefaultConnection"));
             });
         }
 

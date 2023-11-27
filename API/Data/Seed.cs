@@ -26,7 +26,7 @@ namespace API.Data
 
 
             foreach (var listing in listings){
-                listing.FullAddress = listing.FullAddress +" "+listing.City+" "+listing.State+" "+listing.zip; 
+                listing.FullAddress = listing.FullAddress +" "+listing.City+" "+listing.State+" "+listing.Zip; 
                 
                //url = "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address="+listing.FullAddress+"&benchmark=2020&format=json";
 
@@ -41,11 +41,11 @@ namespace API.Data
                     listing.ListingPictures = listing.ListingPictures.Replace("thumb","X-LARGE");
                 }
 
-                if(listing.MiddleSchool.Contains(";")){
+                if(listing.MiddleSchool.Contains(';')){
                     listing.MiddleSchool = listing.MiddleSchool.Split(";")[0];
                 }
 
-                if(listing.HighSchool.Contains(";")){
+                if(listing.HighSchool.Contains(';')){
                     listing.MiddleSchool = listing.MiddleSchool.Split(";")[0];
                 }
 

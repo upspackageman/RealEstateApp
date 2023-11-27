@@ -30,7 +30,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                 }
                 throw modalStateErrors.flat();
               } else {
-                this.toastr.error(error.statusText === "OK" ? "Bad Request" : error.statusText, error.status, {
+                this.toastr.error(error.statusText === "OK" ? "Bad Request" : error.statusText+"\nEmail/Username Not Present", error.status, {
                   toastComponent: CustomErrorComponent,
                   progressBar: true,
                   timeOut: 5000
@@ -38,7 +38,7 @@ export class ErrorInterceptor implements HttpInterceptor {
               }
               break;
             case 401:
-              this.toastr.error(error.statusText === "OK" ? "Unauthorized" : error.statusText, error.status, {
+              this.toastr.error(error.statusText === "OK" ? "Unauthorized" : error.statusText+"\nEmail/Password Not Valid", error.status, {
                 toastComponent: CustomErrorComponent,
                 progressBar: true,
                 timeOut: 5000

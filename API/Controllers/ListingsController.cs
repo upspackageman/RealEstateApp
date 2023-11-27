@@ -1,13 +1,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Text.RegularExpressions;
 using API.DTOs;
 using API.Entities;
 using API.Extensions;
 using API.Helpers;
 using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using AutoMapper;
 
 
 namespace API.Controllers
@@ -16,14 +14,14 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class ListingsController : BaseApiController
     {
-        private readonly IMapper _mapper;    
+       // private readonly IMapper _mapper;    
 
         private readonly IUnitOfWork _unitOfWork;
       
-        public ListingsController(IUnitOfWork unitOfWork, IMapper mapper)
+        public ListingsController(IUnitOfWork unitOfWork)
         {
            _unitOfWork = unitOfWork;
-            _mapper = mapper;
+          //  _mapper = mapper;
            
         }
 
@@ -31,7 +29,6 @@ namespace API.Controllers
         public async Task<ActionResult<IEnumerable<ListingDto>>> GetListings([FromQuery] ListingParams listingParams)
         {
              var listings = await _unitOfWork.ListingRepository.GetListingsAsync(listingParams);
-             var regex = new Regex("[^0-9\\s]");
 
              foreach (var item in listings)
              {
@@ -53,3 +50,4 @@ namespace API.Controllers
 
     }
 }
+

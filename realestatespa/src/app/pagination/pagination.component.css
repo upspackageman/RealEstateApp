@@ -1,0 +1,31 @@
+.pagination .page-item .page-link {
+    -webkit-text-stroke: .5px #9da000 !important;
+    z-index: 1;
+    font-family: 'Oswald', sans-serif;
+    color: #292c04;
+    font-weight: 500;
+    text-shadow: 0px 1px 0px rgba(255, 255, 255, .3), 0px -1px 0px rgba(0, 0, 0, .7);
+    font-size: 3rem;
+    border: none;
+    background-color: rgb(255, 255, 255, 0) !important;
+    border-color: #0000A0;
+    box-shadow: 0 .3rem 3rem rgba(0, 0, 0, 0) !important;
+    border-radius: 0;
+  }
+  
+  .pagination .page-item .page-link:hover {
+    color: #c6c91b;
+    cursor: pointer;
+  }
+
+
+.active {
+    color: #c6c91b !important;
+  }
+
+  @media (max-width:485px) {
+    .pagination .page-item .page-link{
+        font-size: 10rem !important;
+    }
+  }
+  

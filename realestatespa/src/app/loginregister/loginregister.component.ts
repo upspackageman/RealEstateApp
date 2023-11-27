@@ -4,6 +4,7 @@ import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms
 import { MustMatch } from './password-validator';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-loginregister',
@@ -16,7 +17,7 @@ export class LoginregisterComponent implements OnInit {
   modelRegister: any = {};
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   phonePattern = "^(\\+\\d{1,3}( )?)?((\\(\\d{1,3}\\))|\\d{1,3})[- .]?\\d{3,4}[- .]?\\d{4}$";
-  clienURI = 'http://192.168.0.28:4200/emailconfirmation';
+  clienURI = environment.apiUrl+'emailconfirmation';
   registerForm: UntypedFormGroup;
 
   form: UntypedFormGroup = new UntypedFormGroup({});
@@ -62,10 +63,14 @@ export class LoginregisterComponent implements OnInit {
   }
 
   async redirect_register() {
-    window.scroll(-1000000, -1000000);
+   
     if (!localStorage.getItem('direct')) {
       localStorage.setItem('direct', 'no reload')
-      location.reload();
+      const currentUrl = this.router.url;
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+      
+    });
     } else {
       localStorage.removeItem('direct');
     }
