@@ -31,7 +31,7 @@ services:
 
   angular-app:
     build:
-      context: ./path/to/angular-app
+      context: ./path/to/angular-app/dist/realestatespa
     restart: always
     ports:
       - "8080:80"
