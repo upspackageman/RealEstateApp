@@ -4,8 +4,8 @@ FROM node:latest as builder
 WORKDIR /app
 
 # Copy only the package.json and package-lock.json files to install dependencies
-# COPY package.json .
-# COPY package-lock.json .
+COPY ./realestatespa/package.json .
+COPY ./realestatespa/package-lock.json .
 
 # Copy the rest of the application files
 COPY . .
