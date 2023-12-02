@@ -31,7 +31,7 @@ services:
 
   angular-app:
     build:
-      context: ./path/to/angular-app
+      context: ./angular-app
       dockerfile: Dockerfile
     restart: always
     ports:
