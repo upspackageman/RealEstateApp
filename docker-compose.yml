@@ -1,45 +1,50 @@
-version: '3.9'
+version: '3.8'
 
 services:
-  api:
-    image: mcr.microsoft.com/dotnet/sdk:6.0
-    container_name: beverlyward-realtor-api
-    working_dir: /api
-    volumes:
-      - .:/api
-    ports:
-      - 5000:80
-    environment:
-      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools
-    command: bash -c "dotnet restore && dotnet run; tail -f /dev/null"
-    depends_on:
-      - sql-server
-      # - redis
-
   sql-server:
-    image: mysql:latest
+    image: sql-server:latest
+    restart: always
     environment:
-     # MYSQL_ROOT_PASSWORD: WAwi5697
-     MYSQL_DATABASE: realestate_db
-     MYSQL_USER: main_user
-     MYSQL_PASSWORD: WAwi5697
+      MYSQL_ROOT_PASSWORD: WAwi5697
+      MYSQL_DATABASE: realestate_db
+      MYSQL_USER: main_user
+      MYSQL_PASSWORD: WAwi5697
     ports:
       - "3306:3306"
-    container_name: mysql-server-2022
+    container_name: mysql-server-realestate
+    networks:
+      - mynetwork
 
+  api:
+    image: mcr.microsoft.com/dotnet/aspnet:6.0
+    restart: always
+    depends_on:
+      - sql-server
+      #- redis
+    environment:
+      ConnectionStrings__DefaultConnection: "Server=sql-server;Database=realestate_db;User=main_user;Password=WAwi5697"
+    ports:
+      - "5000:80"
+    container_name: beverlyward-realtor-api
+    networks:
+      - mynetwork
 
   angular-app:
     build:
-        context: .
-        dockerfile: Dockerfile
+      context: ./path/to/angular-app
+    restart: always
     ports:
-      - 4200:80
-   
-  # redis:
-  #   image: redis:latest
-  #   container_name: beverlyward-realtor-redis
-  #   ports:
-  #     - 6379:6379
-  #   command: redis-server /usr/local/etc/redis/redis.conf
-  #   volumes:
-  #     - ./redis.conf:/usr/local/etc/redis/redis.conf
+      - "8080:80"
+    container_name:  beverlyward-realtor-client
+    networks:
+      - mynetwork
+# redis:
+  # image: redis:latest
+  # container_name: beverlyward-realtor-redis
+  # ports:
+  #  - 6379:6379
+  # command: redis-server /usr/local/etc/redis/redis.conf
+  # volumes:
+  #  - ./redis.conf:/usr/local/etc/redis/redis.conf
+networks:
+  mynetwork:
