@@ -32,6 +32,7 @@ services:
   angular-app:
     build:
       context: ./path/to/angular-app/dist/realestatespa
+      dockerfile: Dockerfile
     restart: always
     ports:
       - "8080:80"
