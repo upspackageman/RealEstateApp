@@ -4,14 +4,14 @@ FROM node:latest as builder
 WORKDIR /app
 
 # Copy only the package.json and package-lock.json files to install dependencies
-COPY package.json .
-COPY package-lock.json .
-
-# Install npm dependencies
-RUN npm install
+# COPY package.json .
+# COPY package-lock.json .
 
 # Copy the rest of the application files
 COPY . .
+
+# Install npm dependencies
+RUN npm install
 
 # Build the Angular app
 RUN npm run build
