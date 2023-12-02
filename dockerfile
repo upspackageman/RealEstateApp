@@ -13,6 +13,9 @@ COPY . .
 # Install npm dependencies
 RUN npm install --force
 
+# Install Angular CLI globally
+RUN npm install -g @angular/cli
+
 # Build the Angular app
 RUN ng build --configuration=production
 
