@@ -11,10 +11,10 @@ COPY ./realestatespa/package-lock.json .
 COPY . .
 
 # Install npm dependencies
-RUN npm install
+RUN npm install --force
 
 # Build the Angular app
-RUN npm run build
+RUN ng build --configuration=production
 
 # Stage 2: Serve the Angular app using Nginx
 FROM nginx:latest
