@@ -7,14 +7,15 @@ WORKDIR /app
 COPY ./realestatespa/package.json .
 COPY ./realestatespa/package-lock.json .
 
-# Copy the rest of the application files
-COPY . .
-
 # Install npm dependencies
 RUN npm install --force
 
 # Install Angular CLI globally
 RUN npm install -g @angular/cli
+
+# Copy the rest of the application code
+COPY ./realestatespa .
+
 
 # Build the Angular app
 RUN ng build --configuration=production
