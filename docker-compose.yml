@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   sql-server:
-    image: sql-server:latest
+    image: mysql:latest
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: WAwi5697
