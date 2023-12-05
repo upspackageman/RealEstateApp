@@ -9,7 +9,7 @@ COPY API/API.csproj ./
 # Run dotnet restore for the project
 RUN dotnet restore API.csproj
 
-dotnet nuget locals global-packages --clear
+RUN dotnet nuget locals global-packages --clear
 
 # Copy the entire project and build it
 COPY . ./
