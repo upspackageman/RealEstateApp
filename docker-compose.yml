@@ -18,7 +18,7 @@ services:
   api:
     build:
       context: ./
-      dockerfile: /API/dockerfile-api
+      dockerfile: API/dockerfile-api
     depends_on:
       - sql-server
       #- redis
