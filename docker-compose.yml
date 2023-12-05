@@ -16,23 +16,26 @@ services:
       - mynetwork
 
   api:
-    image: mcr.microsoft.com/dotnet/aspnet:6.0
-    restart: always
+    build:
+      context: .
+      dockerfile: ./dockerfiles/Dockerfile-api
     depends_on:
       - sql-server
       #- redis
     environment:
       ConnectionStrings__DefaultConnection: "Server=sql-server;Database=realestate_db;User=main_user;Password=WAwi5697"
+      ASPNETCORE_ENVIRONMENT: "Production"  # Set the environment to Production for migrations
     ports:
       - "5000:80"
     container_name: beverlyward-realtor-api
     networks:
       - mynetwork
+    command: ["sh", "-c", "dotnet ef migrations add YourMigrationName && dotnet ef database update && dotnet YourApiName.dll"]
 
   angular-app:
     build:
-      context: ./
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./dockerfiles/Dockerfile-angular
     restart: always
     ports:
       - "8080:80"
