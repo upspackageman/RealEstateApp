@@ -2,6 +2,9 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /app
 
+# Clear NuGet caches
+RUN dotnet nuget locals all --clear
+
 # Copy only the necessary files for restoring dependencies
 COPY API/*.csproj ./
 
