@@ -17,7 +17,7 @@ services:
 
   api:
     build:
-      context: ./
+      context: ../
       dockerfile: ./dockerfiles/Dockerfile-api
     depends_on:
       - sql-server
@@ -34,7 +34,7 @@ services:
 
   angular-app:
     build:
-      context: ./
+      context: ../
       dockerfile: ./dockerfiles/Dockerfile-angular
     restart: always
     ports:
