@@ -1,29 +1,21 @@
-# Stage 1: Build the Angular app
-FROM node:latest as builder
-
+# Build stage
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /app
 
-# Copy only the package.json and package-lock.json files to install dependencies
-COPY ./realestatespa/package.json .
-COPY ./realestatespa/package-lock.json .
+# Copy only the necessary files for restoring dependencies
+COPY *.csproj ./
+RUN dotnet restore
 
-# Install npm dependencies
-RUN npm install --force
+# Copy the entire project and build it
+COPY . .
+RUN dotnet build -c Release --no-restore -o out
 
-# Install Angular CLI globally
-RUN npm install -g @angular/cli
+# Publish stage
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS publish
+WORKDIR /app
 
-# Copy the rest of the application code
-COPY ./realestatespa .
+# Copy the published app from the build stage
+COPY --from=build /app/out ./
 
-
-# Build the Angular app
-RUN ng build --configuration=production
-
-# Stage 2: Serve the Angular app using Nginx
-FROM nginx:latest
-
-# Copy the built Angular app from the builder stage
-COPY --from=builder /app/dist/realestatespa /usr/share/nginx/html
-
-EXPOSE 80
+# Run migrations on startup
+CMD ["dotnet", "API.dll", "migrate"]
