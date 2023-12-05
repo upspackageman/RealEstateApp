@@ -17,8 +17,8 @@ services:
 
   api:
     build:
-      context: ../
-      dockerfile: ./dockerfiles/Dockerfile-api
+      context: ./
+      dockerfile: dockerfiles/Dockerfile-api/dockerfile
     depends_on:
       - sql-server
       #- redis
@@ -30,12 +30,12 @@ services:
     container_name: beverlyward-realtor-api
     networks:
       - mynetwork
-    command: ["sh", "-c", "dotnet ef migrations add YourMigrationName && dotnet ef database update && dotnet YourApiName.dll"]
+    command: ["sh", "-c", "dotnet ef migrations add initMigrationName && dotnet ef database update && dotnet API.dll"]
 
   angular-app:
     build:
-      context: ../
-      dockerfile: ./dockerfiles/Dockerfile-angular
+      context: ./
+      dockerfile: dockerfiles/Dockerfile-angular/dockerfile
     restart: always
     ports:
       - "8080:80"
