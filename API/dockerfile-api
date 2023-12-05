@@ -8,7 +8,7 @@ RUN dotnet restore API.csproj
 
 # Copy the entire project and build it
 COPY . .
-RUN dotnet build -c Release --no-restore -o out
+RUN dotnet build -c Release --no-restore -o out /p:Version=1.0.0 /p:PublishWithAspNetCoreTargetManifest=false
 
 # Publish stage
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS publish
