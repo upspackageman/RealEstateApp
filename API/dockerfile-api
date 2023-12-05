@@ -8,7 +8,7 @@ RUN dotnet restore API.csproj
 
 # Copy the entire project and build it
 COPY . .
-RUN dotnet build RealEstateApp.sln -c Release --no-restore -o out /property:PublishWithAspNetCoreTargetManifest=false
+RUN dotnet build RealEstateApp.sln -c Release --no-restore -o out /
 
 # Publish stage
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS publish
