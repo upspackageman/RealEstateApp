@@ -5,19 +5,17 @@ WORKDIR /app
 # Copy only the necessary files for restoring dependencies
 COPY API/API.csproj ./
 
-
 # Run dotnet restore for the project
 RUN dotnet restore API.csproj
 
-RUN dotnet nuget locals global-packages --clear
+RUN dotnet nuget locals all --clear
 
 # Copy the entire project and build it
 COPY . ./
 RUN dotnet publish API.csproj -c Release --no-restore -o out
 
-#build runtime image
+# Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
 COPY --from=build /app/out .
-ENTRYPOINT ["dotnet","API.dll"]
-
+ENTRYPOINT ["dotnet", "API.dll"]
