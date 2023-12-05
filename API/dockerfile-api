@@ -4,11 +4,11 @@ WORKDIR /app
 
 # Copy only the necessary files for restoring dependencies
 COPY API/*.csproj ./
-RUN dotnet restore API.csproj
+RUN dotnet restore RealEstateApp.sln
 
 # Copy the entire project and build it
 COPY . .
-RUN dotnet build -c Release --no-restore -o out /property:PublishWithAspNetCoreTargetManifest=false
+RUN dotnet build RealEstateApp.sln -c Release --no-restore -o out /property:PublishWithAspNetCoreTargetManifest=false
 
 # Publish stage
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS publish
