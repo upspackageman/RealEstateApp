@@ -11,5 +11,12 @@ RUN dotnet restore API.csproj
 RUN dotnet nuget locals all --clear
 
 # Copy the entire project and build it
-COPY . .
-RUN dotnet build -c Release --no-restore -o out
+COPY . ./
+RUN dotnet publish -c Release --no-restore -o out
+
+#build runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:6.0
+WORKDIR /app
+COPY --from=build /app/out .
+
+
