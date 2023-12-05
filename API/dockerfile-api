@@ -3,16 +3,16 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /app
 
 # Copy only the necessary files for restoring dependencies
-COPY API/API.csproj ./
+COPY *.csproj ./
 
 # Run dotnet restore for the project
-RUN dotnet restore API.csproj
+RUN dotnet restore 
 
 RUN dotnet nuget locals all --clear
 
 # Copy the entire project and build it
 COPY . ./
-RUN dotnet publish RealEstateApp.sln -c Release --no-restore -o out
+RUN dotnet publish -c Release --no-restore -o out
 
 #build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
