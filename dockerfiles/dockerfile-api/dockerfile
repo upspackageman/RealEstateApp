@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /app
 
 # Copy only the necessary files for restoring dependencies
-COPY *.csproj ./
+COPY *.sln .
 RUN dotnet restore ./API
 RUN dotnet restore ./API/API.csproj
 # Copy the entire project and build it
