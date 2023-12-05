@@ -6,10 +6,10 @@ WORKDIR /app
 RUN dotnet nuget locals all --clear
 
 # Copy only the necessary files for restoring dependencies
-COPY API/*.csproj ./
+COPY API/API.csproj ./
 
-# Run dotnet restore to install NuGet packages
-RUN for file in $(ls *.csproj); do dotnet restore "$file"; done
+# Run dotnet restore for the project
+RUN dotnet restore API.csproj
 
 # Copy the entire project and build it
 COPY . .
