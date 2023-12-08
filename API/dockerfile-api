@@ -18,8 +18,4 @@ RUN dotnet publish API.csproj -c Release --no-restore -o out
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
 COPY --from=build /app/out .
-<<<<<<< HEAD
 ENTRYPOINT ["dotnet", "API.dll"]
-=======
-ENTRYPOINT ["dotnet", "API.dll"]
->>>>>>> 9bcdeb23cd1a0bfb1ad0c782aa3493e8d28da3d1
