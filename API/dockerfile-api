@@ -6,7 +6,7 @@ WORKDIR /app
 COPY API/API.csproj ./
 
 # Run dotnet restore for the project
-RUN dotnet build
+RUN dotnet restore
 
 RUN dotnet nuget locals all --clear
 
