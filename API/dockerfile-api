@@ -7,7 +7,7 @@ COPY *.sln .
 COPY API/API.csproj ./API/
 
 # Run dotnet restore for the project
-RUN dotnet restore ./API/API.csproj
+RUN dotnet restore ./API/
 
 # Copy the entire project and build it
 COPY API/. ./API
