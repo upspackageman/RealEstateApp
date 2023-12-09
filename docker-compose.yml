@@ -38,6 +38,21 @@ services:
     container_name:  beverlyward-realtor-client
     networks:
       - mynetwork
+      
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: my-phpmyadmin-container
+    environment:
+      PMA_HOST: sql-server
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: WAwi5697
+    ports:
+      - "8080:80"
+    networks:
+      - mynetwork
+    depends_on:
+      - sql-server
+
 # redis:
   # image: redis:latest
   # container_name: beverlyward-realtor-redis
