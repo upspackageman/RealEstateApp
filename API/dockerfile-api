@@ -4,7 +4,7 @@ WORKDIR /app
 
 # Copy only the necessary files for restoring dependencies
 COPY *.sln .
-COPY API/API.csproj ./API
+COPY API/*.csproj ./API
 
 # Run dotnet restore for the project
 RUN dotnet restore
