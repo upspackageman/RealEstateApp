@@ -4,17 +4,17 @@ WORKDIR /app
 
 # Copy only the necessary files for restoring dependencies
 COPY *.sln .
-COPY API/API.csproj ./
+COPY API/API.csproj ./API
 
 # Run dotnet restore for the project
 RUN dotnet restore
 
 # Copy the entire project and build it
-COPY . ./
-RUN dotnet publish API.csproj -c Release -o out
+COPY .API/. ./API/
+RUN dotnet publish -c release -o /app --no-restore
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
-COPY --from=build /out ./
+COPY --from=build /app ./
 ENTRYPOINT ["dotnet", "API.dll"]
