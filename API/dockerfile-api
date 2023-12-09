@@ -3,6 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0.101 AS build
 WORKDIR /app
 
 # Copy only the necessary files for restoring dependencies
+COPY *.sln .
 COPY API/API.csproj ./
 
 # Run dotnet restore for the project
@@ -15,5 +16,5 @@ RUN dotnet publish API.csproj -c Release -o out
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
-COPY --from=build /app/out .
+COPY --from=build /out ./
 ENTRYPOINT ["dotnet", "API.dll"]
