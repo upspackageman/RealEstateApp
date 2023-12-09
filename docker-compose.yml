@@ -27,7 +27,6 @@ services:
     container_name: beverlyward-realtor-api
     networks:
       - mynetwork
-    command: ["sh", "-c", "dotnet ef migrations add initMigrationName && dotnet ef database update && dotnet API.dll"]
 
   angular-app:
     build:
