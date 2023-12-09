@@ -4,14 +4,14 @@ WORKDIR /app
 
 # Copy only the necessary files for restoring dependencies
 COPY *.sln .
-COPY . /API/*.csproj 
+COPY . /API/API.csproj 
 
 # Run dotnet restore for the project
 RUN dotnet restore
 
 # Copy the entire project and build it
 COPY . ./
-WORKDIR /API/aspnetapp
+WORKDIR /API/app
 RUN dotnet publish -c release -o /app --no-restore
 
 # Build runtime image
