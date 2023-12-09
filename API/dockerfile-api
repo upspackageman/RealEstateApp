@@ -1,20 +1,14 @@
-# Build stage
 FROM mcr.microsoft.com/dotnet/sdk:6.0.101 AS build
 WORKDIR /app
 
-# Copy only the necessary files for restoring dependencies
 COPY *.sln .
 COPY API/API.csproj ./API/
-
-# Run dotnet restore for the project
 RUN dotnet restore ./API/
 
-# Copy the entire project and build it
 COPY API/. ./API
 WORKDIR /API
 RUN dotnet publish -c release -o /app --no-restore
 
-# Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
 COPY --from=build /app ./
