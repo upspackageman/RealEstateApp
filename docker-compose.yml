@@ -1,32 +1,32 @@
 version: '3.8'
 
 services:
-  sql-server:
-    image: mysql:latest
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: WAwi5697
-      MYSQL_DATABASE: realestate_db
-      MYSQL_USER: main_user
-      MYSQL_PASSWORD: WAwi5697
-    ports:
-      - "3306:3306"
-    container_name: mysql-server-realestate
-    networks:
-      - mynetwork
+  # sql-server:
+  #   image: mysql:latest
+  #   restart: always
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: WAwi5697
+  #     MYSQL_DATABASE: realestate_db
+  #     MYSQL_USER: main_user
+  #     MYSQL_PASSWORD: WAwi5697
+  #   ports:
+  #     - "3306:3306"
+  #   container_name: mysql-server-realestate
+  #   networks:
+  #     - mynetwork
 
   api:
     build:
       context: ./
       dockerfile: dockerfile-api
-    depends_on:
-      - sql-server
+    # depends_on:
+    #   - sql-server
       #- redis
     environment:
       ConnectionStrings__DefaultConnection: "Server=sql-server;Database=realestate_db;User=main_user;Password=WAwi5697"
       ASPNETCORE_ENVIRONMENT: "Production"  # Set the environment to Production for migrations
     ports:
-      - "5000:80"
+      - "5001:80"
     container_name: beverlyward-realtor-api
     networks:
       - mynetwork
