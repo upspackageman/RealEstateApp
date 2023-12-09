@@ -10,9 +10,9 @@ COPY API/API.csproj ./API/
 RUN dotnet restore
 
 # Copy the entire project and build it
-COPY . ./
-WORKDIR /API/app
-RUN dotnet publish -c release -o /app
+COPY API/. ./API
+WORKDIR /source/API/app
+RUN dotnet publish -c release -o /app --no-restore
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
