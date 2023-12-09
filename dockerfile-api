@@ -2,11 +2,9 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0.101 AS build
 WORKDIR /app
 
 COPY *.sln .
-COPY API/API.csproj ./API/
-RUN dotnet restore ./API/
+COPY . .
 
-COPY API/. ./API
-WORKDIR /API
+RUN dotnet restore
 RUN dotnet publish -c release -o /app --no-restore
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
