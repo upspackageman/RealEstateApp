@@ -47,7 +47,7 @@ services:
       PMA_PORT: 3306
       MYSQL_ROOT_PASSWORD: WAwi5697
     ports:
-      - "8080:80"
+      - "8888:80"
     networks:
       - mynetwork
     depends_on:
