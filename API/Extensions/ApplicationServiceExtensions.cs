@@ -17,6 +17,7 @@ namespace API.Extensions
             services.AddSingleton<IConnectionMultiplexer>(provider =>
             {
                 var configuration = ConfigurationOptions.Parse(config.GetSection("Redis:ConnectionString").Value);
+                configuration.AbortOnConnectFail = false; // Set additional options if needed
                 return ConnectionMultiplexer.Connect(configuration);
             });
 
@@ -26,9 +27,9 @@ namespace API.Extensions
             
             services.AddDbContext<DataContext>(options =>
             {
-                
+                 //options.UseMySQL(config.GetConnectionString("DefaultConnection"));
                 //var stuff = config.GetConnectionString("DefaultConnection");
-                var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+                 var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
                
                 /* MySQL setup */
 

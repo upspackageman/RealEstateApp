@@ -33,7 +33,6 @@ namespace API
             
             services.AddDbContext<DataContext>(options =>{
                 
-                options.UseSqlServer();
                 options.UseSqlServer(_config.GetConnectionString("DefaultConnection"));
             });
         }
