@@ -21,7 +21,7 @@ namespace API.Extensions
             //     return ConnectionMultiplexer.Connect(configuration);
             // });
 
-            // services.AddScoped<ICacheService, CacheService>();
+            services.AddScoped<ICacheService, CacheService>();
             services.AddScoped<IUnitOfWork,UnitOfWork>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             
