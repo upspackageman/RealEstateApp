@@ -14,12 +14,15 @@ namespace API.Extensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config){
             services.AddScoped<ITokenService, TokenService>();
-            // services.AddSingleton<IConnectionMultiplexer>(provider =>
-            // {
-            //     var configuration = ConfigurationOptions.Parse(config.GetSection("Redis:ConnectionString").Value);
-            //     configuration.AbortOnConnectFail = false; // Set additional options if needed
-            //     return ConnectionMultiplexer.Connect(configuration);
-            // });
+            services.AddSingleton<IConnectionMultiplexer>(provider =>
+            {   var conn =config.GetSection("Redis:ConnectionString").Value;
+                if(conn!=null){
+                    var configuration = ConfigurationOptions.Parse(conn);
+                    configuration.AbortOnConnectFail = false; // Set additional options if needed
+                    return ConnectionMultiplexer.Connect(configuration);
+                }
+                 return null;   
+            });
 
             services.AddScoped<ICacheService, CacheService>();
             services.AddScoped<IUnitOfWork,UnitOfWork>();
