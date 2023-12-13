@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using API.Data;
 using API.Entities;
 using StackExchange.Redis;
+using System;
 
 namespace API
 {
@@ -24,7 +25,8 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
+            Console.WriteLine(_config);
+
             services.AddApplicationServices(_config);
             services.AddControllers();
             services.AddCors();
