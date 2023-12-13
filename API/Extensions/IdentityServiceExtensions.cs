@@ -12,15 +12,16 @@ namespace API.Extensions
 {
     public static class IdentityServiceExtensions
     {
-        public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration config){
+        public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration config)
+        {
 
             services.AddIdentityCore<CustomerUser>(opt =>
             {
-                opt.Password.RequireNonAlphanumeric= false;
+                opt.Password.RequireNonAlphanumeric = false;
                 opt.Password.RequireUppercase = false;
                 opt.Password.RequireLowercase = false;
                 opt.Password.RequiredLength = 1;
-                opt.Password.RequireDigit =false;
+                opt.Password.RequireDigit = false;
             })
             .AddRoles<AppRole>()
             .AddRoleManager<RoleManager<AppRole>>()
@@ -30,20 +31,20 @@ namespace API.Extensions
             .AddDefaultTokenProviders();
 
             services.Configure<DataProtectionTokenProviderOptions>(opt => opt.TokenLifespan = TimeSpan.FromHours(2));
-            
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
-                    if (config["TokenKey"] != null)
+
+
+                    options.TokenValidationParameters = new TokenValidationParameters
                     {
-                        options.TokenValidationParameters = new TokenValidationParameters
-                        {
-                            ValidateIssuerSigningKey = true,
-                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"])),
-                            ValidateIssuer = false,
-                            ValidateAudience = false
-                        };
-                    }
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"])),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+
                 });
             return services;
         }

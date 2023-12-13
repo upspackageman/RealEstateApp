@@ -16,12 +16,9 @@ namespace API.Extensions
             services.AddScoped<ITokenService, TokenService>();
             services.AddSingleton<IConnectionMultiplexer>(provider =>
             {   var conn =config.GetSection("Redis:ConnectionString").Value;
-                if(conn!=null){
-                    var configuration = ConfigurationOptions.Parse(conn);
-                    configuration.AbortOnConnectFail = false; // Set additional options if needed
-                    return ConnectionMultiplexer.Connect(configuration);
-                }
-                 return null;   
+                var configuration = ConfigurationOptions.Parse(conn);
+                configuration.AbortOnConnectFail = false; // Set additional options if needed
+                return ConnectionMultiplexer.Connect(configuration);
             });
 
             services.AddScoped<ICacheService, CacheService>();
