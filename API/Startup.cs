@@ -7,8 +7,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using API.Data;
 using API.Entities;
-using StackExchange.Redis;
 using System;
+using Serilog;
 
 namespace API
 {
@@ -17,6 +17,9 @@ namespace API
         private readonly IConfiguration _config;
         public Startup(IConfiguration config)
         {
+             Log.Logger = new LoggerConfiguration()
+            .WriteTo.Console()
+            .CreateLogger();
             _config = config;          
         }
 
