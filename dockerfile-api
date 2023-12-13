@@ -12,6 +12,6 @@ WORKDIR /app
 COPY --from=build /app/out .
 
 # Copy the appsettings.json file
-COPY appsettings.Development.json .
+COPY appsettings.json .
 
 ENTRYPOINT ["dotnet", "API.dll"]
