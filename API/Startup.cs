@@ -10,6 +10,7 @@ using API.Entities;
 using System;
 using Serilog;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace API
 {
@@ -36,7 +37,7 @@ namespace API
             File.AppendAllText(logFilePath, "Configuration: " +_config.GetConnectionString("DefaultConnection") + Environment.NewLine);
             File.AppendAllText(logFilePath, "Configuration: " +_config.GetConnectionString("DefaultConnection") + Environment.NewLine);
             File.AppendAllText(logFilePath, "Configuration: " +_config.GetConnectionString("TokenKey") + Environment.NewLine);
-            
+            File.AppendAllText(logFilePath, "Configuration: " + JsonConvert.SerializeObject(_config) + Environment.NewLine);
             services.AddApplicationServices(_config);
             services.AddControllers();
             services.AddCors();
