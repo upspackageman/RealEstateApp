@@ -33,7 +33,9 @@ namespace API
             File.AppendAllText(logFilePath, "Configuration: " +_config + Environment.NewLine);
             File.AppendAllText(logFilePath, "Configuration: " +_config.GetSection("EmailConfiguration").Get<EmailConfiguration>() + Environment.NewLine);
             File.AppendAllText(logFilePath, "Configuration: " +_config.GetSection("DefaultConnection").Get<EmailConfiguration>() + Environment.NewLine);
-
+            File.AppendAllText(logFilePath, "Configuration: " +_config.GetConnectionString("DefaultConnection") + Environment.NewLine);
+            File.AppendAllText(logFilePath, "Configuration: " +_config.GetConnectionString("DefaultConnection") + Environment.NewLine);
+            
             services.AddApplicationServices(_config);
             services.AddControllers();
             services.AddCors();
