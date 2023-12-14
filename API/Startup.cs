@@ -35,6 +35,7 @@ namespace API
             File.AppendAllText(logFilePath, "Configuration: " +_config.GetSection("DefaultConnection").Get<EmailConfiguration>() + Environment.NewLine);
             File.AppendAllText(logFilePath, "Configuration: " +_config.GetConnectionString("DefaultConnection") + Environment.NewLine);
             File.AppendAllText(logFilePath, "Configuration: " +_config.GetConnectionString("DefaultConnection") + Environment.NewLine);
+            File.AppendAllText(logFilePath, "Configuration: " +_config.GetConnectionString("TokenKey") + Environment.NewLine);
             
             services.AddApplicationServices(_config);
             services.AddControllers();

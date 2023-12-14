@@ -16,7 +16,8 @@ namespace API.Extensions
         public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration config){
             var logFilePath = "ID-log.txt";
             File.AppendAllText(logFilePath, "Configuration: " +config + Environment.NewLine);
-            
+             File.AppendAllText(logFilePath, "Configuration: " +config + Environment.NewLine);
+             File.AppendAllText(logFilePath, "Configuration: " +config.GetConnectionString("TokenKey") + Environment.NewLine);
 
 
             services.AddIdentityCore<CustomerUser>(opt =>
