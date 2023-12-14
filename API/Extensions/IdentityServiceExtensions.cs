@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Text;
 using API.Data;
 using API.Entities;
@@ -13,6 +14,10 @@ namespace API.Extensions
     public static class IdentityServiceExtensions
     {
         public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration config){
+            var logFilePath = "ID-log.txt";
+            File.AppendAllText(logFilePath, "Configuration: " +config + Environment.NewLine);
+            
+
 
             services.AddIdentityCore<CustomerUser>(opt =>
             {

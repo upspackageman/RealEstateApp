@@ -9,6 +9,7 @@ using API.Data;
 using API.Entities;
 using System;
 using Serilog;
+using System.IO;
 
 namespace API
 {
@@ -28,7 +29,10 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            Console.WriteLine(_config);
+            var logFilePath = "st-log.txt";
+            File.AppendAllText(logFilePath, "Configuration: " +_config + Environment.NewLine);
+            File.AppendAllText(logFilePath, "Configuration: " +_config.GetSection("EmailConfiguration").Get<EmailConfiguration>() + Environment.NewLine);
+            File.AppendAllText(logFilePath, "Configuration: " +_config.GetSection("DefaultConnection").Get<EmailConfiguration>() + Environment.NewLine);
 
             services.AddApplicationServices(_config);
             services.AddControllers();

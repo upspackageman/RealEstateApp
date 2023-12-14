@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using API.Data;
 using API.Helpers;
 using API.Interfaces;
@@ -14,6 +15,10 @@ namespace API.Extensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config){
             services.AddScoped<ITokenService, TokenService>();
+            var logFilePath = "app-log.txt";
+            File.AppendAllText(logFilePath, "Configuration: " +config + Environment.NewLine);
+            File.AppendAllText(logFilePath, "Configuration: " +config.GetSection("Redis:ConnectionString") + Environment.NewLine);
+
             services.AddSingleton<IConnectionMultiplexer>(provider =>
             {   var conn =config.GetSection("Redis:ConnectionString").Value;
                 var configuration = ConfigurationOptions.Parse(conn);
