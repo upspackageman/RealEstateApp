@@ -170,7 +170,7 @@ namespace API.Controllers
 
             var callback = QueryHelpers.AddQueryString(forgotPasswordDto.ClientURI, param);
             callback = callback.Replace("/r", "/#/r");
-             callback = callback.Replace("5001", "4200");
+             callback = callback.Replace("5001/api", "8080");
             var year = DateTime.Now.Year;
             var builder = new BodyBuilder
             {
