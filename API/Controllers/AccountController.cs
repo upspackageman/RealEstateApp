@@ -68,7 +68,7 @@ namespace API.Controllers
             
              var callback = QueryHelpers.AddQueryString(registerDto.ClientURI, param);
              callback = callback.Replace("/e", "/#/e");
-             callback = callback.Replace("5001", "4200");
+             callback = callback.Replace("4200/api", "8080");
              var year = DateTime.Now.Year;
            
             var message = new MimeMessage();
