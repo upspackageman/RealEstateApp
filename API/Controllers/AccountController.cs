@@ -67,8 +67,9 @@ namespace API.Controllers
             
             
              var callback = QueryHelpers.AddQueryString(registerDto.ClientURI, param);
-             callback = callback.Replace("/e", "/#/e");
              callback = callback.Replace("5001/api", "8080");
+             callback = callback.Replace("/e", "/#/e");
+             
              var year = DateTime.Now.Year;
            
             var message = new MimeMessage();
@@ -169,8 +170,9 @@ namespace API.Controllers
             };
 
             var callback = QueryHelpers.AddQueryString(forgotPasswordDto.ClientURI, param);
+            callback = callback.Replace("5001/api", "8080");
             callback = callback.Replace("/r", "/#/r");
-             callback = callback.Replace("5001/api", "8080");
+             
             var year = DateTime.Now.Year;
             var builder = new BodyBuilder
             {
