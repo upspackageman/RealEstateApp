@@ -189,13 +189,13 @@
         [maxWidth]="mapCard.maxWidth" [maxHeight]="mapCard.maxHeight" [closeWhenOthersOpen]="true" style="position: relative; top: 50px; z-index: 2 !important;">
         <ng-template >
           <section class="marker">
-            <a (click)="redirect(marker.id)"><img src="{{marker.listingPictures}}" style="border-radius: 0px;"
+            <a routerLink='/listing/{{marker.id}}' routerLinkActive='active'><img src="{{marker.listingPictures}}" style="border-radius: 0px;"
                 alt="..." onerror="this.onerror=null; this.src='../assets/NoPhotoAvailable.jpg';"></a>
             <div class="card-body cardBody main-font" style="color:black;">
               <h5 class="card-title cardTitle">{{marker.price}}</h5>
               <p class="card-text m-0 cardText">{{marker.bedrooms}} Beds | {{marker.bathFull + marker.bathsHalf}} Baths
                 | {{marker.estimatedSquareFeet}} SQFT</p>
-              <a class="btn tracking-in-expand" routerLink="/listing/{{marker.id}}">View Details</a>
+              <a class="btn tracking-in-expand" routerLink='/listing/{{marker.id}}' routerLinkActive='active-link'>View Details</a>
             </div>
           </section>
   

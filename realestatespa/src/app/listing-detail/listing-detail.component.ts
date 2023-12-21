@@ -27,7 +27,7 @@ import { take } from 'rxjs';
 export class ListingDetailComponent implements OnInit {
   listing: Listing | undefined;
   listingParams: ListingParams | undefined;
-  user: User |undefined;
+  user: User | undefined;
   contact: any = {};
   form: UntypedFormGroup = new UntypedFormGroup({});
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
@@ -37,11 +37,11 @@ export class ListingDetailComponent implements OnInit {
   public doughnutChartLabels: string[] = ['Principal & Interest', 'Property Taxes', 'Mortage Insurance', 'Home Insurance', 'HOA'];
 
   public doughnutChartData: ChartData<'doughnut'> = {
-    
+
     labels: this.doughnutChartLabels,
-    
+
     datasets: [
-      { 
+      {
         data: [350, 450, 100, 55, 78],
         backgroundColor: [
           'rgba(255, 228, 225, 0.8)',
@@ -57,10 +57,10 @@ export class ListingDetailComponent implements OnInit {
           'rgba(230, 235, 250, 1)',
           'rgba(1255, 229, 185, 1)',
         ]
-      
+
       }
     ],
-   
+
 
   };
 
@@ -77,27 +77,27 @@ export class ListingDetailComponent implements OnInit {
   public doughnutChartType: ChartType = 'doughnut';
 
 
-  
+
 
   bsModalRef?: BsModalRef;
 
   constructor(private accountService: AccountService, private listingsService: ListingsService, private route: ActivatedRoute, private modalService: BsModalService,
     private router: Router, fb: UntypedFormBuilder, private emailService: EmailService) {
-      this.accountService.currentUser$.pipe(take(1)).subscribe({
-        next: user => {
-          if (user) this.user = user;
-        }
-      });
+    this.accountService.currentUser$.pipe(take(1)).subscribe({
+      next: user => {
+        if (user) this.user = user;
+      }
+    });
     this.router.routeReuseStrategy.shouldReuseRoute = () => {
       return false;
     };
 
-    
-   
-  
-  
-  
-    
+
+
+
+
+
+
     Chart.defaults.font.family = "'Oswald', sans-serif";
 
     this.contactForm = fb.group({
@@ -147,15 +147,15 @@ export class ListingDetailComponent implements OnInit {
 
 
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
-  
- 
+
+
 
   ngOnInit() {
-    
+
     this.loadListing();
-   
+
     this.checkWidth();
-    
+
   }
 
   @HostListener('window:resize', ['$event'])
@@ -195,24 +195,24 @@ export class ListingDetailComponent implements OnInit {
     const mort_15 = document.getElementById("15-fix-rate") as HTMLElement;
     const mort_5 = document.getElementById("5-arm") as HTMLElement;
 
-    switch (this.tenureOfLoansPerYear){
+    switch (this.tenureOfLoansPerYear) {
       case 30:
-        mort_30.style.opacity='1';
-        mort_15.style.opacity='0.5';
-        mort_5.style.opacity='0.5';
+        mort_30.style.opacity = '1';
+        mort_15.style.opacity = '0.5';
+        mort_5.style.opacity = '0.5';
         break;
       case 15:
-        mort_15.style.opacity='1';
-        mort_30.style.opacity='0.5';
-        mort_5.style.opacity='0.5';
+        mort_15.style.opacity = '1';
+        mort_30.style.opacity = '0.5';
+        mort_5.style.opacity = '0.5';
         break;
       case 5:
-        mort_5.style.opacity='1';
-        mort_15.style.opacity='0.5';
-        mort_30.style.opacity='0.5';
+        mort_5.style.opacity = '1';
+        mort_15.style.opacity = '0.5';
+        mort_30.style.opacity = '0.5';
         break;
 
-    } 
+    }
     console.log(mort_30);
     console.log(mort_15);
     console.log(mort_5);
@@ -238,17 +238,18 @@ export class ListingDetailComponent implements OnInit {
   }
 
   loadListing() {
-    
+
     this.redirect();
-   
+
+
     this.listingsService.getListingsById(this.route.snapshot.paramMap.get('id')).subscribe(listing => {
-      
+
       this.listing = listing;
-    //  this.loanProgram(this.tenureOfLoansPerYear);
-     this.mortgageCalulator();
-      
+      //  this.loanProgram(this.tenureOfLoansPerYear);
+      this.mortgageCalulator();
+
     });
-   
+
 
   }
 
@@ -277,19 +278,19 @@ export class ListingDetailComponent implements OnInit {
     this.mortgageCalulator();
   }
 
-  init_loadProgram(){
+  init_loadProgram() {
     const mort_30 = document.getElementById("30-fix-rate") as HTMLElement;
     const mort_15 = document.getElementById("15-fix-rate") as HTMLElement;
     const mort_5 = document.getElementById("5-arm") as HTMLElement;
-    
-    mort_30.style.opacity='1  !important';
-    mort_15.style.opacity='0.5 !important';
-    mort_5.style.opacity='0.5  !important';
+
+    mort_30.style.opacity = '1  !important';
+    mort_15.style.opacity = '0.5 !important';
+    mort_5.style.opacity = '0.5  !important';
     console.log(mort_5);
   }
 
   loanProgram(e: number) {
-   
+
     this.tenureOfLoansPerYear = e;/* = Enter number*/
     this.mortgageCalulator();
   }
@@ -308,7 +309,7 @@ export class ListingDetailComponent implements OnInit {
   }
 
   propertyTax(e: number = 5) {
-    this.propTax = e *1; /* * percent entered */
+    this.propTax = e * 1; /* * percent entered */
     this.mortgageCalulator();
   }
 
@@ -354,28 +355,26 @@ export class ListingDetailComponent implements OnInit {
 
   async redirect() {
 
-    if (!localStorage.getItem('direct')) {
-      this.pmiSwitch();
-      
-      setTimeout(()=>{
+    if (!localStorage.getItem('direct_detail')) {
+      localStorage.setItem('direct_detail', 'not reload');
+      const currentUrl = this.router.url;
 
-        const currentUrl = this.router.url;
-        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
         this.router.navigate([currentUrl]);
-        
-      });
-      }, 10);
-      localStorage.setItem('direct', 'no reload');
+
+
+      })
+
+
     } else {
-      this.pmiSwitch();
-      localStorage.removeItem('direct');
+      localStorage.removeItem('direct_detail');
     }
   }
 
   async toContactAgent(e) {
-    if(e.target){
+    if (e.target) {
       this.contactAgent = e.target.checked;
-    }    
+    }
   }
 
   async openModalWithClass(template: TemplateRef<any>) {

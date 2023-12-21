@@ -297,7 +297,7 @@ export class ForsaleComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   public async loadListings(newBounds?: LatLngBounds) {
-    //this.redirect_listing();
+    this.redirect_listing();
     this.checkListingStatus();
       if(this.listingParams){
        
