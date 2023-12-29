@@ -166,20 +166,13 @@ export class ListingDetailComponent implements OnInit {
     }
     else {
       Chart.defaults.font.size = 12;
-      console.log(Chart.defaults.font.size);
       this.chart?.update();
     }
   }
 
 
-  // events
-  public chartClicked({ event, active }: { event: ChartEvent, active: {}[] }): void {
-    console.log(event, active);
-  }
-
-  public chartHovered({ event, active }: { event: ChartEvent, active: {}[] }): void {
-    console.log(event, active);
-  }
+  
+ 
 
   mortgageCalulator() {
     /*
@@ -190,7 +183,6 @@ export class ListingDetailComponent implements OnInit {
     */
 
 
-    console.log(this.tenureOfLoansPerYear);
     const mort_30 = document.getElementById("30-fix-rate") as HTMLElement;
     const mort_15 = document.getElementById("15-fix-rate") as HTMLElement;
     const mort_5 = document.getElementById("5-arm") as HTMLElement;
@@ -213,9 +205,7 @@ export class ListingDetailComponent implements OnInit {
         break;
 
     }
-    console.log(mort_30);
-    console.log(mort_15);
-    console.log(mort_5);
+    
 
     this.homeAmount = this.listing.priceSearch;
     let r: number = this.annualInterestRate;
@@ -233,7 +223,6 @@ export class ListingDetailComponent implements OnInit {
     this.doughnutChartData.datasets[0].data[2] = Number(this.pmi.toFixed(2));
     this.doughnutChartData.datasets[0].data[3] = Number(this.propInsurance.toFixed(2));
     this.doughnutChartData.datasets[0].data[4] = Number(this.hoaFee.toFixed(2));
-    console.log(this.pmi);
     this.chart?.update();
   }
 
@@ -243,7 +232,7 @@ export class ListingDetailComponent implements OnInit {
 
 
     this.listingsService.getListingsById(this.route.snapshot.paramMap.get('id')).subscribe(listing => {
-
+    
       this.listing = listing;
       //  this.loanProgram(this.tenureOfLoansPerYear);
       this.mortgageCalulator();
@@ -266,8 +255,6 @@ export class ListingDetailComponent implements OnInit {
   amountDownPayment(e: number) {
     this.percentDownPayment = (e / this.listing.priceSearch) * 100;
     this.amtDownPayment = e * 1;
-    console.log(this.percentDownPayment);
-    console.log(this.amtDownPayment);
     this.pmiEstimate();
     this.mortgageCalulator();
   }
@@ -286,7 +273,6 @@ export class ListingDetailComponent implements OnInit {
     mort_30.style.opacity = '1  !important';
     mort_15.style.opacity = '0.5 !important';
     mort_5.style.opacity = '0.5  !important';
-    console.log(mort_5);
   }
 
   loanProgram(e: number) {
@@ -302,7 +288,6 @@ export class ListingDetailComponent implements OnInit {
     }
     else {
       this.annualInterestRate = e * .01;
-      console.log(e);
       this.pmiEstimate();
     }
     this.mortgageCalulator(); /* = Enter number*/
@@ -315,13 +300,11 @@ export class ListingDetailComponent implements OnInit {
 
   propertyInsurance(e: number) {
     this.propInsurance = e * 1;
-    console.log(this.propInsurance);
     this.mortgageCalulator();
   }
 
   hoaFees(e: number) {
     this.hoaFee = e * 1; /* = Enter number*/
-    console.log(this.hoaFee);
     this.mortgageCalulator();
   }
   pmiSwitch() {
@@ -394,8 +377,6 @@ export class ListingDetailComponent implements OnInit {
     this.contact.agentName = this.contactForm.value.agentName;
     this.contact.agentEmail = this.contactForm.value.agentEmail;
     this.contact.agentPhone = this.contactForm.value.agentPhone;
-    console.log(this.contact);
-    console.log(this.contact.agentName);
     this.emailService.sendEmail(this.contact).subscribe({
       next: (_) => {
         //this.modalRef.hide();

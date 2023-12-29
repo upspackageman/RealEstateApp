@@ -45,7 +45,7 @@ export class ListingsService {
 
 
   getListingParams(){
-   //console.log(this.listingParams);
+
     return this.listingParams;
     
   }
@@ -63,12 +63,12 @@ export class ListingsService {
   }
 
   getListings(listingParams: ListingParams) {
-   //console.log(listingParams);
-   
+
+
     var key = Object.values(listingParams).join('-');
     var response = this.listingCache.get(key);
-   //console.log(response);
-   //console.log(Array.from(this.listingCache.keys()));
+
+
     let params = this.getPaginationHeaders(listingParams.pageNumber, listingParams.pageSize)
     params = params.append('price', listingParams.price.toString());
     params = params.append('bedrooms', listingParams.bedrooms.toString());

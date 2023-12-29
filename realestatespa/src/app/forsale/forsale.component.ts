@@ -37,6 +37,7 @@ export class ForsaleComponent implements OnInit {
   
   currentPage:number = 1;
   totalPages=1;
+  init: number = 0;
   @ViewChild('map') map: AgmMap;
   listingParams: ListingParams | undefined;
   markerParams: MarkerParams;
@@ -62,7 +63,6 @@ export class ForsaleComponent implements OnInit {
   totalCount: number;
   sortOrder: string = '--Sort--';
   selectedEst = -1;
-  init: number = 0;
   activeSelected: boolean = true;
   contingentSelected: boolean = true;
   soldSelected: boolean = true;
@@ -107,6 +107,7 @@ export class ForsaleComponent implements OnInit {
   clearSearchBtnDisplay: string = 'none';
   clearSearchBtnZindex: number = 0;
   searchValue: string = '';
+  viewedListing:any=[]
   markerClusterIconStyles: ClusterIconStyle[] = [
     {
       url: '/assets/marker1.png',
@@ -254,11 +255,12 @@ export class ForsaleComponent implements OnInit {
 
 
   ngOnInit() {
+    
     this.currentPage = this.listingParams.pageNumber;
     this.mapView();
-    console.log(this.itemsPerPage);
-   
+    this.redirect_listing();
     this.loadListings();
+    this.setViewListings();
     this.setColors();
     this.checkWidth();
   }
@@ -297,8 +299,9 @@ export class ForsaleComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   public async loadListings(newBounds?: LatLngBounds) {
-    this.redirect_listing();
+    //this.redirect_listing();
     this.checkListingStatus();
+  
       if(this.listingParams){
        
           this.listingsService.getListings(this.listingParams).subscribe(response => {
@@ -309,7 +312,6 @@ export class ForsaleComponent implements OnInit {
           this.totalPages = response.pagination.totalPages;
     
           for (let list of this.listings) {
-           // console.log(list);
             if (window.matchMedia('(min-width:450px)').matches) {
               list.iconUrl = '/assets/circle_4.png';
     
@@ -319,6 +321,7 @@ export class ForsaleComponent implements OnInit {
             }
     
           }
+          this.viewedListings();
           this.pagination.itemsPerPage = response.pagination.itemsPerPage;
           this.pagination.totalItems = response.pagination.totalItems;
         })
@@ -331,7 +334,7 @@ export class ForsaleComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   public async updateListings(newBounds?: LatLngBounds) {
-
+    
     this.listingsService.setListingParams(this.listingParams);
     const bounds = this.map;
    
@@ -355,11 +358,12 @@ export class ForsaleComponent implements OnInit {
           list.iconUrl = '/assets/circle_2.png';
 
         }
+       
       }
-   
+      this.viewedListings();
 
-      if (window.matchMedia('(max-width:450px)').matches && this.init == 0) {
-        this.init = 1;
+      if (window.matchMedia('(max-width:450px)').matches && this.init==0) {
+        this.init= 1;
         this.mapDisplay = 'flex';
         this.borderTop = 'none';
       }
@@ -380,9 +384,8 @@ export class ForsaleComponent implements OnInit {
 
   async openModalWithClass(template: TemplateRef<any>) {
     this.checkListingStatus();
-    console.log(this.activeSelected);
     this.modalRef = this.modalService.show(template, this.config);
-    console.log(this.activeSelected);
+
   }
 
 
@@ -442,7 +445,6 @@ export class ForsaleComponent implements OnInit {
   async searchMobile(): Promise<void> {
     if (window.matchMedia('(max-width:450px)').matches) {
       this.isMapView = true;
-      console.log(this.isMapView);
       this.mapView();
     }
   }
@@ -468,16 +470,13 @@ export class ForsaleComponent implements OnInit {
       this.clearSearchBtnZindex = 0;
       this.isMapView = false;
       //this.zPagination = '5';
-      console.log(this.isMapView);
+
 
     }
 
     return;
   }
 
-  async zoomChange(e: any) {
-    console.log('SCROLL');
-  }
 
 
 
@@ -518,7 +517,7 @@ export class ForsaleComponent implements OnInit {
   }
 
   async pageChanged(page: number,newBounds?:LatLngBounds) {
-    const left = document.getElementsByClassName('left');
+    //const left = document.getElementsByClassName('left');
      await  this.toTop();
       this.listingParams.pageNumber = page;
       this.currentPage = this.listingParams.pageNumber;
@@ -536,7 +535,6 @@ export class ForsaleComponent implements OnInit {
     this.clearSearchBtnDisplay = 'inline';
     await  this.toTop();
     this.loadListings();
-    console.log(this.listingParams.price);
   }
 
   async priceSort_init(e:number ){
@@ -615,6 +613,52 @@ export class ForsaleComponent implements OnInit {
   }
 
   @HostListener('window:resize', ['$event'])
+  async viewedListings(){
+   const list = localStorage.getItem('viewed_listings');
+   const viewed  = list.split(',');
+    for (let i = 0; i < this.listings.length; i++) {
+      
+      if (viewed.includes(this.listings[i].id)) {
+        if (window.matchMedia('(min-width:500px)').matches) {
+          this.listings[i].iconUrl = '/assets/circle_6.png';
+        }
+        else {
+          this.listings[i].iconUrl = '/assets/circle_3.png';
+        }
+      }
+    }
+  }
+
+  async setViewListings(){
+    const history = localStorage.getItem('viewed_listings');
+    this.viewedListing = history.split(',');
+  }
+
+  @HostListener('window:resize', ['$event'])
+  async listingClicked(_id) {
+   
+      for (let i = 0; i < this.listings.length; i++) {
+        if (this.listings[i].id === _id) {
+          
+         
+         
+            this.viewedListing.push(_id);
+            localStorage.setItem('viewed_listings', this.viewedListing);
+          
+          
+          if (window.matchMedia('(min-width:500px)').matches) {
+            this.listings[i].iconUrl = '/assets/circle_6.png';
+          }
+          else {
+            this.listings[i].iconUrl = '/assets/circle_3.png';
+          }
+        }
+
+      }
+    
+  }
+
+  @HostListener('window:resize', ['$event'])
   async listingHovered(e) {
     if ((e.target.getAttribute("id")) !== null) {
       for (let i = 0; i < this.listings.length; i++) {
@@ -644,11 +688,9 @@ export class ForsaleComponent implements OnInit {
   
   async checkListingStatus(){
     if(this.listingParams.activeStatus ===''){
-      console.log(this.activeSelected);
       this.clearSearchBtnDisplay = 'inline';
       this.activeSelected= false;
     }else{
-      console.log(this.activeSelected);
       this.activeSelected= true;
     }
 

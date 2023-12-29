@@ -64,9 +64,6 @@ export class HomeContactComponent implements OnInit {
     this.emailService.sendContactEmail(this.contact).subscribe({
       next: (_) => {
         this.isSent = true;
-        //this.modalRef.hide();
-        //this.modalService.show(template,this.config);
-        console.log(this.contact);
       },
       error: (err: HttpErrorResponse) => {
         console.log(err);

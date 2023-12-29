@@ -55,9 +55,6 @@ constructor(private http: HttpClient) { }
     params = params.append('token', token);
     params = params.append('email', email);
 
-    console.log(params);
-    console.log(params.get('token'));
-    console.log(params.get('email'));
     
     return this.http.get(this.baseUrl + 'account/emailconfirmation', { params: params }) .pipe(
       catchError(this.handleError)

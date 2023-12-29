@@ -105,7 +105,7 @@
 
 .landing h1 {
     font-family: 'Marck Script', 'cursive';
-    font-size: 6.3rem;
+    font-size: 4.3rem;
     color: #fff;
     text-shadow: 0px 5px 4px rgba(39, 32, 32, 0.3), 0px -5px 4px rgba(0, 0, 0, .7);
 }
@@ -423,7 +423,7 @@
 
 @media (max-width: 821px) {
     .main-home {
-        width: 950px;
+        width: 800px;
     }
    
 }

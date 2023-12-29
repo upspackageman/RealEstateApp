@@ -17,4 +17,5 @@ export class MarkerParams
   lotSize:string="0";
   estSqrFt:number =-1;
   priceSort:number = -1;
+  viewed:any=[];
 }

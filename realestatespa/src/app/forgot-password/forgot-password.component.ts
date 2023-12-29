@@ -39,8 +39,7 @@ export class ForgotPasswordComponent implements OnInit {
       .subscribe({
         next: (_) => {
           this.showSuccess = true;
-          this.successMessage = 'The link has been sent, please check your email to reset your password.'
-          console.log(this.successMessage);
+          this.successMessage = 'The link has been sent, please check your email to reset your password.';
         },
         error: (err: HttpErrorResponse) => {
           this.showError = true;

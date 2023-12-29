@@ -56,7 +56,6 @@ export class ListingDetailsContactComponent implements OnInit {
   async toContactAgent(e) {
      if (e.target) {
       this.contactAgent = e.target.checked;
-      console.log(this.contactAgent);
     }
   }
 
@@ -71,8 +70,6 @@ export class ListingDetailsContactComponent implements OnInit {
     this.contact.agentName = this.contactForm.value.agentName;
     this.contact.agentEmail = this.contactForm.value.agentEmail;
     this.contact.agentPhone = this.contactForm.value.agentPhone;
-    console.log(this.contact);
-    console.log(this.contact.agentName);
     this.emailService.sendEmail(this.contact).subscribe({
       next: (_) => {
         //this.modalRef.hide();

@@ -148,10 +148,9 @@
 
 
   <div class="splitscreen font-family">
-    
     <div [ngStyle]="{display:listDisplay}" class="left shadow-lg">
       <div class="listing_results">
-        <div class="spacing"></div>
+        
         <div class="list" *ngFor="let listing of listings">
           <div (mouseenter)="listingHovered($event)" (mouseleave)="listingNotHovered($event)" class="listing-card"
             data-id="{{listing.id}}">
@@ -183,7 +182,7 @@
   
   
     <agm-marker [agmFitBounds]="false" *ngFor="let marker of listings" class="myMap" [latitude]="marker.lat"
-      [longitude]="marker.lng" [iconUrl]="marker.iconUrl">
+      [longitude]="marker.lng" [iconUrl]="marker.iconUrl"  data-id="{{marker.id}}" (markerClick)='listingClicked(marker.id)'>
       <agm-snazzy-info-window [latitude]="marker.lat" [isOpen]="marker.isHovered" [padding]="location.padding"
         [longitude]="marker.lng" [border]="location.border" [borderRadius]="location.borderRadius"
         [maxWidth]="mapCard.maxWidth" [maxHeight]="mapCard.maxHeight" [closeWhenOthersOpen]="true" style="position: relative; top: 50px; z-index: 2 !important;">

@@ -38,8 +38,7 @@ export class ResetPasswordComponent implements OnInit {
 
 
   reset(){
-    console.log(this.email);
-    console.log(this.token);
+  
     this.modelResetPassword.password = this.resetPasswordForm.value.password;
     this.modelResetPassword.confirmPassword = this.resetPasswordForm.value.confirmPassword;
     this.modelResetPassword.token = this.token;

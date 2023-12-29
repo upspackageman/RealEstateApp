@@ -28,14 +28,12 @@ export class PaginationComponent{
   }
 
   previousPage() {
-    console.log(this.currentPage);
     if (this.currentPage > 1) {
       this.pageChange.emit(this.currentPage - 1);
     }
   }
 
   nextPage() {
-    console.log(this.currentPage);
     if (this.currentPage < this.totalPages) {
       this.pageChange.emit(this.currentPage + 1);
     }
@@ -43,7 +41,6 @@ export class PaginationComponent{
 
   goToPage(page: number) {
     if (page !== this.currentPage) {
-      console.log(this.currentPage);
       this.pageChange.emit(page);
     }
   }
