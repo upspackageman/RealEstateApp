@@ -1324,13 +1324,28 @@ input[type="checkbox"]:checked+span:before {
 }
 
 @media (max-width:1280px) {
-
+  agm-map {
+    top: 130px;
+   height: calc(100% - 65px);
+  }
 
   .selectOptions {
     position: relative;
     right: 5%;
     margin-bottom: 0.25rem;
 
+  }
+
+  .left{
+    top: 130px;
+    height: calc(100% - 125px);
+  }
+
+  .option .container {
+    margin-bottom: 40px 
+  }
+  .listing_results{
+    top:-100px;
   }
 
 }
@@ -1342,11 +1357,16 @@ input[type="checkbox"]:checked+span:before {
   }
 
   agm-map {
-    top: 140px;
+    top: 120px;
+   height: calc(100% - 60px);
   }
 
   .option {
     padding-top: 120px;
+  }
+
+  .option .container {
+    margin-bottom: 40px 
   }
 
 
@@ -1528,6 +1548,10 @@ input[type="checkbox"]:checked+span:before {
     max-width: 371px;
     min-width: 371px;
     max-height: 2500%;
+  }
+
+  .option .container {
+    margin-bottom: 40px 
   }
 
 

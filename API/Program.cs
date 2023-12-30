@@ -47,7 +47,7 @@ namespace API
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseUrls("http://0.0.0.0:5001");//    http://192.168.0.28:5001
+                    webBuilder.UseUrls("http://0.0.0.0:5001");//  http://192.168.0.28:5001 http://0.0.0.0:5001
                     webBuilder.UseStartup<Startup>();
                 });
     }
