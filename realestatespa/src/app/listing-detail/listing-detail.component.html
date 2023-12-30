@@ -97,7 +97,7 @@ src='../assets/NoPhotoAvailable.jpg';" />
                     <div class="row g-3">
                       <div class="row">
                         <div class="col-md-6 mt-3 mb-3">
-                          <label for="firstName" class="form-label">Loan Program</label>
+                          <label for="loan-display" class="form-label">Loan Program</label>
                         <div  id="loan-display">
                           <div id="30-fix-rate" value=30 (click)="loanProgram(30)">30-year fixed</div>
                           <div id="15-fix-rate" value=15 (click)="loanProgram(15)">15-year fixed</div>
@@ -106,7 +106,7 @@ src='../assets/NoPhotoAvailable.jpg';" />
                           
                         </div>
                         <div class="col-md-6 mb-3 mt-3">
-                          <label for="state">% Down Payment</label>
+                          <label >% Down Payment</label>
                           <div class="input-group mb-3">
                             <input type="number" #interestD class="form-control stack2"
                               aria-label="Amount (to the nearest dollar)"
@@ -119,7 +119,7 @@ src='../assets/NoPhotoAvailable.jpg';" />
                         </div>
                       </div>
                       <div class="col-sm-6">
-                        <label for="country">Amt Down Payment</label>
+                        <label>Amt Down Payment</label>
                           <div class="input-group mb-3">
                             <input type="text" #amountD class="form-control stack2"
                               aria-label="Amount (to the nearest dollar)" (focusout)="amountDownPayment(amountD.value)"
@@ -135,7 +135,7 @@ src='../assets/NoPhotoAvailable.jpg';" />
                         </select> -->
                       </div>
                       <div class="col-sm-6">
-                        <label for="lastName" class="form-label ">Interest Rate</label>
+                        <label  class="form-label ">Interest Rate</label>
                         <div class="input-group   mb-3">
                           <input #interestR type="number" value="0" class="form-control stack2"
                             (focusout)="interestRate(interestR.value)">
