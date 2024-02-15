@@ -49,11 +49,11 @@ namespace API.Data
        
         public async Task<PagedList<ListingDto>> GetListingsAsync(ListingParams listingParams)
         {
-          //  var cacheKey = $"Listings_{listingParams.PageNumber}_{listingParams.PageSize}_{listingParams.ActiveStatus}_{listingParams.PendingStatus}_{listingParams.ContingentStatus}_{listingParams.BOMStatus}_{listingParams.SoldStatus}_{listingParams.Price}_{listingParams.PriceSort}_{listingParams.BathTotals}_{listingParams.Type}_{listingParams.Bedrooms}_{listingParams.Zipcode}_{listingParams.EstimatedSquareFeet}_{listingParams.FullAddress}";
+            var cacheKey = $"Listings_{listingParams.PageNumber}_{listingParams.PageSize}_{listingParams.ActiveStatus}_{listingParams.PendingStatus}_{listingParams.ContingentStatus}_{listingParams.BOMStatus}_{listingParams.SoldStatus}_{listingParams.Price}_{listingParams.PriceSort}_{listingParams.BathTotals}_{listingParams.Type}_{listingParams.Bedrooms}_{listingParams.Zipcode}_{listingParams.EstimatedSquareFeet}_{listingParams.FullAddress}";
 
-         //   var cacheValue = await _cacheService.GetCacheAsync<IEnumerable<ListingDto>>(cacheKey);
+            var cacheValue = await _cacheService.GetCacheAsync<IEnumerable<ListingDto>>(cacheKey);
 
-        var query =   _context.Listings.AsQueryable();
+            var query =   _context.Listings.AsQueryable();
 
             var listingStatus = new List<string>{listingParams.ActiveStatus, listingParams.PendingStatus,listingParams.ContingentStatus, listingParams.BOMStatus, listingParams.SoldStatus};
 
@@ -95,17 +95,16 @@ namespace API.Data
                  
             }
 
-            return await PagedList<ListingDto>.CreateAsync(query.ProjectTo<ListingDto>(_mapper
-                .ConfigurationProvider).AsNoTracking(), listingParams.PageNumber, listingParams.PageSize);
+           // return await PagedList<ListingDto>.CreateAsync(query.ProjectTo<ListingDto>(_mapper.ConfigurationProvider).AsNoTracking(), listingParams.PageNumber, listingParams.PageSize);
 
             
-    /*
-            var listingStatus = new List<string>{listingParams.ActiveStatus, listingParams.PendingStatus,listingParams.ContingentStatus, listingParams.BOMStatus, listingParams.SoldStatus};
+    
+         //   var listingStatus = new List<string>{listingParams.ActiveStatus, listingParams.PendingStatus,listingParams.ContingentStatus, listingParams.BOMStatus, listingParams.SoldStatus};
 
     
             if (cacheValue == null)
             {
-                var query = _context.Listings.AsQueryable();
+                //var query = _context.Listings.AsQueryable();
                 var expireTime = DateTimeOffset.Now.AddHours(24);
                 await _cacheService.SetCacheAsync("listings", query, expireTime);
            
@@ -134,7 +133,7 @@ namespace API.Data
                 }
 
                 if(listingParams.Zipcode!=-1){
-                    query = query.Where(x=> x.zip == listingParams.Zipcode);
+                    query = query.Where(x=> x.Zip == listingParams.Zipcode);
                 }
 
                 if(listingParams.EstimatedSquareFeet!=-1){
@@ -200,10 +199,10 @@ namespace API.Data
                  
             }
 
-            */
+            
            
-            //  return await PagedList<ListingDto>.CreateAsync(query.AsQueryable().ProjectTo<ListingDto>(_mapper
-            //     .ConfigurationProvider).AsNoTracking(), listingParams.PageNumber, listingParams.PageSize);
+             // return await PagedList<ListingDto>.CreateAsync(query.AsQueryable().ProjectTo<ListingDto>(_mapper
+             //    .ConfigurationProvider).AsNoTracking(), listingParams.PageNumber, listingParams.PageSize);
         }
 
         
