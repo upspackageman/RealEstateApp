@@ -9,6 +9,8 @@ services:
     ports:
       - "3306:3306"
     container_name: mysql-server-realestate
+    volumes:
+      - ./mysql-custom.cnf:/etc/mysql/mysql.conf.d/mysql-custom.cnf  # Mount custom MySQL config file
     networks:
       - mynetwork
 
@@ -18,7 +20,7 @@ services:
       dockerfile: dockerfile-api
     depends_on:
       - sql-server
-      #- redis
+      - redis
     environment:
       ConnectionStrings__DefaultConnection: "Server=sql-server;Database=realestate_db;User=root;Password=WAwi5697"
       ASPNETCORE_ENVIRONMENT: "Production"  # Set the environment to Production for migrations
@@ -53,13 +55,13 @@ services:
     depends_on:
       - sql-server
 
-# redis:
-  # image: redis:latest
-  # container_name: beverlyward-realtor-redis
-  # ports:
-  #  - 6379:6379
-  # command: redis-server /usr/local/etc/redis/redis.conf
-  # volumes:
-  #  - ./redis.conf:/usr/local/etc/redis/redis.conf
+  redis:
+    image: redis:latest
+    container_name: beverlyward-realtor-redis
+    ports:
+    - 6379:6379
+    command: redis-server /usr/local/etc/redis/redis.conf
+    volumes:
+    - ./redis.conf:/usr/local/etc/redis/redis.conf
 networks:
   mynetwork:

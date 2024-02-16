@@ -1,0 +1,3 @@
+[mysqld]
+# MySQL server settings go here
+innodb_log_file_size = 128M
