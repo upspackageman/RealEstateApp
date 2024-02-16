@@ -10,7 +10,7 @@ services:
       - "3306:3306"
     container_name: mysql-server-realestate
     volumes:
-      - ./mysql-custom.cnf:/etc/mysql/mysql.conf.d/mysql-custom.cnf  # Mount custom MySQL config file
+      - ./my.cnf:/etc/mysql/mysql.conf.d/my.cnf  # Mount custom MySQL config file
     networks:
       - mynetwork
 
