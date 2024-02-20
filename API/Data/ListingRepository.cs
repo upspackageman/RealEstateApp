@@ -156,7 +156,7 @@ namespace API.Data
                      .Skip((listingParams.PageNumber - 1) * listingParams.PageSize)
                      .Take(listingParams.PageSize);
 
-                var pagedData = await PagedList<ListingDto>.CreateAsync(pagedQuery, totalCount, listingParams.PageNumber, listingParams.PageSize);
+                var pagedData = await PagedList<ListingDto>.CreateAsync(pagedQuery, listingParams.PageNumber, listingParams.PageSize);
 
 
                 await _cacheService.SetCacheAsync(cacheKey, pagedData, DateTimeOffset.Now.AddHours(24));
