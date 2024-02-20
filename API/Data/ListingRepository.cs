@@ -149,8 +149,15 @@ namespace API.Data
                 // //query =  query.Where(x=> x.FullAddress.ToLower().Contains(listingParams.FullAddress.ToLower()));
                 
                 // query =query.Where(x=> listingStatus.Contains(x.Status));
+                var totalCount = await query.CountAsync();
+                var pagedQuery = query
+                     .ProjectTo<ListingDto>(_mapper.ConfigurationProvider)
+                     .AsNoTracking()
+                     .Skip((listingParams.PageNumber - 1) * listingParams.PageSize)
+                     .Take(listingParams.PageSize);
 
-                var pagedData = await PagedList<ListingDto>.CreateAsync(query.ProjectTo<ListingDto>(_mapper.ConfigurationProvider).AsNoTracking(), listingParams.PageNumber, listingParams.PageSize);
+                var pagedData = await PagedList<ListingDto>.CreateAsync(pagedQuery, totalCount, listingParams.PageNumber, listingParams.PageSize);
+
 
                 await _cacheService.SetCacheAsync(cacheKey, pagedData, DateTimeOffset.Now.AddHours(24));
 
