@@ -65,5 +65,7 @@ services:
     - ./redis.conf:/usr/local/etc/redis/redis.conf
     depends_on:
       - api
+    networks:
+      - mynetwork
 networks:
   mynetwork:
