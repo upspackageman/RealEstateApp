@@ -615,7 +615,8 @@ export class ForsaleComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   async viewedListings(){
    const list = localStorage.getItem('viewed_listings');
-   const viewed  = list.split(',');
+   if(list){
+    const viewed  = list.split(',');
     for (let i = 0; i < this.listings.length; i++) {
       
       if (viewed.includes(this.listings[i].id)) {
@@ -627,11 +628,16 @@ export class ForsaleComponent implements OnInit {
         }
       }
     }
+   }
+   
   }
 
   async setViewListings(){
     const history = localStorage.getItem('viewed_listings');
-    this.viewedListing = history.split(',');
+    if(history){
+      this.viewedListing = history.split(',');
+    }
+    
   }
 
   @HostListener('window:resize', ['$event'])
