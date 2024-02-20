@@ -108,47 +108,47 @@ namespace API.Data
                 var expireTime = DateTimeOffset.Now.AddHours(24);
                 await _cacheService.SetCacheAsync("listings", query, expireTime);
            
-                if(listingParams.PriceSort!=1){
-                    query = query.OrderBy(x=> x.PriceSearch);
-                }
+                // if(listingParams.PriceSort!=1){
+                //     query = query.OrderBy(x=> x.PriceSearch);
+                // }
 
-                if(listingParams.PriceSort==1){
-                    query = query.OrderByDescending(x=> x.PriceSearch);
-                }
+                // if(listingParams.PriceSort==1){
+                //     query = query.OrderByDescending(x=> x.PriceSearch);
+                // }
 
-                if(listingParams.Price != -1 ){
-                    query = query.Where(x=> x.PriceSearch <= listingParams.Price );
-                }
+                // if(listingParams.Price != -1 ){
+                //     query = query.Where(x=> x.PriceSearch <= listingParams.Price );
+                // }
 
-                if(listingParams.BathTotals != -1 ){
-                    query = query.Where(x=> x.BathTotals >= listingParams.BathTotals );
-                }
+                // if(listingParams.BathTotals != -1 ){
+                //     query = query.Where(x=> x.BathTotals >= listingParams.BathTotals );
+                // }
 
-                if(listingParams.Type != "not avaiable" ){
-                    query = query.Where(x=> x.Type == listingParams.Type);
-                }
+                // if(listingParams.Type != "not avaiable" ){
+                //     query = query.Where(x=> x.Type == listingParams.Type);
+                // }
 
-                if(listingParams.Bedrooms != -1){
-                    query = query.Where(x=> x.Bedrooms >= listingParams.Bedrooms );
-                }
+                // if(listingParams.Bedrooms != -1){
+                //     query = query.Where(x=> x.Bedrooms >= listingParams.Bedrooms );
+                // }
 
-                if(listingParams.Zipcode!=-1){
-                    query = query.Where(x=> x.Zip == listingParams.Zipcode);
-                }
+                // if(listingParams.Zipcode!=-1){
+                //     query = query.Where(x=> x.Zip == listingParams.Zipcode);
+                // }
 
-                if(listingParams.EstimatedSquareFeet!=-1){
-                    query = query.Where(x=> x.EstimatedSquareFeet >= listingParams.EstimatedSquareFeet);
-                }
+                // if(listingParams.EstimatedSquareFeet!=-1){
+                //     query = query.Where(x=> x.EstimatedSquareFeet >= listingParams.EstimatedSquareFeet);
+                // }
 
                 
                 
                 
 
-                query = query.Where(x=> x.FullAddress.Replace(",","").Replace("  "," ").ToLower().Contains(listingParams.FullAddress.Replace(",","").ToLower()));
+                // query = query.Where(x=> x.FullAddress.Replace(",","").Replace("  "," ").ToLower().Contains(listingParams.FullAddress.Replace(",","").ToLower()));
                 
-                //query =  query.Where(x=> x.FullAddress.ToLower().Contains(listingParams.FullAddress.ToLower()));
+                // //query =  query.Where(x=> x.FullAddress.ToLower().Contains(listingParams.FullAddress.ToLower()));
                 
-                query =query.Where(x=> listingStatus.Contains(x.Status));
+                // query =query.Where(x=> listingStatus.Contains(x.Status));
 
                 var pagedData = await PagedList<ListingDto>.CreateAsync(query.ProjectTo<ListingDto>(_mapper.ConfigurationProvider).AsNoTracking(), listingParams.PageNumber, listingParams.PageSize);
 
