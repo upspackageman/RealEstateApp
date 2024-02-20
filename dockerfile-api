@@ -1,5 +1,5 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0.101 AS build
-WORKDIR /app
+WORKDIR /api
 
 COPY *.sln .
 COPY . .
@@ -9,7 +9,7 @@ RUN dotnet publish -c release -o out
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /api
-COPY --from=build /app/out .
+COPY --from=build /api/out .
 
 # Copy all JSON files in the root directory
 COPY *.json ./
