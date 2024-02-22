@@ -67,7 +67,7 @@ namespace API.Controllers
             
             
              var callback = QueryHelpers.AddQueryString(registerDto.ClientURI, param);
-             callback = callback.Replace("5001/api", "8080");
+             callback = callback.Replace("5001/api", "");
              callback = callback.Replace("/e", "/#/e");
              
              var year = DateTime.Now.Year;
@@ -170,7 +170,7 @@ namespace API.Controllers
             };
 
             var callback = QueryHelpers.AddQueryString(forgotPasswordDto.ClientURI, param);
-            callback = callback.Replace("5001/api", "8080");
+            callback = callback.Replace("5001/api", "");
             callback = callback.Replace("/r", "/#/r");
              
             var year = DateTime.Now.Year;
