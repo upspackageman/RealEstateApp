@@ -55,17 +55,17 @@ services:
     depends_on:
       - sql-server
 
-  redis:
-    image: redis:latest
-    container_name: beverlyward-realtor-redis
-    ports:
-    - 6379:6379
-    command: redis-server /usr/local/etc/redis/redis.conf
-    volumes:
-    - ./redis.conf:/usr/local/etc/redis/redis.conf
-    depends_on:
-      - api
-    networks:
-      - mynetwork
+  # redis:
+  #   image: redis:latest
+  #   container_name: beverlyward-realtor-redis
+  #   ports:
+  #   - 6379:6379
+  #   command: redis-server /usr/local/etc/redis/redis.conf
+  #   volumes:
+  #   - ./redis.conf:/usr/local/etc/redis/redis.conf
+  #   depends_on:
+  #     - api
+  #   networks:
+  #     - mynetwork
 networks:
   mynetwork:
