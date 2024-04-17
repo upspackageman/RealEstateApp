@@ -23,9 +23,15 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-  
+  this.showFooter();
   }
-
+  showFooter(){
+    
+    const link = document.querySelector('app-footer .footer ') as HTMLElement;
+    console.log(link);
+    link.style.display="flex";
+ 
+}
 
   login() {
     this.modelLogin.email = this.loginForm.value.email;

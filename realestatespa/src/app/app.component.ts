@@ -18,12 +18,16 @@ export class AppComponent {
 
   ngOnInit(){
     this.setCurrentUser();
+   
   }
 
   setCurrentUser(){
     const user: User =JSON.parse(localStorage.getItem('user'));
     this.accountService.setCurrentUser(user);
   }
+
+ 
+  
 
   onActivate() {
   //  window.scroll(0,0);

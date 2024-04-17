@@ -25,7 +25,17 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.showFooter();
   }
+
+
+  showFooter(){
+    
+    const link = document.querySelector('app-footer .footer ') as HTMLElement;
+    console.log(link);
+    link.style.display="flex";
+ 
+}
 
   public forgotPassword() {
     this.showError = this.showSuccess = false;

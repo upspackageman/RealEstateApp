@@ -1,25 +1,11 @@
 <main>
-  <nav class="navbar navbar-expand-lg  shadow-lg option font-family">
-    <div class="container">
-      <div class="selectOptions text-focus-in  font-family">
-        <button  (click)="mapView()" class="mobileMap">
-          <span *ngIf="isMapView" class="map_text_margin">
-            <img src="/assets/list_icon.svg" onerror="this.onerror=null; this.src='image.png'">
-            
-      
-          
-          </span>
-          <span *ngIf="!isMapView" class="map_text_margin">
-            <img class="mobile_map_icon" src="/assets/map_icon.svg" onerror="this.onerror=null; this.src='image.png'">
-    
-          </span>
-        </button>
+  <section class="layout">
+    <div class="option">
+      <div class="optionContainer">
         <form [formGroup]="searchBar">
-         
-          <input #findListing id="searchList" formControlName="search" class=" searchBar me-2 ml-5  main-font"
-            type="search" placeholder="eg. 2144 Oceanside Boulevard, Oceanside, CA 92054" aria-label="Search"
-            value="fuch" (focus)="searchMobile()">
-
+          <input #findListing id="searchList" formControlName="search" class="searchBar" type="search"
+            placeholder="eg. 2144 Oceanside Boulevard, Oceanside, CA 92054" aria-label="Search" value="fuch"
+           >
           <button class="searchButton" type="submit" [disabled]="!searchBar.valid"
             (click)="searchListing(findListing.value)">
             <a class="" type="button">
@@ -31,270 +17,193 @@
               <img src="/assets/filter_icon.svg" onerror="this.onerror=null; this.src='image.png'">
             </a>
           </button>
-          <button class="mapButton" (click)="mapViewTablet()">
+          <button class="mapButton" (click)="mapViewTablet(map)">
             <a class="" type="button">
               <img src="/assets/map_icon.svg" onerror="this.onerror=null; this.src='image.png'">
             </a>
           </button>
         </form>
-      </div>
-      <div class="dropdown">
-        <button class="listing-status adjust-space">{{listingParams.bathtotals == -1?'Baths':'Baths: ' + listingParams.bathtotals
-          }}<span *ngIf="listingParams.bathtotals !== -1">+</span></button>
-        <div class="dropdown-content bath-select-dpdwn" id="scroll-drpdwn">
-          <ul>
-            <a href="javascript:void(0)" (click)="bathchange($event.target.value)">
-              <li [value]="bath" *ngFor="let bath of bathSelect">{{bath}}+</li>
-            </a>
-          </ul>
+        <div class="optionPadding"></div>
+        <div class="dropdown">
+          <button class="listing-status adjust-space">{{listingParams.bathtotals == -1?'Baths':'Baths: ' +
+            listingParams.bathtotals
+            }}<span *ngIf="listingParams.bathtotals !== -1">+</span></button>
+          <div class="dropdown-content bath-select-dpdwn" id="scroll-drpdwn">
+            <ul>
+              <a href="javascript:void(0)" (click)="bathchange($event.target.value)">
+                <li [value]="bath" *ngFor="let bath of bathSelect">{{bath}}+</li>
+              </a>
+            </ul>
+          </div>
         </div>
-      </div>
-      <div class="dropdown">
-        <button class="listing-status adjust-space">{{listingParams.bedrooms == -1?'Beds':'Beds: ' + listingParams.bedrooms
-          }}<span *ngIf="listingParams.bedrooms !== -1">+</span></button>
-        <div class="dropdown-content bed-select-dpdwn" id="scroll-drpdwn">
-          <ul>
-            <a href="javascript:void(0)" (click)="bedchange($event.target.value)">
-              <li [value]="bed" *ngFor="let bed of bedSelect">{{bed}}+</li>
-            </a>
-          </ul>
+        <div class="dropdown">
+          <button class="listing-status adjust-space">{{listingParams.bedrooms == -1?'Beds':'Beds: ' +
+            listingParams.bedrooms
+            }}<span *ngIf="listingParams.bedrooms !== -1">+</span></button>
+          <div class="dropdown-content bed-select-dpdwn" id="scroll-drpdwn">
+            <ul>
+              <a href="javascript:void(0)" (click)="bedchange($event.target.value)">
+                <li [value]="bed" *ngFor="let bed of bedSelect">{{bed}}+</li>
+              </a>
+            </ul>
+          </div>
         </div>
-      </div>
-      <div class="dropdown">
-        <button class="listing-status adjust-space">{{currentSqft == '-1'?'Sq. Ft.': currentSqft+ '
-          > SqFt.'}}<span *ngIf="selectedEst !== -1"><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
-        <div class="dropdown-content sqft-select-dpdwn" id="scroll-drpdwn">
-          <ul>
-            <a href="javascript:void(0)" (click)="estimatedSqFt($event.target.value)">
-              <li [value]="sqft" *ngFor="let sqft of sqftSelect">{{sqft + ' >'}} </li>
-            </a>
-          </ul>
+        <div class="dropdown sqft">
+          <button class="listing-status adjust-space">{{currentSqft == '-1'?'Sq. Ft.': currentSqft+ '
+            > SqFt.'}}<span *ngIf="selectedEst !== -1"><i class="fa fa-angle-right"
+                aria-hidden="true"></i></span></button>
+          <div class="dropdown-content sqft-select-dpdwn" id="scroll-drpdwn">
+            <ul>
+              <a href="javascript:void(0)" (click)="estimatedSqFt($event.target.value)">
+                <li [value]="sqft" *ngFor="let sqft of sqftSelect">{{sqft + ' >'}} </li>
+              </a>
+            </ul>
+          </div>
         </div>
-      </div>
-      <div class="dropdown">
-        <button class="listing-status adjust-space">{{currentPrice == -1?'Price: No Max': currentPrice |
-          currency:'USD':'symbol':'2.0-2'}}<span *ngIf="currentPrice !== -1"><i class="fa fa-angle-left"
-              aria-hidden="true"></i></span></button>
-        <div class="dropdown-content price-select-dpdwn" id="scroll-drpdwn">
-          <ul>
-            <a href="javascript:void(0)" (click)="pricechange($event.target.value)">
-              <li [value]="-1"> No Max</li>
-            </a>
-            <a href="javascript:void(0)" (click)="pricechange($event.target.value)">
-              <li [value]="price" *ngFor="let price of priceSelect">{{price| currency:'USD':'symbol':'2.0-2'}}</li>
-            </a>
-          </ul>
+        <div class="dropdown priceSort_listingStatus">
+          <button class="listing-status adjust-space">{{currentPrice == -1?'Price: No Max': currentPrice |
+            currency:'USD':'symbol':'2.0-2'}}<span *ngIf="currentPrice !== -1"><i class="fa fa-angle-left"
+                aria-hidden="true"></i></span></button>
+          <div class="dropdown-content price-select-dpdwn" id="scroll-drpdwn">
+            <ul>
+              <a href="javascript:void(0)" (click)="pricechange($event.target.value)">
+                <li [value]="-1"> No Max</li>
+              </a>
+              <a href="javascript:void(0)" (click)="pricechange($event.target.value)">
+                <li [value]="price" *ngFor="let price of priceSelect">{{price| currency:'USD':'symbol':'2.0-2'}}</li>
+              </a>
+            </ul>
+          </div>
         </div>
-      </div>
-      <div class="dropdown">
-        <button [innerHtml]="pricesortHTML" class="listing-status adjust-space"></button>
-        <div class="dropdown-content high-low-select-dpdwn" id="price-sort">
-          <ul>
-            <a href="javascript:void(0)" (click)="priceSort($event.target.value)">
-              <li [value]="1">(High to low)</li>
-            </a>
-            <a href="javascript:void(0)" (click)="priceSort($event.target.value)">
-              <li [value]="2">(Low to High)</li>
-            </a>
-          </ul>
+        <div class="dropdown">
+          <button [innerHtml]="pricesortHTML" class="listing-status adjust-space"></button>
+          <div class="dropdown-content dropdown-content high-low-select-dpdwn " id="price-sort">
+            <ul>
+              <a href="javascript:void(0)" (click)="priceSort($event.target.value)">
+                <li [value]="1">(High to low)</li>
+              </a>
+              <a href="javascript:void(0)" (click)="priceSort($event.target.value)">
+                <li [value]="2">(Low to High)</li>
+              </a>
+            </ul>
+          </div>
         </div>
-      </div>
-      <div class="dropdown">
-        <!--</button> (click)="openModalWithClass(listingStatus)"-->
-        <button class="listing-status adjust-space">Listing Status</button>
-        <div class="dropdown-content status-select-dpdwn" id="listing-status-desktop">
-          <div class="container-listing-status">
-            <div class="label-container">
-              <label>
-                <input type="checkbox" (click)=activeStatus($event) [checked]="activeSelected">
-                <span class="checkmark"></span>
-                Active&nbsp;&nbsp;&nbsp;
-              </label>
-              <label>
-                <input type="checkbox" (click)=pendingStatus($event) [checked]="pendingSelected">
-                <span class="checkmark"></span>
-                Pending&nbsp;&nbsp;&nbsp;
-              </label>
-              <label>
-                <input type="checkbox" (click)=contingentStatus($event) [checked]="contingentSelected">
-                <span class="checkmark"></span>
-                Contingent&nbsp;&nbsp;&nbsp;
-              </label>
-              <label>
-                <input type="checkbox" (click)=bomStatus($event) [checked]="bomSelected">
-                <span class="checkmark"></span>
-                BOM&nbsp;&nbsp;&nbsp;
-              </label>
-              <label>
-                <input type="checkbox" (click)=forecloseStatus($event) [checked]="forecloseSelected">
-                <span class="checkmark"></span>
-                Foreclose&nbsp;&nbsp;&nbsp;
-              </label>
-              <label>
-                <input type="checkbox" (click)=soldStatus($event) [checked]="soldSelected">
-                <span class="checkmark"></span>
-                Sold
-              </label>
+        <div class="dropdown priceSort_listingStatus">
+          <!--</button> (click)="openModalWithClass(listingStatus)"-->
+          <button class="listing-status adjust-space">Listing Status</button>
+          <div class="dropdown-content " id="listing-status-desktop">
+            <div class="container-listing-status">
+              <div class="label-container">
+                <label>
+                  <input type="checkbox" (click)=activeStatus($event) [checked]="activeSelected">
+                  <span class="checkmark"></span>
+                  Active&nbsp;&nbsp;&nbsp;
+                </label>
+                <label>
+                  <input type="checkbox" (click)=pendingStatus($event) [checked]="pendingSelected">
+                  <span class="checkmark"></span>
+                  Pending&nbsp;&nbsp;&nbsp;
+                </label>
+                <label>
+                  <input type="checkbox" (click)=contingentStatus($event) [checked]="contingentSelected">
+                  <span class="checkmark"></span>
+                  Contingent&nbsp;&nbsp;&nbsp;
+                </label>
+                <label>
+                  <input type="checkbox" (click)=bomStatus($event) [checked]="bomSelected">
+                  <span class="checkmark"></span>
+                  BOM&nbsp;&nbsp;&nbsp;
+                </label>
+                <label>
+                  <input type="checkbox" (click)=forecloseStatus($event) [checked]="forecloseSelected">
+                  <span class="checkmark"></span>
+                  Foreclose&nbsp;&nbsp;&nbsp;
+                </label>
+                <label>
+                  <input type="checkbox" (click)=soldStatus($event) [checked]="soldSelected">
+                  <span class="checkmark"></span>
+                  Sold
+                </label>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
+    <div class="lists">
+      <div class="listPadding"></div>
+      <div class="list" *ngFor="let listing of listings">
+        <div  (mouseenter)="listingHovered($event)" (mouseleave)="listingNotHovered($event)" class="listing-card"
+          data-id="{{listing.id}}">
+          <app-listing-card [listing]="listing"></app-listing-card>
 
-
-  </nav>
-
-
-
-  <div class="splitscreen font-family">
-    <div [ngStyle]="{display:listDisplay}" class="left shadow-lg">
-      <div class="listing_results">
-        
-        <div class="list" *ngFor="let listing of listings">
-          <div (mouseenter)="listingHovered($event)" (mouseleave)="listingNotHovered($event)" class="listing-card"
-            data-id="{{listing.id}}">
-            <app-listing-card [listing]="listing"></app-listing-card>
-            
-          </div>
-          
         </div>
-        <div class="padding-card"></div>
-        <div class="pagination_listing_results1">
-          <app-pagination
-          [currentPage]="currentPage"
-          [totalPages]="totalPages"
-          (pageChange)="pageChanged($event)"
-        ></app-pagination>
-        </div>
+
+      </div>
+      <div class="listPaddingBottom"></div>
+      <div class="pagination_listing_results1">
+        <app-pagination [currentPage]="currentPage" [totalPages]="totalPages"
+          (pageChange)="pageChanged($event)"></app-pagination>
+      </div>
+      <button [ngStyle]="{'display': clearSearchBtnDisplay}"  (click)="clearSearch()" class="mobileClearSearch">
+        <img src="/assets/search.svg" onerror="this.onerror=null; this.src='image.png'">
+      </button>
+    </div>
+    <div class="map">
+      <button [ngStyle]="{'display': clearSearchBtnDisplay}"  (click)="clearSearch()" class="desktopClearSearch">
+        Clear Search
+       </button>
+      <agm-map  #map ([zoomSroll])="location.scrollZoom" [gestureHandling]="location.gestureHandling"
+        [ngStyle]="_mapDisplay"  [latitude]="location.lat" [styles]="location.styles"
+        [longitude]="location.lng" [clickableIcons]="location.clickableIcons"
+        [(showDefaultInfoWindow)]="location.showDefaultInfoWindow" [disableDefaultUI]="location.disableDefaultUI"
+        [(zoom)]="location.zoom" [draggable]="location.draggable" (boundsChange)="setUpdateListings($event)">
+        <!-- <agm-marker-cluster   [styles]="markerClusterIconStyles" > -->
+
+
+
+
+        <agm-marker [agmFitBounds]="false" *ngFor="let marker of listings" class="myMap" [latitude]="marker.lat"
+          [longitude]="marker.lng" [iconUrl]="marker.iconUrl" data-id="{{marker.id}}"
+          (markerClick)='listingClicked(marker.id)'>
+          <agm-snazzy-info-window [ngStyle]="{'animation': 'tilt-in-top-2 1s ease forwards'}" [latitude]="marker.lat" [isOpen]="marker.isHovered" [padding]="location.padding"
+            [longitude]="marker.lng" [border]="location.border" [borderRadius]="location.borderRadius"
+            [maxWidth]="mapCard.maxWidth" [maxHeight]="mapCard.maxHeight" [closeWhenOthersOpen]="true"
+            style="position: relative; top: 50px; z-index: 2 !important;">
+            <ng-template>
+              <section class="marker">
+                <a routerLink='/listing/{{marker.id}}' routerLinkActive='active'><img src="{{marker.listingPictures}}"
+                    style="border-radius: 0px;" alt="..."
+                    onerror="this.onerror=null; this.src='../assets/NoPhotoAvailable.jpg';"></a>
+                <div class="card-body" style="color:black;">
+                  <h5 class="card-title cardTitle">{{marker.price}}</h5>
+                  <p class="card-text m-0 cardText">{{marker.bedrooms}} Beds | {{marker.bathFull + marker.bathsHalf}}
+                    Baths
+                    | {{marker.estimatedSquareFeet}} SQFT</p>
+                  <a class="btn tracking-in-expand" routerLink='/listing/{{marker.id}}'
+                    routerLinkActive='active-link'>View Details</a>
+                </div>
+              </section>
+
+            </ng-template>
+          </agm-snazzy-info-window>
+
+        </agm-marker>
+        <!-- </agm-marker-cluster> -->
+      </agm-map>
+      <div  [ngStyle]="_mapDisplay"  class="pagination_listing_results">
+        <app-pagination [currentPage]="currentPage" [totalPages]="totalPages"
+          (pageChange)="pageChanged($event)"></app-pagination>
+          <button [ngStyle]="{'display': clearSearchBtnDisplay}"  (click)="clearSearch()" class="mobileClearSearch">
+            <img src="/assets/search.svg" onerror="this.onerror=null; this.src='image.png'">
+          </button>
       </div>
     </div>
-  </div>
-  <div class="map">
-    <agm-map #map ([zoomSroll])="location.scrollZoom" [gestureHandling]="location.gestureHandling"
-    [ngStyle]="{'z-index':zIndex, 'display':mapDisplay}" [latitude]="location.lat" [styles]="location.styles"
-    [longitude]="location.lng" [clickableIcons]="location.clickableIcons"
-    [(showDefaultInfoWindow)]="location.showDefaultInfoWindow" [disableDefaultUI]="location.disableDefaultUI"
-    [(zoom)]="location.zoom" [draggable]="location.draggable" (boundsChange)="setUpdateListings($event)">
-    <!-- <agm-marker-cluster   [styles]="markerClusterIconStyles" > -->
-  
-  
-  
-  
-    <agm-marker [agmFitBounds]="false" *ngFor="let marker of listings" class="myMap" [latitude]="marker.lat"
-      [longitude]="marker.lng" [iconUrl]="marker.iconUrl"  data-id="{{marker.id}}" (markerClick)='listingClicked(marker.id)'>
-      <agm-snazzy-info-window [latitude]="marker.lat" [isOpen]="marker.isHovered" [padding]="location.padding"
-        [longitude]="marker.lng" [border]="location.border" [borderRadius]="location.borderRadius"
-        [maxWidth]="mapCard.maxWidth" [maxHeight]="mapCard.maxHeight" [closeWhenOthersOpen]="true" style="position: relative; top: 50px; z-index: 2 !important;">
-        <ng-template >
-          <section class="marker">
-            <a routerLink='/listing/{{marker.id}}' routerLinkActive='active'><img src="{{marker.listingPictures}}" style="border-radius: 0px;"
-                alt="..." onerror="this.onerror=null; this.src='../assets/NoPhotoAvailable.jpg';"></a>
-            <div class="card-body cardBody main-font" style="color:black;">
-              <h5 class="card-title cardTitle">{{marker.price}}</h5>
-              <p class="card-text m-0 cardText">{{marker.bedrooms}} Beds | {{marker.bathFull + marker.bathsHalf}} Baths
-                | {{marker.estimatedSquareFeet}} SQFT</p>
-              <a class="btn tracking-in-expand" routerLink='/listing/{{marker.id}}' routerLinkActive='active-link'>View Details</a>
-            </div>
-          </section>
-  
-        </ng-template>
-      </agm-snazzy-info-window>
-  
-    </agm-marker>
-    <!-- </agm-marker-cluster> -->
-  </agm-map>
-  </div>
-  <button [ngStyle]="{'display': clearSearchBtnDisplay}"  (click)="clearSearch()" class="desktopClearSearch">
-   Clear Search
-  </button>
-
-  <!-- <button [ngStyle]="{'z-index':zMap}" (click)="mapView()" class="map_list_button">
-    <span *ngIf="isMapView" class="map_text_margin">
-      <img class="mobile_map_icon" src="/assets/list_icon.svg" onerror="this.onerror=null; this.src='image.png'">
-      <span>List</span>
-
-     
-    </span>
-    <span *ngIf="!isMapView" class="map_text_margin">
-      <img class="mobile_map_icon" src="/assets/map_icon.svg" onerror="this.onerror=null; this.src='image.png'">
-      <span>Map</span>
-     
-    </span>
-  </button> -->
-  <div [ngStyle]="{'display':mapDisplay}" class="pagination_listing_results" #pagination>
-    <app-pagination
-    [currentPage]="currentPage"
-    [totalPages]="totalPages"
-    (pageChange)="pageChanged($event)"
-  ></app-pagination>
-  <button [ngStyle]="{'display': clearSearchBtnDisplay}"  (click)="clearSearch()" class="mobileClearSearch">
-    <img src="/assets/search.svg" onerror="this.onerror=null; this.src='image.png'">
-  </button>
-    <!-- <pagination [ngStyle]="{'display':mapDisplay}" [boundaryLinks]="true" [totalItems]="totalItems"
-    [maxSize]="5"
-    [disabled]="false"
-    [itemsPerPage]="itemsPerPage"  [(ngModel)]="pagination.currentPage" (pageChange)="pageChange($event)"
-      previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" class="pagination">
-    </pagination> -->
-  </div>
-
    
-  
- 
-   
-  
+  </section>
 
-  <button [ngStyle]="{'display': clearSearchBtnDisplay, 'z-index':clearSearchBtnZindex}" class="clearSearchBtn" id="mobile_tab_searchBtn"
-    (click)="clearSearch()">
-    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg>
-    </button>
-   
-  
 </main>
-
-
-<!-- <ng-template  #listingStatus>
-  <button type="button" class="close" (click)="modalRef.hide()">
-    &times;
-  </button>
-  <h1 class="status-title">Listing Status</h1>
-  <div class="container-listing-status">
-    <div class="label-container">
-        <label>
-            <input type="checkbox" (click)=activeStatus($event) [checked]="activeSelected" >
-            <span class="checkmark"></span>
-            Active&nbsp;&nbsp;&nbsp;
-          </label>
-          <label>
-            <input type="checkbox" (click)=pendingStatus($event) [checked]="pendingSelected">
-            <span class="checkmark"></span>
-            Pending&nbsp;&nbsp;&nbsp;
-          </label>
-          <label>
-            <input type="checkbox" (click)=contingentStatus($event) [checked]="contingentSelected">
-            <span class="checkmark"></span>
-            Contingent&nbsp;&nbsp;&nbsp;
-          </label>
-          <label>
-            <input type="checkbox" (click)=bomStatus($event) [checked]="bomSelected">
-            <span class="checkmark"></span>
-            BOM&nbsp;&nbsp;&nbsp;
-          </label>
-          <label>
-            <input type="checkbox" (click)=forecloseStatus($event) [checked]="forecloseSelected">
-            <span class="checkmark"></span>
-            Foreclose&nbsp;&nbsp;&nbsp;
-          </label>
-          <label>
-            <input  type="checkbox" (click)=soldStatus($event) [checked]="soldSelected">
-            <span class="checkmark"></span>
-            Sold
-          </label>
-    </div>
-  </div>
-
-</ng-template> -->
 
 <ng-template #moreOptions>
   <button type="button" class="close" (click)="modalRef.hide()">
@@ -302,136 +211,116 @@
   </button>
   <div class="container">
     <h1 class="mobile">Bed</h1>
-    <div class="filter-cat">
-      <div class="selectdiv">
-        <label>
-          <select id="mobileBtnBed" (change)="bedchange($event.target.value)">
-            <option id="one" [value]=-1>{{currentBed == -1?'Beds': currentBed +'+'}}</option>
-            <option [value]=0>--No Min--</option>
-            <option [value]=1>1+</option>
-            <option [value]=2>2+</option>
-            <option [value]=3>3+</option>
-            <option [value]=4>4+</option>
-            <option [value]=5>5+</option>
-            <option [value]=6>6+</option>
-            <option [value]=7>7+</option>
-            <option [value]=8>8+</option>
-            <option [value]=9>9+</option>
-            <option [value]=10>10+</option>
-          </select>
-        </label>
-      </div>
-    </div>
+
+
+    <select id="mobileBtnBed" (change)="bedchange($event.target.value)">
+      <option id="one" [value]=-1>{{currentBed == -1?'Beds': currentBed +'+'}}</option>
+      <option [value]=0>--No Min--</option>
+      <option [value]=1>1+</option>
+      <option [value]=2>2+</option>
+      <option [value]=3>3+</option>
+      <option [value]=4>4+</option>
+      <option [value]=5>5+</option>
+      <option [value]=6>6+</option>
+      <option [value]=7>7+</option>
+      <option [value]=8>8+</option>
+      <option [value]=9>9+</option>
+      <option [value]=10>10+</option>
+    </select>
+
     <h1 class="mobile">Bath</h1>
-    <div class="filter-cat">
-      <div class="selectdiv">
-        <label>
-          <select id="mobileBtnBath" (change)="bathchange($event.target.value)">
-            <option id="one" [value]=-1>{{currentBath == -1?'Baths': currentBath +'+'}}</option>
-            <option [value]=0>--No Min--</option>
-            <option [value]=1>1+</option>
-            <option [value]=2>2+</option>
-            <option [value]=3>3+</option>
-            <option [value]=4>4+</option>
-            <option [value]=5>5+</option>
-            <option [value]=6>6+</option>
-            <option [value]=7>7+</option>
-            <option [value]=8>8+</option>
-            <option [value]=9>9+</option>
-            <option [value]=10>10+</option>
-          </select>
-        </label>
-      </div>
-    </div>
+    <select id="mobileBtnBath" (change)="bathchange($event.target.value)">
+      <option id="one" [value]=-1>{{currentBath == -1?'Baths': currentBath +'+'}}</option>
+      <option [value]=0>--No Min--</option>
+      <option [value]=1>1+</option>
+      <option [value]=2>2+</option>
+      <option [value]=3>3+</option>
+      <option [value]=4>4+</option>
+      <option [value]=5>5+</option>
+      <option [value]=6>6+</option>
+      <option [value]=7>7+</option>
+      <option [value]=8>8+</option>
+      <option [value]=9>9+</option>
+      <option [value]=10>10+</option>
+    </select>
+
     <h1 class="mobile">Price</h1>
-    <div class="filter-cat">
-      <div class="selectdiv">
-        <label>
-          <select id="mobileBtnPrice" (change)="pricechange($event.target.value)">
-            <option [value]="-1">{{currentPrice == -1?'Max Price': currentPrice + ' <'}}</option>
-            <option [value]="-1">--No Max--</option>
-            <option [value]="price" *ngFor="let price of priceSelect">{{'$'+ price + ' <' }}</option>
-          </select>
-        </label>
-      </div>
-    </div>
+
+    <select id="mobileBtnPrice" (change)="pricechange($event.target.value)">
+      <option [value]="-1">{{currentPrice == -1?'Max Price': currentPrice + ' <'}}</option>
+      <option [value]="-1">--No Max--</option>
+      <option [value]="price" *ngFor="let price of priceSelect">{{'$'+ price + ' <' }}</option>
+    </select>
+
     <div id="price-spacing">
 
     </div>
-    <div class="filter-cat">
-      <div class="selectdiv">
-        <label>
-          <select id="mobileBtnSort" (change)="priceSort($event.target.value)">
-            <option [value]="-1">{{currentSort == -1?'Price Sort': currentSort}}</option>
-            <option [value]="1">(High to low)</option>
-            <option [value]="2">(Low to High)</option>
-          </select>
-        </label>
-      </div>
-    </div>
+    <select id="mobileBtnSort" (change)="priceSort($event.target.value)">
+      <option [value]="-1">{{currentSort == -1?'Price Sort': currentSort}}</option>
+      <option [value]="1">(High to low)</option>
+      <option [value]="2">(Low to High)</option>
+    </select>
 
-    <h1 class="mobile">Square Feet</h1>
-    <div class="filter-cat">
-      <div class="selectdiv">
-        <label>
-          <select id="mobileBtnSqft" (change)="estimatedSqFt($event.target.value)">
-            <option value="-1">{{currentSqft == -1?'Sq. Ft.': currentSqft + ' >'}}</option>
-            <option [value]=0>--No Min--</option>
-            <option value="500">500 > </option>
-            <option value="750">750 ></option>
-            <option value="1000">1000 ></option>
-            <option value="1500">1500 ></option>
-            <option value="2000">2000 ></option>
-            <option value="2500">2500 ></option>
-            <option value="3000">3000 ></option>
-            <option value="3500">3500 ></option>
-            <option value="4000">4000 ></option>
-            <option value="4500">4500 ></option>
-            <option value="5000">5000 ></option>
-            <option value="5500">5500 ></option>
-            <option value="6000">6000 ></option>
-            <option value="6500">6500 ></option>
-            <option value="7000">7000 ></option>
-            <option value="10000">10000 ></option>
-            <option value="20000">20000 ></option>
-            <option value="30000">30000 ></option>
-          </select>
-        </label>
-      </div>
-    </div>
-    <h1 class="mobile">Listing Status</h1>
-    <div class="label-container">
-      <label>
-        <input type="checkbox" (click)=activeStatus($event) [checked]="activeSelected">
-        <span class="checkmark"></span>
-        Active&nbsp;&nbsp;&nbsp;
-      </label>
-      <label>
-        <input type="checkbox" (click)=pendingStatus($event) [checked]="pendingSelected">
-        <span class="checkmark"></span>
-        Pending&nbsp;&nbsp;&nbsp;
-      </label>
-      <label>
-        <input type="checkbox" (click)=contingentStatus($event) [checked]="contingentSelected">
-        <span class="checkmark"></span>
-        Contingent&nbsp;&nbsp;&nbsp;
-      </label>
-      <label>
-        <input type="checkbox" (click)=bomStatus($event) [checked]="bomSelected">
-        <span class="checkmark"></span>
-        BOM&nbsp;&nbsp;&nbsp;
-      </label>
-      <label>
-        <input type="checkbox" (click)=forecloseStatus($event) [checked]="forecloseSelected">
-        <span class="checkmark"></span>
-        Foreclose&nbsp;&nbsp;&nbsp;
-      </label>
-      <label>
-        <input type="checkbox" (click)=soldStatus($event) [checked]="soldSelected">
-        <span class="checkmark"></span>
-        Sold
-      </label>
-    </div>
 
+  <h1 class="mobile">Square Feet</h1>
+  <select id="mobileBtnSqft" (change)="estimatedSqFt($event.target.value)">
+    <option value="-1">{{currentSqft == -1?'Sq. Ft.': currentSqft + ' >'}}</option>
+    <option [value]=0>--No Min--</option>
+    <option value="500">500 > </option>
+    <option value="750">750 ></option>
+    <option value="1000">1000 ></option>
+    <option value="1500">1500 ></option>
+    <option value="2000">2000 ></option>
+    <option value="2500">2500 ></option>
+    <option value="3000">3000 ></option>
+    <option value="3500">3500 ></option>
+    <option value="4000">4000 ></option>
+    <option value="4500">4500 ></option>
+    <option value="5000">5000 ></option>
+    <option value="5500">5500 ></option>
+    <option value="6000">6000 ></option>
+    <option value="6500">6500 ></option>
+    <option value="7000">7000 ></option>
+    <option value="10000">10000 ></option>
+    <option value="20000">20000 ></option>
+    <option value="30000">30000 ></option>
+  </select>
   </div>
-</ng-template>
+  
+  <div class="label-container">
+    <h1 class="mobile">Listing Status</h1>
+  
+    <label>
+      <input type="checkbox" (click)=activeStatus($event) [checked]="activeSelected">
+      <span class="checkmark"></span>
+      Active&nbsp;&nbsp;&nbsp;
+    </label>
+    <label>
+      <input type="checkbox" (click)=pendingStatus($event) [checked]="pendingSelected">
+      <span class="checkmark"></span>
+      Pending&nbsp;&nbsp;&nbsp;
+    </label>
+    <label>
+      <input type="checkbox" (click)=contingentStatus($event) [checked]="contingentSelected">
+      <span class="checkmark"></span>
+      Contingent&nbsp;&nbsp;&nbsp;
+    </label>
+    <label>
+      <input type="checkbox" (click)=bomStatus($event) [checked]="bomSelected">
+      <span class="checkmark"></span>
+      BOM&nbsp;&nbsp;&nbsp;
+    </label>
+    <label>
+      <input type="checkbox" (click)=forecloseStatus($event) [checked]="forecloseSelected">
+      <span class="checkmark"></span>
+      Foreclose&nbsp;&nbsp;&nbsp;
+    </label>
+    <label>
+      <input type="checkbox" (click)=soldStatus($event) [checked]="soldSelected">
+      <span class="checkmark"></span>
+      Sold
+    </label>
+  </div>
+
+
+  </ng-template>

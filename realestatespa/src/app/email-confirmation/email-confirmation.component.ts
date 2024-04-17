@@ -18,7 +18,16 @@ export class EmailConfirmationComponent implements OnInit {
 
   ngOnInit(): void {
     this.confirmEmail();
+    this.showFooter();
   }
+
+  showFooter(){
+    
+    const link = document.querySelector('app-footer .footer ') as HTMLElement;
+    console.log(link);
+    link.style.display="flex";
+ 
+}
 
   
 

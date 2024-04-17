@@ -43,4 +43,9 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, {useHash: true, onSameUrlNavigation: 'reload', paramsInheritanceStrategy:'always',scrollPositionRestoration: 'enabled', anchorScrolling:'enabled'})],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+  
+
+ 
+  
+ }

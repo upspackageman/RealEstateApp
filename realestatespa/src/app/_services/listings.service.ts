@@ -39,6 +39,15 @@ export class ListingsService {
     })
   }
 
+  fetchCoordinates(address: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.get('https://nominatim.openstreetmap.org/search?q='+address+'&format=json&polygon_geojson=1&addressdetails=1')
+        .subscribe({
+          next: response => resolve(response),
+          error: error => reject(error)
+        });
+    });
+  }
 
 
 

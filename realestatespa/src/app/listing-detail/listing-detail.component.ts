@@ -8,7 +8,7 @@ import { AccountService } from '../_services/account.service';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { EmailService } from '../_services/email.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Chart, ChartData, ChartEvent, ChartOptions, ChartType } from 'chart.js';
+import { Chart, ChartData, ChartEvent, ChartOptions, ChartType, FontSpec } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { ListingDetailsContactComponent } from '../modals/listing-details-contact/listing-details-contact.component';
 import { ListingParams } from '../_models/listingParams';
@@ -34,7 +34,8 @@ export class ListingDetailComponent implements OnInit {
   phonePattern = "^(\\+\\d{1,3}( )?)?((\\(\\d{1,3}\\))|\\d{1,3})[- .]?\\d{3,4}[- .]?\\d{4}$";
   contactForm: UntypedFormGroup;
 
-  public doughnutChartLabels: string[] = ['Principal & Interest', 'Property Taxes', 'Mortage Insurance', 'Home Insurance', 'HOA'];
+  public doughnutChartLabels: string[] = ['Princ & Inter', 'Prop Taxes', 'Mort Ins', 'Home Ins', 'HOA'];
+  
 
   public doughnutChartData: ChartData<'doughnut'> = {
 
@@ -43,6 +44,7 @@ export class ListingDetailComponent implements OnInit {
     datasets: [
       {
         data: [350, 450, 100, 55, 78],
+      
         backgroundColor: [
           'rgba(255, 228, 225, 0.8)',
           'rgba(196, 233, 215, 0.8)',
@@ -57,21 +59,34 @@ export class ListingDetailComponent implements OnInit {
           'rgba(230, 235, 250, 1)',
           'rgba(1255, 229, 185, 1)',
         ]
+        
 
       }
     ],
-
+    
 
   };
 
   public doughnutChartOptions: ChartOptions = {
+  
     responsive: true,
     plugins: {
+      legend: {
+        labels: {
+          font: {
+            size: 14 // Adjust the legend font size here
+          }
+        }
+      },
       tooltip: {
         backgroundColor: 'rgba(64, 61, 7, 0.8)', // Set the desired background color here
-
+         bodyFont: {
+          letterSpacing: 0,
+          size: 10 // Adjust the tooltip font size here
+        }  as Partial<FontSpec>
       },
     },
+    
   };
 
   public doughnutChartType: ChartType = 'doughnut';
@@ -155,8 +170,16 @@ export class ListingDetailComponent implements OnInit {
     this.loadListing();
 
     this.checkWidth();
-
+    this.showFooter();
   }
+
+  showFooter(){
+    
+    const link = document.querySelector('app-footer .footer ') as HTMLElement;
+    console.log(link);
+    link.style.display="flex";
+ 
+}
 
   @HostListener('window:resize', ['$event'])
   checkWidth(event?) {
@@ -241,6 +264,8 @@ export class ListingDetailComponent implements OnInit {
 
 
   }
+
+  
 
   openModalWithComponent() {
     const initialState: ModalOptions = {

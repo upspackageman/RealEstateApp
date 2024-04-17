@@ -12,8 +12,15 @@ export class BuilderListingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.builder();
+    this.showFooter();
   }
-
+  showFooter(){
+    
+    const link = document.querySelector('app-footer .footer ') as HTMLElement;
+    console.log(link);
+    link.style.display="flex";
+ 
+}
   async builder() {
 
     if (!localStorage.getItem('builder')) {

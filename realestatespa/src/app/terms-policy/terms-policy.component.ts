@@ -38,7 +38,16 @@ export class TermsPolicyComponent implements OnInit {
 
   ngOnInit(): void {
     this.term();
+    this.showFooter();
   }
+
+  showFooter(){
+    
+    const link = document.querySelector('app-footer .footer ') as HTMLElement;
+    console.log(link);
+    link.style.display="flex";
+ 
+}
 
   async term() {
     if (!localStorage.getItem('term')) {

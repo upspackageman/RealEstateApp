@@ -34,7 +34,16 @@ export class ResetPasswordComponent implements OnInit {
   ngOnInit(): void {
     this.token = this.route.snapshot.queryParams['token'];
     this.email = this.route.snapshot.queryParams['email'];
+    this.showFooter();
   }
+
+  showFooter(){
+    
+    const link = document.querySelector('app-footer .footer ') as HTMLElement;
+    console.log(link);
+    link.style.display="flex";
+ 
+}
 
 
   reset(){

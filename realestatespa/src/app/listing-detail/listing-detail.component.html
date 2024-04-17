@@ -12,7 +12,7 @@ src='../assets/NoPhotoAvailable.jpg';" />
           <h3 class="my-3" id="price">{{listing.price}}</h3>
           <p id="address" class="mt-5">{{listing.fullAddress}}</p>
           <button id="request-info" class="btn btn-md my-3" (click)="openModalWithComponent()">Request Info</button>
-          <br>
+          <br class="not-mobile">
           <!--<button id="request-info"  class="btn  btn-md my-3" (click)="openModalWithClass(requestInfo)">Request Info</button><br>-->
           <button id="return-to-listing" class="btn  btn-md my-3" routerLink='/forsale'>Return to Listings</button>
         </div>
@@ -43,12 +43,13 @@ src='../assets/NoPhotoAvailable.jpg';" />
 
 
 
-            <div class="chart">
 
-              <canvas baseChart [data]="doughnutChartData" [legend]="true" [type]="doughnutChartType" [options]="doughnutChartOptions">
-              </canvas>
 
-            </div>
+            <canvas baseChart [data]="doughnutChartData" [legend]="true" [type]="doughnutChartType"
+              [options]="doughnutChartOptions">
+            </canvas>
+
+
 
             <!--  <div class="mt-5" id="chart">
                     <span class="infoProgress mt-5"> Principal & Interest  </span>
@@ -94,40 +95,38 @@ src='../assets/NoPhotoAvailable.jpg';" />
                 aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   <form>
-                    <div class="row g-3">
-                      <div class="row">
-                        <div class="col-md-6 mt-3 mb-3">
+                    <div class="row g-1">
+                        <div class="col-md-6 mt-0 mb-3">
                           <label for="loan-display" class="form-label">Loan Program</label>
-                        <div  id="loan-display">
-                          <div id="30-fix-rate" value=30 (click)="loanProgram(30)">30-year fixed</div>
-                          <div id="15-fix-rate" value=15 (click)="loanProgram(15)">15-year fixed</div>
-                          <div id="5-arm"value=5 (click)="loanProgram(5)">5/1 ARM</div>
+                          <div id="loan-display">
+                            <div id="30-fix-rate" value=30 (click)="loanProgram(30)">30-year fixed</div>
+                            <div id="15-fix-rate" value=15 (click)="loanProgram(15)">15-year fixed</div>
+                            <div id="5-arm" value=5 (click)="loanProgram(5)">5/1 ARM</div>
+                          </div>
+
                         </div>
-                          
-                        </div>
-                        <div class="col-md-6 mb-3 mt-3">
-                          <label >% Down Payment</label>
-                          <div class="input-group mb-3">
-                            <input type="number" #interestD class="form-control stack2"
-                              aria-label="Amount (to the nearest dollar)"
-                              (focusout)="percentageDownPayment(interestD.value)"
-                              value="{{percentDownPayment | number:'1.0-2'}}">
-                            <div class="input-group-append">
-                              <span class="input-group-text stack">%</span>
-                            </div>
+                      <div class="col-sm-6 mb-3 mt-3">
+                        <label>% Down Payment</label>
+                        <div class="input-group mb-3">
+                          <input type="number" #interestD class="form-control stack2"
+                            aria-label="Amount (to the nearest dollar)"
+                            (focusout)="percentageDownPayment(interestD.value)"
+                            value="{{percentDownPayment | number:'1.0-2'}}">
+                          <div class="input-group-append">
+                            <span class="input-group-text stack">%</span>
                           </div>
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <label>Amt Down Payment</label>
-                          <div class="input-group mb-3">
-                            <input type="text" #amountD class="form-control stack2"
-                              aria-label="Amount (to the nearest dollar)" (focusout)="amountDownPayment(amountD.value)"
-                              value="{{amtDownPayment | number:'1.0-2'}}">
-                            <div class="input-group-append">
-                              <span class="input-group-text stack">$</span>
-                            </div>
+                        <div class="input-group mb-3">
+                          <input type="text" #amountD class="form-control stack2"
+                            aria-label="Amount (to the nearest dollar)" (focusout)="amountDownPayment(amountD.value)"
+                            value="{{amtDownPayment | number:'1.0-2'}}">
+                          <div class="input-group-append">
+                            <span class="input-group-text stack">$</span>
                           </div>
+                        </div>
                         <!-- <select #loan class="stack" id="loan-program" (change)="loanProgram(loan.value)">
                           <option class="stack stack3" value=30>30-year fixed</option>
                           <option class="stack stack3" value=15>15-year fixed</option>
@@ -135,7 +134,7 @@ src='../assets/NoPhotoAvailable.jpg';" />
                         </select> -->
                       </div>
                       <div class="col-sm-6">
-                        <label  class="form-label ">Interest Rate</label>
+                        <label class="form-label ">Interest Rate</label>
                         <div class="input-group   mb-3">
                           <input #interestR type="number" value="0" class="form-control stack2"
                             (focusout)="interestRate(interestR.value)">
@@ -216,10 +215,10 @@ src='../assets/NoPhotoAvailable.jpg';" />
                 data-bs-parent="#accordionExample">
                 <form novalidate="">
                   <div class="input-group">
-                    <input type="text" #pInsurance class="form-control stack2 mt-5" placeholder="0" required=""
+                    <input type="text" #pInsurance class="form-control stack2 mt-2" placeholder="0" required=""
                       (focusout)="propertyInsurance(pInsurance.value)">
                     <div class="input-group-prepend">
-                      <span class="input-group-text stack mt-5">/mo</span>
+                      <span class="input-group-text stack mt-2">/mo</span>
                     </div>
                   </div>
                   <!-- <button class="w-100 btn btn-primary btn-lg" type="submit">Calculate</button> -->
@@ -242,10 +241,10 @@ src='../assets/NoPhotoAvailable.jpg';" />
                 data-bs-parent="#accordionExample">
                 <form novalidate="">
                   <div class="input-group">
-                    <input type="number" #hoaF class="form-control stack2 mt-5" placeholder="0" required=""
+                    <input type="number" #hoaF class="form-control stack2 mt-2" placeholder="0" required=""
                       (focusout)="hoaFees(hoaF.value)">
                     <div class="input-group-prepend">
-                      <span class="input-group-text stack  mt-5">/mo</span>
+                      <span class="input-group-text stack  mt-2">/mo</span>
                     </div>
                   </div>
                 </form>
@@ -253,7 +252,7 @@ src='../assets/NoPhotoAvailable.jpg';" />
             </div>
             <div id="mobile-section" class="mt-5">
               <button id="request-info" class="btn  btn-md my-3" (click)="openModalWithComponent()">Request
-                Info</button><br>
+                Info</button><br class="not-mobile">
               <button class="btn  btn-md my-3" routerLink='/forsale'>Return to Listings</button>
             </div>
           </div>

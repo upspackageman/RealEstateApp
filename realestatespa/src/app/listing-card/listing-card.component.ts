@@ -9,7 +9,7 @@ import { Listing } from '../_models/listing';
 export class ListingCardComponent implements OnInit {
 
   @Input() listing: Listing;
-
+  
   constructor() { }
 
   ngOnInit() {

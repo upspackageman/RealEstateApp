@@ -415,30 +415,10 @@
     
 }
 
-@media (max-width: 912px) and (height:1368px) {
-    .main-home {
-        width: 1050px;
-    }
-  }
 
-@media (max-width: 821px) {
-    .main-home {
-        width: 800px;
-    }
-   
-}
-
-@media (max-width: 769px) and (max-height:1025px) {
-    .main-home {
-        width: 900px;
-    }
-}
 
 @media (max-width: 485px) {
-    .main-home {
-        width: 1500px;
-    }
-
+   
     .mobile {
         display: grid;
     }
@@ -449,20 +429,21 @@
     }
 
     .contact-home {
-        height: 1500px;
+        height: auto;
     }
 
 
     .landing {
-        height: 1700px;
+        height:auto;
     }
 
     .landing h1 {
-        font-size: 8rem;
+        font-size: 2rem;
     }
 
     .landing .card-body {
-
+        width: 90%;
+        margin-left: 5%;
         margin-top: 45%;
         margin-bottom: 35%;
     }
@@ -470,11 +451,11 @@
     .landing .card-body .btn {
         margin-top: 2.5%;
         padding: 1% 3% 1.5% 3%;
-        border-width: 2.5px;
+        border-width: 1px;
     }
 
     .landing .card-body .btn span {
-        font-size: 7rem;
+        font-size: 1.5rem;
     }
 
     .main-section .container {
@@ -488,7 +469,7 @@
     .main-section .title-mobile {
         display: grid;
         text-align: center;
-        font-size: 5rem;
+        font-size: 2rem;
     }
 
     .main-section .title {
@@ -496,8 +477,8 @@
     }
 
     .main-section .d-2 {
-        border-style: solid;
-        border-width: 10px;
+        border-style: ridge;
+        border-width: 1.5px;
         border-color: #968e1bd8;
         padding: 15% 15% 15% 15%;
         margin-top: 5%;
@@ -511,17 +492,21 @@
     }
 
     .main-section .container .text-box p {
-        font-size: 4.3rem;
+        font-size: 1.2rem;
     }
 
     .main-section .btn {
         display: grid;
-        font-size: 6rem;
+        font-size: 1.2rem;
+    }
+
+    .contact-home{
+        height: 400px;
     }
 
     .contact-home .contact-form h1 {
 
-        font-size: 8rem;
+        font-size: 2rem;
     }
 
     .contact-home .contact-form .valid {
@@ -537,18 +522,19 @@
     }
 
     .contact-home .btn {
-        font-size: 6.5rem;
+        font-size: 3.5rem;
     }
 
     .contact-home .btn-mobile {
+    
         margin-top: 2%;
         background-color: rgba(255, 255, 255, 0);
         color: #f0efa9;
         text-shadow: .25px .55px 3px #27220cc7;
         border-color: #f0efa9;
         border-radius: .25rem;
-        border-width: 2.5px;
-        font-size: 10.5rem;
+        border-width: 1.5px;
+        font-size: 2rem;
         /* -webkit-appearance: none; */
         text-shadow: .25px .55px 3px #27220cc7;
         /* box-shadow: 1px 1px 35px 3px rgba(49, 49, 46, 0.685) */
@@ -561,29 +547,10 @@
 
 }
 
-@media (max-width:385px) {
-    .main-home {
-        width: 1500px;
-    }
-}
 
-@media (width:375px) and (height:667px) {
-    .main-home {
-        width: 1500px !important;
-    }
-}
-
-@media (max-width:361px){
-    .main-home {
-        width: 1400px;
-    }
-}
 
 @media (max-width:321px) {
-    .main-home {
-        width: 1250px !important;
-    }
-
+    
     .contact-home .contact-form form input {
         font-size: 4.7rem;
     }

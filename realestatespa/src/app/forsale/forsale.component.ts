@@ -1,7 +1,7 @@
 import { Location } from './../_models/location';
 import { ListingParams } from './../_models/listingParams';
 import { ListingsService } from './../_services/listings.service';
-import { Component, OnInit, TemplateRef, HostListener, ChangeDetectorRef, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, HostListener, ChangeDetectorRef, ViewChild, AfterViewInit } from '@angular/core';
 import { Listing } from '../_models/listing';
 import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 import { Pagination } from '../_models/pagination';
@@ -33,12 +33,12 @@ import { HttpClient } from '@angular/common/http';
 
 
 
-export class ForsaleComponent implements OnInit {
+export class ForsaleComponent implements OnInit{
   
   currentPage:number = 1;
   totalPages=1;
   init: number = 0;
-  @ViewChild('map') map: AgmMap;
+  @ViewChild(AgmMap) map: AgmMap;
   listingParams: ListingParams | undefined;
   markerParams: MarkerParams;
   search: string;
@@ -102,12 +102,14 @@ export class ForsaleComponent implements OnInit {
   whitepaceCheck: string = "/\A\s*\z/";
   mapIndex = 0;
   zMap = 3;
+  coordZip:any;
   mobileFontSize: string;
   isDisabled: boolean = true;
   clearSearchBtnDisplay: string = 'none';
   clearSearchBtnZindex: number = 0;
   searchValue: string = '';
-  viewedListing:any=[]
+  viewedListing:any=[];
+  _mapDisplay: any = {};
   markerClusterIconStyles: ClusterIconStyle[] = [
     {
       url: '/assets/marker1.png',
@@ -255,7 +257,7 @@ export class ForsaleComponent implements OnInit {
 
 
   ngOnInit() {
-    
+ console.log(this.map);
     this.currentPage = this.listingParams.pageNumber;
     this.mapView();
     this.redirect_listing();
@@ -263,7 +265,39 @@ export class ForsaleComponent implements OnInit {
     this.setViewListings();
     this.setColors();
     this.checkWidth();
+    this.hideFooter();
+   
   }
+
+  
+
+  panToCoordinate(latitude: number, longitude: number): void {
+   // this.map.panTo({ lat: latitude, lng: longitude });
+  }
+
+  async checker( coord){
+    this.coordZip = await this.listingsService.fetchCoordinates(coord);
+     console.log(this.coordZip);
+     
+  }
+
+
+
+  
+
+  @HostListener('window:resize', ['$event'])
+  hideFooter(event?){
+   
+      const link = document.querySelector('app-footer .footer ') as HTMLElement;
+      console.log(link);
+      link.style.display="none";
+    
+  
+    
+   
+   
+  }
+
 
   setUpdateListings(newBounds?: LatLngBounds) {
     if (this.isSearch == true) {
@@ -277,20 +311,30 @@ export class ForsaleComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   checkWidth(event?) {
+    if ((window.matchMedia('(min-width:500px)').matches)) {
+      this.markerClusterIconStyles[0].url = '/assets/marker2.png',
+        this.markerClusterIconStyles[0].width = 100,
+        this.markerClusterIconStyles[0].height = 100,
+        this.markerClusterIconStyles[0].textSize = 50,
+        this.mapCard.maxWidth = 250,
+        this.mapCard.maxHeight = 1200,
+        this.location.zoom = 12;
+    }
+
     if ((window.matchMedia('(max-width:500px)').matches)) {
       this.markerClusterIconStyles[0].url = '/assets/marker2.png',
         this.markerClusterIconStyles[0].width = 100,
         this.markerClusterIconStyles[0].height = 100,
-        this.markerClusterIconStyles[0].textSize = 50
-        this.mapCard.maxWidth = 1750,
+        this.markerClusterIconStyles[0].textSize = 50,
+        this.mapCard.maxWidth = 1950,
         this.mapCard.maxHeight = 1650,
-        this.location.zoom = 12;
+        this.location.zoom = 10;
     }
 
     if ((window.matchMedia('(max-width:330px)').matches)) {
         this.mapCard.maxWidth = 1750,
         this.mapCard.maxHeight = 1750,
-        this.location.zoom = 12;
+        this.location.zoom = 10;
     }
 
     
@@ -304,13 +348,18 @@ export class ForsaleComponent implements OnInit {
   
       if(this.listingParams){
        
-          this.listingsService.getListings(this.listingParams).subscribe(response => {
+          this.listingsService.getListings(this.listingParams).subscribe(async response => {
           this.listings = response.result;
           this.pagination = response.pagination;
           this.totalItems = this.pagination.totalItems;
           this.itemsPerPage = this.pagination.itemsPerPage;
           this.totalPages = response.pagination.totalPages;
-    
+          this.coordZip = await this.listingsService.fetchCoordinates(this.listings[5].zip.toString());
+          console.log(this.coordZip[0].lat);
+          console.log(this.coordZip[0].lon);
+          this.location.lat =  this.coordZip[0].lat;
+          this.location.lng = this.coordZip[0].lon;
+          console.log( this.location.lat );
           for (let list of this.listings) {
             if (window.matchMedia('(min-width:450px)').matches) {
               list.iconUrl = '/assets/circle_4.png';
@@ -345,6 +394,7 @@ export class ForsaleComponent implements OnInit {
       this.pagination = response.pagination;
       this.totalItems = this.pagination.totalItems;
       this.itemsPerPage = this.pagination.itemsPerPage;
+      this.totalPages = response.pagination.totalPages;
       if(newBounds!==undefined){
         this.listings = _listings.filter((_listing) => newBounds.contains(_listing));
       }
@@ -385,7 +435,7 @@ export class ForsaleComponent implements OnInit {
   async openModalWithClass(template: TemplateRef<any>) {
     this.checkListingStatus();
     this.modalRef = this.modalService.show(template, this.config);
-
+    
   }
 
 
@@ -422,21 +472,56 @@ export class ForsaleComponent implements OnInit {
   }
 
  async toTop(){
-  const left = document.getElementsByClassName('left');
+  const left = document.getElementsByClassName('lists');
      await  left[0].scroll(0, 0);
  }
 
-  async mapViewTablet() {
+  @HostListener('window:resize', ['$event'])
+  async mapViewTablet(template: TemplateRef<any>) {
     if (this.isMapView == false) {
+      this.isMapView = true;
+      const map = document.querySelector('.map') as HTMLElement;
+      map.style.width='100%';
+      map.style.display='block';
+      map.style.transition ='width 0.1s ease';
+      this._mapDisplay = { 'display':'flex' };
+      const list = document.querySelector('.lists') as HTMLElement;
+      list.style.width='0px';
+      list.style.transition ='width 0.15s ease-out';
+      if (window.matchMedia('(max-width:450px)').matches) {
+        this.updateListings();
+      }
+
+      console.log(list);
       this.zIndex = '5';
       this.isMapView = true;
       this.zMap = 5;
       //this.zPagination = '5';
     }
     else {
+      const map = document.querySelector('.map') as HTMLElement;
+      map.style.transition ='width 0.1s ease';
+      const list = document.querySelector('.lists') as HTMLElement;
+      list.style.transition ='width 0.15s ease-in';
+      map.style.width='calc(0%)';
+      list.style.width='100%';
+      this._mapDisplay = { 'display':'none' };
+      if (window.matchMedia('(min-width:450px)').matches) {
+        map.style.width='calc(100% - 400px)';
+        list.style.width='400px';
+        this._mapDisplay = { 'display':'flex' };
+      }
+      console.log(list);
+      
       this.zMap = 3;
       this.zIndex = '0';
+    
+
+    
+      
+      //this._mapDisplay = { 'display': 'block' };
       this.isMapView = false;
+      map.style.display='block';
      // this.zPagination = '0';
     }
   }
@@ -481,6 +566,7 @@ export class ForsaleComponent implements OnInit {
 
 
   async searchListing(e: string = 'CA') {
+    console.log(e);
     this.listingParams.fulladdress = e;
     this.isSearch = true;
     this.clearSearchBtnDisplay = 'inline';

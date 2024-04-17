@@ -12,15 +12,24 @@ export class AboutComponent implements OnInit {
 
   ngOnInit(): void {
     this.about();
+    this.showFooter();
   }
+  showFooter() {
+
+    const link = document.querySelector('app-footer .footer ') as HTMLElement;
+    console.log(link);
+    link.style.display = "flex";
+
+  }
+
   async about() {
 
     if (!localStorage.getItem('direct')) {
       localStorage.setItem('direct', 'no reload')
       const currentUrl = this.router.url;
       this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate([currentUrl]);
-    });
+        this.router.navigate([currentUrl]);
+      });
 
     } else {
       localStorage.removeItem('direct');

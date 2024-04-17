@@ -23,9 +23,16 @@
     color: #c6c91b !important;
   }
 
+  @media (max-width:540px) {
+    .pagination .page-item .page-link{
+        font-size: 1.4rem !important;
+    }
+  }
+  
+
   @media (max-width:485px) {
     .pagination .page-item .page-link{
-        font-size: 10rem !important;
+        font-size: 2rem !important;
     }
   }
   
