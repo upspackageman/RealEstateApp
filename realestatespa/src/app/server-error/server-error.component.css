@@ -1,103 +1,129 @@
-.main{
-    height: 100vh; 
-    background-image: linear-gradient(rgba(43, 43, 43, 0.7), rgba(174, 191, 250, 0.7)), 
-    url(/assets/bg5.jpg);    
-    background-size:cover;
+.main {
+    height: 100vh;
+    background-image: linear-gradient(rgba(43, 43, 43, 0.7), rgba(174, 191, 250, 0.7)),
+        url(/assets/bg5.jpg);
+    background-size: cover;
 }
 
-.main-section{
+.main-section {
     text-align: center;
-    width:800px; 
-    margin-left: -400px; 
-    position:absolute; 
-    top: 30%; 
-    left:50%; 
-    color:white;
+    width: 800px;
+    margin-left: -400px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    color: white;
 }
 
-#error-500{
-    margin:0; font-size:150px; line-height:150px; font-weight:bold; text-shadow: 2px 2px 10px rgba(0, 0, 0,.7);
+#error-500 {
+    margin: 0;
+    font-size: 150px;
+    line-height: 150px;
+    font-weight: bold;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, .7);
 }
 
-#server-error{
-    margin-top:20px;
+#server-error {
+    margin-top: 20px;
     font-size: 30px;
 }
 
+.btn {
+    color: rgb(160, 136, 4);
+    background-color: rgba(172, 158, 78, 0.183);;
+    margin: 5% 5%;
+    padding: 0% 10% 1% 10%;
+    border-color: rgb(160, 136, 4);
+    border-radius: 0px;
+    border-width: 1px;
+    border-style: inset;
+    font-size: 2.25rem;
+    border-radius: 5px;;
+    /* box-shadow: 1px 1px 15px 3px rgba(158, 158, 157, 0.86); */
+    text-shadow: 0px 1px 0px rgba(255, 255, 255, .3), 0px -1px 0px rgba(0, 0, 0, .7);
+    -webkit-appearance: none;
+}
 
-@media (max-width:1025px){
-    #server-error{
+.btn:hover{
+    border-color: rgb(207, 190, 93);
+    color: rgb(172, 158, 78);
+}
+
+
+@media (max-width:1025px) {
+    #server-error {
         font-size: 3.5rem;
     }
 
-    .error-text{
-        font-size:1.8rem;
-        margin-bottom:.05rem;
+    .error-text {
+        font-size: 1.8rem;
+        margin-bottom: .05rem;
     }
 
-    .btn{
-        font-size:3.25rem;
-        margin-top:5%;
+    .btn {
+        font-size: 3.25rem;
+        margin-top: 5%;
     }
 }
 
-@media (max-width:769px){
-    .main{width: 790px;}
+@media (max-width:769px) {
 
-    .btn{font-size:2.25rem;}
+
+    .btn {
+        font-size: 2.25rem;
+    }
 }
 
-@media (max-width:415px){
-    .main{
-        width: 1100px;
+@media (max-width:415px) {
+    .main {
         height: 1700px;
     }
 
-    .main-section{
+
+    .main-section {
         text-align: center;
-        width: 800px;
-        margin-left: -400px;
+        width: 100%;
+        margin-left: 0px;
         position: absolute;
-        top: 60%;
-        left: 135%;
+        top: 10px;
+        left: 0%;
         color: white;
     }
 
-    #error-500{
+    #error-500 {
         margin: 0;
-        font-size: 18rem;
+        font-size: 5rem;
         line-height: 350px;
         font-weight: bold;
         text-shadow: 2px 2px 10px rgb(0 0 0 / 70%);
     }
 
-    #server-error{
-        margin-top: 20px;
-        font-size: 5rem;
+    #server-error {
+        margin-top: -90px;
+        font-size: 3rem;
     }
 
-    .error-text{
-        font-size:2.5rem;
+    .error-text {
+        font-size: 1.5rem;
     }
 
-    .btn{
-        font-size: 4rem;
+    .btn {
+        font-size: 2rem;
         margin-top: 8%;
+
     }
-    
+
 }
 
-@media (max-width: 415px) and (max-height: 916px){        
+@media (max-width: 415px) and (max-height: 916px) {
     .main {
-        width: 1100px;
         height: 2200px;
     }
 }
 
 
-@media (max-width: 415px) and (max-height: 824px){        
+@media (max-width: 415px) and (max-height: 824px) {
     .main {
-        width: 1100px;
         height: 1900px;
     }
 }
@@ -107,29 +133,24 @@
 
 
 
-   @media (max-width:376px){
-    .main-section{
-       margin-left: -350px;
-    }   
+@media (max-width:376px) {
 
-    .main{
+    .main {
         height: 2100px;
     }
-   }
+}
 
-   @media (max-width:376px) and (max-height:668px){
-    .main-section{
-       margin-left: -350px;
-    }   
+@media (max-width:376px) and (max-height:668px) {
 
-    .main{
+
+    .main {
         height: 1900px;
     }
-   }
+}
 
 
-@media (max-width:321px){
- .main-section{
-    margin-left: -280px;
- }   
+@media (max-width:321px) {
+    .main-section {
+        margin-left: -280px;
+    }
 }
