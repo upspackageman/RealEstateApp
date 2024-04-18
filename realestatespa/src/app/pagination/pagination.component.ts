@@ -27,6 +27,12 @@ export class PaginationComponent{
   
   }
 
+  goToFirstPage() {
+    if (this.currentPage !== 1) {
+      this.pageChange.emit(1);
+    }
+  }
+
   previousPage() {
     if (this.currentPage > 1) {
       this.pageChange.emit(this.currentPage - 1);
@@ -36,6 +42,12 @@ export class PaginationComponent{
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.pageChange.emit(this.currentPage + 1);
+    }
+  }
+
+  goToLastPage() {
+    if (this.currentPage !== this.totalPages) {
+      this.pageChange.emit(this.totalPages);
     }
   }
 

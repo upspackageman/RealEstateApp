@@ -694,6 +694,7 @@ input[type="checkbox"]:checked+span:before {
 }
 
 
+
 @media (max-width:540px) {
   .option .optionContainer input {
     border-color: #d6d1b4b3;
@@ -752,19 +753,20 @@ input[type="checkbox"]:checked+span:before {
     border-width: 1px;
     box-shadow: 1px 1px 2px #969696, -1px -1px 2px #ffffff;
     border-radius: 12px;
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     border-style: none !important;
     font-size: 10.5rem !important;
     position: fixed;
-    left: 5px;
+    left: 10px;
     bottom: 10px;
     z-index: 1;
   }
   .mobileClearSearch img {
+    width: 35px;
     position: relative;
-    top: 0px;
-    left: -5px;
+    top: -1px;
+    left: -6px;
   }
  
 

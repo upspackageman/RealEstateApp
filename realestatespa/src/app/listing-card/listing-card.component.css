@@ -170,7 +170,7 @@
   background-size: cover;
   height: 120px;
   overflow: hidden;
-  animation: changeColor .75s infinite alternate;
+  animation: changeColor .3s infinite alternate;
 }
 
 .tracking-in-expand {
@@ -324,12 +324,12 @@
 }
 
 
-@media (max-width:950px) {
+ @media (max-width:950px) {
   #mobile .btn {
     font-size: 1.5rem;
   }
 }
-
+/*
 @media (max-width:850px) {
   #mobile .btn {
     font-size: 1.2rem;
@@ -342,12 +342,24 @@
     font-size: 1rem;
   }
 
-}
+} */
 
-@media (max-width:750px) {
+
+  
+
+
+@media (min-width:540px) and (max-width:820px){
+  #mobile .btn {
+    font-size: 1.3rem;
+    bottom: 80px
+  }
+
   #mobile .card-body {
     margin-top: -35px;
     width: 100%;
+  }
+  #mobile img{
+    min-height: 120px;
   }
 }
 
@@ -356,6 +368,10 @@
   #mobile .btn {
     font-size: 1.8rem;
     bottom: 150px
+  }
+
+  #mobile img{
+    min-height: 200px;
   }
 
   .changeColor {
@@ -378,7 +394,6 @@
     padding: 0px;
     display: inline-block;
     width: 100%;
-    min-height: 180px;
     background-size: 100% 100%;
   }
 
