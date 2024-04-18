@@ -834,6 +834,7 @@ input[type="checkbox"]:checked+span:before {
 
         .accordion-header {
                 height: 110px;
+                box-shadow: 0.91px 0.91px 1.5px #99998e, -0.91px -0.91px 1.5px #dbd6ae;
         }
 
         .heading-bar {

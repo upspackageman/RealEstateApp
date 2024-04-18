@@ -146,7 +146,7 @@
         <app-pagination [currentPage]="currentPage" [totalPages]="totalPages"
           (pageChange)="pageChanged($event)"></app-pagination>
       </div>
-      <button [ngStyle]="{'display': clearSearchBtnDisplay}"  (click)="clearSearch()" class="mobileClearSearch">
+      <button [ngStyle]="{'display': clearSearchBtnDisplayMobile}"  (click)="clearSearch()" class="mobileClearSearch">
         <img src="/assets/search.svg" onerror="this.onerror=null; this.src='image.png'">
       </button>
     </div>

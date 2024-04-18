@@ -106,6 +106,7 @@ export class ForsaleComponent implements OnInit{
   mobileFontSize: string;
   isDisabled: boolean = true;
   clearSearchBtnDisplay: string = 'none';
+  clearSearchBtnDisplayMobile:string ='none';
   clearSearchBtnZindex: number = 0;
   searchValue: string = '';
   viewedListing:any=[];
@@ -257,7 +258,7 @@ export class ForsaleComponent implements OnInit{
 
 
   ngOnInit() {
- console.log(this.map);
+ 
     this.currentPage = this.listingParams.pageNumber;
     this.mapView();
     this.redirect_listing();
@@ -269,7 +270,17 @@ export class ForsaleComponent implements OnInit{
    
   }
 
-  
+  @HostListener('window:resize', ['$event'])
+  filterButton(){
+    if ((window.matchMedia('(max-width:480px)').matches)) {
+      this.clearSearchBtnDisplayMobile = 'flex';
+    }
+    if ((window.matchMedia('(min-width:480px)').matches)) {
+      this.clearSearchBtnDisplay = 'flex';
+    }
+    
+   
+  }
 
   panToCoordinate(latitude: number, longitude: number): void {
    // this.map.panTo({ lat: latitude, lng: longitude });
@@ -569,7 +580,7 @@ export class ForsaleComponent implements OnInit{
     console.log(e);
     this.listingParams.fulladdress = e;
     this.isSearch = true;
-    this.clearSearchBtnDisplay = 'inline';
+    this.filterButton();
     this.clearSearchBtnZindex = 0;
     this.listingParams.pageNumber=1;
     this.currentPage = this.listingParams.pageNumber;
@@ -597,7 +608,8 @@ export class ForsaleComponent implements OnInit{
     this.listingParams.comingsoonStatus ="COMING SOON";
     this.listingParams.cancelledStatus ="CANCELLED";
     this.currentPage = this.listingParams.pageNumber;
-    this.clearSearchBtnDisplay = 'none';   
+    this.clearSearchBtnDisplay = 'none';  
+    this.clearSearchBtnDisplayMobile = 'none'; 
     await  this.toTop();
     this.loadListings();
   }
@@ -618,7 +630,7 @@ export class ForsaleComponent implements OnInit{
     this.listingParams.price = e;
     this.listingParams.pageNumber=1;
     this.currentPrice = e;
-    this.clearSearchBtnDisplay = 'inline';
+    this.filterButton();
     await  this.toTop();
     this.loadListings();
   }
@@ -655,7 +667,7 @@ export class ForsaleComponent implements OnInit{
       this.currentSort = '(Low to High)';
     }
     this.listingParams.pageNumber=1;
-    this.clearSearchBtnDisplay = 'inline';
+    this.filterButton();
     await  this.toTop();
     this.loadListings();
   }
@@ -667,7 +679,7 @@ export class ForsaleComponent implements OnInit{
     this.listingParams.bedrooms = e;
     this.currentBed = e;
     this.listingParams.pageNumber=1;
-    this.clearSearchBtnDisplay = 'inline';
+    this.filterButton();
     await  this.toTop();
     this.loadListings();
   }
@@ -676,7 +688,7 @@ export class ForsaleComponent implements OnInit{
     this.listingParams.bathtotals = e;
     this.currentBath = e;
     this.listingParams.pageNumber=1;
-    this.clearSearchBtnDisplay = 'inline';
+    this.filterButton();
     await  this.toTop();
     this.loadListings();
   }
@@ -773,49 +785,49 @@ export class ForsaleComponent implements OnInit{
       else if( this.listingParams.activeStatus === 'ACTIVE'){
         this.listingParams.activeStatus = '';
       }
-      this.clearSearchBtnDisplay = 'inline';
+      this.filterButton();
       await  this.toTop();
       this.loadListings(newBounds);
   }
   
   async checkListingStatus(){
     if(this.listingParams.activeStatus ===''){
-      this.clearSearchBtnDisplay = 'inline';
+      this.filterButton();
       this.activeSelected= false;
     }else{
       this.activeSelected= true;
     }
 
     if(this.listingParams.contingentStatus ===''){
-      this.clearSearchBtnDisplay = 'inline';
+      this.filterButton();
       this.contingentSelected= false;
     }else{
       this.contingentSelected= true;
     }
 
     if(this.listingParams.bomStatus ===''){
-      this.clearSearchBtnDisplay = 'inline';
+      this.filterButton();
       this.bomSelected= false;
     }else{
       this.bomSelected= true;
     }
 
     if(this.listingParams.pendingStatus ===''){
-      this.clearSearchBtnDisplay = 'inline';
+      this.filterButton();
       this.pendingSelected= false;
     }else{
       this.pendingSelected= true;
     }
 
     if(this.listingParams.soldStatus ===''){
-      this.clearSearchBtnDisplay = 'inline';
+      this.filterButton();
       this.soldSelected= false;
     }else{
       this.soldSelected= true;
     }
 
     if(this.listingParams.expiredStatus ===''){
-      this.clearSearchBtnDisplay = 'inline';
+      this.filterButton();
       this.forecloseSelected= false;
     }else{
       this.forecloseSelected= true;
@@ -829,22 +841,22 @@ export class ForsaleComponent implements OnInit{
     this.priceSort_init(this.listingParams.priceSort);
 
     if(this.currentBath !=-1){
-      this.clearSearchBtnDisplay = 'inline';
+      this.filterButton();
     }
     if(this.currentBed !=-1){
-      this.clearSearchBtnDisplay = 'inline';
+      this.filterButton();
     }
     if(this.currentPrice !=-1){
-      this.clearSearchBtnDisplay = 'inline';
+      this.filterButton();
     }
     if(this.listingParams.estSqrFt !=-1){
-      this.clearSearchBtnDisplay = 'inline';
+      this.filterButton();
     }
     if(this.currentBath !=-1){
-      this.clearSearchBtnDisplay = 'inline';
+      this.filterButton();
     }
     if(this.listingParams.priceSort !=-1){
-      this.clearSearchBtnDisplay = 'inline';
+      this.filterButton();
     }
   }
 
@@ -855,7 +867,7 @@ export class ForsaleComponent implements OnInit{
     else if( this.listingParams.contingentStatus === 'CONTINGENT'){
       this.listingParams.contingentStatus = '';
     }
-    this.clearSearchBtnDisplay = 'inline';
+    this.filterButton();
     await  this.toTop();
     this.loadListings(newBounds);
     
@@ -868,7 +880,7 @@ export class ForsaleComponent implements OnInit{
     else if( this.listingParams.pendingStatus === 'PENDING'){
       this.listingParams.pendingStatus = '';
     }
-    this.clearSearchBtnDisplay = 'inline';
+    this.filterButton();
     await  this.toTop();
     this.loadListings(newBounds);
   }
@@ -880,7 +892,7 @@ export class ForsaleComponent implements OnInit{
     else if( this.listingParams.soldStatus === 'SOLD'){
       this.listingParams.soldStatus = '';
     }
-    this.clearSearchBtnDisplay = 'inline';
+    this.filterButton();
     await  this.toTop();
     this.loadListings(newBounds);
   }
@@ -892,7 +904,7 @@ export class ForsaleComponent implements OnInit{
     else if( this.listingParams.bomStatus === 'BACK ON MARKET'){
       this.listingParams.bomStatus = '';
     }
-    this.clearSearchBtnDisplay = 'inline';
+    this.filterButton();
     await  this.toTop();
     this.loadListings(newBounds);
   }
@@ -904,7 +916,7 @@ export class ForsaleComponent implements OnInit{
     else if( this.listingParams.withdrawnStatus === 'WITHDRAWN'){
       this.listingParams.withdrawnStatus = '';
     }
-    this.clearSearchBtnDisplay = 'inline';
+    this.filterButton();
     await  this.toTop();
     this.loadListings(newBounds);
   }
@@ -916,7 +928,7 @@ export class ForsaleComponent implements OnInit{
     else if( this.listingParams.cancelledStatus === 'CANCELLED'){
       this.listingParams.cancelledStatus = '';
     }
-    this.clearSearchBtnDisplay = 'inline';
+    this.filterButton();
     await  this.toTop();
     this.loadListings(newBounds);
   }
@@ -929,7 +941,7 @@ export class ForsaleComponent implements OnInit{
     else if( this.listingParams.expiredStatus === 'FORECLOSED'){
       this.listingParams.expiredStatus = '';
     }
-    this.clearSearchBtnDisplay = 'inline';
+    this.filterButton();
     await  this.toTop();
     this.loadListings(newBounds);
   }
@@ -941,7 +953,7 @@ export class ForsaleComponent implements OnInit{
   async estimatedSqFt(e:any) {
     this.currentSqft = e;
     this.listingParams.estSqrFt = e;
-    this.clearSearchBtnDisplay = 'inline';
+    this.filterButton();
     await  this.toTop();
     this.loadListings();
   }
@@ -949,7 +961,7 @@ export class ForsaleComponent implements OnInit{
 
   async lotSize(e) {
     this.listingParams.lotSize = e;
-    this.clearSearchBtnDisplay = 'inline';
+    this.filterButton();
     await  this.toTop();
     this.loadListings();
   }
