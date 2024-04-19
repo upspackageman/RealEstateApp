@@ -160,8 +160,8 @@
 }
 
 .fade-in {
-  -webkit-animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-  animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  -webkit-animation: fade-in .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: fade-in .5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
 .changeColor {
@@ -170,7 +170,7 @@
   background-size: cover;
   height: 120px;
   overflow: hidden;
-  animation: changeColor .3s infinite alternate;
+  animation: changeColor .03s infinite;
 }
 
 .tracking-in-expand {

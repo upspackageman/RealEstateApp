@@ -15,9 +15,7 @@ export class TermsPolicyComponent implements OnInit {
     router.events
   .pipe(filter(event => event instanceof NavigationEnd))
   .subscribe((event: NavigationEnd) => {
-    console.log('prev:', event);
-    console.log('prev:', router);
-    console.log(this.route.snapshot.paramMap.get('id'))
+
     this.previousUrl = this.route.snapshot.paramMap.get('id');
     if(this.previousUrl === 'login'){
         this.link =  this.previousUrl;
@@ -42,11 +40,8 @@ export class TermsPolicyComponent implements OnInit {
   }
 
   showFooter(){
-    
     const link = document.querySelector('app-footer .footer ') as HTMLElement;
-    console.log(link);
     link.style.display="flex";
- 
 }
 
   async term() {

@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Listing } from '../_models/listing';
 import { User } from '../_models/user';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -59,8 +59,6 @@ export class ListingDetailComponent implements OnInit {
           'rgba(230, 235, 250, 1)',
           'rgba(1255, 229, 185, 1)',
         ]
-        
-
       }
     ],
     
@@ -91,9 +89,6 @@ export class ListingDetailComponent implements OnInit {
 
   public doughnutChartType: ChartType = 'doughnut';
 
-
-
-
   bsModalRef?: BsModalRef;
 
   constructor(private accountService: AccountService, private listingsService: ListingsService, private route: ActivatedRoute, private modalService: BsModalService,
@@ -106,12 +101,6 @@ export class ListingDetailComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = () => {
       return false;
     };
-
-
-
-
-
-
 
     Chart.defaults.font.family = "'Oswald', sans-serif";
 
@@ -126,6 +115,7 @@ export class ListingDetailComponent implements OnInit {
       message: []
     });
   }
+ 
 
   direct: string;
   monthlyPayment: number;
@@ -151,6 +141,9 @@ export class ListingDetailComponent implements OnInit {
   customClass = 'customClass';
   listId = this.route.snapshot.paramMap.get('id');
   totalTax = 0;
+  mort_30:any={};
+  mort_15:any={};
+  mort_5:any={};
   // options
   gradient: boolean = true;
   config = {
@@ -162,23 +155,19 @@ export class ListingDetailComponent implements OnInit {
 
 
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
-
-
-
   ngOnInit() {
 
     this.loadListing();
-
+    this.mortgageCalulator();
     this.checkWidth();
     this.showFooter();
   }
 
+  
+
   showFooter(){
-    
     const link = document.querySelector('app-footer .footer ') as HTMLElement;
-    console.log(link);
     link.style.display="flex";
- 
 }
 
   @HostListener('window:resize', ['$event'])
@@ -206,25 +195,22 @@ export class ListingDetailComponent implements OnInit {
     */
 
 
-    const mort_30 = document.getElementById("30-fix-rate") as HTMLElement;
-    const mort_15 = document.getElementById("15-fix-rate") as HTMLElement;
-    const mort_5 = document.getElementById("5-arm") as HTMLElement;
-
+    
     switch (this.tenureOfLoansPerYear) {
       case 30:
-        mort_30.style.opacity = '1';
-        mort_15.style.opacity = '0.5';
-        mort_5.style.opacity = '0.5';
+        this.mort_30={'opacity':'1'};
+        this.mort_15={'opacity':'.5'};
+        this.mort_5={'opacity':'.5'};
         break;
       case 15:
-        mort_15.style.opacity = '1';
-        mort_30.style.opacity = '0.5';
-        mort_5.style.opacity = '0.5';
+        this.mort_30={'opacity':'.5'};
+        this.mort_15={'opacity':'1'};
+        this.mort_5={'opacity':'.5'};
         break;
       case 5:
-        mort_5.style.opacity = '1';
-        mort_15.style.opacity = '0.5';
-        mort_30.style.opacity = '0.5';
+        this.mort_30={'opacity':'.5'};
+        this.mort_15={'opacity':'.5'};
+        this.mort_5={'opacity':'1'};
         break;
 
     }
@@ -252,17 +238,10 @@ export class ListingDetailComponent implements OnInit {
   loadListing() {
 
     this.redirect();
-
-
     this.listingsService.getListingsById(this.route.snapshot.paramMap.get('id')).subscribe(listing => {
-    
-      this.listing = listing;
-      //  this.loanProgram(this.tenureOfLoansPerYear);
-      this.mortgageCalulator();
-
+    this.listing = listing;
+    //  this.loanProgram(this.tenureOfLoansPerYear);
     });
-
-
   }
 
   
@@ -290,18 +269,9 @@ export class ListingDetailComponent implements OnInit {
     this.mortgageCalulator();
   }
 
-  init_loadProgram() {
-    const mort_30 = document.getElementById("30-fix-rate") as HTMLElement;
-    const mort_15 = document.getElementById("15-fix-rate") as HTMLElement;
-    const mort_5 = document.getElementById("5-arm") as HTMLElement;
-
-    mort_30.style.opacity = '1  !important';
-    mort_15.style.opacity = '0.5 !important';
-    mort_5.style.opacity = '0.5  !important';
-  }
+ 
 
   loanProgram(e: number) {
-
     this.tenureOfLoansPerYear = e;/* = Enter number*/
     this.mortgageCalulator();
   }
@@ -361,7 +331,7 @@ export class ListingDetailComponent implements OnInit {
     this.mortgageCalulator();
   }
 
-  async redirect() {
+  redirect() {
 
     if (!localStorage.getItem('direct_detail')) {
       localStorage.setItem('direct_detail', 'not reload');
@@ -369,23 +339,20 @@ export class ListingDetailComponent implements OnInit {
 
       this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
         this.router.navigate([currentUrl]);
-
-
       })
-
-
-    } else {
+    } 
+    else {
       localStorage.removeItem('direct_detail');
     }
   }
 
-  async toContactAgent(e) {
+  toContactAgent(e) {
     if (e.target) {
       this.contactAgent = e.target.checked;
     }
   }
 
-  async openModalWithClass(template: TemplateRef<any>) {
+  openModalWithClass(template: TemplateRef<any>) {
     this.isSent = false;
     this.modalRef = this.modalService.show(
       template, this.config);
@@ -411,8 +378,6 @@ export class ListingDetailComponent implements OnInit {
         console.log(err);
       }
     });
-
-
   }
 
   get f() {

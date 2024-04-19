@@ -33,8 +33,6 @@ export class ListingsService {
      
           this.listingParams = new ListingParams();
           this.user = user;
-          
-        
       }
     })
   }
@@ -110,9 +108,7 @@ export class ListingsService {
     return this.getPaginatedResults<Listing[]>(this.baseUrl + 'listings', params)
       .pipe(map(response => {
         this.listingCache.set(Object.values(listingParams).join('-'), response);
-        console.log(response);
         return response;
-        
       }))
 
     }

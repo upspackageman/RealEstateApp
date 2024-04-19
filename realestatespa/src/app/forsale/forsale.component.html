@@ -4,8 +4,7 @@
       <div class="optionContainer">
         <form [formGroup]="searchBar">
           <input #findListing id="searchList" formControlName="search" class="searchBar" type="search"
-            placeholder="eg. 2144 Oceanside Boulevard, Oceanside, CA 92054" aria-label="Search" value="fuch"
-           >
+            placeholder="eg. 2144 Oceanside Boulevard, Oceanside, CA 92054" aria-label="Search" value="fuch">
           <button class="searchButton" type="submit" [disabled]="!searchBar.valid"
             (click)="searchListing(findListing.value)">
             <a class="" type="button">
@@ -17,7 +16,7 @@
               <img src="/assets/filter_icon.svg" onerror="this.onerror=null; this.src='image.png'">
             </a>
           </button>
-          <button class="mapButton" (click)="mapViewTablet(map)">
+          <button class="mapButton" (click)="mapViewTablet()">
             <a class="" type="button">
               <img src="/assets/map_icon.svg" onerror="this.onerror=null; this.src='image.png'">
             </a>
@@ -134,7 +133,7 @@
     <div class="lists">
       <div class="listPadding"></div>
       <div class="list" *ngFor="let listing of listings">
-        <div  (mouseenter)="listingHovered($event)" (mouseleave)="listingNotHovered($event)" class="listing-card"
+        <div (mouseenter)="listingHovered($event)" (mouseleave)="listingNotHovered($event)" class="listing-card"
           data-id="{{listing.id}}">
           <app-listing-card [listing]="listing"></app-listing-card>
 
@@ -146,19 +145,19 @@
         <app-pagination [currentPage]="currentPage" [totalPages]="totalPages"
           (pageChange)="pageChanged($event)"></app-pagination>
       </div>
-      <button [ngStyle]="{'display': clearSearchBtnDisplayMobile}"  (click)="clearSearch()" class="mobileClearSearch">
+      <button [ngStyle]="{'display': clearSearchBtnDisplayMobile}" (click)="clearSearch()" class="mobileClearSearch">
         <img src="/assets/search.svg" onerror="this.onerror=null; this.src='image.png'">
       </button>
     </div>
     <div class="map">
-      <button [ngStyle]="{'display': clearSearchBtnDisplay}"  (click)="clearSearch()" class="desktopClearSearch">
+      <button [ngStyle]="{'display': clearSearchBtnDisplay}" (click)="clearSearch()" class="desktopClearSearch">
         Clear Search
-       </button>
-      <agm-map  #map ([zoomSroll])="location.scrollZoom" [gestureHandling]="location.gestureHandling"
-        [ngStyle]="_mapDisplay"  [latitude]="location.lat" [styles]="location.styles"
-        [longitude]="location.lng" [clickableIcons]="location.clickableIcons"
-        [(showDefaultInfoWindow)]="location.showDefaultInfoWindow" [disableDefaultUI]="location.disableDefaultUI"
-        [(zoom)]="location.zoom" [draggable]="location.draggable" (boundsChange)="setUpdateListings($event)">
+      </button>
+      <agm-map ([zoomSroll])="location.scrollZoom" [gestureHandling]="location.gestureHandling" [ngStyle]="_mapDisplay"
+        [latitude]="location.lat" [styles]="location.styles" [longitude]="location.lng"
+        [clickableIcons]="location.clickableIcons" [(showDefaultInfoWindow)]="location.showDefaultInfoWindow"
+        [disableDefaultUI]="location.disableDefaultUI" [(zoom)]="location.zoom" [draggable]="location.draggable"
+        (boundsChange)="setUpdateListings($event)">
         <!-- <agm-marker-cluster   [styles]="markerClusterIconStyles" > -->
 
 
@@ -167,10 +166,10 @@
         <agm-marker [agmFitBounds]="false" *ngFor="let marker of listings" class="myMap" [latitude]="marker.lat"
           [longitude]="marker.lng" [iconUrl]="marker.iconUrl" data-id="{{marker.id}}"
           (markerClick)='listingClicked(marker.id)'>
-          <agm-snazzy-info-window [ngStyle]="{'animation': 'tilt-in-top-2 1s ease forwards'}" [latitude]="marker.lat" [isOpen]="marker.isHovered" [padding]="location.padding"
-            [longitude]="marker.lng" [border]="location.border" [borderRadius]="location.borderRadius"
-            [maxWidth]="mapCard.maxWidth" [maxHeight]="mapCard.maxHeight" [closeWhenOthersOpen]="true"
-            style="position: relative; top: 50px; z-index: 2 !important;">
+          <agm-snazzy-info-window [ngStyle]="{'animation': 'tilt-in-top-2 1s ease forwards'}" [latitude]="marker.lat"
+            [isOpen]="marker.isHovered" [padding]="location.padding" [longitude]="marker.lng" [border]="location.border"
+            [borderRadius]="location.borderRadius" [maxWidth]="mapCard.maxWidth" [maxHeight]="mapCard.maxHeight"
+            [closeWhenOthersOpen]="true" style="position: relative; top: 50px; z-index: 2 !important;">
             <ng-template>
               <section class="marker">
                 <a routerLink='/listing/{{marker.id}}' routerLinkActive='active'><img src="{{marker.listingPictures}}"
@@ -192,15 +191,15 @@
         </agm-marker>
         <!-- </agm-marker-cluster> -->
       </agm-map>
-      <div  [ngStyle]="_mapDisplay"  class="pagination_listing_results">
+      <div [ngStyle]="_mapDisplay" class="pagination_listing_results">
         <app-pagination [currentPage]="currentPage" [totalPages]="totalPages"
           (pageChange)="pageChanged($event)"></app-pagination>
-          <button [ngStyle]="{'display': clearSearchBtnDisplay}"  (click)="clearSearch()" class="mobileClearSearch">
-            <img src="/assets/search.svg" onerror="this.onerror=null; this.src='image.png'">
-          </button>
+        <button [ngStyle]="{'display': clearSearchBtnDisplay}" (click)="clearSearch()" class="mobileClearSearch">
+          <img src="/assets/search.svg" onerror="this.onerror=null; this.src='image.png'">
+        </button>
       </div>
     </div>
-   
+
   </section>
 
 </main>
@@ -247,7 +246,7 @@
     <h1 class="mobile">Price</h1>
 
     <select id="mobileBtnPrice" (change)="pricechange($event.target.value)">
-      <option [value]="-1">{{currentPrice == -1?'Max Price': currentPrice + ' <'}}</option>
+      <option [value]="-1">{{currentPrice == -1?'Max Price': currentPrice + ' <'}}< /option>
       <option [value]="-1">--No Max--</option>
       <option [value]="price" *ngFor="let price of priceSelect">{{'$'+ price + ' <' }}</option>
     </select>
@@ -262,34 +261,34 @@
     </select>
 
 
-  <h1 class="mobile">Square Feet</h1>
-  <select id="mobileBtnSqft" (change)="estimatedSqFt($event.target.value)">
-    <option value="-1">{{currentSqft == -1?'Sq. Ft.': currentSqft + ' >'}}</option>
-    <option [value]=0>--No Min--</option>
-    <option value="500">500 > </option>
-    <option value="750">750 ></option>
-    <option value="1000">1000 ></option>
-    <option value="1500">1500 ></option>
-    <option value="2000">2000 ></option>
-    <option value="2500">2500 ></option>
-    <option value="3000">3000 ></option>
-    <option value="3500">3500 ></option>
-    <option value="4000">4000 ></option>
-    <option value="4500">4500 ></option>
-    <option value="5000">5000 ></option>
-    <option value="5500">5500 ></option>
-    <option value="6000">6000 ></option>
-    <option value="6500">6500 ></option>
-    <option value="7000">7000 ></option>
-    <option value="10000">10000 ></option>
-    <option value="20000">20000 ></option>
-    <option value="30000">30000 ></option>
-  </select>
+    <h1 class="mobile">Square Feet</h1>
+    <select id="mobileBtnSqft" (change)="estimatedSqFt($event.target.value)">
+      <option value="-1">{{currentSqft == -1?'Sq. Ft.': currentSqft + ' >'}}</option>
+      <option [value]=0>--No Min--</option>
+      <option value="500">500 > </option>
+      <option value="750">750 ></option>
+      <option value="1000">1000 ></option>
+      <option value="1500">1500 ></option>
+      <option value="2000">2000 ></option>
+      <option value="2500">2500 ></option>
+      <option value="3000">3000 ></option>
+      <option value="3500">3500 ></option>
+      <option value="4000">4000 ></option>
+      <option value="4500">4500 ></option>
+      <option value="5000">5000 ></option>
+      <option value="5500">5500 ></option>
+      <option value="6000">6000 ></option>
+      <option value="6500">6500 ></option>
+      <option value="7000">7000 ></option>
+      <option value="10000">10000 ></option>
+      <option value="20000">20000 ></option>
+      <option value="30000">30000 ></option>
+    </select>
   </div>
-  
+
   <div class="label-container">
     <h1 class="mobile">Listing Status</h1>
-  
+
     <label>
       <input type="checkbox" (click)=activeStatus($event) [checked]="activeSelected">
       <span class="checkmark"></span>
@@ -323,4 +322,4 @@
   </div>
 
 
-  </ng-template>
+</ng-template>

@@ -26,9 +26,7 @@ export class LoginComponent implements OnInit {
   this.showFooter();
   }
   showFooter(){
-    
     const link = document.querySelector('app-footer .footer ') as HTMLElement;
-    console.log(link);
     link.style.display="flex";
  
 }

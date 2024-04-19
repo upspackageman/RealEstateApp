@@ -15,20 +15,11 @@ import { MarkerParams } from '../_models/markerParams';
 import { AgmMap, LatLngBounds } from '@agm/core';
 import { HttpClient } from '@angular/common/http';
 
-
-
-
-
-
-
-
 @Component({
   selector: 'app-forsale',
   templateUrl: './forsale.component.html',
   styleUrls: ['./forsale.component.css', './../footer/footer.component.css'],
-  providers: [{ provide: BsDropdownConfig, useValue: { isAnimated: true, autoClose: true } }],
-  
-
+  providers: [{ provide: BsDropdownConfig, useValue: { isAnimated: true, autoClose: true } }],  
 })
 
 
@@ -277,36 +268,15 @@ export class ForsaleComponent implements OnInit{
     }
     if ((window.matchMedia('(min-width:480px)').matches)) {
       this.clearSearchBtnDisplay = 'flex';
-    }
-    
-   
-  }
-
-  panToCoordinate(latitude: number, longitude: number): void {
-   // this.map.panTo({ lat: latitude, lng: longitude });
-  }
-
-  async checker( coord){
-    this.coordZip = await this.listingsService.fetchCoordinates(coord);
-     console.log(this.coordZip);
-     
+    } 
   }
 
 
-
-  
 
   @HostListener('window:resize', ['$event'])
   hideFooter(event?){
-   
       const link = document.querySelector('app-footer .footer ') as HTMLElement;
-      console.log(link);
       link.style.display="none";
-    
-  
-    
-   
-   
   }
 
 
@@ -358,7 +328,6 @@ export class ForsaleComponent implements OnInit{
     this.checkListingStatus();
   
       if(this.listingParams){
-       
           this.listingsService.getListings(this.listingParams).subscribe(async response => {
           this.listings = response.result;
           this.pagination = response.pagination;
@@ -366,20 +335,15 @@ export class ForsaleComponent implements OnInit{
           this.itemsPerPage = this.pagination.itemsPerPage;
           this.totalPages = response.pagination.totalPages;
           this.coordZip = await this.listingsService.fetchCoordinates(this.listings[5].zip.toString());
-          console.log(this.coordZip[0].lat);
-          console.log(this.coordZip[0].lon);
           this.location.lat =  this.coordZip[0].lat;
           this.location.lng = this.coordZip[0].lon;
-          console.log( this.location.lat );
           for (let list of this.listings) {
             if (window.matchMedia('(min-width:450px)').matches) {
               list.iconUrl = '/assets/circle_4.png';
-    
             }
             else {
               list.iconUrl = '/assets/circle_2.png';
             }
-    
           }
           this.viewedListings();
           this.pagination.itemsPerPage = response.pagination.itemsPerPage;
@@ -399,8 +363,6 @@ export class ForsaleComponent implements OnInit{
     const bounds = this.map;
    
     this.listingsService.getListings(this.listingParams).subscribe(response => {
-
-
       var _listings = response.result;
       this.pagination = response.pagination;
       this.totalItems = this.pagination.totalItems;
@@ -413,13 +375,10 @@ export class ForsaleComponent implements OnInit{
       for (let list of _listings) {
         if (window.matchMedia('(min-width:450px)').matches) {
           list.iconUrl = '/assets/circle_4.png';
-
         }
         else {
           list.iconUrl = '/assets/circle_2.png';
-
         }
-       
       }
       this.viewedListings();
 
@@ -488,7 +447,7 @@ export class ForsaleComponent implements OnInit{
  }
 
   @HostListener('window:resize', ['$event'])
-  async mapViewTablet(template: TemplateRef<any>) {
+  async mapViewTablet() {
     if (this.isMapView == false) {
       this.isMapView = true;
       const map = document.querySelector('.map') as HTMLElement;
@@ -502,12 +461,10 @@ export class ForsaleComponent implements OnInit{
       if (window.matchMedia('(max-width:450px)').matches) {
         this.updateListings();
       }
-
-      console.log(list);
       this.zIndex = '5';
       this.isMapView = true;
       this.zMap = 5;
-      //this.zPagination = '5';
+      
     }
     else {
       const map = document.querySelector('.map') as HTMLElement;
@@ -522,18 +479,11 @@ export class ForsaleComponent implements OnInit{
         list.style.width='400px';
         this._mapDisplay = { 'display':'flex' };
       }
-      console.log(list);
       
       this.zMap = 3;
       this.zIndex = '0';
-    
-
-    
-      
-      //this._mapDisplay = { 'display': 'block' };
       this.isMapView = false;
       map.style.display='block';
-     // this.zPagination = '0';
     }
   }
 
@@ -547,37 +497,26 @@ export class ForsaleComponent implements OnInit{
 
   @HostListener('window:resize', ['$event'])
   async mapView() {
-   // this.location.zoom = 12;
     if (this.isMapView == false) {
       this.zIndex = '2';
       this.mapDisplay = 'inline-flex';
-     // this.listDisplay = 'none';
       this.clearSearchBtnZindex = 3;
       this.isMapView = true;
       this.zMap = 5;
-      //this.zPagination = '5';
 
     }
     else {
       this.zMap = 3;
       this.zIndex = '1';
       this.listDisplay = 'flex';
-     // this.mapDisplay = 'none';
       this.clearSearchBtnZindex = 0;
       this.isMapView = false;
-      //this.zPagination = '5';
-
-
     }
 
     return;
   }
 
-
-
-
   async searchListing(e: string = 'CA') {
-    console.log(e);
     this.listingParams.fulladdress = e;
     this.isSearch = true;
     this.filterButton();
@@ -615,14 +554,11 @@ export class ForsaleComponent implements OnInit{
   }
 
   async pageChanged(page: number,newBounds?:LatLngBounds) {
-    //const left = document.getElementsByClassName('left');
      await  this.toTop();
       this.listingParams.pageNumber = page;
       this.currentPage = this.listingParams.pageNumber;
       this.listingsService.setListingParams(this.listingParams);
      await  this.loadListings(newBounds);
-   
-    
   }
 
   async pricechange(e) {
@@ -632,10 +568,10 @@ export class ForsaleComponent implements OnInit{
     this.currentPrice = e;
     this.filterButton();
     await  this.toTop();
-    this.loadListings();
+    await this.loadListings();
   }
 
-  async priceSort_init(e:number ){
+  priceSort_init(e:number ){
     this.listingParams.priceSort = e;
     if (this.listingParams.priceSort == -1) {
       this.pricesortHTML = '<i class="fa fa-sort-amount-asc" aria-hidden="true"></i>';
@@ -669,11 +605,8 @@ export class ForsaleComponent implements OnInit{
     this.listingParams.pageNumber=1;
     this.filterButton();
     await  this.toTop();
-    this.loadListings();
+    await this.loadListings();
   }
-
-
-
 
   async bedchange(e: number) {
     this.listingParams.bedrooms = e;
@@ -689,12 +622,12 @@ export class ForsaleComponent implements OnInit{
     this.currentBath = e;
     this.listingParams.pageNumber=1;
     this.filterButton();
-    await  this.toTop();
-    this.loadListings();
+    await this.toTop();
+    await this.loadListings();
   }
 
   @HostListener('window:resize', ['$event'])
-  async listingNotHovered(e) {
+  listingNotHovered(e) {
     if ((e.target.getAttribute("id")) !== null) {
       for (let i = 0; i < this.listings.length; i++) {
         if (this.listings[i].id === e.target.id) {
@@ -711,7 +644,7 @@ export class ForsaleComponent implements OnInit{
   }
 
   @HostListener('window:resize', ['$event'])
-  async viewedListings(){
+  viewedListings(){
    const list = localStorage.getItem('viewed_listings');
    if(list){
     const viewed  = list.split(',');
@@ -730,7 +663,7 @@ export class ForsaleComponent implements OnInit{
    
   }
 
-  async setViewListings(){
+  setViewListings(){
     const history = localStorage.getItem('viewed_listings');
     if(history){
       this.viewedListing = history.split(',');
@@ -739,17 +672,13 @@ export class ForsaleComponent implements OnInit{
   }
 
   @HostListener('window:resize', ['$event'])
-  async listingClicked(_id) {
+ listingClicked(_id) {
    
       for (let i = 0; i < this.listings.length; i++) {
-        if (this.listings[i].id === _id) {
-          
-         
-         
+        if (this.listings[i].id === _id) { 
             this.viewedListing.push(_id);
             localStorage.setItem('viewed_listings', this.viewedListing);
-          
-          
+
           if (window.matchMedia('(min-width:500px)').matches) {
             this.listings[i].iconUrl = '/assets/circle_6.png';
           }
@@ -759,11 +688,10 @@ export class ForsaleComponent implements OnInit{
         }
 
       }
-    
   }
 
   @HostListener('window:resize', ['$event'])
-  async listingHovered(e) {
+  listingHovered(e) {
     if ((e.target.getAttribute("id")) !== null) {
       for (let i = 0; i < this.listings.length; i++) {
         if (this.listings[i].id === e.target.id) {
@@ -785,9 +713,9 @@ export class ForsaleComponent implements OnInit{
       else if( this.listingParams.activeStatus === 'ACTIVE'){
         this.listingParams.activeStatus = '';
       }
-      this.filterButton();
+      await this.filterButton();
       await  this.toTop();
-      this.loadListings(newBounds);
+      await this.loadListings(newBounds);
   }
   
   async checkListingStatus(){
@@ -837,8 +765,8 @@ export class ForsaleComponent implements OnInit{
     this.currentBath = this.listingParams.bathtotals;
     this.currentBed = this.listingParams.bedrooms;
     this.currentPrice = this.listingParams.price;
-    this.estimatedSqFt_init(this.listingParams.estSqrFt);
-    this.priceSort_init(this.listingParams.priceSort);
+    await  this.estimatedSqFt_init(this.listingParams.estSqrFt);
+    await this.priceSort_init(this.listingParams.priceSort);
 
     if(this.currentBath !=-1){
       this.filterButton();
@@ -869,8 +797,8 @@ export class ForsaleComponent implements OnInit{
     }
     this.filterButton();
     await  this.toTop();
-    this.loadListings(newBounds);
-    
+    await this.loadListings(newBounds);
+
   }
 
   async pendingStatus (e?: Event,newBounds?: LatLngBounds) {
@@ -882,7 +810,7 @@ export class ForsaleComponent implements OnInit{
     }
     this.filterButton();
     await  this.toTop();
-    this.loadListings(newBounds);
+    await this.loadListings(newBounds);
   }
 
   async soldStatus(e?: Event,newBounds?: LatLngBounds) {
@@ -894,7 +822,7 @@ export class ForsaleComponent implements OnInit{
     }
     this.filterButton();
     await  this.toTop();
-    this.loadListings(newBounds);
+    await this.loadListings(newBounds);
   }
 
   async bomStatus(e?: Event,newBounds?: LatLngBounds) {
@@ -906,7 +834,7 @@ export class ForsaleComponent implements OnInit{
     }
     this.filterButton();
     await  this.toTop();
-    this.loadListings(newBounds);
+    await this.loadListings(newBounds);
   }
 
   async withdrawnStatus(e?: Event,newBounds?: LatLngBounds) {
@@ -918,7 +846,7 @@ export class ForsaleComponent implements OnInit{
     }
     this.filterButton();
     await  this.toTop();
-    this.loadListings(newBounds);
+    await this.loadListings(newBounds);
   }
 
   async cancelledStatus(e?: Event,newBounds?: LatLngBounds) {
@@ -930,7 +858,7 @@ export class ForsaleComponent implements OnInit{
     }
     this.filterButton();
     await  this.toTop();
-    this.loadListings(newBounds);
+    await this.loadListings(newBounds);
   }
  
 
@@ -943,7 +871,7 @@ export class ForsaleComponent implements OnInit{
     }
     this.filterButton();
     await  this.toTop();
-    this.loadListings(newBounds);
+    await this.loadListings(newBounds);
   }
   async estimatedSqFt_init(e:any) {
     this.currentSqft = e;
@@ -955,7 +883,7 @@ export class ForsaleComponent implements OnInit{
     this.listingParams.estSqrFt = e;
     this.filterButton();
     await  this.toTop();
-    this.loadListings();
+    await this.loadListings();
   }
 
 
@@ -963,14 +891,10 @@ export class ForsaleComponent implements OnInit{
     this.listingParams.lotSize = e;
     this.filterButton();
     await  this.toTop();
-    this.loadListings();
+    await this.loadListings();
   }
-
+ 
   async redirect(id: string) {
-    this.router.navigate(['/listing/' + id]);
+    await this.router.navigate(['/listing/' + id]);
   }
-
-
-
-
 }

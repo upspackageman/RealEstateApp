@@ -86,11 +86,8 @@ export class HomeComponent implements OnInit {
   }
 
   showFooter(){
-    
     const link = document.querySelector('app-footer .footer ') as HTMLElement;
-    console.log(link);
     link.style.display="flex";
- 
 }
   openModalWithComponent() {
     const initialState: ModalOptions = {

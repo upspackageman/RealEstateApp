@@ -99,9 +99,9 @@ src='../assets/NoPhotoAvailable.jpg';" />
                         <div class="col-md-6 mt-0 mb-3">
                           <label for="loan-display" class="form-label">Loan Program</label>
                           <div id="loan-display">
-                            <div id="30-fix-rate" value=30 (click)="loanProgram(30)">30-year fixed</div>
-                            <div id="15-fix-rate" value=15 (click)="loanProgram(15)">15-year fixed</div>
-                            <div id="5-arm" value=5 (click)="loanProgram(5)">5/1 ARM</div>
+                            <div [ngStyle]="mort_30" value=30 (click)="loanProgram(30)">30-year fixed</div>
+                            <div [ngStyle]="mort_15" value=15 (click)="loanProgram(15)">15-year fixed</div>
+                            <div [ngStyle]="mort_5" value=5 (click)="loanProgram(5)">5/1 ARM</div>
                           </div>
 
                         </div>

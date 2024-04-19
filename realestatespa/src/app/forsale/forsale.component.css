@@ -20,16 +20,17 @@
 @-webkit-keyframes scale-in-ver-top {
   0% {
     -webkit-transform: scaleY(0);
-            transform: scaleY(0);
+    transform: scaleY(0);
     -webkit-transform-origin: 100% 0%;
-            transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
     opacity: 1;
   }
+
   100% {
     -webkit-transform: scaleY(1);
-            transform: scaleY(1);
+    transform: scaleY(1);
     -webkit-transform-origin: 100% 0%;
-            transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
     opacity: 1;
   }
 }
@@ -37,16 +38,17 @@
 @keyframes scale-in-ver-top {
   0% {
     -webkit-transform: scaleY(0);
-            transform: scaleY(0);
+    transform: scaleY(0);
     -webkit-transform-origin: 100% 0%;
-            transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
     opacity: 1;
   }
+
   100% {
     -webkit-transform: scaleY(1);
-            transform: scaleY(1);
+    transform: scaleY(1);
     -webkit-transform-origin: 100% 0%;
-            transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
     opacity: 1;
   }
 }
@@ -54,24 +56,27 @@
 @-webkit-keyframes tilt-in-top-2 {
   0% {
     -webkit-transform: rotateY(-30deg) translateY(-300px) skewY(30deg);
-            transform: rotateY(-30deg) translateY(-300px) skewY(30deg);
+    transform: rotateY(-30deg) translateY(-300px) skewY(30deg);
     opacity: 0;
   }
+
   100% {
     -webkit-transform: rotateY(0deg) translateY(0) skewY(0deg);
-            transform: rotateY(0deg) translateY(0) skewY(0deg);
+    transform: rotateY(0deg) translateY(0) skewY(0deg);
     opacity: 1;
   }
 }
+
 @keyframes tilt-in-top-2 {
   0% {
     -webkit-transform: rotateY(-30deg) translateY(-300px) skewY(30deg);
-            transform: rotateY(-30deg) translateY(-300px) skewY(30deg);
+    transform: rotateY(-30deg) translateY(-300px) skewY(30deg);
     opacity: 0;
   }
+
   100% {
     -webkit-transform: rotateY(0deg) translateY(0) skewY(0deg);
-            transform: rotateY(0deg) translateY(0) skewY(0deg);
+    transform: rotateY(0deg) translateY(0) skewY(0deg);
     opacity: 1;
   }
 }
@@ -115,6 +120,7 @@ agm-map {
 
 }
 
+
 .btn:focus {
   outline: 0;
   box-shadow: 0 0 0 0.08rem rgb(149, 149, .8);
@@ -137,30 +143,30 @@ agm-map {
   position: relative;
   border-radius: 0 !important;
   width: 180px;
-  
+
   border-style: none;
   border-radius: 0;
 }
 
-.marker .card-body{
+.marker .card-body {
   -webkit-text-stroke: 0.15px #9da000 !important;
   margin-left: 5%;
-  margin-top:2%;
+  margin-top: 2%;
   height: 90px;
 }
 
 
-.marker p{
+.marker p {
   line-height: 30px;
   font-size: 12px;
 }
 
-.marker img{
+.marker img {
   width: 100%;
   height: 120px;
 }
 
-.marker  .btn {
+.marker .btn {
   color: #eaec8299;
   position: relative;
   top: -120px;
@@ -196,9 +202,9 @@ agm-map {
   height: 20px;
 }
 
-.listPaddingBottom{
+.listPaddingBottom {
   height: 250px;
-  display:none;
+  display: none;
 }
 
 
@@ -208,8 +214,8 @@ agm-map {
   height: 100%;
 }
 
-.desktopClearSearch{
- 
+.desktopClearSearch {
+
   position: absolute;
   left: 80%;
   top: 5%;
@@ -268,7 +274,7 @@ form {
 .lists {
   background: #fffff9;
   width: 25%;
-  width:400px;
+  width: 400px;
   height: calc(100% - 150px);
   overflow-x: hidden;
   overflow-y: scroll;
@@ -276,7 +282,7 @@ form {
 
 .lists::-webkit-scrollbar {
   width: 8px;
-  background-color:  linear-gradient(90deg, rgb(247, 242, 213) 0%, rgba(255, 255, 255, 1) 35%);
+  background-color: linear-gradient(90deg, rgb(247, 242, 213) 0%, rgba(255, 255, 255, 1) 35%);
 }
 
 .lists::-webkit-scrollbar-thumb {
@@ -345,8 +351,8 @@ form {
   height: 39px;
   margin-right: 10px;
   border-radius: 2.8px;
-  
-  border-color: #d6d1b4b3!important;
+
+  border-color: #d6d1b4b3 !important;
   background: #FFFFFF;
   border-width: 1px;
 }
@@ -380,21 +386,21 @@ form {
   justify-content: center;
   margin-left: 20px;
   -webkit-animation: scale-in-ver-top 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: scale-in-ver-top 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: scale-in-ver-top 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 
 
 }
 
-.listing-status-select{
+.listing-status-select {
   position: absolute !important;
-    left: -17px !important;
-    top: 31.8px !important;
+  left: -17px !important;
+  top: 31.8px !important;
 }
 
-.price-select-dpdwn{
-  position: absolute  !important;
+.price-select-dpdwn {
+  position: absolute !important;
   left: -24px !important;
- 
+
 }
 
 .high-low-select-dpdwn {
@@ -478,8 +484,8 @@ form {
 
 }
 
-#listing-status-desktop{
-left:-10px;
+#listing-status-desktop {
+  left: -10px;
 }
 
 
@@ -562,7 +568,7 @@ input[type="checkbox"]:checked+span:before {
 
 
 @media (max-width: 1260px) {
-  .contactButton{
+  .contactButton {
     display: inline;
   }
 
@@ -574,10 +580,10 @@ input[type="checkbox"]:checked+span:before {
     overflow-y: scroll;
   }
 
- 
 
-  .map{
-    width:75%;
+
+  .map {
+    width: 75%;
   }
 
   .dropdown {
@@ -588,8 +594,8 @@ input[type="checkbox"]:checked+span:before {
     display: grid;
     justify-content: center;
   }
- 
-  
+
+
   ::ng-deep .modal-content {
     width: 100% !important;
     font-family: 'Oswald', sans-serif;
@@ -620,7 +626,7 @@ input[type="checkbox"]:checked+span:before {
     margin-left: 25%;
   }
 
-  ::ng-deep select{
+  ::ng-deep select {
     font-family: 'Oswald', sans-serif;
     font-weight: 400;
     letter-spacing: 1.5px;
@@ -628,14 +634,15 @@ input[type="checkbox"]:checked+span:before {
     box-shadow: 1px 1px 4px #7b7b7b, -1px -1px 4px #fff;
     border: 1px groove #d8d67f;
     background: linear-gradient(90deg, rgba(229, 231, 172, .596) 0%, rgba(224, 226, 157, .274) 37%, rgba(224, 226, 155, .644) 100%);
-    text-align: center; /* Align text within select */
+    text-align: center;
+    /* Align text within select */
     appearance: none;
     border-radius: .2rem;
     -webkit-appearance: none;
     -moz-appearance: none;
   }
 
-  ::ng-deep #price-spacing{
+  ::ng-deep #price-spacing {
     height: 10px;
   }
 
@@ -651,7 +658,7 @@ input[type="checkbox"]:checked+span:before {
     outline: none;
     color: rgb(240, 204, 0);
   }
-  
+
   ::ng-deep .close {
     text-shadow: 0px 1px 0px rgba(255, 255, 255, .3), 0px -1px 0px rgba(0, 0, 0, .7);
     position: relative;
@@ -662,7 +669,7 @@ input[type="checkbox"]:checked+span:before {
     width: fit-content;
     border: none;
     background: none;
-  
+
   }
 
 
@@ -690,7 +697,7 @@ input[type="checkbox"]:checked+span:before {
 
   }
 
- 
+
 }
 
 
@@ -703,11 +710,11 @@ input[type="checkbox"]:checked+span:before {
     width: 250px;
   }
 
-  .lists{
+  .lists {
     width: 42%;
   }
 
-  .map{
+  .map {
     width: 58%;
   }
 }
@@ -719,25 +726,27 @@ input[type="checkbox"]:checked+span:before {
   main {
     position: fixed;
   }
-  select{
+
+  select {
     margin-bottom: 15px;
   }
-  .label-container h1{
+
+  .label-container h1 {
     position: relative;
     left: -30px;
     font-weight: 200;
   }
 
-  ::ng-deep .modal-content label{
+  ::ng-deep .modal-content label {
     font-size: 1.7rem;
   }
 
 
-  .listPaddingBottom{
+  .listPaddingBottom {
     display: block;
   }
 
-  .desktopClearSearch{
+  .desktopClearSearch {
     display: none !important;
     position: absolute;
     left: 80%;
@@ -762,28 +771,29 @@ input[type="checkbox"]:checked+span:before {
     bottom: 10px;
     z-index: 1;
   }
+
   .mobileClearSearch img {
     width: 35px;
     position: relative;
     top: -1px;
     left: -6px;
   }
- 
+
 
   .lists::-webkit-scrollbar {
     width: 0px;
   }
 
 
-  .padding-card{
+  .padding-card {
     width: 100%;
     height: 10px;
   }
 
-  
 
 
-  .marker{
+
+  .marker {
     /* -webkit-animation: tilt-in-top-2 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	        animation: tilt-in-top-2 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both; */
     width: 100%;
@@ -792,28 +802,28 @@ input[type="checkbox"]:checked+span:before {
 
 
 
-  .marker img{
+  .marker img {
     height: 200px;
   }
 
-  .marker h5{
+  .marker h5 {
     font-size: 1rem;
   }
 
-  .marker p{
+  .marker p {
     line-height: 1.5;
     font-size: 1rem;
   }
 
-  .marker .card-body{
+  .marker .card-body {
     height: 120px;
     margin-left: 2.5%;
   }
 
-  .marker .btn{
+  .marker .btn {
     top: 20px;
     left: 45%;
-    font-size:1rem
+    font-size: 1rem
   }
 
   .option {
@@ -840,11 +850,12 @@ input[type="checkbox"]:checked+span:before {
     width: 100%;
     height: 100%;
   }
-  agm-map{
+
+  agm-map {
     display: none;
   }
 
-  
+
   .map {
     position: relative;
     float: right;
@@ -852,7 +863,7 @@ input[type="checkbox"]:checked+span:before {
     bottom: 100%;
     background-color: burlywood;
     width: 0%;
-    display:none;
+    display: none;
     height: calc(100% - 150px) !important;
   }
 
@@ -881,19 +892,19 @@ input[type="checkbox"]:checked+span:before {
     background: #FFFFFF;
     border-width: 1px;
   }
-  
+
   .contactButton img {
     width: 25px;
     height: 25px;
   }
-  
+
   .mapButton {
     height: 32px;
     width: 38px;
     left: 10px;
     box-shadow: none;
   }
-  
+
   .mapButton img {
     width: 25px;
     height: 25px;
@@ -901,7 +912,7 @@ input[type="checkbox"]:checked+span:before {
 
   .pagination_listing_results {
     border-top: .1rem outset #c6c91b;
-    bottom:23px;
+    bottom: 23px;
     display: flex;
     background-color: rgba(255, 255, 255, 1) !important;
     justify-content: center;
@@ -919,13 +930,13 @@ input[type="checkbox"]:checked+span:before {
     width: 100%;
     background-color: #fff !important;
     padding-bottom: 0rem;
-    padding-top:0rem;
+    padding-top: 0rem;
   }
 
 
 
   ::ng-deep .si-float-wrapper {
-   
+
     left: 0px !important;
     top: 50px !important;
     z-index: 2;
@@ -946,51 +957,52 @@ input[type="checkbox"]:checked+span:before {
 
   ::ng-deep .modal::-webkit-scrollbar {
     width: 0px;
-    
+
   }
 
-  
- 
 
-::ng-deep .modal-content{
-  margin-top: 5%;
-  margin-bottom: 5%;
-}
 
-::ng-deep .modal-content .container {
-  margin-top: 10%;
-}
 
-::ng-deep .close{
-  left: 83%;
-}
+  ::ng-deep .modal-content {
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+
+  ::ng-deep .modal-content .container {
+    margin-top: 10%;
+  }
+
+  ::ng-deep .close {
+    left: 83%;
+  }
 
 }
 
 @media (max-width:415px) {
   .option .optionContainer input {
     width: 265px;
-    
+
+  }
 }
-}
+
 @media (max-width:395px) {
   .option .optionContainer input {
     width: 240px;
-    
-}
 
-@media (max-width: 375px){
-.option .optionContainer input {
-    width: 230px;
-}
-}
+  }
 
-@media (max-width:360px) {
-  .option .optionContainer input {
-    width: 210px;
-    
-}
-}
+  @media (max-width: 375px) {
+    .option .optionContainer input {
+      width: 230px;
+    }
+  }
+
+  @media (max-width:360px) {
+    .option .optionContainer input {
+      width: 210px;
+
+    }
+  }
 
 }
 
@@ -998,16 +1010,15 @@ input[type="checkbox"]:checked+span:before {
 @media (max-width:320px) {
   .option .optionContainer input {
     width: 170px;
-    
-}
+
+  }
 
 }
 
 
-@media (max-width: 280px){
-.option .optionContainer input {
+@media (max-width: 280px) {
+  .option .optionContainer input {
     width: 135px;
-}
+  }
 
 }
-
