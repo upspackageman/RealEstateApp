@@ -159,7 +159,9 @@
         [disableDefaultUI]="location.disableDefaultUI" [(zoom)]="location.zoom" [draggable]="location.draggable"
         (boundsChange)="setUpdateListings($event)">
         <!-- <agm-marker-cluster   [styles]="markerClusterIconStyles" > -->
-
+          <agm-polygon *ngIf="location.boundaries" [paths]="location.boundaries"
+            [editable]="false" [strokeColor]="'#FF0000'" [fillColor]="'#FF0000'" [strokeWeight]="2">
+          </agm-polygon>
 
 
 

@@ -41,7 +41,7 @@ export class ListingsService {
     return new Promise((resolve, reject) => {
       this.http.get('https://nominatim.openstreetmap.org/search?q='+address+'&format=json&polygon_geojson=1&addressdetails=1')
         .subscribe({
-          next: response => resolve(response),
+          next: response =>{ resolve(response), console.log(response[0].boundingbox),console.log(response[0])},
           error: error => reject(error)
         });
     });

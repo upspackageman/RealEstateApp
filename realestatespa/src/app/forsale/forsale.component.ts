@@ -238,6 +238,7 @@ export class ForsaleComponent implements OnInit{
     ],
     clickableIcons: false,
     gestureHandling: 'greedy',
+    boundaries: []
 
 
   }
@@ -260,6 +261,9 @@ export class ForsaleComponent implements OnInit{
     this.hideFooter();
    
   }
+
+
+
 
   @HostListener('window:resize', ['$event'])
   filterButton(){
@@ -335,6 +339,13 @@ export class ForsaleComponent implements OnInit{
           this.itemsPerPage = this.pagination.itemsPerPage;
           this.totalPages = response.pagination.totalPages;
           this.coordZip = await this.listingsService.fetchCoordinates(this.listings[5].zip.toString());
+        //   this.location.boundaries = [
+        //     { lat: Number(this.coordZip[0].boundingbox[0]), lng: Number(this.coordZip[0].boundingbox[2]) }, // southwest (minimum latitude, minimum longitude)
+        //     { lat: Number(this.coordZip[0].boundingbox[1]), lng: Number(this.coordZip[0].boundingbox[2]) }, // northwest (maximum latitude, minimum longitude)
+        //     { lat: Number(this.coordZip[0].boundingbox[1]), lng: Number(this.coordZip[0].boundingbox[3]) }, // northeast (maximum latitude, maximum longitude)
+        //     { lat: Number(this.coordZip[0].boundingbox[0]), lng: Number(this.coordZip[0].boundingbox[3]) }  // southeast (minimum latitude, maximum longitude)
+        // ];
+        //   console.log(this.location.boundaries);
           this.location.lat =  this.coordZip[0].lat;
           this.location.lng = this.coordZip[0].lon;
           for (let list of this.listings) {

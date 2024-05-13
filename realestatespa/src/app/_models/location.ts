@@ -24,6 +24,7 @@ export interface Location {
     clickableIcons:boolean;
     imageSize:any[];
     gestureHandling:string;
+    boundaries:any[];
    
   }
   
