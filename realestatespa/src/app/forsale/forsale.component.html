@@ -248,7 +248,7 @@
     <h1 class="mobile">Price</h1>
 
     <select id="mobileBtnPrice" (change)="pricechange($event.target.value)">
-      <option [value]="-1">{{currentPrice == -1?'Max Price': currentPrice + ' <'}}< /option>
+      <option [value]="-1">{{currentPrice == -1?'Max Price': currentPrice + ' <'}}</option>
       <option [value]="-1">--No Max--</option>
       <option [value]="price" *ngFor="let price of priceSelect">{{'$'+ price + ' <' }}</option>
     </select>

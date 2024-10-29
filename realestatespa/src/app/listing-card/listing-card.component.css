@@ -170,7 +170,7 @@
   background-size: cover;
   height: 120px;
   overflow: hidden;
-  animation: changeColor .03s infinite;
+  animation: changeColor .3s infinite;
 }
 
 .tracking-in-expand {

@@ -453,9 +453,9 @@ form {
 
 .dropdown-content a li:hover {
   font-weight: 500;
-  font-size: 27px;
+  font-size: 22px;
   color: #d8d67f;
-  transition: 200ms;
+  transition: 100ms;
 }
 
 .dropdown-content ul {
